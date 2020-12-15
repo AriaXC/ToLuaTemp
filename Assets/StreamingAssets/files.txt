@@ -1,0 +1,6 @@
+StreamingAssets|ad129803d1500de13de710b752e03633
+StreamingAssets.manifest|fe42e42429498738227c96897be2e2a0
+prefabs@login@loginview.unity3d|92b4d719cf6e32047bbb0896de38bd03
+prefabs@login@loginview.unity3d.manifest|bba39adb9bc895c3731759e8ec170da0
+spritepack@a.unity3d|b93eaa3c43eb7eb9de078d9ffab772e0
+spritepack@a.unity3d.manifest|1451b55e967173dd4a4f95d189cf7b5d

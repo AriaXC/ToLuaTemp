@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 4061908740
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f866cf7d3aaf07f1a0e00ec94aa8afc4
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ea5a42e0fd8ea905efa7aa926a3b8944
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/LuaFramework/Res/Textures/A/0947D3A2F6D82EC558245093853DF622.gif
+- Assets/LuaFramework/Res/Textures/A/2BD66356FCCB6296A8BBE6C7FE7C0B96.jpg
+Dependencies: []
