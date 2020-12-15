@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using LuaInterface;
+using UnityEngine.UI;
 using System;
 
 namespace LuaFramework {
@@ -68,6 +69,28 @@ namespace LuaFramework {
         public static void OnJsonCallFunc(string data, LuaFunction func) {
             Debug.LogWarning("OnJsonCallback data:>>" + data + " lenght:>>" + data.Length);
             if (func != null) func.Call(data);
+        }
+
+
+        //图层也要改了
+        public static void SetParent(Transform target, Transform parent)
+        {
+
+        }
+
+        //给按钮添加点击事件
+        public static void AddClick(GameObject go,LuaFunction func)
+        {
+            if (go == null || func == null)
+            {
+                return;
+            }
+         
+            go.GetComponent<Button>().onClick.RemoveAllListeners();
+            go.GetComponent<Button>().onClick.AddListener(
+                delegate (){
+                    func.Call(go);
+                });
         }
     }
 }

@@ -8,6 +8,7 @@ public class LuaFramework_ResourceManagerWrap
 	{
 		L.BeginClass(typeof(LuaFramework.ResourceManager), typeof(Manager));
 		L.RegFunction("Initialize", Initialize);
+		L.RegFunction("MyLoadAsset", MyLoadAsset);
 		L.RegFunction("LoadPrefab", LoadPrefab);
 		L.RegFunction("LoadAssetBundle", LoadAssetBundle);
 		L.RegFunction("__eq", op_Equality);
@@ -24,6 +25,26 @@ public class LuaFramework_ResourceManagerWrap
 			LuaFramework.ResourceManager obj = (LuaFramework.ResourceManager)ToLua.CheckObject<LuaFramework.ResourceManager>(L, 1);
 			obj.Initialize();
 			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int MyLoadAsset(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 4);
+			LuaFramework.ResourceManager obj = (LuaFramework.ResourceManager)ToLua.CheckObject<LuaFramework.ResourceManager>(L, 1);
+			string arg0 = ToLua.CheckString(L, 2);
+			string arg1 = ToLua.CheckString(L, 3);
+			LuaFunction arg2 = ToLua.CheckLuaFunction(L, 4);
+			UnityEngine.GameObject o = obj.MyLoadAsset(arg0, arg1, arg2);
+			ToLua.PushSealed(L, o);
+			return 1;
 		}
 		catch (Exception e)
 		{

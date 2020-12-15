@@ -52,7 +52,7 @@ namespace LuaFramework {
         /// </summary>
         public static T Get<T>(GameObject go, string subnode) where T : Component {
             if (go != null) {
-                Transform sub = go.transform.FindChild(subnode);
+                Transform sub = go.transform.Find(subnode);
                 if (sub != null) return sub.GetComponent<T>();
             }
             return null;
@@ -63,7 +63,7 @@ namespace LuaFramework {
         /// </summary>
         public static T Get<T>(Transform go, string subnode) where T : Component {
             if (go != null) {
-                Transform sub = go.FindChild(subnode);
+                Transform sub = go.Find(subnode);
                 if (sub != null) return sub.GetComponent<T>();
             }
             return null;
@@ -73,7 +73,7 @@ namespace LuaFramework {
         /// 搜索子物体组件-Component版
         /// </summary>
         public static T Get<T>(Component go, string subnode) where T : Component {
-            return go.transform.FindChild(subnode).GetComponent<T>();
+            return go.transform.Find(subnode).GetComponent<T>();
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace LuaFramework {
         /// 查找子对象
         /// </summary>
         public static GameObject Child(Transform go, string subnode) {
-            Transform tran = go.FindChild(subnode);
+            Transform tran = go.Find(subnode);
             if (tran == null) return null;
             return tran.gameObject;
         }
@@ -124,7 +124,7 @@ namespace LuaFramework {
         /// 取平级对象
         /// </summary>
         public static GameObject Peer(Transform go, string subnode) {
-            Transform tran = go.parent.FindChild(subnode);
+            Transform tran = go.parent.Find(subnode);
             if (tran == null) return null;
             return tran.gameObject;
         }
@@ -191,16 +191,21 @@ namespace LuaFramework {
         public static string DataPath {
             get {
                 string game = AppConst.AppName.ToLower();
+                
                 if (Application.isMobilePlatform) {
+                    //是否是移动平台
                     return Application.persistentDataPath + "/" + game + "/";
                 }
                 if (AppConst.DebugMode) {
                     return Application.dataPath + "/" + AppConst.AssetDir + "/";
                 }
                 if (Application.platform == RuntimePlatform.OSXEditor) {
+                    //platform  返回的是  当前的运行环境  返回值是一个当前平台的枚举值
                     int i = Application.dataPath.LastIndexOf('/');
+                   
                     return Application.dataPath.Substring(0, i + 1) + game + "/";
                 }
+                
                 return "c:/" + game + "/";
             }
         }
@@ -253,8 +258,7 @@ namespace LuaFramework {
                 break;
                 default:
                     path = Application.dataPath + "/" + AppConst.AssetDir + "/";
-                    //path = Application.dataPath + "/"+AppConst.AriaUpdate;
-                    break;
+                break;
             }
             return path;
         }

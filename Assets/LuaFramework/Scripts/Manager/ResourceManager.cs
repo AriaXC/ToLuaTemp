@@ -247,6 +247,7 @@ using System.IO;
 using LuaFramework;
 using LuaInterface;
 using UObject = UnityEngine.Object;
+using UnityEditor;
 
 namespace LuaFramework {
     public class ResourceManager : Manager {
@@ -267,6 +268,7 @@ namespace LuaFramework {
             bundles = new Dictionary<string, AssetBundle>();
             uri = Util.DataPath + AppConst.AssetDir;
             if (!File.Exists(uri)) return;
+         
             stream = File.ReadAllBytes(uri);
             assetbundle = AssetBundle.LoadFromMemory(stream);
             manifest = assetbundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
@@ -276,10 +278,38 @@ namespace LuaFramework {
         /// 载入素材
         /// </summary>
         public T LoadAsset<T>(string abname, string assetname) where T : UnityEngine.Object {
-            abname = abname.ToLower();
-            AssetBundle bundle = LoadAssetBundle(abname);
-            return bundle.LoadAsset<T>(assetname);
+#if UNITY_EDITOR
+            if (AppConst.LuaBundleMode)
+            {
+                abname = abname.ToLower();
+                AssetBundle bundle = LoadAssetBundle(abname);
+                return bundle.LoadAsset<T>(assetname);
+            }
+            else
+            {
+                //直接加载  打包不能使用这个AssetDatabase
+                string path = AppConst.ResPath + assetname;
+                //Debug.Log(path);
+                return (T)AssetDatabase.LoadAssetAtPath<T>(path);
+            }
+#else
+                abname = abname.ToLower();
+                AssetBundle bundle = LoadAssetBundle(abname);
+                return bundle.LoadAsset<T>(assetname);
+#endif
         }
+
+        public GameObject MyLoadAsset(string abname, string assetname, LuaFunction func)
+        {
+            GameObject go = LoadAsset<GameObject>(abname, assetname);
+            if (func != null)
+            {
+                func.Call(go);
+            }
+            return go;
+              
+        }
+
 
         public void LoadPrefab(string abName, string[] assetNames, LuaFunction func) {
             abName = abName.ToLower();

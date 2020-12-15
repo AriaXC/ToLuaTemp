@@ -8,6 +8,7 @@ public class LuaFramework_LuaManagerWrap
 	{
 		L.BeginClass(typeof(LuaFramework.LuaManager), typeof(Manager));
 		L.RegFunction("InitStart", InitStart);
+		L.RegFunction("StartAriaMain", StartAriaMain);
 		L.RegFunction("DoFile", DoFile);
 		L.RegFunction("CallFunction", CallFunction);
 		L.RegFunction("LuaGC", LuaGC);
@@ -25,6 +26,22 @@ public class LuaFramework_LuaManagerWrap
 			ToLua.CheckArgsCount(L, 1);
 			LuaFramework.LuaManager obj = (LuaFramework.LuaManager)ToLua.CheckObject<LuaFramework.LuaManager>(L, 1);
 			obj.InitStart();
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int StartAriaMain(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 1);
+			LuaFramework.LuaManager obj = (LuaFramework.LuaManager)ToLua.CheckObject<LuaFramework.LuaManager>(L, 1);
+			obj.StartAriaMain();
 			return 0;
 		}
 		catch (Exception e)

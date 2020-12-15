@@ -54,7 +54,6 @@ public static class LuaBinder
 		UnityEngine_QueueModeWrap.Register(L);
 		UnityEngine_PlayModeWrap.Register(L);
 		UnityEngine_WrapModeWrap.Register(L);
-		UnityEngine_QualitySettingsWrap.Register(L);
 		UnityEngine_RenderSettingsWrap.Register(L);
 		UnityEngine_ResourcesWrap.Register(L);
 		UnityEngine_RectTransformWrap.Register(L);

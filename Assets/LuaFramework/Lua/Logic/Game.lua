@@ -10,10 +10,6 @@ local sproto = require "3rd/sproto/sproto"
 local core = require "sproto.core"
 local print_r = require "3rd/sproto/print_r"
 
-require "Logic/LuaClass"
-require "Logic/CtrlManager"
-require "Common/functions"
-require "Controller/PromptCtrl"
 
 --管理器--
 Game = {};
@@ -37,30 +33,34 @@ function Game.OnInitOK()
     networkMgr:SendConnect();
 
     --注册LuaView--
-    this.InitViewPanels();
+    -- this.InitViewPanels();
 
-    this.test_class_func();
-    this.test_pblua_func();
-    this.test_cjson_func();
-    this.test_pbc_func();
-    this.test_lpeg_func();
-    this.test_sproto_func();
-    coroutine.start(this.test_coroutine);
+    -- this.test_class_func();
+    -- this.test_pblua_func();
+    -- this.test_cjson_func();
+    -- this.test_pbc_func();
+    -- this.test_lpeg_func();
+    -- this.test_sproto_func();
+    -- coroutine.start(this.test_coroutine);
 
-    CtrlManager.Init();
-    local ctrl = CtrlManager.GetCtrl(CtrlNames.Prompt);
-    if ctrl ~= nil and AppConst.ExampleMode == 1 then
-        ctrl:Awake();
-    end
+    -- CtrlManager.Init();
+    -- local ctrl = CtrlManager.GetCtrl(CtrlNames.Prompt);
+    -- if ctrl ~= nil  then
+    --     ctrl:Awake();
+    -- end
        
-    logWarn('LuaFramework InitOK--->>>');
+    -- logWarn('LuaFramework InitOK--->>>');
+
 end
 
+function  Game.AddGameLayer()
+    -- body
+end
 --测试协同--
 function Game.test_coroutine()    
-    logWarn("1111");
+   
     coroutine.wait(1);	
-    logWarn("2222");
+   
 	
     local www = WWW("http://bbs.ulua.org/readme.txt");
     coroutine.www(www);
@@ -69,7 +69,7 @@ end
 
 --测试sproto--
 function Game.test_sproto_func()
-    logWarn("test_sproto_func-------->>");
+    -- logWarn("test_sproto_func-------->>");
     local sp = sproto.parse [[
     .Person {
         name 0 : string

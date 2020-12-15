@@ -14,6 +14,8 @@ public class LuaFramework_LuaHelperWrap
 		L.RegFunction("GetSoundManager", GetSoundManager);
 		L.RegFunction("OnCallLuaFunc", OnCallLuaFunc);
 		L.RegFunction("OnJsonCallFunc", OnJsonCallFunc);
+		L.RegFunction("SetParent", SetParent);
+		L.RegFunction("AddClick", AddClick);
 		L.EndStaticLibs();
 	}
 
@@ -124,6 +126,40 @@ public class LuaFramework_LuaHelperWrap
 			string arg0 = ToLua.CheckString(L, 1);
 			LuaFunction arg1 = ToLua.CheckLuaFunction(L, 2);
 			LuaFramework.LuaHelper.OnJsonCallFunc(arg0, arg1);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int SetParent(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 2);
+			UnityEngine.Transform arg0 = (UnityEngine.Transform)ToLua.CheckObject<UnityEngine.Transform>(L, 1);
+			UnityEngine.Transform arg1 = (UnityEngine.Transform)ToLua.CheckObject<UnityEngine.Transform>(L, 2);
+			LuaFramework.LuaHelper.SetParent(arg0, arg1);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int AddClick(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 2);
+			UnityEngine.GameObject arg0 = (UnityEngine.GameObject)ToLua.CheckObject(L, 1, typeof(UnityEngine.GameObject));
+			LuaFunction arg1 = ToLua.CheckLuaFunction(L, 2);
+			LuaFramework.LuaHelper.AddClick(arg0, arg1);
 			return 0;
 		}
 		catch (Exception e)

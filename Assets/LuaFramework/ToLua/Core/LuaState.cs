@@ -631,7 +631,7 @@ namespace LuaInterface
             {
                 name = LuaFileUtils.Instance.FindFile(name);
             }
-            Debug.LogError(name);
+
             return "@" + name;
         }
 

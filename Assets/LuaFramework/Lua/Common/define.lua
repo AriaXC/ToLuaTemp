@@ -1,14 +1,4 @@
 
-CtrlNames = {
-	Prompt = "PromptCtrl",
-	Message = "MessageCtrl"
-}
-
-PanelNames = {
-	"PromptPanel",	
-	"MessagePanel",
-}
-
 --协议类型--
 ProtocalType = {
 	BINARY = 0,

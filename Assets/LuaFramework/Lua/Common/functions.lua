@@ -1,4 +1,7 @@
 
+--这样写 可以转换为局部变量 是存放在栈上的  可以提高速度  我的理解是
+local _typeof=typeof   
+
 --输出日志--
 function log(str)
     Util.Log(str);
@@ -27,10 +30,6 @@ function newObject(prefab)
 	return GameObject.Instantiate(prefab);
 end
 
---创建面板--
-function createPanel(name)
-	PanelManager:CreatePanel(name);
-end
 
 function child(str)
 	return transform:FindChild(str);
@@ -48,3 +47,99 @@ function findPanel(str)
 	end
 	return obj:GetComponent("BaseLua");
 end
+--------------------------------------------------------------------------------
+
+
+
+--lua  class  实现lua的class
+function class(className,superClass)
+	-- body
+	local cls ={}
+	cls._classname=className
+	cls._class=cls
+	cls.__index=cls
+
+	if superClass ~= nil then
+		-- 子类的原表是父类  实现继承
+		--所以子类查不到的方法 会去父类查 
+		setmetatable(cls,superClass)
+		cls.super=superClass
+	else
+		cls.Ctor=function( ... )
+			-- body
+		end
+	end
+
+	function cls.New( ... )
+		-- body
+		local ins=setmetatable({},cls)
+		ins:Ctor()
+		return ins
+	end
+
+	return cls
+end
+-- 加载预设
+function Instantiate(prefab,parent,callback)
+	-- body
+	if prefab == nil then
+		logError("你的prefab为空")
+	end
+
+	-- 如果传入的是string  就去加载这个prefab
+	if type(prefab) == "string" then
+		local  prefabPath = prefab
+		prefab = resMgr:MyLoadAsset("prefabs@login@loginview",prefab,callback)
+		if prefab == nil then
+			logError("你的prefab为空_1")
+		end
+	end
+
+	local go=GameObject.Instantiate(prefab)
+	
+	if parent then
+		--还需要加入图层
+		go.transform:SetParent(parent,false)
+		-- LuaHelper.SetParent(go.transform,parent)
+	end
+
+	return go
+end
+--添加按钮点击事件
+--audio  是否播放音乐 暂时没
+function AddBtnClick(go,callback,audio)
+	if go == nil then
+		logError("你的按钮是个空")
+		return
+	end
+	if callback == nil then
+		logError("你的回调是空的")
+		return
+	end
+	return LuaHelper.AddClick(go,function( ... )
+		-- body
+		callback()
+	end)
+end
+
+function  GetComponentText(go)
+	return go:GetComponent(_typeof(UnityEngine.UI.Text))
+end
+
+function  GetComponentImage(go)
+	return go:GetComponent(_typeof(UnityEngine.UI.Image))
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
