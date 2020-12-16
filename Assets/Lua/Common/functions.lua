@@ -92,6 +92,7 @@ function Instantiate(prefab,parent,callback)
 		prefab = resMgr:MyLoadAsset("prefabs@login@loginview",prefab,callback)
 		if prefab == nil then
 			logError("你的prefab为空_1")
+			
 		end
 	end
 
