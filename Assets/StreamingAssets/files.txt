@@ -1,0 +1,8 @@
+StreamingAssets|8f681c2316f06dc6bca296735ce475c3
+StreamingAssets.manifest|13c51db7ee299abf6b8cf2f931493d69
+lua.unity3d|ed31ee4d09a0abea62743cea07a83070
+lua.unity3d.manifest|0e274210331ad82e99c5ef35ec7efaa9
+prefabs@login@loginview.unity3d|4c8ac8af1d7cf92d5f2cfd612dc07e84
+prefabs@login@loginview.unity3d.manifest|dbccc306c81651b7fddfe80b6fc12e55
+spritepack@a.unity3d|28b379e4501f55fe1e7ae8f58a1449a5
+spritepack@a.unity3d.manifest|ebda8281c4420abd190550431423625b

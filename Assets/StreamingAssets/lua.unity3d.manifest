@@ -1,0 +1,48 @@
+ManifestFileVersion: 0
+CRC: 998736356
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4456db2f8a2014e620605779017d21e6
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5ad585dd02dfb5016c0dad519eab8f49
+HashAppended: 0
+ClassTypes:
+- Class: 49
+  Script: {instanceID: 0}
+Assets:
+- Assets/Lua/3rd/cjson/test.lua.bytes
+- Assets/Lua/3rd/pbc/parser.lua.bytes
+- Assets/Lua/Common/protocal.lua.bytes
+- Assets/Lua/Aria/Views/View.lua.bytes
+- Assets/Lua/3rd/sproto/testrpc.lua.bytes
+- Assets/Lua/3rd/luabitop/md5test.lua.bytes
+- Assets/Lua/Aria/Core/initialize.lua.bytes
+- Assets/Lua/3rd/pbc/test2.lua.bytes
+- Assets/Lua/eventlib.lua.bytes
+- Assets/Lua/3rd/luabitop/bittest.lua.bytes
+- Assets/Lua/3rd/cjson/json2lua.lua.bytes
+- Assets/Lua/3rd/sproto/sproto.lua.bytes
+- Assets/Lua/Logic/Game.lua.bytes
+- Assets/Lua/Common/functions.lua.bytes
+- Assets/Lua/3rd/pblua/person_pb.lua.bytes
+- Assets/Lua/3rd/pbc/test.lua.bytes
+- Assets/Lua/3rd/sproto/print_r.lua.bytes
+- Assets/Lua/3rd/luabitop/bitbench.lua.bytes
+- Assets/Lua/3rd/pbc/testparser.lua.bytes
+- Assets/Lua/3rd/cjson/util.lua.bytes
+- Assets/Lua/Main.lua.bytes
+- Assets/Lua/Aria/Login/LoginView.lua.bytes
+- Assets/Lua/3rd/luabitop/installpath.lua.bytes
+- Assets/Lua/3rd/cjson/lua2json.lua.bytes
+- Assets/Lua/3rd/pbc/protobuf.lua.bytes
+- Assets/Lua/events.lua.bytes
+- Assets/Lua/3rd/pblua/login_pb.lua.bytes
+- Assets/Lua/3rd/sproto/sprotoparser.lua.bytes
+- Assets/Lua/3rd/sproto/test.lua.bytes
+- Assets/Lua/Common/define.lua.bytes
+- Assets/Lua/3rd/sproto/testall.lua.bytes
+- Assets/Lua/Logic/Network.lua.bytes
+- Assets/Lua/3rd/luabitop/nsievebits.lua.bytes
+Dependencies: []
