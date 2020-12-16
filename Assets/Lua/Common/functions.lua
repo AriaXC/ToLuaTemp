@@ -7,7 +7,7 @@ function log(str)
     Util.Log(str);
 end
 
---错误日志--
+--错误日志-- ,debug.traceback("",2)
 function logError(str) 
 	Util.LogError(str);
 end
@@ -92,7 +92,7 @@ function Instantiate(prefab,parent,callback)
 		-- "Prefabs/Login/LoginView.prefab"
 		--获取ab包名字
 		local  abName = string.replace()
-
+		logError(string.format("1","2"))
 		prefab = resMgr:MyLoadAsset("prefabs@login@loginview",prefab,callback)
 		if prefab == nil then
 			logError("你的prefab为空_1")
