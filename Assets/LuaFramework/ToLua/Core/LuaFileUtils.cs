@@ -251,12 +251,13 @@ namespace LuaInterface
                 zipName = sb.ToString();
                 zipMap.TryGetValue(zipName, out zipFile);
             }
-
+            //Debug.LogError(fileName);
             if (zipFile != null)
             {
 #if UNITY_4_6 || UNITY_4_7
                 TextAsset luaCode = zipFile.Load(fileName, typeof(TextAsset)) as TextAsset;
 #else
+                //
                 TextAsset luaCode = zipFile.LoadAsset<TextAsset>(fileName);
 #endif
                 if (luaCode != null)

@@ -219,15 +219,15 @@ namespace LuaFramework {
         /// 资源初始化结束
         /// </summary>
         public void OnResourceInited() {
-#if ASYNC_MODE
-            ResManager.Initialize(AppConst.AssetDir, delegate() {
-                Debug.Log("Initialize OK!!!");
-                this.OnInitialize();
-            });
-#else
+//#if ASYNC_MODE
+//            ResManager.Initialize(AppConst.AssetDir, delegate() {
+//                Debug.Log("Initialize OK!!!");
+//                this.OnInitialize();
+//            });
+//#else
             ResManager.Initialize();
             this.OnInitialize();
-#endif
+//#endif
         }
 
         void OnInitialize() {
