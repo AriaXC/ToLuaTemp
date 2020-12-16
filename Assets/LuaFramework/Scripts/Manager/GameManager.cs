@@ -34,8 +34,9 @@ namespace LuaFramework {
         /// 释放资源
         /// </summary>
         public void CheckExtractResource() {
-            bool isExists = Directory.Exists(Util.DataPath) &&
-              Directory.Exists(Util.DataPath + "lua/") && File.Exists(Util.DataPath + "files.txt");
+         
+            bool isExists = Directory.Exists(Util.DataPath) && File.Exists(Util.DataPath + "files.txt");
+            
             if (isExists || AppConst.DebugMode) {
                 StartCoroutine(OnUpdateResource());
                 return;   //文件已经解压过了，自己可添加检查文件列表逻辑

@@ -25,12 +25,14 @@ namespace LuaFramework {
         public const int GameFrameRate = 30;                        //游戏帧频
 
         public const string AppName = "LuaFramework";               //应用程序名称
-        public const string LuaTempDir = "Lua/";                    //临时目录
+        //LuaFileUtils  里有一个这个路径的写死   ab包模式 这个名字不能改
+        public const string LuaTempDir = "LuaABTemp/";               //临时目录   
         public const string AppPrefix = AppName + "_";              //应用程序前缀
         public const string ExtName = ".unity3d";                   //素材扩展名
         public const string AssetDir = "StreamingAssets";           //素材目录 
         public const string WebUrl = "http://localhost:6688/";      //测试更新地址
 
+        public const string LuaPath = "Assets/Lua/";                //Lua目录
         public const string ResPath = "Assets/Res/";                           //Res资源目录
 
         public static string UserId = string.Empty;                 //用户ID

@@ -1,15 +1,16 @@
 ﻿<Properties StartupConfiguration="{5EBE5927-85E2-E507-10FC-6F3F3AAB800B}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/Editor/Packager.cs">
     <Files>
-      <File FileName="Assets/LuaFramework/Scripts/Common/LuaLoader.cs" Line="51" Column="27" />
-      <File FileName="Assets/LuaFramework/Editor/Packager.cs" Line="111" Column="40" />
-      <File FileName="Assets/LuaFramework/Scripts/Utility/Util.cs" Line="251" Column="40" />
-      <File FileName="Assets/LuaFramework/Scripts/Manager/GameManager.cs" Line="234" Column="28" />
-      <File FileName="Assets/LuaFramework/Scripts/ConstDefine/AppConst.cs" Line="30" Column="36" />
-      <File FileName="Assets/LuaFramework/Scripts/Manager/ResourceManager.cs" Line="50" Column="44" />
-      <File FileName="Assets/LuaFramework/Scripts/Manager/LuaManager.cs" Line="23" Column="21" />
-      <File FileName="Assets/LuaFramework/ToLua/Core/LuaFileUtils.cs" Line="242" Column="1" />
-      <File FileName="Assets/LuaFramework/Editor/CustomSettings.cs" Line="16" Column="26" />
+      <File FileName="Assets/LuaFramework/Scripts/Common/LuaLoader.cs" Line="40" Column="18" />
+      <File FileName="Assets/LuaFramework/Editor/Packager.cs" Line="107" Column="66" />
+      <File FileName="Assets/LuaFramework/Scripts/Manager/ResourceManager.cs" Line="57" Column="55" />
+      <File FileName="Assets/LuaFramework/Scripts/Manager/LuaManager.cs" Line="93" Column="30" />
+      <File FileName="Assets/LuaFramework/ToLua/Core/LuaFileUtils.cs" Line="29" Column="23" />
+      <File FileName="Assets/LuaFramework/Scripts/Manager/GameManager.cs" Line="235" Column="30" />
+      <File FileName="Assets/LuaFramework/Scripts/Utility/Util.cs" Line="191" Column="30" />
+      <File FileName="Assets/LuaFramework/ToLua/Core/LuaState.cs" Line="2181" Column="1" />
+      <File FileName="Assets/LuaFramework/Scripts/ConstDefine/AppConst.cs" Line="29" Column="39" />
+      <File FileName="Assets/LuaFramework/Editor/ImportSetting.cs" Line="103" Column="86" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -39,6 +40,9 @@
                 <Node name="LuaFramework" expanded="True">
                   <Node name="Editor" expanded="True">
                     <Node name="Packager.cs" selected="True" />
+                  </Node>
+                  <Node name="ToLua" expanded="True">
+                    <Node name="Editor" expanded="True" />
                   </Node>
                 </Node>
               </Node>

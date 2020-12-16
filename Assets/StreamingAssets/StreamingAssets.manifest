@@ -1,7 +1,10 @@
 ManifestFileVersion: 0
-CRC: 18087087
+CRC: 1146244505
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: lua.unity3d
+      Name: spritepack@a.unity3d
+      Dependencies: {}
+    Info_1:
+      Name: prefabs@login@loginview.unity3d
       Dependencies: {}

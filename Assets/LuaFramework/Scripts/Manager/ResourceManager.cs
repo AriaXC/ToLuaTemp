@@ -47,7 +47,7 @@ namespace LuaFramework {
             else
             {
                 //直接加载  打包不能使用这个AssetDatabase
-                string path = AppConst.ResPath + assetname;
+                string path =  assetname;
                 Debug.Log(path);
                 return (T)AssetDatabase.LoadAssetAtPath<T>(path);
             }
@@ -60,6 +60,7 @@ namespace LuaFramework {
 
         public GameObject MyLoadAsset(string abname, string assetname, LuaFunction func)
         {
+            assetname = AppConst.ResPath + assetname;
             GameObject go = LoadAsset<GameObject>(abname, assetname);
             if (func != null)
             {

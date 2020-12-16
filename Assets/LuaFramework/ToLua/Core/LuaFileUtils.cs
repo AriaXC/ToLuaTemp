@@ -237,7 +237,11 @@ namespace LuaInterface
                 {
                     sb.Append("_");
                     sb.Append(fileName, 0, pos).ToLower().Replace('/', '_');
-                    fileName = fileName.Substring(pos + 1);
+
+                    //我这里只有一个ab包可以加载 lua
+                    sb = "lua";
+                    fileName = fileName.Replace(".", "/");
+                    //fileName = fileName.Substring(pos + 1);
                 }
 
                 if (!fileName.EndsWith(".lua"))
@@ -251,15 +255,17 @@ namespace LuaInterface
                 zipName = sb.ToString();
                 zipMap.TryGetValue(zipName, out zipFile);
             }
-            //Debug.LogError(fileName);
+        
             if (zipFile != null)
             {
 #if UNITY_4_6 || UNITY_4_7
                 TextAsset luaCode = zipFile.Load(fileName, typeof(TextAsset)) as TextAsset;
 #else
-                //
+                //  需要优化 我这里  写死了 拼接ab包的路径
+                fileName = "Assets/LuaABTemp/" + fileName;
+             
                 TextAsset luaCode = zipFile.LoadAsset<TextAsset>(fileName);
-#endif
+#endif  
                 if (luaCode != null)
                 {
                     buffer = luaCode.bytes;

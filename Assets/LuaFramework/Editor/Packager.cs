@@ -73,32 +73,29 @@ public class Packager {
         {
             //HandleExampleBundle();
         }
-        BuildPipeline.BuildAssetBundles(resPath, BuildAssetBundleOptions.None, target);
+    
         BuildPipeline.BuildAssetBundles(resPath, maps.ToArray(), BuildAssetBundleOptions.None, target);
+        BuildPipeline.BuildAssetBundles(resPath, BuildAssetBundleOptions.None, target);
         BuildFileIndex();
 
 
-        UnityEngine.Debug.Log("打包了");
+        UnityEngine.Debug.Log("打出ab资源了");
 
         //BuildPipeline
         AssetDatabase.Refresh();
     }
 
+    // 添加到打包路径中
     static void AddBuildMap(string bundleName, string pattern, string path) {
-        string[] files = Directory.GetFiles(path, pattern);
-        if (files.Length == 0) return;
-
-        for (int i = 0; i < files.Length; i++) {
-            files[i] = files[i].Replace('\\', '/');
+        string[] files_lua = Directory.GetFiles(path, pattern);
+        if (files_lua.Length == 0) return;
+   
+        for (int i = 0; i < files_lua.Length; i++) {
+            files_lua[i] = files_lua[i].Replace('\\', '/');
         }
-        //UnityEngine.Debug.LogError(path);
-        //UnityEngine.Debug.LogError(files[0]);
-        //UnityEngine.Debug.LogError(bundleName);
-        //UnityEngine.Debug.LogError("====");
-
         AssetBundleBuild build = new AssetBundleBuild();
         build.assetBundleName = bundleName;
-        build.assetNames = files;
+        build.assetNames = files_lua;
         maps.Add(build);
     }
 
@@ -106,56 +103,75 @@ public class Packager {
     /// 处理Lua代码包
     /// </summary>
     static void HandleLuaBundle() {
+
         string streamDir = Application.dataPath + "/" + AppConst.LuaTempDir;
+        if (Directory.Exists(streamDir))
+            Directory.Delete(streamDir, true);
+
+        Directory.CreateDirectory(streamDir);
+
+        string[] srcDirs = { CustomSettings.luaDir, CustomSettings.FrameworkPath + "/ToLua/Lua" };
+        for (int i = 0; i < srcDirs.Length; i++)
+        {
+            if (AppConst.LuaByteMode)
+            {
+                string sourceDir = srcDirs[i];
+                string[] files = Directory.GetFiles(sourceDir, "*.lua", SearchOption.AllDirectories);
+                int len = sourceDir.Length;
+
+                if (sourceDir[len - 1] == '/' || sourceDir[len - 1] == '\\')
+                {
+                    --len;
+                }
+                for (int j = 0; j < files.Length; j++)
+                {
+                    string str = files[j].Remove(0, len);
+                    string dest = streamDir + str + ".bytes";
+                    string dir = Path.GetDirectoryName(dest);
+                    Directory.CreateDirectory(dir);
+                    EncodeLuaFile(files[j], dest);
+                }
+            }
+            else
+            {
+                //复制到temp文件夹  然后添加后缀 打进ab
+                ToLuaMenu.CopyLuaBytesFiles(srcDirs[i], streamDir);
+            }
+        }
+
         if (!Directory.Exists(streamDir)) Directory.CreateDirectory(streamDir);
 
         string[] dirs = Directory.GetDirectories(streamDir, "*", SearchOption.AllDirectories);
-        for (int i = 0; i < dirs.Length; i++) {
+        for (int i = 0; i < dirs.Length; i++)
+        {
             string name = dirs[i].Replace(streamDir, string.Empty);
             name = name.Replace('\\', '_').Replace('/', '_');
             name = "lua" + AppConst.ExtName;
 
-            string path = "Assets" + dirs[i].Replace(Application.dataPath, "");
-            //UnityEngine.Debug.LogError(path);
+            string path = "Assets" + dirs[i].Replace(Application.dataPath, ""); 
             AddBuildMap(name, "*.bytes", path);
         }
+        AddBuildMap("lua" + AppConst.ExtName, "*.bytes","Assets/"+ AppConst.LuaTempDir);
 
-        //tolua下的代码 加入ab包
-        string toDir = CustomSettings.FrameworkPath + "/ToLua/Lua/";
-        string[] dirs1 = Directory.GetDirectories(toDir, "*", SearchOption.AllDirectories);
-        for (int i = 0; i < dirs1.Length; i++)
-        {
-            string name = dirs1[i].Replace(toDir, string.Empty);
-            name = name.Replace('\\', '_').Replace('/', '_');
-            name = "lua" + AppConst.ExtName;
-
-            string path = "Assets" + dirs1[i].Replace(Application.dataPath, "");
-            //UnityEngine.Debug.LogError(path);
-            AddBuildMap(name, "*.bytes", path);
-        }
-
-        AddBuildMap("lua" + AppConst.ExtName, "*.bytes", "Assets/" + AppConst.LuaTempDir);
-        foreach(var k in maps)
-        {
-            UnityEngine.Debug.LogError(k);
-        }
 
         //-------------------------------处理非Lua文件----------------------------------
-        //string luaPath = AppDataPath + "/StreamingAssets/lua/";
-        //for (int i = 0; i < srcDirs.Length; i++) {
-        //    paths.Clear(); files.Clear();
-        //    string luaDataPath = srcDirs[i].ToLower();
-        //    Recursive(luaDataPath);
-        //    foreach (string f in files) {
-        //        if (f.EndsWith(".meta") || f.EndsWith(".lua")) continue;
-        //        string newfile = f.Replace(luaDataPath, "");
-        //        string path = Path.GetDirectoryName(luaPath + newfile);
-        //        if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+        string luaPath = Application.dataPath + "/" + AppConst.LuaTempDir +"lua/";
+        for (int i = 0; i < srcDirs.Length; i++)
+        {
+            paths.Clear(); files.Clear();
+            string luaDataPath = srcDirs[i].ToLower();
+            Recursive(luaDataPath);
+            foreach (string f in files)
+            {
+                if (f.EndsWith(".meta") || f.EndsWith(".lua")) continue;
+                string newfile = f.Replace(luaDataPath, "");
+                string path = Path.GetDirectoryName(luaPath + newfile);
+                if (!Directory.Exists(path)) Directory.CreateDirectory(path);
 
-        //        string destfile = path + "/" + Path.GetFileName(f);
-        //        File.Copy(f, destfile, true);
-        //    }
-        //}
+                string destfile = path + "/" + Path.GetFileName(f);
+                File.Copy(f, destfile, true);
+            }
+        }
         AssetDatabase.Refresh();
     }
 
