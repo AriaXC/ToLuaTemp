@@ -1,5 +1,7 @@
 Library
 Temp
+.vs
+.svn
 Assets/LuaABTemp
 Assets/StreamingAssets
 Assets/Resources

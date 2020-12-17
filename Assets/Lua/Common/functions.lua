@@ -7,15 +7,15 @@ function log(str)
     Util.Log(str);
 end
 
---- 这里还没有记录lua堆栈信息
---错误日志-- ,debug.traceback("",2)
+---这里还没有记录lua堆栈信息
+--错误日志
 function logError(str) 
-	Util.LogError(str);
+	Util.LogError(str,debug.traceback("",2));
 end
 
 --警告日志--
 function logWarn(str) 
-	Util.LogWarning(str);
+	Util.LogWarning(str,debug.traceback("",2));
 end
 
 --查找对象--

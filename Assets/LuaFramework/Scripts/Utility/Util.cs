@@ -8,6 +8,7 @@ using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using LuaInterface;
 using LuaFramework;
+using MoonScrpts;
 
 #if UNITY_EDITOR
 using UnityEditor;

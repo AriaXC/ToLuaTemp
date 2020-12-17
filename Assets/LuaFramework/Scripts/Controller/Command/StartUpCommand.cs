@@ -11,8 +11,8 @@ public class StartUpCommand : ControllerCommand {
         if (gameMgr != null) {
             AppView appView = gameMgr.AddComponent<AppView>();
         }
-        //-----------------关联命令-----------------------
-        AppFacade.Instance.RegisterCommand(NotiConst.DISPATCH_MESSAGE, typeof(SocketCommand));
+        //-----------------关联命令-----------------------  暂时注释
+        //AppFacade.Instance.RegisterCommand(NotiConst.DISPATCH_MESSAGE, typeof(SocketCommand));
 
         //-----------------初始化管理器-----------------------
         AppFacade.Instance.AddManager<LuaManager>(ManagerName.Lua);
