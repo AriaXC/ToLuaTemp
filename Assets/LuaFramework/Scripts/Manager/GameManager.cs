@@ -36,8 +36,9 @@ namespace LuaFramework {
         public void CheckExtractResource() {
          
             bool isExists = Directory.Exists(Util.DataPath) && File.Exists(Util.DataPath + "files.txt");
-            
-            if (isExists || AppConst.DebugMode) {
+
+            if (isExists || AppConst.DebugMode)
+            {
                 StartCoroutine(OnUpdateResource());
                 return;   //文件已经解压过了，自己可添加检查文件列表逻辑
             }
@@ -111,71 +112,116 @@ namespace LuaFramework {
         /// <summary>
         /// 启动更新下载，这里只是个思路演示，此处可启动线程下载更新
         /// </summary>
+
         IEnumerator OnUpdateResource() {
             if (!AppConst.UpdateMode) {
                 OnResourceInited();
                 yield break;
             }
             string dataPath = Util.DataPath;  //数据目录
-            string url = AppConst.WebUrl;
+            string updatePath = Application.dataPath +"/"+ AppConst.AiraUpdate;
             string message = string.Empty;
             string random = DateTime.Now.ToString("yyyymmddhhmmss");
-            string listUrl = url + "files.txt?v=" + random;
-            Debug.LogWarning("LoadUpdate---->>>" + listUrl);
+        
+            Debug.Log("LoadUpdate---->>>" + Util.DataPath);
+            Debug.Log("LoadUpdate---->>>" + updatePath);
 
-            WWW www = new WWW(listUrl); yield return www;
-            if (www.error != null) {
-                OnUpdateFailed(string.Empty);
+            if (!Directory.Exists(updatePath))
+            {
+                OnResourceInited();
                 yield break;
             }
-            if (!Directory.Exists(dataPath)) {
-                Directory.CreateDirectory(dataPath);
-            }
-            File.WriteAllBytes(dataPath + "files.txt", www.bytes);
-            string filesText = www.text;
-            string[] files = filesText.Split('\n');
 
-            for (int i = 0; i < files.Length; i++) {
-                if (string.IsNullOrEmpty(files[i])) continue;
+            string fileText = File.ReadAllText(updatePath+"/files.txt");
+            string[] files = fileText.Split('\n');
+            for (int i = 0; i < files.Length; ++i)
+            {
+                if (string.IsNullOrEmpty(files[i]))
+                    break;
                 string[] keyValue = files[i].Split('|');
-                string f = keyValue[0];
-                string localfile = (dataPath + f).Trim();
-                string path = Path.GetDirectoryName(localfile);
-                if (!Directory.Exists(path)) {
+                //去除空格
+                string localPath = (dataPath + keyValue[0]).Trim();
+                Debug.Log("LocalPath ==  " + localPath);
+
+                string path = Path.GetDirectoryName(localPath);
+                if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);
-                }
-                string fileUrl = url + f + "?v=" + random;
-                bool canUpdate = !File.Exists(localfile);
-                if (!canUpdate) {
-                    string remoteMd5 = keyValue[1].Trim();
-                    string localMd5 = Util.md5file(localfile);
-                    canUpdate = !remoteMd5.Equals(localMd5);
-                    if (canUpdate) File.Delete(localfile);
-                }
-                if (canUpdate) {   //本地缺少文件
-                    Debug.Log(fileUrl);
-                    message = "downloading>>" + fileUrl;
-                    facade.SendMessageCommand(NotiConst.UPDATE_MESSAGE, message);
-                    /*
-                    www = new WWW(fileUrl); yield return www;
-                    if (www.error != null) {
-                        OnUpdateFailed(path);   //
-                        yield break;
+
+                bool canUpdate = !File.Exists(localPath);
+                if (!canUpdate)
+                {
+                    //文件存在 对比md5
+                    string updateMd5 = keyValue[1];
+                    string oldMd5 = Util.md5file(localPath);
+                    if (!updateMd5.Equals(oldMd5))
+                    {
+                        //删除文件
+                        canUpdate = true;
+                        Debug.Log("删除了文件 ==  " + localPath);
+                        File.Delete(localPath);
                     }
-                    File.WriteAllBytes(localfile, www.bytes);
-                     */
-                    //这里都是资源文件，用线程下载
-                    BeginDownload(fileUrl, localfile);
-                    while (!(IsDownOK(localfile))) { yield return new WaitForEndOfFrame(); }
+                }
+                if (canUpdate)
+                {
+                    //文件拷贝过来
+                    Debug.Log("开始拷贝文件 ==  " + localPath);
+                    File.Copy(updatePath + "/" + keyValue[0], localPath);
                 }
             }
-            yield return new WaitForEndOfFrame();
 
+            Debug.Log("ab更新完成");
             message = "更新完成!!";
             facade.SendMessageCommand(NotiConst.UPDATE_MESSAGE, message);
 
             OnResourceInited();
         }
+        //WWW www = new WWW(listUrl); yield return www;
+        //if (www.error != null) {
+        //    OnUpdateFailed(string.Empty);
+        //    yield break;
+        //}
+        //if (!Directory.Exists(dataPath)) {
+        //    Directory.CreateDirectory(dataPath);
+        //}
+        //File.WriteAllBytes(dataPath + "files.txt", www.bytes);
+        //string filesText = www.text;
+        //string[] files = filesText.Split('\n');
+
+        //for (int i = 0; i < files.Length; i++) {
+        //    if (string.IsNullOrEmpty(files[i])) continue;
+        //    string[] keyValue = files[i].Split('|');
+        //    string f = keyValue[0];
+        //    string localfile = (dataPath + f).Trim();
+        //    string path = Path.GetDirectoryName(localfile);
+        //    if (!Directory.Exists(path)) {
+        //        Directory.CreateDirectory(path);
+        //    }
+        //    string fileUrl = url + f + "?v=" + random;
+        //    bool canUpdate = !File.Exists(localfile);
+        //    if (!canUpdate) {
+        //        string remoteMd5 = keyValue[1].Trim();
+        //        string localMd5 = Util.md5file(localfile);
+        //        canUpdate = !remoteMd5.Equals(localMd5);
+        //        if (canUpdate) File.Delete(localfile);
+        //    }
+        //    if (canUpdate) {   //本地缺少文件
+        //        Debug.Log(fileUrl);
+        //        message = "downloading>>" + fileUrl;
+        //        facade.SendMessageCommand(NotiConst.UPDATE_MESSAGE, message);
+        //        /*
+        //        www = new WWW(fileUrl); yield return www;
+        //        if (www.error != null) {
+        //            OnUpdateFailed(path);   //
+        //            yield break;
+        //        }
+        //        File.WriteAllBytes(localfile, www.bytes);
+        //         */
+        //        //这里都是资源文件，用线程下载
+        //        BeginDownload(fileUrl, localfile);
+        //        while (!(IsDownOK(localfile))) { yield return new WaitForEndOfFrame(); }
+        //    }
+        //}
+        //yield return new WaitForEndOfFrame();
 
         void OnUpdateFailed(string file) {
             string message = "更新失败!>" + file;

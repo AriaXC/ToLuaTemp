@@ -7,6 +7,7 @@ function log(str)
     Util.Log(str);
 end
 
+--- 这里还没有记录lua堆栈信息
 --错误日志-- ,debug.traceback("",2)
 function logError(str) 
 	Util.LogError(str);
@@ -90,9 +91,9 @@ function Instantiate(prefab,parent,callback)
 	if type(prefab) == "string" then
 		local  prefabPath = prefab
 		-- "Prefabs/Login/LoginView.prefab"
-		--获取ab包名字
+		--获取ab包名字   未
 		local  abName = string.replace()
-		logError(string.format("1","2"))
+
 		prefab = resMgr:MyLoadAsset("prefabs@login@loginview",prefab,callback)
 		if prefab == nil then
 			logError("你的prefab为空_1")

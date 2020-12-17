@@ -15,7 +15,7 @@ function  LoginView:OnInitialize( ... )
 	GetComponentText(obj).text="成功了"
 
 	AddBtnClick(self.transform:Find("bg/btnY").gameObject,function( ... )
-			GetComponentText(obj).text="YYYYYYY"
+			GetComponentText(obj).text="YYYYY"
 			
 	end)
 	AddBtnClick(self.transform:Find("bg/btnN").gameObject,function( ... )

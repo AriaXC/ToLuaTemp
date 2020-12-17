@@ -58,8 +58,12 @@ public class Packager {
     public static void BuildAssetResource(BuildTarget target) {
         string resPath = "Assets/" + AppConst.AssetDir;
         if (Directory.Exists(resPath))
-            Directory.Delete(resPath,true);
+            Directory.Delete(resPath, true);
 
+        if (Directory.Exists(Util.DataPath))
+        {
+            Directory.Delete(Util.DataPath, true);
+        }
         Directory.CreateDirectory(resPath);
         AssetDatabase.Refresh();
 

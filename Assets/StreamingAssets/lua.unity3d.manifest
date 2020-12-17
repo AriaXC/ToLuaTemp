@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1882204235
+CRC: 3638178243
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 7b9c102882953bf6f552ac395c4e8542
+    Hash: 95151dc123b988037e794169505be0fe
   TypeTreeHash:
     serializedVersion: 2
     Hash: 5ad585dd02dfb5016c0dad519eab8f49
@@ -90,6 +90,7 @@ Assets:
 - Assets/LuaABTemp/UnityEngine/Vector2.lua.bytes
 - Assets/LuaABTemp/UnityEngine/Mathf.lua.bytes
 - Assets/LuaABTemp/3rd/pblua/login_pb.lua.bytes
+- Assets/LuaABTemp/Tool/String.lua.bytes
 - Assets/LuaABTemp/3rd/pbc/protobuf.lua.bytes
 - Assets/LuaABTemp/misc/utf8.lua.bytes
 - Assets/LuaABTemp/jit/dis_mipsel.lua.bytes
