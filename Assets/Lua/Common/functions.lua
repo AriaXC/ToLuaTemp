@@ -90,11 +90,10 @@ function Instantiate(prefab,parent,callback)
 	-- 如果传入的是string  就去加载这个prefab
 	if type(prefab) == "string" then
 		local  prefabPath = prefab
-		-- "Prefabs/Login/LoginView.prefab"
-		--获取ab包名字   未
-		local  abName = string.replace()
-
-		prefab = resMgr:MyLoadAsset("prefabs@login@loginview",prefab,callback)
+		local  abName = string.replace(prefab,"/","@")
+		--可以直接把.prefab 给取消掉
+		local  abName = string.sub(abName,1,string.len(prefab)-7)
+		prefab = resMgr:MyLoadAsset(abName,prefab,callback)
 		if prefab == nil then
 			logError("你的prefab为空_1")
 
