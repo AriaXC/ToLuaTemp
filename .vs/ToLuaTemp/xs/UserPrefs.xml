@@ -1,14 +1,15 @@
 ﻿<Properties StartupConfiguration="{5EBE5927-85E2-E507-10FC-6F3F3AAB800B}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/Scripts/Controller/Command/StartUpCommand.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/MoonScripts/Util/Log/LogData.cs">
     <Files>
       <File FileName="Assets/LuaFramework/Scripts/Manager/GameManager.cs" Line="31" Column="5" />
       <File FileName="Assets/LuaFramework/Scripts/Network/SocketClient.cs" Line="1" Column="1" />
       <File FileName="Assets/LuaFramework/Scripts/Controller/Command/SocketCommand.cs" Line="17" Column="1" />
-      <File FileName="Assets/LuaFramework/Scripts/Utility/Util.cs" Line="73" Column="22" />
+      <File FileName="Assets/LuaFramework/Scripts/Utility/Util.cs" Line="285" Column="1" />
       <File FileName="Assets/LuaFramework/Scripts/Manager/LuaManager.cs" Line="19" Column="32" />
       <File FileName="Assets/LuaFramework/Scripts/Framework/Core/Facade.cs" Line="66" Column="30" />
       <File FileName="Assets/LuaFramework/Scripts/Framework/AppFacade.cs" Line="27" Column="59" />
-      <File FileName="Assets/LuaFramework/Scripts/Controller/Command/StartUpCommand.cs" Line="21" Column="72" />
+      <File FileName="Assets/LuaFramework/Scripts/Controller/Command/StartUpCommand.cs" Line="17" Column="33" />
+      <File FileName="Assets/LuaFramework/MoonScripts/Util/Log/LogData.cs" Line="9" Column="7" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,25 +18,12 @@
             <Node name="Assembly-CSharp" expanded="True">
               <Node name="Assets" expanded="True">
                 <Node name="LuaFramework" expanded="True">
-                  <Node name="MoonScripts" expanded="True" />
-                  <Node name="Scripts" expanded="True">
-                    <Node name="Common" expanded="True" />
-                    <Node name="ConstDefine" expanded="True" />
-                    <Node name="Controller" expanded="True">
-                      <Node name="Command" expanded="True">
-                        <Node name="StartUpCommand.cs" selected="True" />
+                  <Node name="MoonScripts" expanded="True">
+                    <Node name="Util" expanded="True">
+                      <Node name="Log" expanded="True">
+                        <Node name="LogData.cs" selected="True" />
                       </Node>
                     </Node>
-                    <Node name="Framework" expanded="True">
-                      <Node name="Core" expanded="True" />
-                      <Node name="Interfaces" expanded="True" />
-                    </Node>
-                    <Node name="Manager" expanded="True">
-                      <Node name="Interface" expanded="True" />
-                    </Node>
-                    <Node name="Network" expanded="True" />
-                    <Node name="Utility" expanded="True" />
-                    <Node name="View" expanded="True" />
                   </Node>
                   <Node name="ToLua" expanded="True">
                     <Node name="Core" expanded="True" />

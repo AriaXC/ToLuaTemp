@@ -276,6 +276,17 @@ namespace LuaFramework {
         }
 
         /// <summary>
+        /// 记录了lua堆栈的日志
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="trace"></param>
+        public static void LogError(string str,string trace)
+        {
+
+            Debug.LogError(str);
+        }
+
+        /// <summary>
         /// 防止初学者不按步骤来操作
         /// </summary>
         /// <returns></returns>
