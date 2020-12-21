@@ -263,16 +263,16 @@ namespace LuaFramework {
             return path;
         }
 
-        public static void Log(string str) {
-            Debug.Log(str);
+        public static void Log(string str, string trace = null)
+        {
+            LogData log = LogData.Append(str, trace);
+            Debug.Log(log);
         }
 
-        public static void LogWarning(string str) {
-            Debug.LogWarning(str);
-        }
-
-        public static void LogError(string str) {
-            Debug.LogError(str);
+        public static void LogWarning(string str, string trace = null)
+        {
+            LogData log = LogData.Append(str, trace);
+            Debug.LogWarning(log);
         }
 
         /// <summary>
@@ -280,10 +280,11 @@ namespace LuaFramework {
         /// </summary>
         /// <param name="str"></param>
         /// <param name="trace"></param>
-        public static void LogError(string str,string trace)
+        public static void LogError(string str,string trace =null)
         {
-
-            Debug.LogError(str);
+            LogData log = LogData.Append(str, trace);
+            //参数需要是个obj  调用这个obj的tostring方法
+            Debug.LogError(log);
         }
 
         /// <summary>
@@ -328,7 +329,6 @@ namespace LuaFramework {
         /// </summary>
         public static bool CheckEnvironment() {
 #if UNITY_EDITOR
-           
             int resultId = Util.CheckRuntimeFile();
             if (resultId == -1) {
                 Debug.LogError("没有找到框架所需要的资源，单击Game菜单下Build xxx Resource生成！！");

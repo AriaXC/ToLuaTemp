@@ -4,8 +4,8 @@ local _typeof=typeof
 local traceback = debug.traceback
 
 --输出日志--
-function log(str)
-    Util.Log(str);
+function log(str,trace)
+    Util.Log(str,trace);
 end
 
 ---这里还没有记录lua堆栈信息

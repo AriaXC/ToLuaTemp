@@ -11,8 +11,7 @@ function  AriaMain()
 
 	--暂时没有场景切换 直接加载界面
     require("Aria.Login.LoginView").New()
-
-
+    
     -----
 end
 --场景切换通知

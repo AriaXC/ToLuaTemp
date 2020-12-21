@@ -349,10 +349,25 @@ public class LuaFramework_UtilWrap
 	{
 		try
 		{
-			ToLua.CheckArgsCount(L, 1);
-			string arg0 = ToLua.CheckString(L, 1);
-			LuaFramework.Util.Log(arg0);
-			return 0;
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 1)
+			{
+				string arg0 = ToLua.CheckString(L, 1);
+				LuaFramework.Util.Log(arg0);
+				return 0;
+			}
+			else if (count == 2)
+			{
+				string arg0 = ToLua.CheckString(L, 1);
+				string arg1 = ToLua.CheckString(L, 2);
+				LuaFramework.Util.Log(arg0, arg1);
+				return 0;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: LuaFramework.Util.Log");
+			}
 		}
 		catch (Exception e)
 		{
@@ -365,10 +380,25 @@ public class LuaFramework_UtilWrap
 	{
 		try
 		{
-			ToLua.CheckArgsCount(L, 1);
-			string arg0 = ToLua.CheckString(L, 1);
-			LuaFramework.Util.LogWarning(arg0);
-			return 0;
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 1)
+			{
+				string arg0 = ToLua.CheckString(L, 1);
+				LuaFramework.Util.LogWarning(arg0);
+				return 0;
+			}
+			else if (count == 2)
+			{
+				string arg0 = ToLua.CheckString(L, 1);
+				string arg1 = ToLua.CheckString(L, 2);
+				LuaFramework.Util.LogWarning(arg0, arg1);
+				return 0;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: LuaFramework.Util.LogWarning");
+			}
 		}
 		catch (Exception e)
 		{
@@ -381,10 +411,25 @@ public class LuaFramework_UtilWrap
 	{
 		try
 		{
-			ToLua.CheckArgsCount(L, 1);
-			string arg0 = ToLua.CheckString(L, 1);
-			LuaFramework.Util.LogError(arg0);
-			return 0;
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 1)
+			{
+				string arg0 = ToLua.CheckString(L, 1);
+				LuaFramework.Util.LogError(arg0);
+				return 0;
+			}
+			else if (count == 2)
+			{
+				string arg0 = ToLua.CheckString(L, 1);
+				string arg1 = ToLua.CheckString(L, 2);
+				LuaFramework.Util.LogError(arg0, arg1);
+				return 0;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: LuaFramework.Util.LogError");
+			}
 		}
 		catch (Exception e)
 		{

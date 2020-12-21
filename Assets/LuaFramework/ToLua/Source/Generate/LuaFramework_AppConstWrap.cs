@@ -22,11 +22,14 @@ public class LuaFramework_AppConstWrap
 		L.RegVar("ExtName", get_ExtName, null);
 		L.RegVar("AssetDir", get_AssetDir, null);
 		L.RegVar("WebUrl", get_WebUrl, null);
+		L.RegVar("AiraUpdate", get_AiraUpdate, null);
+		L.RegVar("LuaPath", get_LuaPath, null);
 		L.RegVar("ResPath", get_ResPath, null);
 		L.RegVar("UserId", get_UserId, set_UserId);
 		L.RegVar("SocketPort", get_SocketPort, set_SocketPort);
 		L.RegVar("SocketAddress", get_SocketAddress, set_SocketAddress);
 		L.RegVar("FrameworkRoot", get_FrameworkRoot, null);
+		L.RegVar("AssetsRoot", get_AssetsRoot, null);
 		L.EndClass();
 	}
 
@@ -139,6 +142,34 @@ public class LuaFramework_AppConstWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_AiraUpdate(IntPtr L)
+	{
+		try
+		{
+			LuaDLL.lua_pushstring(L, LuaFramework.AppConst.AiraUpdate);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_LuaPath(IntPtr L)
+	{
+		try
+		{
+			LuaDLL.lua_pushstring(L, LuaFramework.AppConst.LuaPath);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_ResPath(IntPtr L)
 	{
 		try
@@ -200,6 +231,20 @@ public class LuaFramework_AppConstWrap
 		try
 		{
 			LuaDLL.lua_pushstring(L, LuaFramework.AppConst.FrameworkRoot);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_AssetsRoot(IntPtr L)
+	{
+		try
+		{
+			LuaDLL.lua_pushstring(L, LuaFramework.AppConst.AssetsRoot);
 			return 1;
 		}
 		catch (Exception e)

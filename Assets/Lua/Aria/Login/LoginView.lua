@@ -10,7 +10,8 @@ end
 function  LoginView:OnInitialize( ... )
 	-- body
 	LoginView.super.OnInitialize(self)
-	
+
+
 	local obj= self.transform:Find("bg/titleText").gameObject
 	GetComponentText(obj).text="成功了"
 
