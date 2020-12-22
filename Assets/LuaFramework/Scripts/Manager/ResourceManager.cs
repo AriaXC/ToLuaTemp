@@ -48,7 +48,7 @@ namespace LuaFramework {
             {
                 //直接加载  打包不能使用这个AssetDatabase
                 string path =  assetname;
-                Debug.Log(path);
+                //Debug.Log(path);
                 return (T)AssetDatabase.LoadAssetAtPath<T>(path);
             }
 #else
