@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using LuaInterface;
 using LuaFramework;
 using UnityEditor;
+using MoonScrpts;
 
 using BindType = ToLuaMenu.BindType;
 using UnityEngine.UI;
@@ -172,7 +173,9 @@ public static class CustomSettings
         _GT(typeof(TimerManager)),
         _GT(typeof(ThreadManager)),
         _GT(typeof(NetworkManager)),
-        _GT(typeof(ResourceManager)),		  
+        _GT(typeof(ResourceManager)),
+
+        _GT(typeof(Stage)),
     };
 
     public static List<Type> dynamicList = new List<Type>()

@@ -39,7 +39,7 @@ namespace LuaFramework {
 
             if (isExists || AppConst.DebugMode)
             {
-                StartCoroutine(OnUpdateResource());
+                //StartCoroutine(OnUpdateResource());
                 return;   //文件已经解压过了，自己可添加检查文件列表逻辑
             }
             StartCoroutine(OnExtractResource());    //启动释放协成 
@@ -105,8 +105,8 @@ namespace LuaFramework {
             yield return new WaitForSeconds(0.1f);
 
             message = string.Empty;
-            //释放完成，开始启动更新资源
-            StartCoroutine(OnUpdateResource());
+            //释放完成，开始启动更新资源 
+            //StartCoroutine(OnUpdateResource());
         }
 
         /// <summary>
@@ -279,7 +279,8 @@ namespace LuaFramework {
 
         void OnInitialize() {
             LuaManager.InitStart();
-            LuaManager.DoFile("Logic/Game");         //加载游戏
+            //LuaManager.DoFile("Logic/Game");         //加载游戏
+
             //LuaManager.DoFile("Logic/Network");      //加载网络
             //NetManager.OnInit();                     //初始化网络
             //进入游戏
@@ -287,7 +288,9 @@ namespace LuaFramework {
             // Util.CallMethod("Game", "OnInitOK");     //初始化完成
             //LuaManager.DoFile("Main"); 
             //Util.CallMethod("Main", "AriaMain");     //初始化完成
-            LuaManager.StartAriaMain();
+
+            //开始游戏不能放在这里   动更的逻辑也要放到后面
+            //LuaManager.StartAriaMain();
 
             initialize = true;
 

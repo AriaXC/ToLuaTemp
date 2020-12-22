@@ -23,6 +23,8 @@ public class Facade {
         get {
             if (m_GameManager == null) {
                 m_GameManager = GameObject.Find("GameManager");
+                if (m_GameManager == null)
+                    m_GameManager = new GameObject("GameManager");
             }
             return m_GameManager;
         }
