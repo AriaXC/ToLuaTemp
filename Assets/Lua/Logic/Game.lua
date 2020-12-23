@@ -1,45 +1,47 @@
-require "3rd/pblua/login_pb"
-require "3rd/pbc/protobuf"
-
-local lpeg = require "lpeg"
-
-local json = require "cjson"
-local util = require "3rd/cjson/util"
-
-local sproto = require "3rd/sproto/sproto"
-local core = require "sproto.core"
-local print_r = require "3rd/sproto/print_r"
-
 
 --管理器--
 --这里控制lua的game
+Game = class("Game");
 
+--需要读配置表对应版本来判断
+local isUpdate = false
 
-Game = {};
-local this = Game;
-
-local game; 
-local transform;
-local gameObject;
-local WWW = UnityEngine.WWW;
+function  Game:Ctor()
+    
+end
 
 --进入游戏
-function  Game.StartUp( ... )
+function Game:StartUp( ... )
         
 
     --模块加载等的管理也在这里
-    require("Aria.Core.initialize")
+    self:LoadGlobalModule()
 
-    --暂时没有场景切换 直接加载界面
-    require("Module.Login.LoginView").New()
-
-    --初始化资源等
+    --初始化资源依赖等
+    resMgr.InitRes()
 
     --动更等的逻辑再这里
+    if isUpdate then
+        --跳转到动更界面
+
+    else
+        MySceneMgr:LoadScene("Login")
+    end
+    -- require("Module.Login.LoginView").New()
+end
+
+--加载全局module
+function  Game:LoadGlobalModule()
+    require("Aria.Core.initialize")
+    require("Aria.Manager.Init")
 
 end
+
+
 
 --销毁--
-function Game.OnDestroy()
+function Game:OnDestroy()
 	--logWarn('OnDestroy--->>>');
 end
+
+return Game

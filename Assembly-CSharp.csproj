@@ -63,9 +63,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\LuaFramework\MoonScripts\Core\Common.cs" />
-    <Compile Include="Assets\LuaFramework\MoonScripts\Core\launcher.cs" />
-    <Compile Include="Assets\LuaFramework\MoonScripts\Core\Stage.cs" />
     <Compile Include="Assets\LuaFramework\MoonScripts\Util\Log\LogData.cs" />
     <Compile Include="Assets\LuaFramework\Scripts\Common\LuaBehaviour.cs" />
     <Compile Include="Assets\LuaFramework\Scripts\Common\LuaLoader.cs" />
@@ -92,8 +89,8 @@
     <Compile Include="Assets\LuaFramework\Scripts\Manager\LuaManager.cs" />
     <Compile Include="Assets\LuaFramework\Scripts\Manager\NetworkManager.cs" />
     <Compile Include="Assets\LuaFramework\Scripts\Manager\ObjectPoolManager.cs" />
-    <Compile Include="Assets\LuaFramework\Scripts\Manager\PanelManager.cs" />
     <Compile Include="Assets\LuaFramework\Scripts\Manager\ResourceManager.cs" />
+    <Compile Include="Assets\LuaFramework\Scripts\Manager\SceneManager.cs" />
     <Compile Include="Assets\LuaFramework\Scripts\Manager\SoundManager.cs" />
     <Compile Include="Assets\LuaFramework\Scripts\Manager\ThreadManager.cs" />
     <Compile Include="Assets\LuaFramework\Scripts\Manager\TimerManager.cs" />
@@ -174,7 +171,6 @@
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_LuaHelperWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_LuaManagerWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_NetworkManagerWrap.cs" />
-    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_PanelManagerWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_ResourceManagerWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_SoundManagerWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_ThreadManagerWrap.cs" />
@@ -185,7 +181,6 @@
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaInterface_LuaInjectionStationWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaProfilerWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\ManagerWrap.cs" />
-    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\MoonScrpts_StageWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_AnimationBlendModeWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_AnimationClipWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_AnimationStateWrap.cs" />

@@ -8,7 +8,7 @@ public class LuaFramework_LuaHelperWrap
 	{
 		L.BeginStaticLibs("LuaHelper");
 		L.RegFunction("GetType", GetType);
-		L.RegFunction("GetPanelManager", GetPanelManager);
+		L.RegFunction("GetSceneManager", GetSceneManager);
 		L.RegFunction("GetResManager", GetResManager);
 		L.RegFunction("GetNetManager", GetNetManager);
 		L.RegFunction("GetSoundManager", GetSoundManager);
@@ -37,12 +37,12 @@ public class LuaFramework_LuaHelperWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int GetPanelManager(IntPtr L)
+	static int GetSceneManager(IntPtr L)
 	{
 		try
 		{
 			ToLua.CheckArgsCount(L, 0);
-			LuaFramework.PanelManager o = LuaFramework.LuaHelper.GetPanelManager();
+			LuaFramework.SceneManager o = LuaFramework.LuaHelper.GetSceneManager();
 			ToLua.Push(L, o);
 			return 1;
 		}

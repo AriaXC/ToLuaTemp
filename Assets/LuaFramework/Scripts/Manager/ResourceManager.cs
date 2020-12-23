@@ -7,6 +7,7 @@ using LuaFramework;
 using LuaInterface;
 using UObject = UnityEngine.Object;
 using UnityEditor;
+using System;
 
 namespace LuaFramework {
     public class ResourceManager : Manager {
@@ -19,9 +20,17 @@ namespace LuaFramework {
         }
 
         /// <summary>
-        /// 初始化
+        /// 初始化加载器
         /// </summary>
-        public void Initialize() {
+        public void Initialize(string mainFestName,Action action) {
+
+            if (!AppConst.LuaBundleMode)
+            { 
+
+                action();
+                return;
+            }
+            //ab包模式代码还没写
             byte[] stream = null;
             string uri = string.Empty;
             bundles = new Dictionary<string, AssetBundle>();
@@ -32,7 +41,20 @@ namespace LuaFramework {
             assetbundle = AssetBundle.LoadFromMemory(stream);
             manifest = assetbundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
         }
+        /// <summary>
+        /// 加载资源依赖相关
+        /// </summary>
+        public void InitRes()
+        {
+            if (!AppConst.LuaBundleMode)
+            {
+                return;
+            }
+            //这里应该去处理  资源的依赖关系等
 
+
+
+        }
         /// <summary>
         /// 载入素材
         /// </summary>

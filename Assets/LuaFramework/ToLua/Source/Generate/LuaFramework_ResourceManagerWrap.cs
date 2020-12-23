@@ -21,9 +21,11 @@ public class LuaFramework_ResourceManagerWrap
 	{
 		try
 		{
-			ToLua.CheckArgsCount(L, 1);
+			ToLua.CheckArgsCount(L, 3);
 			LuaFramework.ResourceManager obj = (LuaFramework.ResourceManager)ToLua.CheckObject<LuaFramework.ResourceManager>(L, 1);
-			obj.Initialize();
+			string arg0 = ToLua.CheckString(L, 2);
+			System.Action arg1 = (System.Action)ToLua.CheckDelegate<System.Action>(L, 3);
+			obj.Initialize(arg0, arg1);
 			return 0;
 		}
 		catch (Exception e)

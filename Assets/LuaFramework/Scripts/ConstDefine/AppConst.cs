@@ -25,6 +25,7 @@ namespace LuaFramework {
         public const int GameFrameRate = 30;                        //游戏帧频
 
         public const string AppName = "LuaFramework";               //应用程序名称
+
         //LuaFileUtils  里有一个这个路径的写死   ab包模式 这个名字不能改
         public const string LuaTempDir = "LuaABTemp/";               //临时目录   
         public const string AppPrefix = AppName + "_";              //应用程序前缀

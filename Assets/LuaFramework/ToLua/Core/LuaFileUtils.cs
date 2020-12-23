@@ -76,9 +76,14 @@ namespace LuaInterface
             }
         }
 
+        //搜索lua的路径  第一次是初始化时  lua的路径加入  第二次是 动更的时候 路径的加入  动更的内容无法加入到游戏的包体
+
+        // front 设置 是否把路径设置到最前面
         //格式: 路径/?.lua
         public bool AddSearchPath(string path, bool front = false)
         {
+            //Debug.LogError("path ="+path);
+
             int index = searchPaths.IndexOf(path);
 
             if (index >= 0)

@@ -25,9 +25,20 @@ namespace LuaFramework {
         void Init() {
             DontDestroyOnLoad(gameObject);  //防止销毁自己
 
-            CheckExtractResource(); //释放资源
+            //CheckExtractResource(); //释放资源
+
+            OnResInIt();
             Screen.sleepTimeout = SleepTimeout.NeverSleep;
             Application.targetFrameRate = AppConst.GameFrameRate;
+
+        }
+        public void OnResInIt()
+        {
+            ResManager.Initialize(AppConst.AssetDir, delegate ()
+            {
+                Debug.Log("GameManager Initialize OK!!!");
+                this.OnInitialize();
+            });
         }
 
         /// <summary>
@@ -46,7 +57,7 @@ namespace LuaFramework {
         }
 
         IEnumerator OnExtractResource() {
-            string dataPath = Util.DataPath;  //数据目录
+            string dataPath = Util.DataPath;  //数据目录  
             string resPath = Util.AppContentPath(); //游戏包资源目录
 
             if (Directory.Exists(dataPath)) Directory.Delete(dataPath, true);
@@ -266,18 +277,24 @@ namespace LuaFramework {
         /// 资源初始化结束
         /// </summary>
         public void OnResourceInited() {
-//#if ASYNC_MODE
-//            ResManager.Initialize(AppConst.AssetDir, delegate() {
-//                Debug.Log("Initialize OK!!!");
-//                this.OnInitialize();
-//            });
-//#else
-            ResManager.Initialize();
-            this.OnInitialize();
+            //#if ASYNC_MODE
+            //            ResManager.Initialize(AppConst.AssetDir, delegate() {
+            //                Debug.Log("Initialize OK!!!");
+            //                this.OnInitialize();
+            //            });
+            //#else
+            //ResManager.Initialize();
+
+            ResManager.Initialize(AppConst.AssetDir, delegate ()
+            {
+                Debug.Log("GameManager Initialize OK!!!");
+                this.OnInitialize();
+            });
 //#endif
         }
 
         void OnInitialize() {
+
             LuaManager.InitStart();
             //LuaManager.DoFile("Logic/Game");         //加载游戏
 

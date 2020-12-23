@@ -168,14 +168,12 @@ public static class CustomSettings
 
         _GT(typeof(GameManager)),
         _GT(typeof(LuaManager)),
-        _GT(typeof(PanelManager)),
         _GT(typeof(SoundManager)),
         _GT(typeof(TimerManager)),
         _GT(typeof(ThreadManager)),
         _GT(typeof(NetworkManager)),
         _GT(typeof(ResourceManager)),
 
-        _GT(typeof(Stage)),
     };
 
     public static List<Type> dynamicList = new List<Type>()

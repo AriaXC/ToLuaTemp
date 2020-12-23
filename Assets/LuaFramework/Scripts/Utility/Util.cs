@@ -189,7 +189,9 @@ namespace LuaFramework {
         /// <summary>
         /// 取得数据存放目录
         /// </summary>
-        public static string DataPath {
+        public static string DataPath
+        {
+            //asset 下同级的luaframework 下的
             get {
                 string game = AppConst.AppName.ToLower();
                 

@@ -1,7 +1,7 @@
 
 local LoginView=class(LoginView,View)
 
-function  LoginView:Ctor( ... )
+function  LoginView:Ctor( )
 	-- body
 	LoginView.super.Ctor(self,"Prefabs/Login/LoginView.prefab",nil)
 

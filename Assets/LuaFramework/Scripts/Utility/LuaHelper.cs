@@ -24,10 +24,11 @@ namespace LuaFramework {
         }
 
         /// <summary>
-        /// 面板管理器
+        /// 场景管理器
         /// </summary>
-        public static PanelManager GetPanelManager() {
-            return AppFacade.Instance.GetManager<PanelManager>(ManagerName.Panel);
+        /// <returns></returns>
+        public static SceneManager GetSceneManager() {
+            return AppFacade.Instance.GetManager<SceneManager>(ManagerName.Scene);
         }
 
         /// <summary>

@@ -24,7 +24,7 @@ namespace LuaFramework {
             InitLuaPath();
             InitLuaBundle();
             this.lua.Start();    //启动LUAVM
-            this.StartMain();
+            this.StartAriaMain();
             this.StartLooper();
         }
 
@@ -43,16 +43,18 @@ namespace LuaFramework {
             lua.LuaSetField(-2, "cjson.safe");
         }
 
-        void StartMain() {
-            lua.DoFile("Main.lua");
+        //void StartMain() {
+        //    lua.DoFile("Main.lua");
 
-            LuaFunction main = lua.GetFunction("Main");
-            main.Call();
-            main.Dispose();
-            main = null;    
-        }
+        //    LuaFunction main = lua.GetFunction("Main");
+        //    main.Call();
+        //    main.Dispose();
+        //    main = null;    
+        //}
         public void StartAriaMain()
         {
+            lua.DoFile("Main.lua");
+
             LuaFunction main = lua.GetFunction("AriaMain");
             main.Call();
             main.Dispose();
