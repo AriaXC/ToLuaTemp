@@ -36,7 +36,7 @@ public class UIList : MonoBehaviour
     private GameObject _content;
 
     private int _maxCount;
-    private int[] data;
+    private List<string> data;
 
     private RectTransform _reContent;
     private RectTransform _reChild;
@@ -49,12 +49,15 @@ public class UIList : MonoBehaviour
 
     private List<GameObject> _showList;
     private List<GameObject> _delList;
-
+   
     private Dictionary<GameObject, int> indexDic = new Dictionary<GameObject, int>();
+
+    //列表是否发生了改变
+    private int isChange = -1;
     private void Awake()
     {
         _scroll = gameObject.AddComponent<ScrollRect>();
-
+        
         _viewPort = new GameObject("ViewPort");
         _viewPort.transform.SetParent(this.transform);
         _viewPort.transform.localPosition = Vector3.zero;
@@ -90,32 +93,62 @@ public class UIList : MonoBehaviour
 
     private void Start()
     {
-        data = new int[100];
-        for (int i = 0; i < data.Length; i++)
+        data = new List<string>();
+        for (int i = 0; i < 100; i++)
         {
-            data[i] = i;
+            data.Add ("第"+i+"个");
         }
-        SetContent(data);
-        InitView(data);
+        SetContent();
+        InitView();
         _nowIndex = 0;
         _scroll.onValueChanged.AddListener(OnValueChange);
     }
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            //+
+            int num = 40;
+            data.Insert(num ,"第" +num + "个");
+            GetMaxCount();
+            SetContent();
+            OnValueChange(Vector2.zero);
+            isChange = num;
+            Debug.LogError("添加了   h=" + "第" + num + "个");
+            //foreach (var v in data)
+            //{
+            //    Debug.LogError(v);
+            //}
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            //-
+            int num = 60;
+            data.RemoveAt(num);
+
+            for (int j = 0; j < _showList.Count; j++)
+            {
+                if (indexDic[_showList[j]] == num)
+                {
+                    _showList[j].SetActive(false);
+                    break;
+                }
+            }
+            GetMaxCount();
+            SetContent();
+            OnValueChange(Vector2.zero);
+            isChange = num;
+            Debug.LogError("删除了   h=" + data[num]);
+        }
+    }
 
     //初始化
-    public void InitView(int[] data)
+    public void InitView()
     {
         //最多几行  加2
         if (isVertical)
         {
-            _maxCount = Convert.ToInt32(Math.Ceiling(viewSize.y / (_reChild.sizeDelta.y + gap.y) + 2) * Count.x);
-            if (_maxCount - 2 * Count.x < data.Length && _maxCount > data.Length)
-            {
-                _maxCount = data.Length;
-            }
-            if (_maxCount - 2 * Count.x > data.Length)
-            {
-                _maxCount = data.Length;
-            }
+            GetMaxCount();
         }
 
         for (int i = 0; i < _maxCount; i++)
@@ -123,48 +156,104 @@ public class UIList : MonoBehaviour
             _showList.Add(GetItem(i));
         }
     }
-
+    public void GetMaxCount()
+    {
+        _maxCount = Convert.ToInt32(Math.Ceiling(viewSize.y / (_reChild.sizeDelta.y + gap.y) + 2) * Count.x);
+        if (_maxCount - 2 * Count.x < data.Count && _maxCount > data.Count)
+        {
+            _maxCount = data.Count;
+        }
+        if (_maxCount - 2 * Count.x > data.Count)
+        {
+            _maxCount = data.Count;
+        }
+    }
     public void OnValueChange(Vector2 ve)
     {
         if (isHorizontal)
         {
-    
+
         }
         else if (isVertical)
         {
             _startIndex = GetStartIndex();
-            if (_nowIndex == _startIndex)
+            if (_nowIndex == _startIndex && isChange == -1)
             {
                 return;
             }
-            _nowIndex = _startIndex;
-            if (_startIndex != -1)
+            if (isChange!= -1)
             {
-                UpdateItem();
+                if (isChange < _startIndex)
+                {
+                    isChange = -1;
+                    return;
+                }
+                isChange = -1;
+                UpdateNow();
+                return;
             }
+
+            _nowIndex = _startIndex;
+            if (_startIndex < 0)
+            {
+                return;
+            }
+
+            UpdateItem();
         }
      }
+    public void UpdateNow()
+    {
+        _endIndex = _startIndex + _maxCount;
+        for (int i = _showList.Count - 1; i >= 0; i--)
+        {
+            _showList[i].SetActive(false);
+            _delList.Add(_showList[i]);
+            _showList.RemoveAt(i);
+        }
+        for (int i = _startIndex; i < _endIndex; i++)
+        {
+            if (i >= data.Count)
+                continue;
+            _showList.Add(GetItem(i));
+        }
+
+    }
     public void UpdateItem()
     {
         _endIndex = _startIndex + _maxCount;
-        for (int i = _showList.Count-1; i >=0; i--)
+        for (int i = _showList.Count - 1; i >= 0; i--)
         {
             int index = indexDic[_showList[i]];
-            //if (index < _startIndex || index >= _endIndex)
-            //{
+            if (index < _startIndex || index >= _endIndex)
+            {
+                _showList[i].SetActive(false);
                 _delList.Add(_showList[i]);
                 _showList.RemoveAt(i);
-            //}
+            }
         }
-        //Debug.LogError("LLL==="+_delList.Count);
         for (int i = _startIndex; i < _endIndex; i++)
         {
-            if (i > data.Length)
+            if (i >= data.Count)
                 continue;
-
-            _showList.Add(GetItem(i));
+            bool isGet = true;
+            //如果元素已经有了 就不刷新了
+            for (int j = 0; j < _showList.Count; j++)
+            {
+                if (indexDic[_showList[j]] == i)
+                {
+                    _showList[j].SetActive(true);
+                    isGet = false;
+                    break;
+                }
+            }
+            if (isGet)
+            {
+                _showList.Add(GetItem(i));
+            }
         }
     }
+
     //获取第一个
     public int GetStartIndex()
     {
@@ -183,18 +272,18 @@ public class UIList : MonoBehaviour
     public void SetItemData(GameObject item,int index)
     {
         indexDic[item] = index;
-        //Debug.LogError(item.name + "   " + index);
-        item.transform.Find("Text").gameObject.GetComponent<Text>().text = item.name;
+        //Debug.LogError(item.name + "   " + data[index]);
+        item.transform.Find("Text").gameObject.GetComponent<Text>().text = data[index];
     }
-    public void SetContent(int[] data)
+    public void SetContent()
     {
         if (isHorizontal)
         {
            
         }
         else if(isVertical) {
-            float y = data.Length / Count.x;
-            if (data.Length % Count.x != 0)
+            float y = data.Count / Count.x;
+            if (data.Count % Count.x != 0)
             {
                 y = y + 1;
             }
@@ -235,6 +324,7 @@ public class UIList : MonoBehaviour
         {
             obj =_delList[0];
             _delList.Remove(obj);
+            obj.SetActive(true);
         }
         else if (_poolList.Count > 0)
         {
@@ -252,7 +342,7 @@ public class UIList : MonoBehaviour
         SetPosition(obj);
         return obj;
     }
-    public void OnRecovery(GameObject obj)
+    public void Recovery(GameObject obj)
     {
         obj.SetActive(false);
         CheckPoolRoot();
