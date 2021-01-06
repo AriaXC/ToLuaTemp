@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Res/Scene/Aria.unity
     guid: 5e8640e800f8a4102a4b86744756c8a3
+  - enabled: 1
+    path: Assets/Res/Scene/Login/Login.unity
+    guid: c950062c622264559af55c1f191887dc
   m_configObjects: {}

@@ -238,6 +238,9 @@
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_WWWWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\ViewWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\LuaConst.cs" />
+    <Compile Include="Assets\Test\list\ChangeV.cs" />
+    <Compile Include="Assets\Test\list\UIList.cs" />
+    <Compile Include="Assets\Test\list\UIListEditor.cs" />
     <None Include="Assets\AriaUpdate\files.txt" />
     <None Include="Assets\link.xml" />
     <None Include="Assets\Res\Shader\C1.shader" />

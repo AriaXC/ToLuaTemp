@@ -16,11 +16,12 @@ function  LoginView:OnInitialize( ... )
 	GetComponentText(obj).text="成功了"
 
 	AddBtnClick(self.transform:Find("bg/btnY").gameObject,function( ... )
-			-- GetComponentText(obj).text="YYYYY"
-			Stage.Test()
+			GetComponentText(obj).text="YYYYY"
+			-- Stage.Test()
 	end)
 	AddBtnClick(self.transform:Find("bg/btnN").gameObject,function( ... )
 			GetComponentText(obj).text="NNNNNN"
 	end)
+	
 end
 return LoginView

@@ -1,15 +1,10 @@
 ﻿<Properties StartupConfiguration="{5EBE5927-85E2-E507-10FC-6F3F3AAB800B}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/Editor/CustomSettings.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Test/list/UIList.cs">
     <Files>
-      <File FileName="Assets/LuaFramework/Scripts/Manager/GameManager.cs" Line="52" Column="14" IsPinned="True" />
-      <File FileName="Assets/LuaFramework/Scripts/Manager/LuaManager.cs" Line="69" Column="53" />
-      <File FileName="Assets/LuaFramework/Scripts/Manager/ResourceManager.cs" Line="12" Column="25" />
-      <File FileName="Assets/LuaFramework/Scripts/ConstDefine/AppConst.cs" Line="30" Column="52" />
-      <File FileName="Assets/LuaFramework/ToLua/Core/LuaFileUtils.cs" Line="86" Column="1" />
-      <File FileName="Assets/LuaFramework/Scripts/Manager/NewMonoBehaviour.cs" Line="8" Column="6" />
-      <File FileName="Assets/LuaFramework/Scripts/Utility/LuaHelper.cs" Line="31" Column="69" />
-      <File FileName="Assets/LuaFramework/Scripts/ConstDefine/ManagerName.cs" Line="9" Column="52" />
-      <File FileName="Assets/LuaFramework/Editor/CustomSettings.cs" Line="170" Column="33" />
+      <File FileName="Assets/Test/list/UIList.cs" Line="93" Column="9" />
+      <File FileName="Assets/Test/list/ChangeV.cs" />
+      <File FileName="Assets/Test/list/UIListEditor.cs" />
+      <File FileName="Assets/LuaFramework/Scripts/Main.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,9 +12,7 @@
           <Node name="ToLuaTemp" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="LuaFramework" expanded="True">
-                <Node name="Editor" expanded="True">
-                  <Node name="CustomSettings.cs" selected="True" />
-                </Node>
+                <Node name="Editor" expanded="True" />
                 <Node name="MoonScripts" expanded="True">
                   <Node name="Util" expanded="True">
                     <Node name="Log" expanded="True" />
@@ -47,6 +40,11 @@
                   </Node>
                 </Node>
               </Node>
+              <Node name="Test" expanded="True">
+                <Node name="list" expanded="True">
+                  <Node name="UIList.cs" selected="True" />
+                </Node>
+              </Node>
             </Node>
           </Node>
         </State>
@@ -55,7 +53,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="903ce44e-6ba0-4416-afd4-f3d897592a41" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="cc7f6627-1cde-4ef9-991b-37e8554d9769" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -55,11 +55,15 @@ namespace LuaFramework {
 
 
         }
+
+        public void LoadSceneAsync(string assetName, LuaFunction fun)
+        {
+
+        }
         /// <summary>
         /// 载入素材
         /// </summary>
         public T LoadAsset<T>(string abname, string assetname) where T : UnityEngine.Object {
-#if UNITY_EDITOR
             if (AppConst.LuaBundleMode)
             {
                 abname = abname.ToLower();
@@ -73,11 +77,22 @@ namespace LuaFramework {
                 //Debug.Log(path);
                 return (T)AssetDatabase.LoadAssetAtPath<T>(path);
             }
-#else
-                abname = abname.ToLower();
-                AssetBundle bundle = LoadAssetBundle(abname);
-                return bundle.LoadAsset<T>(assetname);
-#endif
+        }
+        public void LoadAsyncAsset<T>(string assetName, LuaFunction fun) where T:UnityEngine.Object
+        {
+            if (AppConst.LuaBundleMode)
+            {
+                //还没写
+
+            }
+            else
+            {
+                string path = AppConst.ResPath + assetName;
+                T o = (T)UnityEditor.AssetDatabase.LoadAssetAtPath<T>(path);
+
+                fun.Call();
+                fun.Dispose();
+            }
         }
 
         public GameObject MyLoadAsset(string abname, string assetname, LuaFunction func)
