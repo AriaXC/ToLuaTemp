@@ -241,6 +241,7 @@
     <Compile Include="Assets\Test\list\ChangeV.cs" />
     <Compile Include="Assets\Test\list\UIList.cs" />
     <Compile Include="Assets\Test\list\UIListEditor.cs" />
+    <Compile Include="Assets\Test\text\ColorText.cs" />
     <None Include="Assets\AriaUpdate\files.txt" />
     <None Include="Assets\link.xml" />
     <None Include="Assets\Res\Shader\C1.shader" />

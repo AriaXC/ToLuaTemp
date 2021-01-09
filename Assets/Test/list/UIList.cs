@@ -35,24 +35,30 @@ public class UIList : MonoBehaviour
     private GameObject _viewPort;
     private GameObject _content;
 
+    //最多需要多个预设
     private int _maxCount;
     private List<string> data;
 
     private RectTransform _reContent;
     private RectTransform _reChild;
 
+    //当前视窗下的索引值
     private int _startIndex;
     private int _endIndex;
     private int _nowIndex;
 
     private Vector2 _startContentPos;
 
+    //记录包含当前显示的item的列表
     private List<GameObject> _showList;
+    //记录刚刚滑动出可视范围的列表
     private List<GameObject> _delList;
-   
+
+
+    //记录index的字典
     private Dictionary<GameObject, int> indexDic = new Dictionary<GameObject, int>();
 
-    //列表是否发生了改变
+    //列表是否发生了改变 
     private int isChange = -1;
     private void Awake()
     {
@@ -72,6 +78,7 @@ public class UIList : MonoBehaviour
         _content.transform.SetParent(_viewPort.transform);
         if (isVertical)
         {
+            //计算Content的位置
             _reContent.anchoredPosition = new Vector2(-viewSize.x / 2, viewSize.y / 2);
         }
         _reContent.pivot = Vector2.up;
@@ -115,10 +122,6 @@ public class UIList : MonoBehaviour
             OnValueChange(Vector2.zero);
             isChange = num;
             Debug.LogError("添加了   h=" + "第" + num + "个");
-            //foreach (var v in data)
-            //{
-            //    Debug.LogError(v);
-            //}
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
@@ -177,6 +180,7 @@ public class UIList : MonoBehaviour
         else if (isVertical)
         {
             _startIndex = GetStartIndex();
+            //如果视窗只是微小的改变 不进行刷新
             if (_nowIndex == _startIndex && isChange == -1)
             {
                 return;
@@ -225,6 +229,7 @@ public class UIList : MonoBehaviour
         for (int i = _showList.Count - 1; i >= 0; i--)
         {
             int index = indexDic[_showList[i]];
+            //这些是滑出了视窗外
             if (index < _startIndex || index >= _endIndex)
             {
                 _showList[i].SetActive(false);
@@ -263,7 +268,8 @@ public class UIList : MonoBehaviour
         }
         else if (isVertical)
         {
-            return Convert.ToInt32(Mathf.Floor((_reContent.anchoredPosition.y - _startContentPos.y) / (_reChild.sizeDelta.y + gap.y)) * Count.x);
+            return Convert.ToInt32(Mathf.Floor((_reContent.anchoredPosition.y - _startContentPos.y) / (_reChild.sizeDelta.y
+                + gap.y)) * Count.x);
         }
         return -1;
     }

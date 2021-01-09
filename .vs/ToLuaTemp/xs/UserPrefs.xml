@@ -1,11 +1,13 @@
 ﻿<Properties StartupConfiguration="{5EBE5927-85E2-E507-10FC-6F3F3AAB800B}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/Scripts/Manager/SceneManager.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
       <File FileName="Assets/Test/list/ChangeV.cs" Line="10" Column="20" />
       <File FileName="Assets/Test/list/UIListEditor.cs" Line="25" Column="6" />
-      <File FileName="Assets/LuaFramework/Scripts/Main.cs" />
-      <File FileName="Assets/Test/list/UIList.cs" Line="133" Column="27" />
-      <File FileName="Assets/LuaFramework/Scripts/Manager/SceneManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/LuaFramework/Scripts/Main.cs" Line="9" Column="1" />
+      <File FileName="Assets/Test/list/UIList.cs" Line="223" Column="10" />
+      <File FileName="Assets/LuaFramework/Scripts/Manager/SceneManager.cs" Line="18" Column="1" />
+      <File FileName="Assets/LuaFramework/MoonScripts/Util/Log/LogData.cs" Line="32" Column="31" />
+      <File FileName="Assets/Test/text/ColorText.cs" Line="6" Column="34" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -29,9 +31,7 @@
                     <Node name="Core" expanded="True" />
                     <Node name="Interfaces" expanded="True" />
                   </Node>
-                  <Node name="Manager" expanded="True">
-                    <Node name="SceneManager.cs" selected="True" />
-                  </Node>
+                  <Node name="Manager" expanded="True" />
                   <Node name="Utility" expanded="True" />
                 </Node>
                 <Node name="ToLua" expanded="True">
@@ -45,6 +45,9 @@
               </Node>
               <Node name="Test" expanded="True">
                 <Node name="list" expanded="True" />
+                <Node name="text" expanded="True">
+                  <Node name="ColorText.cs" selected="True" />
+                </Node>
               </Node>
             </Node>
           </Node>
