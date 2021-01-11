@@ -55,11 +55,26 @@ namespace LuaFramework {
 
 
         }
+        public GameObject MyLoadAsset(string abname, string assetname, LuaFunction func)
+        {
+            assetname = AppConst.ResPath + assetname;
+            GameObject go = LoadAsset<GameObject>(abname, assetname);
+            if (func != null)
+            {
+                func.Call(go);
+            }
+            return go;
+
+        }
+
+
+
 
         public void LoadSceneAsync(string assetName, LuaFunction fun)
         {
-
+            LoadAsyncAsset<GameObject>(assetName, fun);
         }
+
         /// <summary>
         /// 载入素材
         /// </summary>
@@ -95,17 +110,7 @@ namespace LuaFramework {
             }
         }
 
-        public GameObject MyLoadAsset(string abname, string assetname, LuaFunction func)
-        {
-            assetname = AppConst.ResPath + assetname;
-            GameObject go = LoadAsset<GameObject>(abname, assetname);
-            if (func != null)
-            {
-                func.Call(go);
-            }
-            return go;
-              
-        }
+       
 
 
         public void LoadPrefab(string abName, string[] assetNames, LuaFunction func) {

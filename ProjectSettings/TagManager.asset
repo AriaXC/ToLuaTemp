@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GuiCamera
   - GameManager
+  - UICamera
   layers:
   - Default
   - TransparentFX

@@ -16,20 +16,20 @@ end
 
 function  AriaMain()
 
-	print("Lua开始了")
-	-- app  = require("Logic.Game").New()
+	log("Lua开始了")
+	app  = require("Logic.Game").New()
 
 	--更新搜索路径  为动更准备
 	UpdateSearchPath()
 
 	--游戏开始
-	-- app:StartUp()
+	app:StartUp()
 
-	require("Aria.Core.initialize")
-    require("Aria.Core.GameConst")
-    require("Aria.Manager.Init")
+	-- require("Aria.Core.initialize")
+ --    require("Aria.Core.GameConst")
+ --    require("Aria.Manager.Init")
 
-	require("Module.Login.LoginView").New()
+	-- require("Module.Login.LoginView").New()
 end
 --场景切换通知
 function OnLevelWasLoaded(level)

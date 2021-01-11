@@ -10,7 +10,7 @@ using UnityEngine;
 /// 事件命令
 /// </summary>
 public class ControllerCommand : ICommand {
-    public virtual void Execute(IMessage message) {
+    public virtual   void Execute(IMessage message) {
     }
 }
 
@@ -95,6 +95,7 @@ public class Facade {
     /// 获取系统管理器
     /// </summary>
     public T GetManager<T>(string typeName) where T : class {
+  
         if (!m_Managers.ContainsKey(typeName)) {
             return default(T);
         }

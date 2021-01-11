@@ -173,6 +173,7 @@ public static class CustomSettings
         _GT(typeof(ThreadManager)),
         _GT(typeof(NetworkManager)),
         _GT(typeof(ResourceManager)),
+        _GT(typeof(SceneManager)),
 
     };
 

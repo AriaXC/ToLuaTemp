@@ -172,6 +172,7 @@
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_LuaManagerWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_NetworkManagerWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_ResourceManagerWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_SceneManagerWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_SoundManagerWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_ThreadManagerWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_TimerManagerWrap.cs" />
@@ -241,6 +242,7 @@
     <Compile Include="Assets\Test\list\ChangeV.cs" />
     <Compile Include="Assets\Test\list\UIList.cs" />
     <Compile Include="Assets\Test\list\UIListEditor.cs" />
+    <Compile Include="Assets\Test\other\otherM.cs" />
     <Compile Include="Assets\Test\text\ColorText.cs" />
     <None Include="Assets\AriaUpdate\files.txt" />
     <None Include="Assets\link.xml" />
