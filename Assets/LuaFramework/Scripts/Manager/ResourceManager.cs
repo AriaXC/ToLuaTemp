@@ -6,7 +6,6 @@ using System.IO;
 using LuaFramework;
 using LuaInterface;
 using UObject = UnityEngine.Object;
-using UnityEditor;
 using System;
 
 namespace LuaFramework {
@@ -79,6 +78,8 @@ namespace LuaFramework {
         /// 载入素材
         /// </summary>
         public T LoadAsset<T>(string abname, string assetname) where T : UnityEngine.Object {
+            //editor命名空间无法打包
+#if UNITY_EDITOR
             if (AppConst.LuaBundleMode)
             {
                 abname = abname.ToLower();
@@ -90,11 +91,18 @@ namespace LuaFramework {
                 //直接加载  打包不能使用这个AssetDatabase
                 string path =  assetname;
                 //Debug.Log(path);
-                return (T)AssetDatabase.LoadAssetAtPath<T>(path);
+                return (T)UnityEditor.AssetDatabase.LoadAssetAtPath<T>(path);
+
             }
+#else
+                 abname = abname.ToLower();
+                AssetBundle bundle = LoadAssetBundle(abname);
+                return bundle.LoadAsset<T>(assetname);
+#endif
         }
         public void LoadAsyncAsset<T>(string assetName, LuaFunction fun) where T:UnityEngine.Object
         {
+#if UNITY_EDITOR
             if (AppConst.LuaBundleMode)
             {
                 //还没写
@@ -107,10 +115,12 @@ namespace LuaFramework {
 
                 fun.Call();
                 fun.Dispose();
+
             }
+#endif
         }
 
-       
+
 
 
         public void LoadPrefab(string abName, string[] assetNames, LuaFunction func) {

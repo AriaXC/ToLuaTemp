@@ -28,7 +28,7 @@ public class ImportSetting : AssetPostprocessor
 	{
 		//从命令行使用-batchmode标志启动Unity时返回true（只读
 		if (!Application.isBatchMode)
-		{ 
+		{
 			SetABName(importedAssets);
 		}
 	}
@@ -38,7 +38,7 @@ public class ImportSetting : AssetPostprocessor
 	{
 		foreach (var asset in assets)
 		{
-			if (!asset.Contains("Assets/LuaFramework/Res") && !asset.Contains("Assets\\LuaFramework\\Res"))
+            if (!asset.Contains("Assets/Res") && !asset.Contains("Assets\\Res"))
 			{
 				return;
 			}
@@ -47,7 +47,7 @@ public class ImportSetting : AssetPostprocessor
 	}
     static void SetAssetBundleName(string fullPath)
     {
-        // Debug.Log("SetAssetBundleName: " + fullPath);
+        Debug.Log("SetAssetBundleName: " + fullPath);
         string buildScenePath = "Assets/Res/Scene";
 
         // string[] files = Directory.GetFiles (fullPath);

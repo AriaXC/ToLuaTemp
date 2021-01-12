@@ -79,6 +79,7 @@ public class Packager {
         }
     
         BuildPipeline.BuildAssetBundles(resPath, maps.ToArray(), BuildAssetBundleOptions.None, target);
+
         BuildPipeline.BuildAssetBundles(resPath, BuildAssetBundleOptions.None, target);
         BuildFileIndex();
 

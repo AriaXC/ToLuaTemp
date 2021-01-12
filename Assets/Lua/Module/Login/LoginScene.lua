@@ -12,7 +12,7 @@ function  LoginScene:Ctor( )
 
 	require("Module.Login.LoginView").New()
 
-	--如果需要热更
+	--如果需要热更  现在的热更是放在cs代码
 	if isUpdate then
 
 	end
