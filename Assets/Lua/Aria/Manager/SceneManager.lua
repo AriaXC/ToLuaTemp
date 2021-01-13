@@ -43,6 +43,7 @@ function  SceneManager:ShowScene(scene)
 end
 function SceneManager:AddCanvas( )
 	local obj=Instantiate(uiPath)
+	obj:DontDestroyOnLoad()
 	obj.name = "UICanvas"
 
 	_layer[GameConst.Layer.canvas] = obj

@@ -19,7 +19,7 @@ namespace LuaFramework {
         /// </summary>
         public const bool UpdateMode = false;                       //更新模式-默认关闭 
         public const bool LuaByteMode = false;                       //Lua字节码模式-默认关闭 
-        public const bool LuaBundleMode = true;                    //Lua代码AssetBundle模式
+        public const bool LuaBundleMode = false;                    //Lua代码AssetBundle模式
 
         public const int TimerInterval = 1;
         public const int GameFrameRate = 30;                        //游戏帧频
@@ -40,6 +40,11 @@ namespace LuaFramework {
         public static string UserId = string.Empty;                 //用户ID
         public static int SocketPort = 0;                           //Socket服务器端口
         public static string SocketAddress = string.Empty;          //Socket服务器地址
+
+
+        //这里是我自己的搜索路径
+        public static string MoonLua = LuaPath;
+
 
         public static string FrameworkRoot {
             get {

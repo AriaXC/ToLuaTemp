@@ -126,6 +126,7 @@
     <Compile Include="Assets\LuaFramework\ToLua\BaseType\System_TypeWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\BaseType\UnityEngine_CoroutineWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\BaseType\UnityEngine_ObjectWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Core\FileSearchPath.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Core\LuaAttributes.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Core\LuaBaseRef.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Core\LuaBeatEvent.cs" />

@@ -24,21 +24,27 @@ namespace LuaFramework {
         public void Initialize(string mainFestName,Action action) {
 
             if (!AppConst.LuaBundleMode)
-            { 
-
+            {
                 action();
                 return;
             }
-            //ab包模式代码还没写
-            byte[] stream = null;
-            string uri = string.Empty;
+            else
+            {
+                LuaFileUtils.Instance.AddSearchPath(Application.streamingAssetsPath);
+                LuaFileUtils.Instance.AddSearchPath(Application.persistentDataPath);
+
+                action();
+            }
+            //byte[] stream = null;
+            //string uri = string.Empty;
+            FileSearchPath.ClearLuaBundle();
             bundles = new Dictionary<string, AssetBundle>();
-            uri = Util.DataPath + AppConst.AssetDir;
-            if (!File.Exists(uri)) return;
-         
-            stream = File.ReadAllBytes(uri);
-            assetbundle = AssetBundle.LoadFromMemory(stream);
-            manifest = assetbundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
+            //uri = Util.DataPath + AppConst.AssetDir;
+            //if (!File.Exists(uri)) return;
+
+            //stream = File.ReadAllBytes(uri);
+            //assetbundle = AssetBundle.LoadFromMemory(stream);
+            //manifest = assetbundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
         }
         /// <summary>
         /// 加载资源依赖相关
@@ -49,11 +55,12 @@ namespace LuaFramework {
             {
                 return;
             }
-            //这里应该去处理  资源的依赖关系等
+            //这里应该去处理  资源的依赖关系等  AssetBundleManifest在这里初始化
 
 
 
         }
+
         public GameObject MyLoadAsset(string abname, string assetname, LuaFunction func)
         {
             assetname = AppConst.ResPath + assetname;
@@ -106,7 +113,7 @@ namespace LuaFramework {
             if (AppConst.LuaBundleMode)
             {
                 //还没写
-
+     
             }
             else
             {

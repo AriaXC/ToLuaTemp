@@ -192,6 +192,8 @@ namespace LuaFramework {
         public static string DataPath
         {
             //asset 下同级的luaframework 下的
+
+            ///修改了  不需要这个文件夹  直接读取streamAssets下的东西
             get {
                 string game = AppConst.AppName.ToLower();
                 
@@ -202,13 +204,13 @@ namespace LuaFramework {
                 if (AppConst.DebugMode) {
                     return Application.dataPath + "/" + AppConst.AssetDir + "/";
                 }
-                if (Application.platform == RuntimePlatform.OSXEditor) {
+                if (Application.platform == RuntimePlatform.OSXEditor)
+                {
                     //platform  返回的是  当前的运行环境  返回值是一个当前平台的枚举值
                     int i = Application.dataPath.LastIndexOf('/');
-                   
+
                     return Application.dataPath.Substring(0, i + 1) + game + "/";
                 }
-                
                 return "c:/" + game + "/";
             }
         }

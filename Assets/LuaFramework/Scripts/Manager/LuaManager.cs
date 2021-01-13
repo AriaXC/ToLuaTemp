@@ -3,7 +3,8 @@ using System.Collections;
 using LuaInterface;
 
 namespace LuaFramework {
-    public class LuaManager : Manager {
+    public class LuaManager : Manager
+    {
         private LuaState lua;
         private LuaLoader loader;
         private LuaLooper loop = null;
@@ -91,8 +92,12 @@ namespace LuaFramework {
         /// 初始化LuaBundle
         /// </summary>
         void InitLuaBundle() {
-            if (loader.beZip) {
-                loader.AddBundle("lua.unity3d");
+            if (AppConst.LuaBundleMode)
+            {
+                FileSearchPath.AddLuaBundle("lua.unity3d");
+            }
+            //if (loader.beZip) {
+                //loader.AddBundle("lua.unity3d");
                 
                 //loader.AddBundle("lua/lua_math.unity3d");
                 //loader.AddBundle("lua/lua_system.unity3d");
@@ -110,7 +115,7 @@ namespace LuaFramework {
                 //loader.AddBundle("lua/lua_3rd_pbc.unity3d");
                 //loader.AddBundle("lua/lua_3rd_pblua.unity3d");
                 //loader.AddBundle("lua/lua_3rd_sproto.unity3d");
-            }
+            //}
         }
 
         public void DoFile(string filename) {

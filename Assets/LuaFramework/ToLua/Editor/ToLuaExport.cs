@@ -112,6 +112,8 @@ public static class ToLuaExport
     public static HashSet<Type> eventSet = new HashSet<Type>();
     public static List<Type> extendList = new List<Type>();    
 
+
+    //tolua 导出wrap文件时 屏蔽这些
     public static List<string> memberFilter = new List<string>
     {
         "String.Chars",

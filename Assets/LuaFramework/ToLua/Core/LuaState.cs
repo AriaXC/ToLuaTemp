@@ -607,6 +607,7 @@ namespace LuaInterface
 
         byte[] LoadFileBuffer(string fileName)
         {
+            Debug.LogError("FF");
 #if UNITY_EDITOR
             if (!beStart)
             {
@@ -715,7 +716,7 @@ namespace LuaInterface
                 {
                     sb.Append('/');
                 }
-
+                
                 sb.Append("?.lua");
                 return sb.ToString();
             }

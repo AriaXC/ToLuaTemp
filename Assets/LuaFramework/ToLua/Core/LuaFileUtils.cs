@@ -266,7 +266,7 @@ namespace LuaInterface
 #if UNITY_4_6 || UNITY_4_7
                 TextAsset luaCode = zipFile.Load(fileName, typeof(TextAsset)) as TextAsset;
 #else
-                //  需要优化 我这里  写死了 拼接ab包的路径
+                //需要优化 我这里  写死了 拼接ab包的路径   LuaABTemp是ab包内的lua文件的名字
                 fileName = "Assets/LuaABTemp/" + fileName;
              
                 TextAsset luaCode = zipFile.LoadAsset<TextAsset>(fileName);
@@ -285,5 +285,6 @@ namespace LuaInterface
         {
             return LuaConst.osDir;
         }
+
     }
 }
