@@ -1,0 +1,233 @@
+﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System;
+
+namespace LuaFramework {
+    /// <summary>
+    /// 设置你的文件和lua的搜索路径
+    /// </summary>
+    public class FileSearchPath
+    {
+
+        //文件的搜索路径 先后顺序
+        protected static List<string> resSearchPath = new List<string>();
+        //lua代码的搜索路径 先后顺序
+        protected static List<string> luaSearchPath = new List<string>();
+
+        //找到的文件缓存
+        protected static Dictionary<string, string> resCaChe = new Dictionary<string, string>();
+        //找到的lua缓存
+        protected static Dictionary<string, string> luaCaChe = new Dictionary<string, string>();
+
+        //lua的ab包只有一个
+        static AssetBundle luaBundle;
+
+        /// <summary>
+        /// 添加文件搜索路径
+        /// </summary>
+        public static void  AddResSearchPath(string path,bool isFirst =false)
+        {
+            Debug.LogError("AddResSearchPath  == "+path);
+            int index = resSearchPath.IndexOf(path);
+            if (index > 0)
+                resSearchPath.RemoveAt(index);
+            if (isFirst)
+            {
+                resSearchPath.Insert(0, path);
+            }
+            else {
+                resSearchPath.Add(path);
+            }
+            ResCaCheClear();
+        }
+        /// <summary>
+        /// 添加lua的搜索路径
+        /// </summary>
+        public static void AddLuaSearchPath(string path, bool isFirst = false)
+        {
+            Debug.LogError("AddLuaSearchPath  == " + path);
+            int index = luaSearchPath.IndexOf(path);
+            if (index > 0)
+                luaSearchPath.RemoveAt(index);
+            if (isFirst)
+            {
+                luaSearchPath.Insert(0, path);
+            }
+            else
+            {
+                luaSearchPath.Add(path);
+            }
+            LuaCaCheClear();
+        }
+        /// <summary>
+        /// 获取lua的文件地址
+        /// </summary>
+        /// <returns></returns>
+        public static string GetLuaPath(string fileName)
+        {
+            string cache = null;
+            //out 不用初始化
+            luaCaChe.TryGetValue(fileName, out cache);
+            if (cache != null)
+                return cache;
+            if (!fileName.EndsWith(".lua"))
+                fileName = fileName + ".lua";
+            for (int i = 0; i < luaSearchPath.Count - 1; i++)
+            {
+                string path = Path.Combine(luaSearchPath[i], fileName);
+                if (IsFileExist(path))
+                {
+                    luaCaChe.Add(fileName, path);
+                    return path;
+                }
+            }
+            return null;
+        }
+        /// <summary>
+        /// 卸载
+        /// </summary>
+        public static void ClearLuaBundle()
+        {
+            if (luaBundle != null)
+            {
+                Resources.UnloadAsset(luaBundle);
+            }
+        }
+        /// <summary>
+        /// 加载lua的ab包
+        /// </summary>
+        /// <param name="abName"></param>
+        public static void AddLuaBundle(string abName)
+        {
+            CString sb = CString.Alloc(256);
+            sb = "lua";
+            sb = sb.Append(AppConst.ExtName);
+            sb = sb.ToLower();
+
+            for (int i = 0; i < luaSearchPath.Count - 1; i++)
+            {
+                string path = Path.Combine(luaSearchPath[i], sb.ToString());
+
+                if (!File.Exists(path)) break;
+
+                byte[] stream = null;
+                stream = File.ReadAllBytes(path);
+                luaBundle = AssetBundle.LoadFromMemory(stream);
+
+                return;
+            }
+        }
+       /// <summary>
+       /// 从ab中加载lua文件  lua的ab包只有一个
+       /// </summary>
+       /// <returns></returns>
+        public static byte[] GetLuaZip(string fileName)
+        {
+            //如果是ab包模式 那我所有的lua代码全部都读动更路径上面的
+            // 目前这样写不太好 暂时先实现luaab包版本
+
+            fileName += ".bytes";
+            fileName = "Assets/LuaABTemp/" + fileName;
+            byte[] buffer = null;
+
+            if (luaBundle!=null)
+            {
+                TextAsset luaCode = luaBundle.LoadAsset<TextAsset>(fileName);
+                if (luaCode != null)
+                {
+                    buffer = luaCode.bytes;
+                    Resources.UnloadAsset(luaCode);
+                }
+                return buffer;
+            }
+            return null;
+        }
+        /// <summary>
+        /// 获取res的文件地址
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        public static string GetResPath(string fileName)
+        {
+            string cache = null;
+            resCaChe.TryGetValue(fileName, out cache);
+            if (cache != null)
+                return cache;
+            if (!fileName.EndsWith(".lua"))
+                fileName = fileName + ".lua";
+
+            for (int i = 0; i < resSearchPath.Count - 1; i++)
+            {
+                string path = Path.Combine(resSearchPath[i], fileName);
+                if (IsFileExist(path))
+                {
+                    resCaChe.Add(fileName, path);
+                    return path;
+                }
+            }
+            return null;
+        }
+        /// <summary>
+        /// 获得lua文本字节流
+        /// </summary>
+        /// <returns></returns>
+        public static byte[] ReadFile(string fileName)
+        {
+            //fileName  是require传过来的字符串
+            if (AppConst.LuaBundleMode)
+            {
+                return GetLuaZip(fileName);
+            }
+            else {
+                string path = GetLuaPath(fileName);
+                if (path == null)
+                    return null;
+
+                return File.ReadAllBytes(path);
+            }
+        }
+        /// <summary>
+        /// 获取text文件
+        /// </summary>
+        /// <returns></returns>
+        public static string ReadText(string fileName)
+        {
+            string path = GetResPath(fileName);
+            if (path == null)
+                return null;
+
+            return File.ReadAllText(path);
+        }
+        /// <summary>
+        /// 文件是否存在
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsFileExist(string path)
+        {
+            try {
+              return File.Exists(path);
+            }
+            catch {
+                return false;
+            }
+
+        }
+        /// <summary>
+        /// lua缓存清除
+        /// </summary>
+        public static void LuaCaCheClear()
+        {
+            luaCaChe.Clear();
+        }
+        /// <summary>
+        /// res缓存清除
+        /// </summary>
+        public static void ResCaCheClear()
+        {
+            resCaChe.Clear();
+        }
+    }
+}
+

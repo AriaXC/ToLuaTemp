@@ -49,6 +49,7 @@ namespace LuaFramework {
         /// <returns></returns>
         public override byte[] ReadFile(string fileName) {
             return FileSearchPath.ReadFile(fileName);
+
             //return base.ReadFile(fileName);     
         }
     }
