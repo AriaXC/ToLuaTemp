@@ -82,7 +82,7 @@ namespace LuaInterface
         //格式: 路径/?.lua
         public bool AddSearchPath(string path, bool front = false)
         {
-            //Debug.LogError("path ="+path);
+            //Debug.LogError("path =" + path);
 
             int index = searchPaths.IndexOf(path);
 

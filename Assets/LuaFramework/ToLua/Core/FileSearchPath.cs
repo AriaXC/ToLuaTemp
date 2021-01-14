@@ -3,31 +3,52 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System;
+using LuaFramework;
 
-namespace LuaFramework {
+namespace LuaInterface
+{
     /// <summary>
     /// 设置你的文件和lua的搜索路径
     /// </summary>
     public class FileSearchPath
     {
+        public static FileSearchPath Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new FileSearchPath();
+                }
+
+                return instance;
+            }
+
+            protected set
+            {
+                instance = value;
+            }
+        }
+        //
+        protected static FileSearchPath instance = null;
 
         //文件的搜索路径 先后顺序
-        protected static List<string> resSearchPath = new List<string>();
+        protected List<string> resSearchPath = new List<string>();
         //lua代码的搜索路径 先后顺序
-        protected static List<string> luaSearchPath = new List<string>();
+        protected List<string> luaSearchPath = new List<string>();
 
         //找到的文件缓存
-        protected static Dictionary<string, string> resCaChe = new Dictionary<string, string>();
+        protected Dictionary<string, string> resCaChe = new Dictionary<string, string>();
         //找到的lua缓存
-        protected static Dictionary<string, string> luaCaChe = new Dictionary<string, string>();
+        protected Dictionary<string, string> luaCaChe = new Dictionary<string, string>();
 
         //lua的ab包只有一个
-        static AssetBundle luaBundle;
+        AssetBundle luaBundle;
 
         /// <summary>
         /// 添加文件搜索路径
         /// </summary>
-        public static void  AddResSearchPath(string path,bool isFirst =false)
+        public void  AddResSearchPath(string path,bool isFirst =false)
         {
             Debug.LogError("AddResSearchPath  == "+path);
             int index = resSearchPath.IndexOf(path);
@@ -45,9 +66,9 @@ namespace LuaFramework {
         /// <summary>
         /// 添加lua的搜索路径
         /// </summary>
-        public static void AddLuaSearchPath(string path, bool isFirst = false)
+        public void AddLuaSearchPath(string path, bool isFirst = false)
         {
-            Debug.LogError("AddLuaSearchPath  == " + path);
+            //Debug.LogError("AddLuaSearchPath  == " + path);
             int index = luaSearchPath.IndexOf(path);
             if (index > 0)
                 luaSearchPath.RemoveAt(index);
@@ -65,7 +86,7 @@ namespace LuaFramework {
         /// 获取lua的文件地址
         /// </summary>
         /// <returns></returns>
-        public static string GetLuaPath(string fileName)
+        public string GetLuaPath(string fileName)
         {
             string cache = null;
             //out 不用初始化
@@ -74,9 +95,10 @@ namespace LuaFramework {
                 return cache;
             if (!fileName.EndsWith(".lua"))
                 fileName = fileName + ".lua";
-            for (int i = 0; i < luaSearchPath.Count - 1; i++)
+            for (int i = 0; i < luaSearchPath.Count; i++)
             {
                 string path = Path.Combine(luaSearchPath[i], fileName);
+ 
                 if (IsFileExist(path))
                 {
                     luaCaChe.Add(fileName, path);
@@ -88,7 +110,7 @@ namespace LuaFramework {
         /// <summary>
         /// 卸载
         /// </summary>
-        public static void ClearLuaBundle()
+        public void ClearLuaBundle()
         {
             if (luaBundle != null)
             {
@@ -99,7 +121,7 @@ namespace LuaFramework {
         /// 加载lua的ab包
         /// </summary>
         /// <param name="abName"></param>
-        public static void AddLuaBundle(string abName)
+        public void AddLuaBundle(string abName)
         {
             CString sb = CString.Alloc(256);
             sb = "lua";
@@ -123,7 +145,7 @@ namespace LuaFramework {
        /// 从ab中加载lua文件  lua的ab包只有一个
        /// </summary>
        /// <returns></returns>
-        public static byte[] GetLuaZip(string fileName)
+        public byte[] GetLuaZip(string fileName)
         {
             //如果是ab包模式 那我所有的lua代码全部都读动更路径上面的
             // 目前这样写不太好 暂时先实现luaab包版本
@@ -149,7 +171,7 @@ namespace LuaFramework {
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        public static string GetResPath(string fileName)
+        public string GetResPath(string fileName)
         {
             string cache = null;
             resCaChe.TryGetValue(fileName, out cache);
@@ -158,7 +180,7 @@ namespace LuaFramework {
             if (!fileName.EndsWith(".lua"))
                 fileName = fileName + ".lua";
 
-            for (int i = 0; i < resSearchPath.Count - 1; i++)
+            for (int i = 0; i < resSearchPath.Count ; i++)
             {
                 string path = Path.Combine(resSearchPath[i], fileName);
                 if (IsFileExist(path))
@@ -173,7 +195,7 @@ namespace LuaFramework {
         /// 获得lua文本字节流
         /// </summary>
         /// <returns></returns>
-        public static byte[] ReadFile(string fileName)
+        public byte[] ReadFile(string fileName)
         {
             //fileName  是require传过来的字符串
             if (AppConst.LuaBundleMode)
@@ -192,7 +214,7 @@ namespace LuaFramework {
         /// 获取text文件
         /// </summary>
         /// <returns></returns>
-        public static string ReadText(string fileName)
+        public string ReadText(string fileName)
         {
             string path = GetResPath(fileName);
             if (path == null)
@@ -204,7 +226,7 @@ namespace LuaFramework {
         /// 文件是否存在
         /// </summary>
         /// <returns></returns>
-        public static bool IsFileExist(string path)
+        public bool IsFileExist(string path)
         {
             try {
               return File.Exists(path);
@@ -215,18 +237,76 @@ namespace LuaFramework {
 
         }
         /// <summary>
+        /// 错误日志
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        public string FindFileError(string fileName)
+        {
+            if (Path.IsPathRooted(fileName))
+            {
+                return fileName;
+            }
+
+            if (fileName.EndsWith(".lua"))
+            {
+                fileName = fileName.Substring(0, fileName.Length - 4);
+            }
+
+            using (CString.Block())
+            {
+                CString sb = CString.Alloc(512);
+
+                for (int i = 0; i < luaSearchPath.Count; i++)
+                {
+                    sb.Append("\n\tno file '").Append(luaSearchPath[i]).Append('\'');
+                }
+
+                sb = sb.Replace("?", fileName);
+
+                if (AppConst.LuaBundleMode)
+                {
+                    int pos = fileName.LastIndexOf('/');
+
+                    if (pos > 0)
+                    {
+                        int tmp = pos + 1;
+                        sb.Append("\n\tno file '").Append(fileName, tmp, fileName.Length - tmp).Append(".lua' in ").Append("lua_");
+                        tmp = sb.Length;
+                        sb.Append(fileName, 0, pos).Replace('/', '_', tmp, pos).Append(".unity3d");
+                    }
+                    else
+                    {
+                        sb.Append("\n\tno file '").Append(fileName).Append(".lua' in ").Append("lua.unity3d");
+                    }
+                }
+
+                return sb.ToString();
+            }
+        }
+        /// <summary>
         /// lua缓存清除
         /// </summary>
-        public static void LuaCaCheClear()
+        public void LuaCaCheClear()
         {
             luaCaChe.Clear();
         }
         /// <summary>
         /// res缓存清除
         /// </summary>
-        public static void ResCaCheClear()
+        public void ResCaCheClear()
         {
             resCaChe.Clear();
+        }
+        public void Dispose()
+        {
+            if (instance != null)
+            {
+                instance = null;
+                luaSearchPath.Clear();
+                resSearchPath.Clear();
+                ClearLuaBundle();
+            }
         }
     }
 }

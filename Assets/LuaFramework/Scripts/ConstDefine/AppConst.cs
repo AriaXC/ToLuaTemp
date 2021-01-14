@@ -42,8 +42,10 @@ namespace LuaFramework {
         public static string SocketAddress = string.Empty;          //Socket服务器地址
 
 
-        //这里是我自己的搜索路径
+        //这里是我自己的搜索路径  现在的搜索路径全部走的这里
         public static string MoonLua = LuaPath;
+        public static string MoonRes = ResPath;
+        public static string MoontoluaDir = Application.dataPath + "/LuaFramework/ToLua/Lua";
 
 
         public static string FrameworkRoot {

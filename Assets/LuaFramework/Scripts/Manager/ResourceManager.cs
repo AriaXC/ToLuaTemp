@@ -21,7 +21,13 @@ namespace LuaFramework {
         /// <summary>
         /// 初始化加载器
         /// </summary>
-        public void Initialize(string mainFestName,Action action) {
+        public void Initialize(string mainFestName,Action action) 
+        {
+            FileSearchPath.Instance.AddLuaSearchPath(Application.streamingAssetsPath);
+            FileSearchPath.Instance.AddLuaSearchPath(Application.persistentDataPath);
+
+            FileSearchPath.Instance.AddLuaSearchPath(AppConst.MoonLua);
+            FileSearchPath.Instance.AddLuaSearchPath(AppConst.MoontoluaDir);
 
             if (!AppConst.LuaBundleMode)
             {
@@ -30,14 +36,12 @@ namespace LuaFramework {
             }
             else
             {
-                LuaFileUtils.Instance.AddSearchPath(Application.streamingAssetsPath);
-                LuaFileUtils.Instance.AddSearchPath(Application.persistentDataPath);
 
                 action();
             }
             //byte[] stream = null;
             //string uri = string.Empty;
-            FileSearchPath.ClearLuaBundle();
+            FileSearchPath.Instance.ClearLuaBundle();
             bundles = new Dictionary<string, AssetBundle>();
             //uri = Util.DataPath + AppConst.AssetDir;
             //if (!File.Exists(uri)) return;

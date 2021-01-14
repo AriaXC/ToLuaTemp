@@ -607,19 +607,19 @@ namespace LuaInterface
 
         byte[] LoadFileBuffer(string fileName)
         {
-            Debug.LogError("FF");
 #if UNITY_EDITOR
             if (!beStart)
             {
                 throw new LuaException("you must call Start() first to initialize LuaState");
             }
 #endif
-            byte[] buffer = LuaFileUtils.Instance.ReadFile(fileName);
+            byte[] buffer = FileSearchPath.Instance.ReadFile(fileName);
 
             if (buffer == null)
             {
                 string error = string.Format("cannot open {0}: No such file or directory", fileName);
-                error += LuaFileUtils.Instance.FindFileError(fileName);
+                //error += LuaFileUtils.Instance.FindFileError(fileName);
+                error += FileSearchPath.Instance.FindFileError(fileName);
                 throw new LuaException(error);
             }
 
@@ -2026,6 +2026,7 @@ namespace LuaInterface
             beStart = false;
 #endif
 
+            FileSearchPath.Instance.Dispose();
             LuaFileUtils.Instance.Dispose();
             System.GC.SuppressFinalize(this);            
         }

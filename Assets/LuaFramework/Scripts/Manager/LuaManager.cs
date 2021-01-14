@@ -79,13 +79,13 @@ namespace LuaFramework {
         /// 初始化Lua代码加载路径
         /// </summary>
         void InitLuaPath() {
-            if (AppConst.DebugMode) {
-                string rootPath = AppConst.FrameworkRoot;
-                lua.AddSearchPath(rootPath + "/Lua");
-                lua.AddSearchPath(rootPath + "/ToLua/Lua");
-            } else {
-                lua.AddSearchPath(Util.DataPath + "lua");
-            }
+            //if (AppConst.DebugMode) {
+            //    string rootPath = AppConst.FrameworkRoot;
+            //    lua.AddSearchPath(rootPath + "/Lua");
+            //    lua.AddSearchPath(rootPath + "/ToLua/Lua");
+            //} else {
+            //    lua.AddSearchPath(Util.DataPath + "lua");
+            //}
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace LuaFramework {
         void InitLuaBundle() {
             if (AppConst.LuaBundleMode)
             {
-                FileSearchPath.AddLuaBundle("lua.unity3d");
+                FileSearchPath.Instance.AddLuaBundle("lua.unity3d");
             }
             //if (loader.beZip) {
                 //loader.AddBundle("lua.unity3d");
