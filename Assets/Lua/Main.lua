@@ -11,7 +11,10 @@ end
 
 --第二次加入lua路径  是动更目录 动更的文件无法加入游戏包体
 function  UpdateSearchPath( ... )
-	
+
+	--添加动更目录
+	resMgr:AddUpdateLuaPath("添加lua的动更路径，暂时还没有用")
+	resMgr:AddUpdateResPath("添加res的动更路径，暂时也没有用")
 end
 
 function  AriaMain()

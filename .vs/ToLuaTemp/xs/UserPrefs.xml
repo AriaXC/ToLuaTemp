@@ -1,17 +1,16 @@
 ﻿<Properties StartupConfiguration="{5EBE5927-85E2-E507-10FC-6F3F3AAB800B}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/Scripts/Manager/GameManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/Scripts/Manager/ResourceManager.cs">
     <Files>
-      <File FileName="Assets/LuaFramework/Scripts/Manager/ResourceManager.cs" Line="24" Column="51" />
-      <File FileName="Assets/LuaFramework/Scripts/Manager/LuaManager.cs" Line="84" Column="21" />
-      <File FileName="Assets/LuaFramework/Scripts/ConstDefine/AppConst.cs" Line="46" Column="47" />
-      <File FileName="Assets/LuaFramework/ToLua/Core/LuaFileUtils.cs" Line="83" Column="34" />
-      <File FileName="Assets/LuaFramework/ToLua/Core/FileSearchPath.cs" Line="307" Column="34" />
-      <File FileName="Assets/LuaFramework/Scripts/Utility/Util.cs" Line="188" Column="1" />
-      <File FileName="Assets/LuaFramework/Editor/Packager.cs" Line="104" Column="25" />
-      <File FileName="Assets/LuaFramework/ToLua/Core/LuaState.cs" Line="2030" Column="45" />
+      <File FileName="Assets/LuaFramework/Scripts/Manager/ResourceManager.cs" Line="74" Column="38" />
+      <File FileName="Assets/LuaFramework/Scripts/Manager/LuaManager.cs" Line="97" Column="45" />
+      <File FileName="Assets/LuaFramework/Scripts/ConstDefine/AppConst.cs" Line="35" Column="1" />
+      <File FileName="Assets/LuaFramework/ToLua/Core/LuaFileUtils.cs" Line="89" Column="28" />
+      <File FileName="Assets/LuaFramework/ToLua/Core/FileSearchPath.cs" Line="71" Column="60" />
+      <File FileName="Assets/LuaFramework/Scripts/Utility/Util.cs" Line="192" Column="30" />
+      <File FileName="Assets/LuaFramework/Editor/Packager.cs" Line="95" Column="64" />
+      <File FileName="Assets/LuaFramework/ToLua/Core/LuaState.cs" Line="37" Column="6" />
       <File FileName="Assets/LuaFramework/ToLua/Misc/LuaClient.cs" Line="92" Column="48" />
       <File FileName="Assets/LuaFramework/ToLua/Source/LuaConst.cs" Line="23" Column="23" />
-      <File FileName="Assets/LuaFramework/Scripts/Manager/GameManager.cs" Line="296" Column="14" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -36,7 +35,7 @@
                     <Node name="Interfaces" expanded="True" />
                   </Node>
                   <Node name="Manager" expanded="True">
-                    <Node name="GameManager.cs" selected="True" />
+                    <Node name="ResourceManager.cs" selected="True" />
                   </Node>
                   <Node name="Utility" expanded="True" />
                 </Node>

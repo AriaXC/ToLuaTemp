@@ -9,6 +9,8 @@ public class LuaFramework_ResourceManagerWrap
 		L.BeginClass(typeof(LuaFramework.ResourceManager), typeof(Manager));
 		L.RegFunction("Initialize", Initialize);
 		L.RegFunction("InitRes", InitRes);
+		L.RegFunction("AddUpdateLuaPath", AddUpdateLuaPath);
+		L.RegFunction("AddUpdateResPath", AddUpdateResPath);
 		L.RegFunction("MyLoadAsset", MyLoadAsset);
 		L.RegFunction("LoadSceneAsync", LoadSceneAsync);
 		L.RegFunction("LoadPrefab", LoadPrefab);
@@ -44,6 +46,40 @@ public class LuaFramework_ResourceManagerWrap
 			ToLua.CheckArgsCount(L, 1);
 			LuaFramework.ResourceManager obj = (LuaFramework.ResourceManager)ToLua.CheckObject<LuaFramework.ResourceManager>(L, 1);
 			obj.InitRes();
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int AddUpdateLuaPath(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 2);
+			LuaFramework.ResourceManager obj = (LuaFramework.ResourceManager)ToLua.CheckObject<LuaFramework.ResourceManager>(L, 1);
+			string arg0 = ToLua.CheckString(L, 2);
+			obj.AddUpdateLuaPath(arg0);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int AddUpdateResPath(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 2);
+			LuaFramework.ResourceManager obj = (LuaFramework.ResourceManager)ToLua.CheckObject<LuaFramework.ResourceManager>(L, 1);
+			string arg0 = ToLua.CheckString(L, 2);
+			obj.AddUpdateResPath(arg0);
 			return 0;
 		}
 		catch (Exception e)

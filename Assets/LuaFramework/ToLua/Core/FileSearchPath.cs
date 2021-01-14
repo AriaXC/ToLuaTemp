@@ -68,7 +68,7 @@ namespace LuaInterface
         /// </summary>
         public void AddLuaSearchPath(string path, bool isFirst = false)
         {
-            //Debug.LogError("AddLuaSearchPath  == " + path);
+            Debug.LogError("AddLuaSearchPath  == " + path);
             int index = luaSearchPath.IndexOf(path);
             if (index > 0)
                 luaSearchPath.RemoveAt(index);

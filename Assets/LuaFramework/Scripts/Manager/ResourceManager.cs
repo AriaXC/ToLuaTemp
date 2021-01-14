@@ -61,10 +61,24 @@ namespace LuaFramework {
             }
             //这里应该去处理  资源的依赖关系等  AssetBundleManifest在这里初始化
 
-
-
         }
-
+        /// <summary>
+        /// lua层添加动更的目录
+        /// </summary>
+        public void AddUpdateLuaPath(string path)
+        {
+            Debug.LogError(path);
+            FileSearchPath.Instance.AddLuaSearchPath(path,true);
+        }
+        /// <summary>
+        /// lua层添加动更的res目录
+        /// </summary>
+        /// <param name="path"></param>
+        public void AddUpdateResPath(string path)
+        {
+            Debug.LogError(path);
+            FileSearchPath.Instance.AddResSearchPath(path, true);
+        }
         public GameObject MyLoadAsset(string abname, string assetname, LuaFunction func)
         {
             assetname = AppConst.ResPath + assetname;
@@ -156,6 +170,7 @@ namespace LuaFramework {
             AssetBundle bundle = null;
             if (!bundles.ContainsKey(abname)) {
                 byte[] stream = null;
+                //这里需要用我自己的路径搜
                 string uri = Util.DataPath + abname;
                 Debug.LogWarning("LoadFile::>> " + uri);
                 LoadDependencies(abname);

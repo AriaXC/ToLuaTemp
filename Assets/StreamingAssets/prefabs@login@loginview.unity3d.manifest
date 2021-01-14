@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 1391333798
+CRC: 40647844
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: fbd266ff44be660262886cb9531ab706
+    Hash: 1c500cc7f8bbafcef6542c87a382166d
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 007780328b23c1fd222c67d8e2f03dcc
+    Hash: f552dfe68fe9024c92f722ca99cdc001
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -27,10 +27,14 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 128
   Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
 - Class: 222
   Script: {instanceID: 0}
 - Class: 224
   Script: {instanceID: 0}
 Assets:
 - Assets/Res/Prefabs/Login/LoginView.prefab
-Dependencies: []
+Dependencies:
+- /Users/admin/Documents/U2/ToLuaTemp/Assets/StreamingAssets/spritepack@a.unity3d
+- /Users/admin/Documents/U2/ToLuaTemp/Assets/StreamingAssets/spritepack@b.unity3d

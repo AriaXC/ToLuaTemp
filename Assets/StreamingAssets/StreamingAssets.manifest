@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 2222922308
+CRC: 2272238088
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -7,7 +7,12 @@ AssetBundleManifest:
       Dependencies: {}
     Info_1:
       Name: prefabs@login@loginview.unity3d
-      Dependencies: {}
+      Dependencies:
+        Dependency_0: spritepack@a.unity3d
+        Dependency_1: spritepack@b.unity3d
     Info_2:
       Name: prefabs@core@uicanvas.unity3d
+      Dependencies: {}
+    Info_3:
+      Name: spritepack@b.unity3d
       Dependencies: {}
