@@ -50,7 +50,7 @@ namespace LuaInterface
         /// </summary>
         public void  AddResSearchPath(string path,bool isFirst =false)
         {
-            Debug.LogError("AddResSearchPath  == "+path);
+            Debug.Log("AddResSearchPath  == "+path);
             int index = resSearchPath.IndexOf(path);
             if (index > 0)
                 resSearchPath.RemoveAt(index);
@@ -68,7 +68,7 @@ namespace LuaInterface
         /// </summary>
         public void AddLuaSearchPath(string path, bool isFirst = false)
         {
-            Debug.LogError("AddLuaSearchPath  == " + path);
+            Debug.Log("AddLuaSearchPath  == " + path);
             int index = luaSearchPath.IndexOf(path);
             if (index > 0)
                 luaSearchPath.RemoveAt(index);
@@ -114,7 +114,8 @@ namespace LuaInterface
         {
             if (luaBundle != null)
             {
-                Resources.UnloadAsset(luaBundle);
+                luaBundle.Unload(false);
+                //Resources.UnloadAsset(luaBundle);
             }
         }
         /// <summary>
@@ -128,16 +129,17 @@ namespace LuaInterface
             sb = sb.Append(AppConst.ExtName);
             sb = sb.ToLower();
 
-            for (int i = 0; i < luaSearchPath.Count - 1; i++)
+            for (int i = 0; i < luaSearchPath.Count; i++)
             {
                 string path = Path.Combine(luaSearchPath[i], sb.ToString());
-
                 if (!File.Exists(path)) break;
 
+                Debug.Log("lua ab包加载完成");
                 byte[] stream = null;
-                stream = File.ReadAllBytes(path);
-                luaBundle = AssetBundle.LoadFromMemory(stream);
 
+                stream = File.ReadAllBytes(path);
+                // LoadFromFile 的话是加载一个路径
+                luaBundle = AssetBundle.LoadFromMemory(stream);
                 return;
             }
         }
@@ -149,6 +151,9 @@ namespace LuaInterface
         {
             //如果是ab包模式 那我所有的lua代码全部都读动更路径上面的
             // 目前这样写不太好 暂时先实现luaab包版本
+
+            if (!fileName.EndsWith(".lua"))
+                fileName = fileName + ".lua";
 
             fileName += ".bytes";
             fileName = "Assets/LuaABTemp/" + fileName;
@@ -177,8 +182,6 @@ namespace LuaInterface
             resCaChe.TryGetValue(fileName, out cache);
             if (cache != null)
                 return cache;
-            if (!fileName.EndsWith(".lua"))
-                fileName = fileName + ".lua";
 
             for (int i = 0; i < resSearchPath.Count ; i++)
             {
@@ -259,7 +262,7 @@ namespace LuaInterface
 
                 for (int i = 0; i < luaSearchPath.Count; i++)
                 {
-                    sb.Append("\n\tno file '").Append(luaSearchPath[i]).Append('\'');
+                    sb.Append("\n\tMoon no file '").Append(luaSearchPath[i]).Append('\'');
                 }
 
                 sb = sb.Replace("?", fileName);
@@ -271,13 +274,13 @@ namespace LuaInterface
                     if (pos > 0)
                     {
                         int tmp = pos + 1;
-                        sb.Append("\n\tno file '").Append(fileName, tmp, fileName.Length - tmp).Append(".lua' in ").Append("lua_");
+                        sb.Append("\n\tMoon no file '").Append(fileName, tmp, fileName.Length - tmp).Append(".lua' in ").Append("lua_");
                         tmp = sb.Length;
                         sb.Append(fileName, 0, pos).Replace('/', '_', tmp, pos).Append(".unity3d");
                     }
                     else
                     {
-                        sb.Append("\n\tno file '").Append(fileName).Append(".lua' in ").Append("lua.unity3d");
+                        sb.Append("\n\tMoon no file '").Append(fileName).Append(".lua' in ").Append("lua.unity3d");
                     }
                 }
 

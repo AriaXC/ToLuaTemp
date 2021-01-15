@@ -8,29 +8,35 @@ using LuaInterface;
 using UObject = UnityEngine.Object;
 using System;
 
-namespace LuaFramework {
-    public class ResourceManager : Manager {
+namespace LuaFramework
+{
+    public class ResourceManager : Manager
+    {
         private string[] m_Variants = { };
-        private AssetBundleManifest manifest;
+
+        //记录总的ab名字和依赖的
+        private AssetBundleManifest mainfest;
         private AssetBundle shared, assetbundle;
+        //已经加载过的ab包
         private Dictionary<string, AssetBundle> bundles;
 
-        void Awake() {
+        void Awake()
+        {
         }
 
         /// <summary>
         /// 初始化加载器
         /// </summary>
-        public void Initialize(string mainFestName,Action action) 
+        public void Initialize(string mainFestName, Action action)
         {
             FileSearchPath.Instance.AddLuaSearchPath(Application.streamingAssetsPath);
-            FileSearchPath.Instance.AddLuaSearchPath(Application.persistentDataPath);
-
-            FileSearchPath.Instance.AddLuaSearchPath(AppConst.MoonLua);
-            FileSearchPath.Instance.AddLuaSearchPath(AppConst.MoontoluaDir);
+            //FileSearchPath.Instance.AddLuaSearchPath(Application.persistentDataPath);
+            FileSearchPath.Instance.AddResSearchPath(Application.streamingAssetsPath);
 
             if (!AppConst.LuaBundleMode)
             {
+                FileSearchPath.Instance.AddLuaSearchPath(AppConst.MoonLua);
+                FileSearchPath.Instance.AddLuaSearchPath(AppConst.MoontoluaDir);
                 action();
                 return;
             }
@@ -39,16 +45,8 @@ namespace LuaFramework {
 
                 action();
             }
-            //byte[] stream = null;
-            //string uri = string.Empty;
             FileSearchPath.Instance.ClearLuaBundle();
             bundles = new Dictionary<string, AssetBundle>();
-            //uri = Util.DataPath + AppConst.AssetDir;
-            //if (!File.Exists(uri)) return;
-
-            //stream = File.ReadAllBytes(uri);
-            //assetbundle = AssetBundle.LoadFromMemory(stream);
-            //manifest = assetbundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
         }
         /// <summary>
         /// 加载资源依赖相关
@@ -60,15 +58,25 @@ namespace LuaFramework {
                 return;
             }
             //这里应该去处理  资源的依赖关系等  AssetBundleManifest在这里初始化
+            InitInfo();
 
+        }
+        /// <summary>
+        /// 初始化依赖
+        /// </summary>
+        public void InitInfo()
+        {
+            string str = FileSearchPath.Instance.GetResPath("StreamingAssets");
+
+            assetbundle = AssetBundle.LoadFromMemory(File.ReadAllBytes(str));
+            mainfest = assetbundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
         }
         /// <summary>
         /// lua层添加动更的目录
         /// </summary>
         public void AddUpdateLuaPath(string path)
         {
-            Debug.LogError(path);
-            FileSearchPath.Instance.AddLuaSearchPath(path,true);
+            FileSearchPath.Instance.AddLuaSearchPath(path, true);
         }
         /// <summary>
         /// lua层添加动更的res目录
@@ -76,7 +84,6 @@ namespace LuaFramework {
         /// <param name="path"></param>
         public void AddUpdateResPath(string path)
         {
-            Debug.LogError(path);
             FileSearchPath.Instance.AddResSearchPath(path, true);
         }
         public GameObject MyLoadAsset(string abname, string assetname, LuaFunction func)
@@ -91,9 +98,6 @@ namespace LuaFramework {
 
         }
 
-
-
-
         public void LoadSceneAsync(string assetName, LuaFunction fun)
         {
             LoadAsyncAsset<GameObject>(assetName, fun);
@@ -102,9 +106,9 @@ namespace LuaFramework {
         /// <summary>
         /// 载入素材
         /// </summary>
-        public T LoadAsset<T>(string abname, string assetname) where T : UnityEngine.Object {
+        public T LoadAsset<T>(string abname, string assetname) where T : UnityEngine.Object
+        {
             //editor命名空间无法打包
-#if UNITY_EDITOR
             if (AppConst.LuaBundleMode)
             {
                 abname = abname.ToLower();
@@ -113,45 +117,44 @@ namespace LuaFramework {
             }
             else
             {
+#if UNITY_EDITOR
                 //直接加载  打包不能使用这个AssetDatabase
-                string path =  assetname;
+                string path = assetname;
                 //Debug.Log(path);
                 return (T)UnityEditor.AssetDatabase.LoadAssetAtPath<T>(path);
-
-            }
-#else
-                 abname = abname.ToLower();
-                AssetBundle bundle = LoadAssetBundle(abname);
-                return bundle.LoadAsset<T>(assetname);
 #endif
+            }
         }
-        public void LoadAsyncAsset<T>(string assetName, LuaFunction fun) where T:UnityEngine.Object
+        public void LoadAsyncAsset<T>(string assetName, LuaFunction fun) where T : UnityEngine.Object
         {
-#if UNITY_EDITOR
+
             if (AppConst.LuaBundleMode)
             {
                 //还没写
-     
+
             }
             else
             {
+#if UNITY_EDITOR
                 string path = AppConst.ResPath + assetName;
                 T o = (T)UnityEditor.AssetDatabase.LoadAssetAtPath<T>(path);
 
                 fun.Call();
                 fun.Dispose();
-
-            }
 #endif
+            }
+
         }
 
 
 
 
-        public void LoadPrefab(string abName, string[] assetNames, LuaFunction func) {
+        public void LoadPrefab(string abName, string[] assetNames, LuaFunction func)
+        {
             abName = abName.ToLower();
             List<UObject> result = new List<UObject>();
-            for (int i = 0; i < assetNames.Length; i++) {
+            for (int i = 0; i < assetNames.Length; i++)
+            {
                 UObject go = LoadAsset<UObject>(abName, assetNames[i]);
                 if (go != null) result.Add(go);
             }
@@ -163,12 +166,15 @@ namespace LuaFramework {
         /// </summary>
         /// <param name="abname"></param>
         /// <returns></returns>
-        public AssetBundle LoadAssetBundle(string abname) {
-            if (!abname.EndsWith(AppConst.ExtName)) {
+        public AssetBundle LoadAssetBundle(string abname)
+        {
+            if (!abname.EndsWith(AppConst.ExtName))
+            {
                 abname += AppConst.ExtName;
             }
             AssetBundle bundle = null;
-            if (!bundles.ContainsKey(abname)) {
+            if (!bundles.ContainsKey(abname))
+            {
                 byte[] stream = null;
                 //这里需要用我自己的路径搜
                 string uri = Util.DataPath + abname;
@@ -178,7 +184,9 @@ namespace LuaFramework {
                 stream = File.ReadAllBytes(uri);
                 bundle = AssetBundle.LoadFromMemory(stream); //关联数据的素材绑定
                 bundles.Add(abname, bundle);
-            } else {
+            }
+            else
+            {
                 bundles.TryGetValue(abname, out bundle);
             }
             return bundle;
@@ -188,27 +196,31 @@ namespace LuaFramework {
         /// 载入依赖
         /// </summary>
         /// <param name="name"></param>
-        void LoadDependencies(string name) {
-            if (manifest == null) {
+        void LoadDependencies(string name)
+        {
+            if (mainfest == null)
+            {
                 Debug.LogError("Please initialize AssetBundleManifest by calling AssetBundleManager.Initialize()");
                 return;
             }
             // Get dependecies from the AssetBundleManifest object..
-            string[] dependencies = manifest.GetAllDependencies(name);
+            string[] dependencies = mainfest.GetAllDependencies(name);
             if (dependencies.Length == 0) return;
 
             for (int i = 0; i < dependencies.Length; i++)
                 dependencies[i] = RemapVariantName(dependencies[i]);
 
             // Record and load all dependencies.
-            for (int i = 0; i < dependencies.Length; i++) {
+            for (int i = 0; i < dependencies.Length; i++)
+            {
                 LoadAssetBundle(dependencies[i]);
             }
         }
 
         // Remaps the asset bundle name to the best fitting asset bundle variant.
-        string RemapVariantName(string assetBundleName) {
-            string[] bundlesWithVariant = manifest.GetAllAssetBundlesWithVariant();
+        string RemapVariantName(string assetBundleName)
+        {
+            string[] bundlesWithVariant = mainfest.GetAllAssetBundlesWithVariant();
 
             // If the asset bundle doesn't have variant, simply return.
             if (System.Array.IndexOf(bundlesWithVariant, assetBundleName) < 0)
@@ -219,13 +231,15 @@ namespace LuaFramework {
             int bestFit = int.MaxValue;
             int bestFitIndex = -1;
             // Loop all the assetBundles with variant to find the best fit variant assetBundle.
-            for (int i = 0; i < bundlesWithVariant.Length; i++) {
+            for (int i = 0; i < bundlesWithVariant.Length; i++)
+            {
                 string[] curSplit = bundlesWithVariant[i].Split('.');
                 if (curSplit[0] != split[0])
                     continue;
 
                 int found = System.Array.IndexOf(m_Variants, curSplit[1]);
-                if (found != -1 && found < bestFit) {
+                if (found != -1 && found < bestFit)
+                {
                     bestFit = found;
                     bestFitIndex = i;
                 }
@@ -239,11 +253,11 @@ namespace LuaFramework {
         /// <summary>
         /// 销毁资源
         /// </summary>
-        void OnDestroy() {
+        void OnDestroy()
+        {
             if (shared != null) shared.Unload(true);
-            if (manifest != null) manifest = null;
+            if (mainfest != null) mainfest = null;
             Debug.Log("~ResourceManager was destroy!");
         }
     }
 }
-

@@ -20,6 +20,7 @@ function  SceneManager:Ctor ( )
 end
 
 function  SceneManager:ShowScene(scene)
+
 	local  sceneClass = string.format("Module.%s.%sScene",scene,scene)
 	local  sceneUnity = string.format("Scene.%s.%s.unity",scene,scene)
 	--别的管理器引用 清空
@@ -30,11 +31,13 @@ function  SceneManager:ShowScene(scene)
 		self.currLoadingSceneName = scene
 
 		--上一个场景的 ab资源 依赖等 卸载
+		log("resMgr:LoadSceneAsync:Start  "..scene)
 		resMgr:LoadSceneAsync(sceneUnity,function ()
+			log("sceneMgr:LoadSceneAsync:Start  "..scene)
 			sceneMgr:LoadSceneAsync(scene,function()
 				self:AddCanvas()
-
-				require("Module.Login.LoginScene").New()
+				log("sceneMgr:LoadSceneAsync:End  "..scene)
+				require(sceneClass).New()
 			end)
 		end)
 

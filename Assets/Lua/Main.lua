@@ -20,6 +20,7 @@ end
 function  AriaMain()
 
 	log("Lua开始了")
+	
 	app  = require("Logic.Game").New()
 
 	--更新搜索路径  为动更准备

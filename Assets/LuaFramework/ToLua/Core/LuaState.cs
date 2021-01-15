@@ -682,7 +682,9 @@ namespace LuaInterface
             LuaSetTop(top);
             return o;
         }
-
+        /// <summary>
+        ///
+        /// </summary>
         public void InitPackagePath()
         {
             LuaGetGlobal("package");
@@ -695,7 +697,7 @@ namespace LuaInterface
                 if (!string.IsNullOrEmpty(paths[i]))
                 {
                     string path = paths[i].Replace('\\', '/');
-                    LuaFileUtils.Instance.AddSearchPath(path);
+                    //LuaFileUtils.Instance.AddSearchPath(path);
                 }
             }
 

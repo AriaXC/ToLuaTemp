@@ -1,5 +1,7 @@
 StreamingAssets|963194995f01a93b1de7ca35e96691a7
 StreamingAssets.manifest|f976ad847f28d5feaab67b3dca1d30b7
+lua.unity3d|1f736c808b891b47d01811e92d8aca5a
+lua.unity3d.manifest|5608cfedfaa226f130e78beade2028e4
 prefabs@core@uicanvas.unity3d|0556f591e78d54e69b85eb6bb220b148
 prefabs@core@uicanvas.unity3d.manifest|152fa4200b0ca8b68f03299d89096800
 prefabs@login@loginview.unity3d|0d5af445a5c8906725ac3994f03b57db
