@@ -9,11 +9,11 @@ public class LuaFramework_ResourceManagerWrap
 		L.BeginClass(typeof(LuaFramework.ResourceManager), typeof(Manager));
 		L.RegFunction("Initialize", Initialize);
 		L.RegFunction("InitRes", InitRes);
+		L.RegFunction("InitInfo", InitInfo);
 		L.RegFunction("AddUpdateLuaPath", AddUpdateLuaPath);
 		L.RegFunction("AddUpdateResPath", AddUpdateResPath);
-		L.RegFunction("MyLoadAsset", MyLoadAsset);
-		L.RegFunction("LoadSceneAsync", LoadSceneAsync);
 		L.RegFunction("LoadPrefab", LoadPrefab);
+		L.RegFunction("LoadSceneAsync", LoadSceneAsync);
 		L.RegFunction("LoadAssetBundle", LoadAssetBundle);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
@@ -46,6 +46,22 @@ public class LuaFramework_ResourceManagerWrap
 			ToLua.CheckArgsCount(L, 1);
 			LuaFramework.ResourceManager obj = (LuaFramework.ResourceManager)ToLua.CheckObject<LuaFramework.ResourceManager>(L, 1);
 			obj.InitRes();
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int InitInfo(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 1);
+			LuaFramework.ResourceManager obj = (LuaFramework.ResourceManager)ToLua.CheckObject<LuaFramework.ResourceManager>(L, 1);
+			obj.InitInfo();
 			return 0;
 		}
 		catch (Exception e)
@@ -89,7 +105,7 @@ public class LuaFramework_ResourceManagerWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int MyLoadAsset(IntPtr L)
+	static int LoadPrefab(IntPtr L)
 	{
 		try
 		{
@@ -98,7 +114,7 @@ public class LuaFramework_ResourceManagerWrap
 			string arg0 = ToLua.CheckString(L, 2);
 			string arg1 = ToLua.CheckString(L, 3);
 			LuaFunction arg2 = ToLua.CheckLuaFunction(L, 4);
-			UnityEngine.GameObject o = obj.MyLoadAsset(arg0, arg1, arg2);
+			UnityEngine.GameObject o = obj.LoadPrefab(arg0, arg1, arg2);
 			ToLua.PushSealed(L, o);
 			return 1;
 		}
@@ -118,25 +134,6 @@ public class LuaFramework_ResourceManagerWrap
 			string arg0 = ToLua.CheckString(L, 2);
 			LuaFunction arg1 = ToLua.CheckLuaFunction(L, 3);
 			obj.LoadSceneAsync(arg0, arg1);
-			return 0;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int LoadPrefab(IntPtr L)
-	{
-		try
-		{
-			ToLua.CheckArgsCount(L, 4);
-			LuaFramework.ResourceManager obj = (LuaFramework.ResourceManager)ToLua.CheckObject<LuaFramework.ResourceManager>(L, 1);
-			string arg0 = ToLua.CheckString(L, 2);
-			string[] arg1 = ToLua.CheckStringArray(L, 3);
-			LuaFunction arg2 = ToLua.CheckLuaFunction(L, 4);
-			obj.LoadPrefab(arg0, arg1, arg2);
 			return 0;
 		}
 		catch (Exception e)

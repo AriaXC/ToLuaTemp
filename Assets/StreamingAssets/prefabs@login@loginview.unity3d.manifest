@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 40647844
+CRC: 415757283
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 1c500cc7f8bbafcef6542c87a382166d
+    Hash: 7cd3b20dfe3c9293529aa806d291cc46
   TypeTreeHash:
     serializedVersion: 2
     Hash: f552dfe68fe9024c92f722ca99cdc001
@@ -38,3 +38,4 @@ Assets:
 Dependencies:
 - /Users/admin/Documents/U2/ToLuaTemp/Assets/StreamingAssets/spritepack@a.unity3d
 - /Users/admin/Documents/U2/ToLuaTemp/Assets/StreamingAssets/spritepack@b.unity3d
+- /Users/admin/Documents/U2/ToLuaTemp/Assets/StreamingAssets/shader@testshader.unity3d

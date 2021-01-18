@@ -22,7 +22,7 @@ namespace LuaFramework {
         }
 
         public void InitStart() {
-            InitLuaPath();
+            //InitLuaPath();
             InitLuaBundle();
             this.lua.Start();    //启动LUAVM
             this.StartAriaMain();
@@ -43,15 +43,6 @@ namespace LuaFramework {
             lua.OpenLibs(LuaDLL.luaopen_cjson_safe);
             lua.LuaSetField(-2, "cjson.safe");
         }
-
-        //void StartMain() {
-        //    lua.DoFile("Main.lua");
-
-        //    LuaFunction main = lua.GetFunction("Main");
-        //    main.Call();
-        //    main.Dispose();
-        //    main = null;    
-        //}
         public void StartAriaMain()
         {
             lua.DoFile("Main.lua");
@@ -94,28 +85,9 @@ namespace LuaFramework {
         void InitLuaBundle() {
             if (AppConst.LuaBundleMode)
             {
+                // 只有ab模式才初始化lua包
                 FileSearchPath.Instance.AddLuaBundle("lua.unity3d");
             }
-            //if (loader.beZip) {
-                //loader.AddBundle("lua.unity3d");
-                
-                //loader.AddBundle("lua/lua_math.unity3d");
-                //loader.AddBundle("lua/lua_system.unity3d");
-                //loader.AddBundle("lua/lua_system_reflection.unity3d");
-                //loader.AddBundle("lua/lua_unityengine.unity3d");
-                //loader.AddBundle("lua/lua_common.unity3d");
-                //loader.AddBundle("lua/lua_logic.unity3d");
-                //loader.AddBundle("lua/lua_view.unity3d");
-                //loader.AddBundle("lua/lua_controller.unity3d");
-                //loader.AddBundle("lua/lua_misc.unity3d");`
-
-                //loader.AddBundle("lua/lua_protobuf.unity3d");
-                //loader.AddBundle("lua/lua_3rd_cjson.unity3d");
-                //loader.AddBundle("lua/lua_3rd_luabitop.unity3d");
-                //loader.AddBundle("lua/lua_3rd_pbc.unity3d");
-                //loader.AddBundle("lua/lua_3rd_pblua.unity3d");
-                //loader.AddBundle("lua/lua_3rd_sproto.unity3d");
-            //}
         }
 
         public void DoFile(string filename) {

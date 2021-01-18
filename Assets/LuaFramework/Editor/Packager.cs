@@ -1,17 +1,32 @@
 ﻿using UnityEditor;
 using UnityEngine;
-using System.IO;
-using System.Text;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using LuaFramework;
+using System.IO;
+using System.Xml;
+using Debug = UnityEngine.Debug;
+
+/// <summary>
+/// 这个类是要去记录xml文件生成所需要的信息
+/// </summary>
+public class AssetBundleMoonInfo
+{
+    //ab包名字
+    public string bundleName;
+    //文件名字
+    public List<string> assertName ;
+    //依赖列表
+    public List<string> deps;
+}
 
 public class Packager {
     public static string platform = string.Empty;
     static List<string> paths = new List<string>();
     static List<string> files = new List<string>();
-    static List<AssetBundleBuild> maps = new List<AssetBundleBuild>();
+
+    static List<AssetBundleBuild> LuaMaps = new List<AssetBundleBuild>();
+    static Dictionary<string,AssetBundleMoonInfo> ResDic =new Dictionary<string, AssetBundleMoonInfo>();
 
     ///-----------------------------------------------------------
     static string[] exts = { ".txt", ".xml", ".lua", ".assetbundle", ".json" };
@@ -21,7 +36,7 @@ public class Packager {
         }
         return false;
     }
-
+    
     /// <summary>
     /// 载入素材
     /// </summary>
@@ -56,20 +71,21 @@ public class Packager {
     /// 生成绑定素材
     /// </summary>
     public static void BuildAssetResource(BuildTarget target) {
-        string resPath = "Assets/" + AppConst.AssetDir;
-        if (Directory.Exists(resPath))
-            Directory.Delete(resPath, true);
+        string outPath = "Assets/" + AppConst.AssetDir;
+        if (Directory.Exists(outPath))
+            Directory.Delete(outPath, true);
 
         if (Directory.Exists(Util.DataPath))
         {
             Directory.Delete(Util.DataPath, true);
         }
-        Directory.CreateDirectory(resPath);
+        Directory.CreateDirectory(outPath);
         AssetDatabase.Refresh();
 
-        maps.Clear();
+        LuaMaps.Clear();
+        ResDic.Clear();
         if (AppConst.LuaBundleMode) {
-            HandleLuaBundle();
+            //HandleLuaBundle();
         } else {
             //HandleLuaFile();
         }
@@ -77,14 +93,58 @@ public class Packager {
         {
             //HandleExampleBundle();
         }
-    
-        BuildPipeline.BuildAssetBundles(resPath, maps.ToArray(), BuildAssetBundleOptions.None, target);
+        List<string> resList = GetAllResDirs(AppConst.ResPath);
+        if (resList.Count > 0 && resList != null)
+        {
+            for (int i = 0; i < resList.Count; i++)
+            {
+                Debug.Log("文件目录===" + resList[i]);
+                SetAssetBundleName(resList[i]);
+            }
+        }
 
-        BuildPipeline.BuildAssetBundles(resPath, BuildAssetBundleOptions.None, target);
+        BuildPipeline.BuildAssetBundles(outPath, LuaMaps.ToArray(), BuildAssetBundleOptions.None, target);
+        BuildPipeline.BuildAssetBundles(outPath, BuildAssetBundleOptions.None, target);
         BuildFileIndex();
 
+        UnityEngine.Debug.Log("打出ab资源了,开始生成xml");
 
-        UnityEngine.Debug.Log("打出ab资源了");
+        //分析依赖
+        foreach (var info in ResDic)
+        {
+            string[] str = AssetDatabase.GetAssetBundleDependencies(info.Value.bundleName, true);
+            foreach (var s in str)
+            {
+                info.Value.deps.Add(s);
+            }
+        }
+        //生成XML
+        XmlDocument doc = new XmlDocument();
+        XmlElement root = doc.CreateElement("bundles");
+
+        foreach (var info in ResDic)
+        {
+            XmlElement item = doc.CreateElement("bundle");
+            XmlElement bundleName = doc.CreateElement("bundleName");
+            bundleName.InnerText = info.Value.bundleName;
+            item.AppendChild(bundleName);
+            foreach (string s in info.Value.assertName)
+            {
+                XmlElement AssertName = doc.CreateElement("AssertName");
+                AssertName.InnerText =s;
+                item.AppendChild(AssertName);
+            }
+            foreach (string s in info.Value.deps)
+            {
+                XmlElement deps = doc.CreateElement("deps");
+                deps.InnerText = s;
+                item.AppendChild(deps);
+            }
+            root.AppendChild(item);
+        }
+        doc.AppendChild(root);
+        doc.Save(outPath+"/AssetBundleXml.xml");
+        UnityEngine.Debug.Log("xml生成完毕");
 
         //BuildPipeline
         AssetDatabase.Refresh();
@@ -101,9 +161,179 @@ public class Packager {
         AssetBundleBuild build = new AssetBundleBuild();
         build.assetBundleName = bundleName;
         build.assetNames = files_lua;
-        maps.Add(build);
+        LuaMaps.Add(build);
     }
+    static void SetAssetBundleName(string fullPath)
+    {
+        string buildScenePath = "Assets/Res/Scene";
+        Dictionary<string, bool> dirMap = new Dictionary<string, bool>();
+        // 遍历所有文件设置bundleName
+   
+        string[] files = Directory.GetFiles(fullPath);
+        if (files == null || files.Length == 0)
+        {
+            return;
+        }
+        // 处理dirBundleName
+        string dirBundleName = fullPath.Substring(AppConst.ResPath.Length);
+        //fullPath.Substring (AppConst.ResourcesPath.Length);
+        if (dirBundleName == "")
+        {
+            dirBundleName = "res";
+        }
+        Debug.Log("dirBundleName: " + dirBundleName);
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
+	        dirBundleName = dirBundleName.Replace ("\\", "/");
+	        buildScenePath = buildScenePath.Replace ("\\", "/");
+#endif
+        dirBundleName = dirBundleName.Replace("/", "@") + AppConst.ExtName;
 
+        foreach (string oneFile in files)
+        {
+#if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
+            filePath = filePath.Replace ("\\", "/");
+#endif
+            Debug.Log("EndsWith ==  " + Path.GetExtension(oneFile));
+            if (oneFile.EndsWith(".meta")
+                || oneFile.EndsWith(".DS_Store")
+                || oneFile.EndsWith(".unity")
+                || oneFile.EndsWith(".lua"))
+            {
+                continue;
+            }
+            else if (oneFile.StartsWith(buildScenePath) || oneFile.StartsWith(AppConst.LuaTempDir))
+            {
+                continue;
+            } /*else if (filePath.StartsWith (audioPath)) {
+                continue;
+            }*/
+
+            // 设置bundleName
+            AssetImporter importer = AssetImporter.GetAtPath(oneFile);
+            // 构建AssetBundle信息 用于xml
+            AssetBundleMoonInfo info = new AssetBundleMoonInfo();
+            info.assertName = new List<string>();
+            info.deps = new List<string>();
+
+            if (importer != null)
+            {
+                string ext = Path.GetExtension(oneFile);
+                string bundleName = dirBundleName;
+                if (null != ext && ext.Equals(".prefab"))
+                {
+                    // prefab单个文件打包
+                    bundleName = oneFile.Substring(AppConst.ResPath.Length);
+                    bundleName = bundleName.Replace("/", "@");
+                    if (null != ext)
+                    {
+                        bundleName = bundleName.Replace(ext, AppConst.ExtName);
+                    }
+                    else
+                    {
+                        bundleName += AppConst.ExtName;
+                    }
+                }
+                //这个不知道是什么类型的
+                if (null != ext && ext.Equals(".dds"))
+                {
+                    UnityEngine.Debug.Log("Error image format!!! " + oneFile);
+                    continue;
+                }
+                else
+                {
+                    bool spritepack = false;
+                    if (importer is TextureImporter)
+                    {
+                        TextureImporter textureImporter = importer as TextureImporter;
+                        if (!string.IsNullOrEmpty(textureImporter.spritePackingTag))
+                        {
+                            // 图集打包
+                            bundleName = "spritepack@" + textureImporter.spritePackingTag + AppConst.ExtName;
+                            spritepack = true;
+                        }
+                    }
+
+                    if (!spritepack)
+                    {
+                        string dir = Path.GetDirectoryName(oneFile);
+                        bool pack = false;
+                        if (dirMap.ContainsKey(dir))
+                        {
+                            pack = dirMap[dir];
+                        }
+                        else
+                        {
+                            pack = !File.Exists(Path.Combine(dir, "split.txt"));
+                            dirMap.Add(dir, pack);
+                        }
+
+                        if (!pack)
+                        {
+                            // 当个文件打包
+                            bundleName = oneFile.Substring(AppConst.ResPath.Length);
+                            bundleName = bundleName.Replace("/", "@");
+                            if (null != ext)
+                            {
+                                bundleName = bundleName.Replace(ext, AppConst.ExtName);
+                            }
+                            else
+                            {
+                                bundleName += AppConst.ExtName;
+                            }
+                        }
+                    }
+                }
+                bundleName = bundleName.ToLower();
+                //重新把ab包的名字设置了下
+                importer.assetBundleName = bundleName;
+                //Debug.Log("assetBundleName :" + bundleName);
+
+                // 存储bundleInfo
+                if (ResDic.ContainsKey(bundleName))
+                {
+                    ResDic[bundleName].assertName.Add(oneFile);
+                }
+                else
+                {
+                    info.assertName.Add(oneFile);
+                    info.bundleName = bundleName;
+                    ResDic.Add(info.bundleName, info);
+                }
+                Debug.Log("info == " + info.assertName + "   bundleName==" + info.bundleName);   
+            }
+            else
+            {
+                UnityEngine.Debug.LogWarningFormat("Set AssetName Fail, File:{0}, Msg:Importer is null", oneFile);
+            }
+
+        }
+    }
+    /// <summary>
+    /// 获取该目录下的所有文件夹
+    /// </summary>
+    static List<string> GetAllResDirs(string path)
+    {
+        List<string> outList = new List<string>();
+
+        GetAllDirs(path,outList);
+        return outList;
+    }
+    static void GetAllDirs(string path, List<string> outList)
+    {
+        if (path == null && path.EndsWith(".meta"))
+        {
+            return;
+        }
+        string[] files = Directory.GetDirectories(path);
+        if (files != null && files.Length > 0)
+        {
+            for (int i = 0; i < files.Length; i++)
+            {
+                outList.Add(files[i]);
+                GetAllDirs(files[i], outList);
+            }
+        }
+    }
     /// <summary>
     /// 处理Lua代码包
     /// </summary>
@@ -178,20 +408,6 @@ public class Packager {
             }
         }
         AssetDatabase.Refresh();
-    }
-
-    /// <summary>
-    /// 处理框架实例包
-    /// </summary>
-    static void HandleExampleBundle() {
-        string resPath = AppDataPath + "/" + AppConst.AssetDir + "/";
-        if (!Directory.Exists(resPath)) Directory.CreateDirectory(resPath);
-
-        AddBuildMap("prompt" + AppConst.ExtName, "*.prefab", "Assets/LuaFramework/Examples/Builds/Prompt");
-        AddBuildMap("message" + AppConst.ExtName, "*.prefab", "Assets/LuaFramework/Examples/Builds/Message");
-
-        AddBuildMap("prompt_asset" + AppConst.ExtName, "*.png", "Assets/LuaFramework/Examples/Textures/Prompt");
-        AddBuildMap("shared_asset" + AppConst.ExtName, "*.png", "Assets/LuaFramework/Examples/Textures/Shared");
     }
 
     /// <summary>

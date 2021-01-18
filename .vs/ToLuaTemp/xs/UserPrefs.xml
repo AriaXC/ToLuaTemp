@@ -1,14 +1,13 @@
 ﻿<Properties StartupConfiguration="{5EBE5927-85E2-E507-10FC-6F3F3AAB800B}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/ToLua/Core/LuaFileUtils.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Assets/LuaFramework/Scripts/Manager/ResourceManager.cs" Line="241" Column="52" />
-      <File FileName="Assets/LuaFramework/Scripts/Manager/LuaManager.cs" Line="101" Column="17" />
-      <File FileName="Assets/LuaFramework/Scripts/ConstDefine/AppConst.cs" Line="22" Column="48" />
-      <File FileName="Assets/LuaFramework/ToLua/Core/FileSearchPath.cs" Line="61" Column="19" />
-      <File FileName="Assets/LuaFramework/Editor/Packager.cs" Line="160" Column="1" />
-      <File FileName="Assets/LuaFramework/Editor/ImportSetting.cs" Line="128" Column="52" />
-      <File FileName="Assets/LuaFramework/ToLua/Core/LuaState.cs" Line="688" Column="38" />
-      <File FileName="Assets/LuaFramework/ToLua/Core/LuaFileUtils.cs" Line="85" Column="47" />
+      <File FileName="Assets/LuaFramework/Scripts/Manager/ResourceManager.cs" Line="83" Column="1" />
+      <File FileName="Assets/LuaFramework/Scripts/ConstDefine/AppConst.cs" Line="47" Column="47" />
+      <File FileName="Assets/LuaFramework/ToLua/Core/FileSearchPath.cs" Line="228" Column="22" />
+      <File FileName="Assets/LuaFramework/Editor/Packager.cs" Line="167" Column="48" />
+      <File FileName="Assets/LuaFramework/Scripts/Manager/GameManager.cs" Line="166" Column="45" />
+      <File FileName="Assets/LuaFramework/Scripts/Utility/Util.cs" Line="134" Column="23" />
+      <File FileName="Assets/LuaFramework/Editor/ImportSetting.cs" Line="55" Column="23" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,7 +15,9 @@
           <Node name="ToLuaTemp" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="LuaFramework" expanded="True">
-                <Node name="Editor" expanded="True" />
+                <Node name="Editor" expanded="True">
+                  <Node name="Packager.cs" selected="True" />
+                </Node>
                 <Node name="MoonScripts" expanded="True">
                   <Node name="Util" expanded="True">
                     <Node name="Log" expanded="True" />
@@ -36,9 +37,7 @@
                   <Node name="Utility" expanded="True" />
                 </Node>
                 <Node name="ToLua" expanded="True">
-                  <Node name="Core" expanded="True">
-                    <Node name="LuaFileUtils.cs" selected="True" />
-                  </Node>
+                  <Node name="Core" expanded="True" />
                   <Node name="Editor" expanded="True" />
                   <Node name="Misc" expanded="True" />
                   <Node name="Source" expanded="True">

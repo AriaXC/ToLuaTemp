@@ -245,8 +245,9 @@
     <Compile Include="Assets\Test\other\otherM.cs" />
     <Compile Include="Assets\Test\text\ColorText.cs" />
     <None Include="Assets\AriaUpdate\files.txt" />
+    <None Include="Assets\StreamingAssets\AssetBundleXml.xml" />
     <None Include="Assets\link.xml" />
-    <None Include="Assets\Res\Shader\C1.shader" />
+    <None Include="Assets\Res\Shader\testShader\C1.shader" />
     <None Include="Assets\LuaFramework\ToLua\Injection\InjectionBridgeEditorInfo.xml" />
     <None Include="Assets\LuaFramework\ToLua\readme.txt" />
     <None Include="Assets\StreamingAssets\files.txt" />

@@ -15,13 +15,14 @@ namespace LuaFramework
         private string[] m_Variants = { };
 
         //记录总的ab名字和依赖的
-        private AssetBundleManifest mainfest;
-        private AssetBundle shared, assetbundle;
+        private AssetBundleManifest manifest;
+        private AssetBundle assetbundle;
         //已经加载过的ab包
         private Dictionary<string, AssetBundle> bundles;
 
         void Awake()
         {
+
         }
 
         /// <summary>
@@ -38,15 +39,13 @@ namespace LuaFramework
                 FileSearchPath.Instance.AddLuaSearchPath(AppConst.MoonLua);
                 FileSearchPath.Instance.AddLuaSearchPath(AppConst.MoontoluaDir);
                 action();
-                return;
             }
             else
             {
-
+                FileSearchPath.Instance.ClearLuaBundle();
+                bundles = new Dictionary<string, AssetBundle>();
                 action();
             }
-            FileSearchPath.Instance.ClearLuaBundle();
-            bundles = new Dictionary<string, AssetBundle>();
         }
         /// <summary>
         /// 加载资源依赖相关
@@ -66,10 +65,22 @@ namespace LuaFramework
         /// </summary>
         public void InitInfo()
         {
+            // 图片等ab包的时候 资源和ab名字依赖
             string str = FileSearchPath.Instance.GetResPath("StreamingAssets");
-
             assetbundle = AssetBundle.LoadFromMemory(File.ReadAllBytes(str));
-            mainfest = assetbundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
+            manifest = assetbundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
+
+            string[] allInfo = manifest.GetAllAssetBundles();
+            for (int i = 0; i < allInfo.Length; ++i)
+            {
+                Debug.LogError("Info =   " + allInfo[i]);
+                string[] allDep = manifest.GetAllDependencies(allInfo[i]);
+                for (int j = 0; j < allDep.Length; j++)
+                {
+                    Debug.LogError("allDep =   " + allDep[j]);
+                }
+            }
+
         }
         /// <summary>
         /// lua层添加动更的目录
@@ -86,9 +97,11 @@ namespace LuaFramework
         {
             FileSearchPath.Instance.AddResSearchPath(path, true);
         }
-        public GameObject MyLoadAsset(string abname, string assetname, LuaFunction func)
+
+        public GameObject LoadPrefab(string abname, string assetname, LuaFunction func)
         {
             assetname = AppConst.ResPath + assetname;
+            abname = abname + AppConst.ExtName;
             GameObject go = LoadAsset<GameObject>(abname, assetname);
             if (func != null)
             {
@@ -97,12 +110,6 @@ namespace LuaFramework
             return go;
 
         }
-
-        public void LoadSceneAsync(string assetName, LuaFunction fun)
-        {
-            LoadAsyncAsset<GameObject>(assetName, fun);
-        }
-
         /// <summary>
         /// 载入素材
         /// </summary>
@@ -112,7 +119,9 @@ namespace LuaFramework
             if (AppConst.LuaBundleMode)
             {
                 abname = abname.ToLower();
+                
                 AssetBundle bundle = LoadAssetBundle(abname);
+
                 return bundle.LoadAsset<T>(assetname);
             }
             else
@@ -124,6 +133,11 @@ namespace LuaFramework
                 return (T)UnityEditor.AssetDatabase.LoadAssetAtPath<T>(path);
 #endif
             }
+        }
+
+        public void LoadSceneAsync(string assetName, LuaFunction fun)
+        {
+            LoadAsyncAsset<GameObject>(assetName, fun);
         }
         public void LoadAsyncAsset<T>(string assetName, LuaFunction fun) where T : UnityEngine.Object
         {
@@ -149,17 +163,17 @@ namespace LuaFramework
 
 
 
-        public void LoadPrefab(string abName, string[] assetNames, LuaFunction func)
-        {
-            abName = abName.ToLower();
-            List<UObject> result = new List<UObject>();
-            for (int i = 0; i < assetNames.Length; i++)
-            {
-                UObject go = LoadAsset<UObject>(abName, assetNames[i]);
-                if (go != null) result.Add(go);
-            }
-            if (func != null) func.Call((object)result.ToArray());
-        }
+        //public void LoadPrefab(string abName, string[] assetNames, LuaFunction func)
+        //{
+        //    abName = abName.ToLower();
+        //    List<UObject> result = new List<UObject>();
+        //    for (int i = 0; i < assetNames.Length; i++)
+        //    {
+        //        UObject go = LoadAsset<UObject>(abName, assetNames[i]);
+        //        if (go != null) result.Add(go);
+        //    }
+        //    if (func != null) func.Call((object)result.ToArray());
+        //}
 
         /// <summary>
         /// 载入AssetBundle
@@ -198,13 +212,13 @@ namespace LuaFramework
         /// <param name="name"></param>
         void LoadDependencies(string name)
         {
-            if (mainfest == null)
+            if (manifest == null)
             {
                 Debug.LogError("Please initialize AssetBundleManifest by calling AssetBundleManager.Initialize()");
                 return;
             }
             // Get dependecies from the AssetBundleManifest object..
-            string[] dependencies = mainfest.GetAllDependencies(name);
+            string[] dependencies = manifest.GetAllDependencies(name);
             if (dependencies.Length == 0) return;
 
             for (int i = 0; i < dependencies.Length; i++)
@@ -220,7 +234,7 @@ namespace LuaFramework
         // Remaps the asset bundle name to the best fitting asset bundle variant.
         string RemapVariantName(string assetBundleName)
         {
-            string[] bundlesWithVariant = mainfest.GetAllAssetBundlesWithVariant();
+            string[] bundlesWithVariant = manifest.GetAllAssetBundlesWithVariant();
 
             // If the asset bundle doesn't have variant, simply return.
             if (System.Array.IndexOf(bundlesWithVariant, assetBundleName) < 0)
@@ -255,8 +269,7 @@ namespace LuaFramework
         /// </summary>
         void OnDestroy()
         {
-            if (shared != null) shared.Unload(true);
-            if (mainfest != null) mainfest = null;
+            if (manifest != null) manifest = null;
             Debug.Log("~ResourceManager was destroy!");
         }
     }
