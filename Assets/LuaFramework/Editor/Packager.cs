@@ -85,7 +85,7 @@ public class Packager {
         LuaMaps.Clear();
         ResDic.Clear();
         if (AppConst.LuaBundleMode) {
-            //HandleLuaBundle();
+            HandleLuaBundle();
         } else {
             //HandleLuaFile();
         }
@@ -143,7 +143,7 @@ public class Packager {
             root.AppendChild(item);
         }
         doc.AppendChild(root);
-        doc.Save(outPath+"/AssetBundleXml.xml");
+        doc.Save(outPath+"/"+AppConst.MoonXml);
         UnityEngine.Debug.Log("xml生成完毕");
 
         //BuildPipeline

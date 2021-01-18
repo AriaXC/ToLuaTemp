@@ -280,7 +280,7 @@ namespace LuaInterface
                     }
                     else
                     {
-                        sb.Append("\n\tMoon no file '").Append(fileName).Append(".lua' in ").Append("lua.unity3d");
+                        sb.Append("\n\tMoon no file '").Append(fileName).Append(" in ").Append("lua.unity3d");
                     }
                 }
 

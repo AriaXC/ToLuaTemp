@@ -46,7 +46,7 @@ namespace LuaFramework {
         public static string MoonLua = LuaPath;
         public static string MoonRes = ResPath;
         public static string MoontoluaDir = Application.dataPath + "/LuaFramework/ToLua/Lua";
-
+        public static string MoonXml = "AssetBundleXml.xml";
 
         public static string FrameworkRoot {
             get {

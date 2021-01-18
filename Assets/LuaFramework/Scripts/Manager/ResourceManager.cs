@@ -7,18 +7,31 @@ using LuaFramework;
 using LuaInterface;
 using UObject = UnityEngine.Object;
 using System;
+using System.Xml;
 
 namespace LuaFramework
 {
+    public class AssetBundleMoonInfo
+    {
+        //ab包名字
+        public string bundleName;
+        //文件名字
+        public List<string> assertName;
+        //依赖列表
+        public List<string> deps;
+    }
     public class ResourceManager : Manager
     {
         private string[] m_Variants = { };
 
-        //记录总的ab名字和依赖的
+        //记录总的ab名字和依赖的  todo
         private AssetBundleManifest manifest;
         private AssetBundle assetbundle;
+
         //已经加载过的ab包
         private Dictionary<string, AssetBundle> bundles;
+        //xml文件依赖
+        private Dictionary<string, AssetBundleMoonInfo> bundleInfo = new Dictionary<string, AssetBundleMoonInfo>();
 
         void Awake()
         {
@@ -65,22 +78,57 @@ namespace LuaFramework
         /// </summary>
         public void InitInfo()
         {
-            // 图片等ab包的时候 资源和ab名字依赖
-            string str = FileSearchPath.Instance.GetResPath("StreamingAssets");
-            assetbundle = AssetBundle.LoadFromMemory(File.ReadAllBytes(str));
-            manifest = assetbundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
-
-            string[] allInfo = manifest.GetAllAssetBundles();
-            for (int i = 0; i < allInfo.Length; ++i)
+            //加载映射的xml文件
+            string xmlPath = FileSearchPath.Instance.GetResPath(AppConst.MoonXml);
+            Debug.Log("Xml=== "+xmlPath);
+            if (xmlPath == null)
             {
-                Debug.LogError("Info =   " + allInfo[i]);
-                string[] allDep = manifest.GetAllDependencies(allInfo[i]);
-                for (int j = 0; j < allDep.Length; j++)
+                Debug.LogError("xml没找到");
+                return;
+            }
+            XmlDocument doc = new XmlDocument();
+            doc.Load(xmlPath);
+            XmlNodeList nodeList = doc.SelectSingleNode("bundles").ChildNodes;
+            AssetBundleMoonInfo info = new AssetBundleMoonInfo();
+            //遍历每一个节点，拿节点的属性以及节点的内容
+            foreach (XmlElement item in nodeList)
+            {
+                info = new AssetBundleMoonInfo();
+                info.assertName = new List<string>();
+                info.deps = new List<string>();
+                foreach (XmlElement child in item.ChildNodes)
                 {
-                    Debug.LogError("allDep =   " + allDep[j]);
+                    if (child.Name == "bundleName")
+                    {
+                        info.bundleName = child.InnerText;
+                    }
+                    else if (child.Name == "AssertName")
+                    {
+                        info.assertName.Add(child.InnerText);
+                    }
+                    else if (child.Name == "deps")
+                    {
+                        info.deps.Add(child.InnerText);
+                    }
                 }
+                bundleInfo.Add(info.bundleName, info);
             }
 
+            // 图片等ab包的时候 资源和ab名字依赖
+            //string str = FileSearchPath.Instance.GetResPath("StreamingAssets");
+            //assetbundle = AssetBundle.LoadFromMemory(File.ReadAllBytes(str));
+            //manifest = assetbundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
+
+            //string[] allInfo = manifest.GetAllAssetBundles();
+            //for (int i = 0; i < allInfo.Length; ++i)
+            //{
+            //    Debug.LogError("Info =   " + allInfo[i]);
+            //    string[] allDep = manifest.GetAllDependencies(allInfo[i]);
+            //    for (int j = 0; j < allDep.Length; j++)
+            //    {
+            //        Debug.LogError("allDep =   " + allDep[j]);
+            //    }
+            //}
         }
         /// <summary>
         /// lua层添加动更的目录
@@ -111,7 +159,7 @@ namespace LuaFramework
 
         }
         /// <summary>
-        /// 载入素材
+        /// 载入素材  同步
         /// </summary>
         public T LoadAsset<T>(string abname, string assetname) where T : UnityEngine.Object
         {
@@ -121,7 +169,6 @@ namespace LuaFramework
                 abname = abname.ToLower();
                 
                 AssetBundle bundle = LoadAssetBundle(abname);
-
                 return bundle.LoadAsset<T>(assetname);
             }
             else
@@ -139,12 +186,17 @@ namespace LuaFramework
         {
             LoadAsyncAsset<GameObject>(assetName, fun);
         }
+        /// <summary>
+        /// 载入ab  异步
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="assetName"></param>
+        /// <param name="fun"></param>
         public void LoadAsyncAsset<T>(string assetName, LuaFunction fun) where T : UnityEngine.Object
         {
-
             if (AppConst.LuaBundleMode)
             {
-                //还没写
+              
 
             }
             else
@@ -159,21 +211,6 @@ namespace LuaFramework
             }
 
         }
-
-
-
-
-        //public void LoadPrefab(string abName, string[] assetNames, LuaFunction func)
-        //{
-        //    abName = abName.ToLower();
-        //    List<UObject> result = new List<UObject>();
-        //    for (int i = 0; i < assetNames.Length; i++)
-        //    {
-        //        UObject go = LoadAsset<UObject>(abName, assetNames[i]);
-        //        if (go != null) result.Add(go);
-        //    }
-        //    if (func != null) func.Call((object)result.ToArray());
-        //}
 
         /// <summary>
         /// 载入AssetBundle
@@ -192,12 +229,14 @@ namespace LuaFramework
                 byte[] stream = null;
                 //这里需要用我自己的路径搜
                 string uri = Util.DataPath + abname;
-                Debug.LogWarning("LoadFile::>> " + uri);
-                LoadDependencies(abname);
-
+                Debug.Log("LoadFile::>> " + uri);
+             
                 stream = File.ReadAllBytes(uri);
                 bundle = AssetBundle.LoadFromMemory(stream); //关联数据的素材绑定
                 bundles.Add(abname, bundle);
+                //载入这个ab包的依赖
+
+
             }
             else
             {
@@ -205,65 +244,10 @@ namespace LuaFramework
             }
             return bundle;
         }
-
-        /// <summary>
-        /// 载入依赖
-        /// </summary>
-        /// <param name="name"></param>
-        void LoadDependencies(string name)
+        public void AddBundleDep(string abName)
         {
-            if (manifest == null)
-            {
-                Debug.LogError("Please initialize AssetBundleManifest by calling AssetBundleManager.Initialize()");
-                return;
-            }
-            // Get dependecies from the AssetBundleManifest object..
-            string[] dependencies = manifest.GetAllDependencies(name);
-            if (dependencies.Length == 0) return;
 
-            for (int i = 0; i < dependencies.Length; i++)
-                dependencies[i] = RemapVariantName(dependencies[i]);
-
-            // Record and load all dependencies.
-            for (int i = 0; i < dependencies.Length; i++)
-            {
-                LoadAssetBundle(dependencies[i]);
-            }
         }
-
-        // Remaps the asset bundle name to the best fitting asset bundle variant.
-        string RemapVariantName(string assetBundleName)
-        {
-            string[] bundlesWithVariant = manifest.GetAllAssetBundlesWithVariant();
-
-            // If the asset bundle doesn't have variant, simply return.
-            if (System.Array.IndexOf(bundlesWithVariant, assetBundleName) < 0)
-                return assetBundleName;
-
-            string[] split = assetBundleName.Split('.');
-
-            int bestFit = int.MaxValue;
-            int bestFitIndex = -1;
-            // Loop all the assetBundles with variant to find the best fit variant assetBundle.
-            for (int i = 0; i < bundlesWithVariant.Length; i++)
-            {
-                string[] curSplit = bundlesWithVariant[i].Split('.');
-                if (curSplit[0] != split[0])
-                    continue;
-
-                int found = System.Array.IndexOf(m_Variants, curSplit[1]);
-                if (found != -1 && found < bestFit)
-                {
-                    bestFit = found;
-                    bestFitIndex = i;
-                }
-            }
-            if (bestFitIndex != -1)
-                return bundlesWithVariant[bestFitIndex];
-            else
-                return assetBundleName;
-        }
-
         /// <summary>
         /// 销毁资源
         /// </summary>
