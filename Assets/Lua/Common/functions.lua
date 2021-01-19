@@ -90,11 +90,11 @@ function Instantiate(prefab,parent,callback)
 
 	-- 如果传入的是string  就去加载这个prefab
 	if type(prefab) == "string" then
-		local  prefabPath = prefab
+		-- local  prefabPath = prefab
 		-- local  abName = string.replace(prefab,"/","@")
 		-- --可以直接把.prefab 给取消掉
 		-- local  abName = string.sub(abName,1,string.len(prefab)-7)
-		prefab = resMgr:LoadPrefab(prefab,prefab,callback)
+		prefab = resMgr:LoadPrefab(prefab,callback)
 		if prefab == nil then
 			logError("你的prefab为空_1")
 		end

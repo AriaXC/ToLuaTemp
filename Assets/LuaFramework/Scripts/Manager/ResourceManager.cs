@@ -32,6 +32,8 @@ namespace LuaFramework
         private Dictionary<string, AssetBundle> bundles;
         //xml文件依赖
         private Dictionary<string, AssetBundleMoonInfo> bundleInfo = new Dictionary<string, AssetBundleMoonInfo>();
+        //资源依赖 assertName,bundleName
+        private Dictionary<string, string> assertInfo = new Dictionary<string, string>();
 
         void Awake()
         {
@@ -105,6 +107,14 @@ namespace LuaFramework
                     else if (child.Name == "AssertName")
                     {
                         info.assertName.Add(child.InnerText);
+                        if (info.bundleName != null)
+                        {
+                            assertInfo.Add(child.InnerText, info.bundleName);
+                        }
+                        else
+                        {
+                            Debug.LogError("xml配置出错了");
+                        }
                     }
                     else if (child.Name == "deps")
                     {
@@ -146,10 +156,10 @@ namespace LuaFramework
             FileSearchPath.Instance.AddResSearchPath(path, true);
         }
 
-        public GameObject LoadPrefab(string abname, string assetname, LuaFunction func)
+        public GameObject LoadPrefab(string assetname, LuaFunction func)
         {
             assetname = AppConst.ResPath + assetname;
-            abname = abname + AppConst.ExtName;
+            string abname = GetAbName(assetname);
             GameObject go = LoadAsset<GameObject>(abname, assetname);
             if (func != null)
             {
@@ -167,7 +177,7 @@ namespace LuaFramework
             if (AppConst.LuaBundleMode)
             {
                 abname = abname.ToLower();
-                
+                // 加载ab名字 需要改
                 AssetBundle bundle = LoadAssetBundle(abname);
                 return bundle.LoadAsset<T>(assetname);
             }
@@ -196,8 +206,9 @@ namespace LuaFramework
         {
             if (AppConst.LuaBundleMode)
             {
-              
 
+                //AssetBundle.LoadFromFileAsync();
+                //LoadAsyncAsset<>
             }
             else
             {
@@ -244,9 +255,23 @@ namespace LuaFramework
             }
             return bundle;
         }
-        public void AddBundleDep(string abName)
+        /// <summary>
+        /// 获取ab名字
+        /// </summary>
+        /// <param name="assertName"></param>
+        public string GetAbName(string assertName)
         {
-
+            if (assertInfo.Count > 0 && assertInfo!=null)
+            {
+                string value ;
+                if (assertInfo.TryGetValue(assertName, out value))
+                {
+                    Debug.LogError("从ab中查找到的ab名字 === " + value);
+                    return value;
+                }
+            }
+            Debug.LogError("ab包中没有这个资源");
+            return null;
         }
         /// <summary>
         /// 销毁资源

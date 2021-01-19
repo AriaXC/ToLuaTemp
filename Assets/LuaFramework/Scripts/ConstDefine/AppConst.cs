@@ -45,6 +45,7 @@ namespace LuaFramework {
         //这里是我自己的搜索路径  现在的搜索路径全部走的这里
         public static string MoonLua = LuaPath;
         public static string MoonRes = ResPath;
+        public static string MoonScenePath = "Assets/Res/Scene";
         public static string MoontoluaDir = Application.dataPath + "/LuaFramework/ToLua/Lua";
         public static string MoonXml = "AssetBundleXml.xml";
 

@@ -102,12 +102,17 @@ public class Packager {
                 SetAssetBundleName(resList[i]);
             }
         }
+        Debug.Log("开始打包了");
 
-        BuildPipeline.BuildAssetBundles(outPath, LuaMaps.ToArray(), BuildAssetBundleOptions.None, target);
-        BuildPipeline.BuildAssetBundles(outPath, BuildAssetBundleOptions.None, target);
-        BuildFileIndex();
+        //BuildPipeline.BuildAssetBundles(outPath, LuaMaps.ToArray(), BuildAssetBundleOptions.None, target);
+        //BuildPipeline.BuildAssetBundles(outPath, BuildAssetBundleOptions.None, target);
+        //BuildFileIndex();
 
-        UnityEngine.Debug.Log("打出ab资源了,开始生成xml");
+        Debug.Log("打出ab资源了，开始去打包场景");
+
+        BuildScene(outPath, target);
+
+        Debug.Log("场景打包完毕，开始去生成xml");
 
         //分析依赖
         foreach (var info in ResDic)
@@ -149,7 +154,36 @@ public class Packager {
         //BuildPipeline
         AssetDatabase.Refresh();
     }
+    static void BuildScene(string outPath, BuildTarget target)
+    {
+        List<string> resList = GetAllResDirs(AppConst.MoonScenePath);
+        List<string> buildList = new List<string>();
+        if (resList.Count > 0 && resList != null)
+        {
+            for (int i = 0; i < resList.Count; i++)
+            {
+                Debug.Log("场景的文件目录===" + resList[i]);
+                string[] files = Directory.GetFiles(resList[i]);
+                if (files == null || files.Length == 0)
+                {
+                    continue;
+                }
+                foreach (string str in files)
+                {
+                    if (str.EndsWith(".unity"))
+                    {
+                        buildList.Add(str);
+                    }
+                }
+            }
+        }
+        foreach (string str in buildList)
+        {
+            Debug.Log("要进打包的场景名字= " + str);
+        }
+        //BuildPipeline.BuildPlayer(files, outPath, target, BuildOptions.None);
 
+    }
     // 添加到打包路径中
     static void AddBuildMap(string bundleName, string pattern, string path) {
         string[] files_lua = Directory.GetFiles(path, pattern);
@@ -193,7 +227,7 @@ public class Packager {
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
             filePath = filePath.Replace ("\\", "/");
 #endif
-            Debug.Log("EndsWith ==  " + Path.GetExtension(oneFile));
+            //Debug.Log("EndsWith ==  " + Path.GetExtension(oneFile));
             if (oneFile.EndsWith(".meta")
                 || oneFile.EndsWith(".DS_Store")
                 || oneFile.EndsWith(".unity")
