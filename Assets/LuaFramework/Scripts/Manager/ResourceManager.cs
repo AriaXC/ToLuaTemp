@@ -104,7 +104,7 @@ namespace LuaFramework
                     {
                         info.bundleName = child.InnerText;
                     }
-                    else if (child.Name == "AssertName")
+                    else if (child.Name == "assertName")
                     {
                         info.assertName.Add(child.InnerText);
                         if (info.bundleName != null)

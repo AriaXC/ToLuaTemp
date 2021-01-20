@@ -104,13 +104,13 @@ public class Packager {
         }
         Debug.Log("开始打包了");
 
-        //BuildPipeline.BuildAssetBundles(outPath, LuaMaps.ToArray(), BuildAssetBundleOptions.None, target);
-        //BuildPipeline.BuildAssetBundles(outPath, BuildAssetBundleOptions.None, target);
-        //BuildFileIndex();
-
+        BuildPipeline.BuildAssetBundles(outPath, LuaMaps.ToArray(), BuildAssetBundleOptions.None, target);
+        BuildPipeline.BuildAssetBundles(outPath, BuildAssetBundleOptions.None, target);
+      
         Debug.Log("打出ab资源了，开始去打包场景");
 
         BuildScene(outPath, target);
+        BuildFileIndex();
 
         Debug.Log("场景打包完毕，开始去生成xml");
 
@@ -135,7 +135,7 @@ public class Packager {
             item.AppendChild(bundleName);
             foreach (string s in info.Value.assertName)
             {
-                XmlElement AssertName = doc.CreateElement("AssertName");
+                XmlElement AssertName = doc.CreateElement("assertName");
                 AssertName.InnerText =s;
                 item.AppendChild(AssertName);
             }
@@ -164,6 +164,7 @@ public class Packager {
             {
                 Debug.Log("场景的文件目录===" + resList[i]);
                 string[] files = Directory.GetFiles(resList[i]);
+               
                 if (files == null || files.Length == 0)
                 {
                     continue;
@@ -172,18 +173,31 @@ public class Packager {
                 {
                     if (str.EndsWith(".unity"))
                     {
+                        Debug.Log("要进打包的场景名字= " + str);
                         buildList.Add(str);
+                        string temp = "";
+                        temp = str.Replace('/','@').Replace("Assets@Res@", "").Replace(".unity", ".unity3d").ToLower();
+                        Debug.Log("要进打包的场景的打包名字= " + temp);
+
+                        string scenePath = Path.Combine(outPath, temp);
+                        //一个场景一个包   
+                        BuildPipeline.BuildPlayer(buildList.ToArray(), scenePath, target, BuildOptions.BuildAdditionalStreamedScenes);
+                        AssetBundleMoonInfo info = new AssetBundleMoonInfo();
+                        info.assertName = new List<string>();
+                        info.deps = new List<string>();
+
+                        info.bundleName = temp;
+                        info.assertName.Add(temp);
+
+                        ResDic.Add(info.bundleName, info);
+
+                        buildList.Clear();
                     }
                 }
             }
         }
-        foreach (string str in buildList)
-        {
-            Debug.Log("要进打包的场景名字= " + str);
-        }
-        //BuildPipeline.BuildPlayer(files, outPath, target, BuildOptions.None);
-
     }
+
     // 添加到打包路径中
     static void AddBuildMap(string bundleName, string pattern, string path) {
         string[] files_lua = Directory.GetFiles(path, pattern);
@@ -333,7 +347,7 @@ public class Packager {
                     info.bundleName = bundleName;
                     ResDic.Add(info.bundleName, info);
                 }
-                Debug.Log("info == " + info.assertName + "   bundleName==" + info.bundleName);   
+                Debug.Log("info == " + info.assertName+ "   bundleName==" + info.bundleName);   
             }
             else
             {
@@ -503,7 +517,7 @@ public class Packager {
             if (file.EndsWith(".meta") || file.Contains(".DS_Store")) continue;
 
             string md5 = Util.md5file(file);
-            string value = file.Replace(resPath, string.Empty);
+            string value = file.Replace(resPath, string.Empty).Replace('/','.'); ;
             sw.WriteLine(value + "|" + md5);
         }
         sw.Close(); fs.Close();

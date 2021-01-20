@@ -47,7 +47,7 @@ public class ImportSetting : AssetPostprocessor
 	}
     static void SetAssetBundleName(string fullPath)
     {
-        Debug.Log("SetAssetBundleName: " + fullPath);
+        Debug.Log("ImportSetAssetBundleName: " + fullPath);
         string buildScenePath = "Assets/Res/Scene";
 
         // string[] files = Directory.GetFiles (fullPath);
@@ -62,7 +62,7 @@ public class ImportSetting : AssetPostprocessor
         {
             dirBundleName = "res";
         }
-        Debug.Log("dirBundleName: " + dirBundleName);
+        Debug.Log("ImportDirBundleName: " + dirBundleName);
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
 	        dirBundleName = dirBundleName.Replace ("\\", "/");
 	        buildScenePath = buildScenePath.Replace ("\\", "/");
@@ -186,7 +186,7 @@ public class ImportSetting : AssetPostprocessor
             }
             bundleName = bundleName.ToLower();
             importer.assetBundleName = bundleName;
-            Debug.Log("assetBundleName :" + bundleName);
+            Debug.Log("ImportAssetBundleName :" + bundleName);
         }
         else
         {

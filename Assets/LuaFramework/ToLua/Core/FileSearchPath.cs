@@ -172,7 +172,7 @@ namespace LuaInterface
             return null;
         }
         /// <summary>
-        /// 获取res的文件地址
+        /// 获取res的文件地址  没有做文件的子文件路径也搜索
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>

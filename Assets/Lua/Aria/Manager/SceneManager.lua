@@ -22,7 +22,7 @@ end
 function  SceneManager:ShowScene(scene)
 
 	local  sceneClass = string.format("Module.%s.%sScene",scene,scene)
-	local  sceneUnity = string.format("Scene.%s.%s.unity",scene,scene)
+	local  sceneUnity = string.format("Scene@%s@%s@unity",scene,scene)
 	--别的管理器引用 清空
 
 	self.isChangeScene =true

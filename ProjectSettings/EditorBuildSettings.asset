@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/LuaFramework/Scenes/main.unity
     guid: 75eee5e7009aba84192cfcdff8590f2a
   - enabled: 1
-    path: Assets/Res/Scene/StartScene/Aria.unity
+    path: Assets/Aria.unity
     guid: 5e8640e800f8a4102a4b86744756c8a3
   - enabled: 1
     path: Assets/Res/Scene/Login/Login.unity
