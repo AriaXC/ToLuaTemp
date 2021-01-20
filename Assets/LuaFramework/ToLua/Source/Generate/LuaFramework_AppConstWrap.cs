@@ -30,6 +30,7 @@ public class LuaFramework_AppConstWrap
 		L.RegVar("SocketAddress", get_SocketAddress, set_SocketAddress);
 		L.RegVar("MoonLua", get_MoonLua, set_MoonLua);
 		L.RegVar("MoonRes", get_MoonRes, set_MoonRes);
+		L.RegVar("MoonScenePath", get_MoonScenePath, set_MoonScenePath);
 		L.RegVar("MoontoluaDir", get_MoontoluaDir, set_MoontoluaDir);
 		L.RegVar("MoonXml", get_MoonXml, set_MoonXml);
 		L.RegVar("FrameworkRoot", get_FrameworkRoot, null);
@@ -258,6 +259,20 @@ public class LuaFramework_AppConstWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_MoonScenePath(IntPtr L)
+	{
+		try
+		{
+			LuaDLL.lua_pushstring(L, LuaFramework.AppConst.MoonScenePath);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_MoontoluaDir(IntPtr L)
 	{
 		try
@@ -380,6 +395,21 @@ public class LuaFramework_AppConstWrap
 		{
 			string arg0 = ToLua.CheckString(L, 2);
 			LuaFramework.AppConst.MoonRes = arg0;
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_MoonScenePath(IntPtr L)
+	{
+		try
+		{
+			string arg0 = ToLua.CheckString(L, 2);
+			LuaFramework.AppConst.MoonScenePath = arg0;
 			return 0;
 		}
 		catch (Exception e)

@@ -13,8 +13,10 @@ end
 function  UpdateSearchPath( ... )
 
 	--添加动更目录
-	resMgr:AddUpdateLuaPath("添加lua的动更路径，暂时还没有用")
-	resMgr:AddUpdateResPath("添加res的动更路径，暂时也没有用")
+
+	--目前在cs层添加了
+	-- resMgr:AddUpdateLuaPath("添加lua的动更路径，暂时还没有用")
+	-- resMgr:AddUpdateResPath("")
 end
 
 function  AriaMain()

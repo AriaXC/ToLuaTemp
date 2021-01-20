@@ -16,7 +16,12 @@ namespace LuaFramework
         {
 
         }
-
+        public void LoadScene(string sceneName, LuaFunction fun)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+            if (fun != null)
+                fun.Call();
+        }
         /// <summary>
         /// 异步加载场景
         /// </summary>
@@ -29,6 +34,8 @@ namespace LuaFramework
         IEnumerator onLoadSceneAnsyn(string sceneName, LuaFunction fun)
         {
             AsyncOperation op = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName);
+
+            //场景切换进度条 和资源卸载
             yield return op;
 
             if (fun != null)

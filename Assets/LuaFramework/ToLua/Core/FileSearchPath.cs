@@ -98,7 +98,6 @@ namespace LuaInterface
             for (int i = 0; i < luaSearchPath.Count; i++)
             {
                 string path = Path.Combine(luaSearchPath[i], fileName);
- 
                 if (IsFileExist(path))
                 {
                     luaCaChe.Add(fileName, path);
@@ -129,19 +128,18 @@ namespace LuaInterface
             sb = sb.Append(AppConst.ExtName);
             sb = sb.ToLower();
 
-            for (int i = 0; i < luaSearchPath.Count; i++)
+            string path = GetResPath(sb.ToString());
+            if (!File.Exists(path))
             {
-                string path = Path.Combine(luaSearchPath[i], sb.ToString());
-                if (!File.Exists(path)) break;
-
-                Debug.Log("lua ab包加载完成");
-                byte[] stream = null;
-
-                stream = File.ReadAllBytes(path);
-                // LoadFromFile 的话是加载一个路径
-                luaBundle = AssetBundle.LoadFromMemory(stream);
+                Debug.LogError("找不到luaAb");
                 return;
             }
+            Debug.Log("lua ab包加载完成");
+            byte[] stream = null;
+
+            stream = File.ReadAllBytes(path);
+            // LoadFromFile 的话是加载一个路径
+            luaBundle = AssetBundle.LoadFromMemory(stream);
         }
        /// <summary>
        /// 从ab中加载lua文件  lua的ab包只有一个
@@ -186,6 +184,7 @@ namespace LuaInterface
             for (int i = 0; i < resSearchPath.Count ; i++)
             {
                 string path = Path.Combine(resSearchPath[i], fileName);
+                //Debug.LogError(fileName+"    ????   "+path);
                 if (IsFileExist(path))
                 {
                     resCaChe.Add(fileName, path);

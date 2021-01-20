@@ -15,7 +15,7 @@ public class AssetBundleMoonInfo
     //ab包名字
     public string bundleName;
     //文件名字
-    public List<string> assertName ;
+    public List<string> assetName ;
     //依赖列表
     public List<string> deps;
 }
@@ -133,11 +133,11 @@ public class Packager {
             XmlElement bundleName = doc.CreateElement("bundleName");
             bundleName.InnerText = info.Value.bundleName;
             item.AppendChild(bundleName);
-            foreach (string s in info.Value.assertName)
+            foreach (string s in info.Value.assetName)
             {
-                XmlElement AssertName = doc.CreateElement("assertName");
-                AssertName.InnerText =s;
-                item.AppendChild(AssertName);
+                XmlElement AssetName = doc.CreateElement("assetName");
+                AssetName.InnerText =s;
+                item.AppendChild(AssetName);
             }
             foreach (string s in info.Value.deps)
             {
@@ -175,19 +175,19 @@ public class Packager {
                     {
                         Debug.Log("要进打包的场景名字= " + str);
                         buildList.Add(str);
-                        string temp = "";
-                        temp = str.Replace('/','@').Replace("Assets@Res@", "").Replace(".unity", ".unity3d").ToLower();
-                        Debug.Log("要进打包的场景的打包名字= " + temp);
+                        string assetName = str.ToLower();
+                        string bundleName = str.Replace('/', '@').Replace("Assets@Res@", "").Replace(".unity", ".unity3d").ToLower();
+                        string scenePath = Path.Combine(outPath, bundleName).ToLower();
+                        Debug.Log("要进打包的场景的打包名字= " + scenePath);
 
-                        string scenePath = Path.Combine(outPath, temp);
                         //一个场景一个包   
                         BuildPipeline.BuildPlayer(buildList.ToArray(), scenePath, target, BuildOptions.BuildAdditionalStreamedScenes);
                         AssetBundleMoonInfo info = new AssetBundleMoonInfo();
-                        info.assertName = new List<string>();
+                        info.assetName = new List<string>();
                         info.deps = new List<string>();
 
-                        info.bundleName = temp;
-                        info.assertName.Add(temp);
+                        info.bundleName = bundleName;
+                        info.assetName.Add(assetName);
 
                         ResDic.Add(info.bundleName, info);
 
@@ -260,7 +260,7 @@ public class Packager {
             AssetImporter importer = AssetImporter.GetAtPath(oneFile);
             // 构建AssetBundle信息 用于xml
             AssetBundleMoonInfo info = new AssetBundleMoonInfo();
-            info.assertName = new List<string>();
+            info.assetName = new List<string>();
             info.deps = new List<string>();
 
             if (importer != null)
@@ -339,15 +339,15 @@ public class Packager {
                 // 存储bundleInfo
                 if (ResDic.ContainsKey(bundleName))
                 {
-                    ResDic[bundleName].assertName.Add(oneFile);
+                    ResDic[bundleName].assetName.Add(oneFile.ToLower());
                 }
                 else
                 {
-                    info.assertName.Add(oneFile);
-                    info.bundleName = bundleName;
+                    info.assetName.Add(oneFile.ToLower());
+                    info.bundleName = bundleName.ToLower();
                     ResDic.Add(info.bundleName, info);
                 }
-                Debug.Log("info == " + info.assertName+ "   bundleName==" + info.bundleName);   
+                Debug.Log("info == " + info.assetName + "   bundleName==" + info.bundleName);   
             }
             else
             {

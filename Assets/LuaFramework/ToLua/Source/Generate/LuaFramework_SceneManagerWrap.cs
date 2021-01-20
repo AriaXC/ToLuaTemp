@@ -8,6 +8,7 @@ public class LuaFramework_SceneManagerWrap
 	{
 		L.BeginClass(typeof(LuaFramework.SceneManager), typeof(Manager));
 		L.RegFunction("ShowScene", ShowScene);
+		L.RegFunction("LoadScene", LoadScene);
 		L.RegFunction("LoadSceneAsync", LoadSceneAsync);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
@@ -22,6 +23,24 @@ public class LuaFramework_SceneManagerWrap
 			ToLua.CheckArgsCount(L, 1);
 			LuaFramework.SceneManager obj = (LuaFramework.SceneManager)ToLua.CheckObject<LuaFramework.SceneManager>(L, 1);
 			obj.ShowScene();
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int LoadScene(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 3);
+			LuaFramework.SceneManager obj = (LuaFramework.SceneManager)ToLua.CheckObject<LuaFramework.SceneManager>(L, 1);
+			string arg0 = ToLua.CheckString(L, 2);
+			LuaFunction arg1 = ToLua.CheckLuaFunction(L, 3);
+			obj.LoadScene(arg0, arg1);
 			return 0;
 		}
 		catch (Exception e)

@@ -22,7 +22,7 @@ end
 function  SceneManager:ShowScene(scene)
 
 	local  sceneClass = string.format("Module.%s.%sScene",scene,scene)
-	local  sceneUnity = string.format("Scene@%s@%s@unity",scene,scene)
+	local  sceneUnity = string.format("Scene/%s/%s.unity",scene,scene)
 	--别的管理器引用 清空
 
 	self.isChangeScene =true
@@ -33,10 +33,12 @@ function  SceneManager:ShowScene(scene)
 		--上一个场景的 ab资源 依赖等 卸载
 		log("resMgr:LoadSceneAsync:Start  "..scene)
 		resMgr:LoadSceneAsync(sceneUnity,function ()
+
 			log("sceneMgr:LoadSceneAsync:Start  "..scene)
 			sceneMgr:LoadSceneAsync(scene,function()
-				self:AddCanvas()
+
 				log("sceneMgr:LoadSceneAsync:End  "..scene)
+					self:AddCanvas()
 				require(sceneClass).New()
 			end)
 		end)

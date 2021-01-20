@@ -16,7 +16,7 @@ namespace LuaFramework
         //ab包名字
         public string bundleName;
         //文件名字
-        public List<string> assertName;
+        public List<string> assetName;
         //依赖列表
         public List<string> deps;
     }
@@ -32,8 +32,8 @@ namespace LuaFramework
         private Dictionary<string, AssetBundle> bundles;
         //xml文件依赖
         private Dictionary<string, AssetBundleMoonInfo> bundleInfo = new Dictionary<string, AssetBundleMoonInfo>();
-        //资源依赖 assertName,bundleName
-        private Dictionary<string, string> assertInfo = new Dictionary<string, string>();
+        //资源依赖 assetName,bundleName
+        private Dictionary<string, string> assetInfo = new Dictionary<string, string>();
 
         void Awake()
         {
@@ -57,6 +57,10 @@ namespace LuaFramework
             }
             else
             {
+                //添加动更目录
+                AddUpdateLuaPath(Path.Combine(Application.dataPath, AppConst.AiraUpdate));
+                AddUpdateResPath(Path.Combine(Application.dataPath, AppConst.AiraUpdate));
+
                 FileSearchPath.Instance.ClearLuaBundle();
                 bundles = new Dictionary<string, AssetBundle>();
                 action();
@@ -96,7 +100,7 @@ namespace LuaFramework
             foreach (XmlElement item in nodeList)
             {
                 info = new AssetBundleMoonInfo();
-                info.assertName = new List<string>();
+                info.assetName = new List<string>();
                 info.deps = new List<string>();
                 foreach (XmlElement child in item.ChildNodes)
                 {
@@ -104,12 +108,12 @@ namespace LuaFramework
                     {
                         info.bundleName = child.InnerText;
                     }
-                    else if (child.Name == "assertName")
+                    else if (child.Name == "assetName")
                     {
-                        info.assertName.Add(child.InnerText);
+                        info.assetName.Add(child.InnerText);
                         if (info.bundleName != null)
                         {
-                            assertInfo.Add(child.InnerText, info.bundleName);
+                            assetInfo.Add(child.InnerText, info.bundleName);
                         }
                         else
                         {
@@ -155,12 +159,17 @@ namespace LuaFramework
         {
             FileSearchPath.Instance.AddResSearchPath(path, true);
         }
-
-        public GameObject LoadPrefab(string assetname, LuaFunction func)
+        /// <summary>
+        /// 加载  lua层调用这个
+        /// </summary>
+        /// <param name="assetname"></param>
+        /// <param name="func"></param>
+        /// <returns></returns>
+        public GameObject LoadPrefab(string assetName, LuaFunction func)
         {
-            assetname = AppConst.ResPath + assetname;
-            string abname = GetAbName(assetname);
-            GameObject go = LoadAsset<GameObject>(abname, assetname);
+            assetName = AppConst.ResPath + assetName;
+            string abName = GetAbName(assetName);
+            GameObject go = LoadAsset<GameObject>(abName, assetName);
             if (func != null)
             {
                 func.Call(go);
@@ -169,46 +178,48 @@ namespace LuaFramework
 
         }
         /// <summary>
-        /// 载入素材  同步
+        /// 载入素材  同步 cs端调用
         /// </summary>
-        public T LoadAsset<T>(string abname, string assetname) where T : UnityEngine.Object
+        public T LoadAsset<T>(string abName, string assetName) where T : UnityEngine.Object
         {
             //editor命名空间无法打包
             if (AppConst.LuaBundleMode)
             {
-                abname = abname.ToLower();
-                // 加载ab名字 需要改
-                AssetBundle bundle = LoadAssetBundle(abname);
-                return bundle.LoadAsset<T>(assetname);
+                AssetBundle bundle = LoadAssetBundle(abName);
+                return bundle.LoadAsset<T>(assetName);
             }
             else
             {
 #if UNITY_EDITOR
                 //直接加载  打包不能使用这个AssetDatabase
-                string path = assetname;
+                string path = assetName;
                 //Debug.Log(path);
                 return (T)UnityEditor.AssetDatabase.LoadAssetAtPath<T>(path);
 #endif
             }
         }
-
+        /// <summary>
+        /// 异步加载场景 
+        /// </summary>
+        /// <param name="assetName"></param>
+        /// <param name="fun"></param>
         public void LoadSceneAsync(string assetName, LuaFunction fun)
         {
-            LoadAsyncAsset<GameObject>(assetName, fun);
+            assetName = AppConst.ResPath + assetName;
+            string abName = GetAbName(assetName);
+            LoadAsyncAsset<GameObject>(abName, assetName, fun);
         }
         /// <summary>
-        /// 载入ab  异步
+        /// 载入ab  异步  cs调用
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="assetName"></param>
         /// <param name="fun"></param>
-        public void LoadAsyncAsset<T>(string assetName, LuaFunction fun) where T : UnityEngine.Object
+        public void LoadAsyncAsset<T>(string abName, string assetName, LuaFunction fun) where T : UnityEngine.Object
         {
             if (AppConst.LuaBundleMode)
             {
-
-                //AssetBundle.LoadFromFileAsync();
-                //LoadAsyncAsset<>
+                LoadAssetBundleAsync(abName, fun);
             }
             else
             {
@@ -222,55 +233,131 @@ namespace LuaFramework
             }
 
         }
+        /// <summary>
+        /// 异步加载ab
+        /// </summary>
+        /// <param name="abName"></param>
+        /// <param name="fun"></param>
+        public void LoadAssetBundleAsync(string abName,LuaFunction fun)
+        {
+            if (!bundles.ContainsKey(abName))
+            {
+                byte[] stream = null;
 
+                string path = FileSearchPath.Instance.GetResPath(abName);
+                Debug.Log("找到的ab路径是 === " + path);
+
+                string uri = FileSearchPath.Instance.GetResPath(abName);
+                Debug.Log("LoadFile::>> " + uri);
+
+                stream = File.ReadAllBytes(uri);
+
+                StartCoroutine(IELoadAsync(abName, stream, fun));
+            }
+            else
+            {
+                if (fun != null)
+                {
+                    fun.Call();
+                }
+            }
+        }
+        //加载到一半 又来了一个请求加载这个ab  需要两个队列去记录 一个是加载过的 一个是正在加载的
+        // 加载打一半  释放
+        IEnumerator IELoadAsync(string abName,byte[] stream,LuaFunction func)
+        {
+            AssetBundleCreateRequest op =  AssetBundle.LoadFromMemoryAsync(stream);
+            yield return op;
+            AssetBundle bundle = op.assetBundle;
+            bundles.Add(abName, bundle);
+
+            LoadDeps(abName,true);
+
+            if (func != null)
+            {
+                func.Call();
+            }
+        }
         /// <summary>
         /// 载入AssetBundle
         /// </summary>
-        /// <param name="abname"></param>
+        /// <param name="abName"></param>
         /// <returns></returns>
-        public AssetBundle LoadAssetBundle(string abname)
+        public AssetBundle LoadAssetBundle(string abName)
         {
-            if (!abname.EndsWith(AppConst.ExtName))
+            if (!abName.EndsWith(AppConst.ExtName))
             {
-                abname += AppConst.ExtName;
+                abName += AppConst.ExtName;
             }
             AssetBundle bundle = null;
-            if (!bundles.ContainsKey(abname))
+            if (!bundles.ContainsKey(abName))
             {
                 byte[] stream = null;
                 //这里需要用我自己的路径搜
-                string uri = Util.DataPath + abname;
+                //string uri = Util.DataPath + abname;
+
+                string path = FileSearchPath.Instance.GetResPath(abName);
+                Debug.Log("找到的ab路径是 === " + path);
+
+                string uri = FileSearchPath.Instance.GetResPath(abName);
                 Debug.Log("LoadFile::>> " + uri);
              
                 stream = File.ReadAllBytes(uri);
                 bundle = AssetBundle.LoadFromMemory(stream); //关联数据的素材绑定
-                bundles.Add(abname, bundle);
+                bundles.Add(abName, bundle);
                 //载入这个ab包的依赖
 
-
+                LoadDeps(abName);
             }
             else
             {
-                bundles.TryGetValue(abname, out bundle);
+                bundles.TryGetValue(abName, out bundle);
             }
             return bundle;
         }
         /// <summary>
+        /// 循环载入需要的ab依赖
+        /// </summary>
+        public void LoadDeps(string abName,bool isAsync =false)
+        {
+            AssetBundleMoonInfo info;
+            if (bundleInfo.TryGetValue(abName,out info))
+            {
+                if (info.deps != null && info.deps.Count > 0)
+                {
+                    foreach (string str in info.deps)
+                    {
+                        if (isAsync)
+                        {
+                            LoadDeps(str,true);
+                            LoadAssetBundleAsync(str,null);
+                        }
+                        else
+                        {
+                            LoadDeps(str);
+                            LoadAssetBundle(str);
+                        }
+                    }
+                }
+            }
+        }
+        /// <summary>
         /// 获取ab名字
         /// </summary>
-        /// <param name="assertName"></param>
-        public string GetAbName(string assertName)
+        /// <param name="assetName"></param>
+        public string GetAbName(string assetName)
         {
-            if (assertInfo.Count > 0 && assertInfo!=null)
+            assetName = assetName.ToLower();
+            if (assetInfo.Count > 0 && assetInfo!=null)
             {
                 string value ;
-                if (assertInfo.TryGetValue(assertName, out value))
+                if (assetInfo.TryGetValue(assetName, out value))
                 {
-                    Debug.LogError("从ab中查找到的ab名字 === " + value);
+                    Debug.Log("从ab中查找到的ab名字 === " + value);
                     return value;
                 }
             }
-            Debug.LogError("ab包中没有这个资源");
+            Debug.LogError("ab包中没有这个资源  =="+assetName);
             return null;
         }
         /// <summary>

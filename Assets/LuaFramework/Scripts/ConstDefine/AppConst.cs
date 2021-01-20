@@ -33,7 +33,7 @@ namespace LuaFramework {
         public const string AssetDir = "StreamingAssets";           //素材目录 
         public const string WebUrl = "http://localhost:6688/";      //测试更新地址
 
-        public const string AiraUpdate = "AriaUpdate/";              //ab需要更新的目录
+        public const string AiraUpdate = "AriaUpdate";              //ab需要更新的目录
         public const string LuaPath = "Assets/Lua/";                //Lua目录
         public const string ResPath = "Assets/Res/";                //Res资源目录
 
