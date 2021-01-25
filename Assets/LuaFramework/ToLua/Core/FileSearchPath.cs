@@ -104,6 +104,7 @@ namespace LuaInterface
                     return path;
                 }
             }
+            Debug.LogError(fileName + "   ,Lua文件没有找到");
             return null;
         }
         /// <summary>
@@ -148,7 +149,7 @@ namespace LuaInterface
         public byte[] GetLuaZip(string fileName)
         {
             //如果是ab包模式 那我所有的lua代码全部都读动更路径上面的
-            // 目前这样写不太好 暂时先实现luaab包版本
+            // 目前这样写不太好 暂时先实现lua ab包版本
 
             if (!fileName.EndsWith(".lua"))
                 fileName = fileName + ".lua";
@@ -167,6 +168,7 @@ namespace LuaInterface
                 }
                 return buffer;
             }
+            Debug.LogError(fileName + "   ,Lua文件没有读取成功，lua的ab包不存在，没有加载成功");
             return null;
         }
         /// <summary>
@@ -191,6 +193,7 @@ namespace LuaInterface
                     return path;
                 }
             }
+            Debug.LogError(fileName + "   ,Res文件没有找到");
             return null;
         }
         /// <summary>

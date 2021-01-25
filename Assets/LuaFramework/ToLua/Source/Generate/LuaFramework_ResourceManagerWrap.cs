@@ -13,8 +13,11 @@ public class LuaFramework_ResourceManagerWrap
 		L.RegFunction("AddUpdateLuaPath", AddUpdateLuaPath);
 		L.RegFunction("AddUpdateResPath", AddUpdateResPath);
 		L.RegFunction("LoadPrefab", LoadPrefab);
+		L.RegFunction("LoadABAllAssets", LoadABAllAssets);
 		L.RegFunction("LoadSceneAsync", LoadSceneAsync);
+		L.RegFunction("LoadAssetBundleAsync", LoadAssetBundleAsync);
 		L.RegFunction("LoadAssetBundle", LoadAssetBundle);
+		L.RegFunction("LoadDeps", LoadDeps);
 		L.RegFunction("GetAbName", GetAbName);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
@@ -125,6 +128,25 @@ public class LuaFramework_ResourceManagerWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int LoadABAllAssets(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 3);
+			LuaFramework.ResourceManager obj = (LuaFramework.ResourceManager)ToLua.CheckObject<LuaFramework.ResourceManager>(L, 1);
+			string arg0 = ToLua.CheckString(L, 2);
+			string arg1 = ToLua.CheckString(L, 3);
+			UnityEngine.Object[] o = obj.LoadABAllAssets(arg0, arg1);
+			ToLua.Push(L, o);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int LoadSceneAsync(IntPtr L)
 	{
 		try
@@ -134,6 +156,24 @@ public class LuaFramework_ResourceManagerWrap
 			string arg0 = ToLua.CheckString(L, 2);
 			LuaFunction arg1 = ToLua.CheckLuaFunction(L, 3);
 			obj.LoadSceneAsync(arg0, arg1);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int LoadAssetBundleAsync(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 3);
+			LuaFramework.ResourceManager obj = (LuaFramework.ResourceManager)ToLua.CheckObject<LuaFramework.ResourceManager>(L, 1);
+			string arg0 = ToLua.CheckString(L, 2);
+			LuaFunction arg1 = ToLua.CheckLuaFunction(L, 3);
+			obj.LoadAssetBundleAsync(arg0, arg1);
 			return 0;
 		}
 		catch (Exception e)
@@ -153,6 +193,39 @@ public class LuaFramework_ResourceManagerWrap
 			UnityEngine.AssetBundle o = obj.LoadAssetBundle(arg0);
 			ToLua.Push(L, o);
 			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int LoadDeps(IntPtr L)
+	{
+		try
+		{
+			int count = LuaDLL.lua_gettop(L);
+
+			if (count == 2)
+			{
+				LuaFramework.ResourceManager obj = (LuaFramework.ResourceManager)ToLua.CheckObject<LuaFramework.ResourceManager>(L, 1);
+				string arg0 = ToLua.CheckString(L, 2);
+				obj.LoadDeps(arg0);
+				return 0;
+			}
+			else if (count == 3)
+			{
+				LuaFramework.ResourceManager obj = (LuaFramework.ResourceManager)ToLua.CheckObject<LuaFramework.ResourceManager>(L, 1);
+				string arg0 = ToLua.CheckString(L, 2);
+				bool arg1 = LuaDLL.luaL_checkboolean(L, 3);
+				obj.LoadDeps(arg0, arg1);
+				return 0;
+			}
+			else
+			{
+				return LuaDLL.luaL_throw(L, "invalid arguments to method: LuaFramework.ResourceManager.LoadDeps");
+			}
 		}
 		catch (Exception e)
 		{

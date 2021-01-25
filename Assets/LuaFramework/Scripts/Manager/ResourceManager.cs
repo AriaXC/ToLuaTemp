@@ -26,7 +26,7 @@ namespace LuaFramework
 
         //记录总的ab名字和依赖的  todo
         private AssetBundleManifest manifest;
-        private AssetBundle assetbundle;
+        //private AssetBundle assetbundle;
 
         //已经加载过的ab包
         private Dictionary<string, AssetBundle> bundles;
@@ -175,7 +175,17 @@ namespace LuaFramework
                 func.Call(go);
             }
             return go;
-
+            
+        }
+        /// <summary>
+        /// 一次加载ab包中所有的资源
+        /// </summary>
+        /// <param name="abName"></param>
+        /// <param name="assetName"></param>
+        /// <returns></returns>
+        public UnityEngine.Object[] LoadABAllAssets(string abName, string assetName)
+        {
+            return null;
         }
         /// <summary>
         /// 载入素材  同步 cs端调用
@@ -258,15 +268,19 @@ namespace LuaFramework
             {
                 if (fun != null)
                 {
-                    fun.Call();
+                    fun.Call(1);
                 }
             }
         }
         //加载到一半 又来了一个请求加载这个ab  需要两个队列去记录 一个是加载过的 一个是正在加载的
-        // 加载打一半  释放
+        // 加载到一半  此时释放 先等加载完  然后立马加入清除队列
         IEnumerator IELoadAsync(string abName,byte[] stream,LuaFunction func)
         {
             AssetBundleCreateRequest op =  AssetBundle.LoadFromMemoryAsync(stream);
+            if (func != null)
+            {
+                func.Call(op.progress);
+            }
             yield return op;
             AssetBundle bundle = op.assetBundle;
             bundles.Add(abName, bundle);
@@ -275,7 +289,7 @@ namespace LuaFramework
 
             if (func != null)
             {
-                func.Call();
+                func.Call(op.progress);
             }
         }
         /// <summary>
