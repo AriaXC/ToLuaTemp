@@ -17,7 +17,7 @@ namespace LuaFramework
 
         }
         /// <summary>
-        /// 同步加载场景
+        /// 同步加载场景 
         /// </summary>
         /// <param name="sceneName"></param>
         /// <param name="fun"></param>
@@ -39,14 +39,12 @@ namespace LuaFramework
         IEnumerator onLoadSceneAnsyn(string sceneName, LuaFunction fun)
         {
             AsyncOperation op = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(sceneName);
-
-            //场景切换进度条 和资源卸载
             if (fun != null)
                 fun.Call(op.progress);
             yield return op;
 
             if (fun != null)
-                fun.Call();
+                fun.Call(op.progress);
         }
 
     }

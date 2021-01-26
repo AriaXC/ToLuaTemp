@@ -19,6 +19,7 @@ public class LuaFramework_ResourceManagerWrap
 		L.RegFunction("LoadAssetBundle", LoadAssetBundle);
 		L.RegFunction("LoadDeps", LoadDeps);
 		L.RegFunction("GetAbName", GetAbName);
+		L.RegFunction("ClearAll", ClearAll);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.EndClass();
@@ -244,6 +245,22 @@ public class LuaFramework_ResourceManagerWrap
 			string o = obj.GetAbName(arg0);
 			LuaDLL.lua_pushstring(L, o);
 			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int ClearAll(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 1);
+			LuaFramework.ResourceManager obj = (LuaFramework.ResourceManager)ToLua.CheckObject<LuaFramework.ResourceManager>(L, 1);
+			obj.ClearAll();
+			return 0;
 		}
 		catch (Exception e)
 		{

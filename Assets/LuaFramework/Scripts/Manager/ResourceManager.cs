@@ -206,6 +206,7 @@ namespace LuaFramework
                 //Debug.Log(path);
                 return (T)UnityEditor.AssetDatabase.LoadAssetAtPath<T>(path);
 #endif
+                return null;
             }
         }
         /// <summary>
@@ -361,18 +362,39 @@ namespace LuaFramework
         /// <param name="assetName"></param>
         public string GetAbName(string assetName)
         {
-            assetName = assetName.ToLower();
-            if (assetInfo.Count > 0 && assetInfo!=null)
+            if (AppConst.LuaBundleMode)
             {
-                string value ;
-                if (assetInfo.TryGetValue(assetName, out value))
+                assetName = assetName.ToLower();
+                if (assetInfo.Count > 0 && assetInfo != null)
                 {
-                    Debug.Log("从ab中查找到的ab名字 === " + value);
-                    return value;
+                    string value;
+                    if (assetInfo.TryGetValue(assetName, out value))
+                    {
+                        Debug.Log("从ab中查找到的ab名字 === " + value);
+                        return value;
+                    }
                 }
+                Debug.LogError("ab包中没有这个资源  ==" + assetName);
             }
-            Debug.LogError("ab包中没有这个资源  =="+assetName);
             return null;
+        }
+        /// <summary>
+        /// 场景变换调用  清除ab
+        /// </summary>
+        public void  ClearAll()
+        {
+            if (bundles != null)
+            {
+                //场景加完直接 是true 会有材质丢失
+                foreach (var item in bundles)
+                { 
+                    Debug.Log("卸载的ab包资源  == "+item.Key);
+                    item.Value.Unload(false);
+                }
+                Resources.UnloadUnusedAssets();
+            }
+            bundles = new Dictionary<string, AssetBundle>();
+            Debug.Log("场景切换完  我加载的ab的个数== " + bundles.Count);
         }
         /// <summary>
         /// 销毁资源

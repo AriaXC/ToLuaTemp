@@ -13,14 +13,13 @@ function  LoginView:OnInitialize( ... )
 
 
 	local obj= self.transform:Find("bg/titleText").gameObject
-	GetComponentText(obj).text="成功了"
+	GetComponentText(obj).text="场景1"
 
 	AddBtnClick(self.transform:Find("bg/btnY").gameObject,function( ... )
-			GetComponentText(obj).text="YYYYY"
-			-- Stage.Test()
+		  MySceneMgr:ShowScene("Module.Login.Login2Scene","Login2","Scene.Login.Login2")
 	end)
 	AddBtnClick(self.transform:Find("bg/btnN").gameObject,function( ... )
-			GetComponentText(obj).text="NNNNNN"
+			GetComponentText(obj).text="11111"
 	end)
 	
 end
