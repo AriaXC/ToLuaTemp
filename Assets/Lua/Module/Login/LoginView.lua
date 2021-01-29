@@ -12,15 +12,31 @@ function  LoginView:OnInitialize( ... )
 	LoginView.super.OnInitialize(self)
 
 
-	local obj= self.transform:Find("bg/titleText").gameObject
-	GetComponentText(obj).text="场景1"
+	self.titleText= GetComponentText(self.transform:Find("bg/titleText").gameObject)
+	self.titleText.text="场景1"
+	
+	self:AddClick()
 
+end
+
+function  LoginView:AddClick()
+	-- body
 	AddBtnClick(self.transform:Find("bg/btnY").gameObject,function( ... )
-		  MySceneMgr:ShowScene("Module.Login.Login2Scene","Login2","Scene.Login.Login2")
+		MySceneMgr:ShowScene("Module.Login.Login2Scene","Login2","Scene.Login.Login2")
 	end)
 	AddBtnClick(self.transform:Find("bg/btnN").gameObject,function( ... )
-			GetComponentText(obj).text="11111"
+		self.titleText.text="11111"
 	end)
-	
+	AddBtnClick(self.transform:Find("bg/btn1").gameObject,function( ... )
+		self.titleText.text="Avatar"
+		self:Hide()
+		if not self.avatarView then
+			self.avatarView = require("Module.AvatarTest.View.AvatarView").New()
+		end
+		self.avatarView:Show()
+	end)
+
 end
+
+
 return LoginView

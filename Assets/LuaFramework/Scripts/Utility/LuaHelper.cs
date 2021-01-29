@@ -86,7 +86,7 @@ namespace LuaFramework {
             {
                 return;
             }
-         
+
             go.GetComponent<Button>().onClick.RemoveAllListeners();
             go.GetComponent<Button>().onClick.AddListener(
                 delegate (){

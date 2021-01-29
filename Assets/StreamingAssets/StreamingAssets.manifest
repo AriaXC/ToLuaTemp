@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 2615948439
+CRC: 1295964349
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -19,4 +19,46 @@ AssetBundleManifest:
       Dependencies: {}
     Info_4:
       Name: shader@testshader.unity3d
+      Dependencies: {}
+    Info_5:
+      Name: spritepack@mini legion grunt pbr hp polyart.unity3d
+      Dependencies: {}
+    Info_6:
+      Name: polyart@animations.unity3d
+      Dependencies: {}
+    Info_7:
+      Name: polyart@material.unity3d
+      Dependencies:
+        Dependency_0: spritepack@textures.unity3d
+        Dependency_1: spritepack@hp.unity3d
+        Dependency_2: spritepack@pbr.unity3d
+    Info_8:
+      Name: polyart@mesh.unity3d
+      Dependencies: {}
+    Info_9:
+      Name: polyart@prefab@grunthp.unity3d
+      Dependencies:
+        Dependency_0: polyart@animations.unity3d
+        Dependency_1: polyart@material.unity3d
+        Dependency_2: polyart@mesh.unity3d
+    Info_10:
+      Name: polyart@prefab@gruntpbr.unity3d
+      Dependencies:
+        Dependency_0: polyart@animations.unity3d
+        Dependency_1: polyart@material.unity3d
+        Dependency_2: polyart@mesh.unity3d
+    Info_11:
+      Name: polyart@prefab@gruntpolyart.unity3d
+      Dependencies:
+        Dependency_0: polyart@animations.unity3d
+        Dependency_1: polyart@material.unity3d
+        Dependency_2: polyart@mesh.unity3d
+    Info_12:
+      Name: spritepack@textures.unity3d
+      Dependencies: {}
+    Info_13:
+      Name: spritepack@hp.unity3d
+      Dependencies: {}
+    Info_14:
+      Name: spritepack@pbr.unity3d
       Dependencies: {}

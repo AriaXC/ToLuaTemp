@@ -23,7 +23,9 @@ function View:Ctor(prefab,layerName)
 	end
 
 	self.gameObject=Instantiate(prefab,parent)
-	
+
+	log("ViewName == "..self.gameObject.name)
+
 	self:OnInitialize()
 end
 function View:OnInitialize( ... )
@@ -31,5 +33,17 @@ function View:OnInitialize( ... )
 	self.transform=self.gameObject.transform
 
 end
+
+function  View:Show( ... )
+	-- body
+	self.gameObject:SetActive(true)
+end
+
+function   View:Hide( ... )
+	-- body
+	self.gameObject:SetActive(false)
+end
+
+
 
 return View

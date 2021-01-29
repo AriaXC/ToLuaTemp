@@ -1,7 +1,7 @@
 Scene=class("Scene")
 
 --暂时还没有
-function View:Ctor()
+function Scene:Ctor()
 
 end
 
