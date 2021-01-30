@@ -5,6 +5,7 @@ View=class("View")
 function View:Ctor(prefab,layerName)
 	-- body
 	-- View.super.Ctor(self)
+	
 	if prefab == nil then
 		return
 	end
