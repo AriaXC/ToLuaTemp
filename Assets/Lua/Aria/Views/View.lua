@@ -9,7 +9,6 @@ function View:Ctor(prefab,layerName)
 	if prefab == nil then
 		return
 	end
-	
 
 	local  parent = nil
 	if layerName == nil then
