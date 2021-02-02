@@ -6,7 +6,6 @@ function  AvatarView:Ctor( )
 	-- body
 	AvatarView.super.Ctor(self,"Prefabs/Avatar/AvatarView.prefab",nil)
 
-
 end
 
 

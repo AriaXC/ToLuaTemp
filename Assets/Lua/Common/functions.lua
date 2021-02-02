@@ -5,18 +5,24 @@ local traceback = debug.traceback
 
 --输出日志--
 function log(str,trace)
-    Util.Log(str,trace);
+    Util.Log(tostring(str),trace);
+end
+function logTable( str )
+	log(Json2.encode(str))
 end
 
 ---这里还没有记录lua堆栈信息
 --错误日志
 function logError(str) 
-	Util.LogError(str,traceback("",2));
+	Util.LogError(tostring(str),traceback("",2));
+end
+function logErrorTable(str)
+	logError(Json2.encode(str))
 end
 
 --警告日志--
 function logWarn(str) 
-	Util.LogWarning(str,debug.traceback("",2));
+	Util.LogWarning(tostring(str),debug.traceback("",2));
 end
 
 --查找对象--
@@ -133,6 +139,10 @@ end
 
 function  GetComponentImage(go)
 	return go:GetComponent(_typeof(UnityEngine.UI.Image))
+end
+
+function  GetComponentRect(go)
+	return go:GetComponent(_typeof(UnityEngine.RectTransform))
 end
 
 

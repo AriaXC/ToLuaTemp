@@ -25,7 +25,9 @@ function  LoginView:AddClick()
 		MySceneMgr:ShowScene("Module.Login.Login2Scene","Login2","Scene.Login.Login2")
 	end)
 	AddBtnClick(self.transform:Find("bg/btnN").gameObject,function( ... )
-		self.titleText.text="11111"
+		-- self.titleText.text="11111"
+		local rect = GetComponentRect(self.transform:Find("bg/btnN").gameObject)
+		-- logErrorTable(rect.anchoredPosition)
 	end)
 	AddBtnClick(self.transform:Find("bg/btn1").gameObject,function( ... )
 		self.titleText.text="Avatar"
