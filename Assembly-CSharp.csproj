@@ -47,6 +47,7 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Unity/VSTU</UnityProjectGenerator>
+    <UnityProjectGeneratorVersion>2.8.4.0</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>iOS:9</UnityBuildTarget>
     <UnityVersion>2018.3.14f1</UnityVersion>
@@ -240,6 +241,9 @@
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_WWWWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\ViewWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\LuaConst.cs" />
+    <Compile Include="Assets\Test\AMap\CreateMap.cs" />
+    <Compile Include="Assets\Test\AMap\Hex.cs" />
+    <Compile Include="Assets\Test\AMap\HexMesh.cs" />
     <Compile Include="Assets\Test\list\ChangeV.cs" />
     <Compile Include="Assets\Test\list\UIList.cs" />
     <Compile Include="Assets\Test\other\otherM.cs" />
