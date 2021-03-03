@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
 public class HexMesh : MonoBehaviour
 {
     Mesh hexMesh;
@@ -13,9 +14,6 @@ public class HexMesh : MonoBehaviour
     {
         hexMesh = new Mesh();
         GetComponent<MeshFilter>().mesh = hexMesh ;
-
-        gameObject.GetComponent<MeshRenderer>().material =GameObject.Find("Plane").GetComponent<MeshRenderer>().material;
-
 
         hexMesh.name = "HexMash";
         vertList = new List<Vector3>();
@@ -40,7 +38,10 @@ public class HexMesh : MonoBehaviour
     public void Triangulate(GameObject hex)
     {
         Vector3 pos = hex.transform.localPosition;
-        AddTriangulate(pos, pos+CreateMap.centers[2], pos+CreateMap.centers[1]);
+        for (int i = 0; i < 6; i++)
+        {
+            AddTriangulate(pos, pos + CreateMap.centers[i], pos + CreateMap.centers[i+1]);
+        }
     }
 
     //根据三角形的三个顶点 绘制三角形

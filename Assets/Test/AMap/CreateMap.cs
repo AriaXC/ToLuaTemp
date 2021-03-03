@@ -15,12 +15,13 @@ public class CreateMap : MonoBehaviour
     //内半径
     public const float innerRadius = outerRadius * 0.866025404f;
     public static Vector3[] centers = {
-        new Vector3(-outerRadius,0,0),
-        new Vector3(-outerRadius*0.5f,0,innerRadius),
-        new Vector3(outerRadius*0.5f,0,innerRadius),
-        new Vector3(outerRadius,0,0),
-        new Vector3(outerRadius*0.5f,0,-innerRadius),
-        new Vector3(-outerRadius*0.5f,0,-innerRadius),
+             new Vector3(0f, 0f, outerRadius),
+        new Vector3(innerRadius, 0f, 0.5f * outerRadius),
+        new Vector3(innerRadius, 0f, -0.5f * outerRadius),
+        new Vector3(0f, 0f, -outerRadius),
+        new Vector3(-innerRadius, 0f, -0.5f * outerRadius),
+        new Vector3(-innerRadius, 0f, 0.5f * outerRadius),
+            new Vector3(0f, 0f, outerRadius),
     };
 
     //public Canvas gridCanvas;

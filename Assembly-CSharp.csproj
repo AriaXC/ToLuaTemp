@@ -244,6 +244,7 @@
     <Compile Include="Assets\Test\AMap\CreateMap.cs" />
     <Compile Include="Assets\Test\AMap\Hex.cs" />
     <Compile Include="Assets\Test\AMap\HexMesh.cs" />
+    <Compile Include="Assets\Test\AMap\MyMesh.cs" />
     <Compile Include="Assets\Test\list\ChangeV.cs" />
     <Compile Include="Assets\Test\list\UIList.cs" />
     <Compile Include="Assets\Test\other\otherM.cs" />
