@@ -139,10 +139,11 @@ public class LuaFramework_LuaHelperWrap
 	{
 		try
 		{
-			ToLua.CheckArgsCount(L, 2);
+			ToLua.CheckArgsCount(L, 3);
 			UnityEngine.Transform arg0 = (UnityEngine.Transform)ToLua.CheckObject<UnityEngine.Transform>(L, 1);
 			UnityEngine.Transform arg1 = (UnityEngine.Transform)ToLua.CheckObject<UnityEngine.Transform>(L, 2);
-			LuaFramework.LuaHelper.SetParent(arg0, arg1);
+			bool arg2 = LuaDLL.luaL_checkboolean(L, 3);
+			LuaFramework.LuaHelper.SetParent(arg0, arg1, arg2);
 			return 0;
 		}
 		catch (Exception e)

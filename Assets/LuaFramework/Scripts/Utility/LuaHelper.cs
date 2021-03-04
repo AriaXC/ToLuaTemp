@@ -74,11 +74,16 @@ namespace LuaFramework {
 
 
         //图层也要改了
-        public static void SetParent(Transform target, Transform parent)
+        public static void SetParent(Transform target, Transform parent,bool isT)
         {
-
+            target.transform.SetParent(parent, isT);
+          
+            foreach (Transform value in target.GetComponentInChildren<Transform>())
+            {
+                value.gameObject.layer = parent.gameObject.layer;
+            }
         }
-
+       
         //给按钮添加点击事件
         public static void AddClick(GameObject go,LuaFunction func)
         {

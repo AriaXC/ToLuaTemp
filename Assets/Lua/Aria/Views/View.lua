@@ -2,21 +2,24 @@
 View=class("View")
 
 --还没有些异步加载
-function View:Ctor(prefab,layerName)
+function View:Ctor(prefab,parent,isAsync)
 	-- body
 	-- View.super.Ctor(self)
-
+	
 	if prefab == nil then
 		return
 	end
 
-	local  parent = nil
-	if layerName == nil then
+	local  parent = parent
+
+	if type(parent) == "string" then
+		parent = MySceneMgr._layer[parent]
+	end
+
+	if not parent then
 		if MySceneMgr._layer ~= nil then
 			parent = MySceneMgr._layer[GameConst.Layer.window]
 		end
-	else
-		parent = MySceneMgr._layer[layerName]
 	end
 
 	if parent == nil then

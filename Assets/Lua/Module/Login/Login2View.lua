@@ -3,7 +3,7 @@ local Login2View=class(Login2View,View)
 
 function  Login2View:Ctor( )
 	-- body
-	Login2View.super.Ctor(self,"Prefabs/Login/LoginView.prefab",nil)
+	Login2View.super.Ctor(self,"Prefabs/Login/LoginView.prefab",GameConst.Layer.ui)
 
 end
 
@@ -12,13 +12,15 @@ function  Login2View:OnInitialize( ... )
 	Login2View.super.OnInitialize(self)
 
 	local obj= self.transform:Find("bg/titleText").gameObject
-	GetComponentText(obj).text="场景2"
+	GetComponentText(obj).text="场景2 ---  Login"
+	GetComponentText(self.transform:Find("bg/btn2/Text").gameObject).text = "回到场景1"
 
-	AddBtnClick(self.transform:Find("bg/btnY").gameObject,function( ... )
+	AddBtnClick(self.transform:Find("bg/btn2").gameObject,function( ... )
 		  MySceneMgr:ShowScene("Module.Login.LoginScene","Login","Scene.Login.Login")
 	end)
-	AddBtnClick(self.transform:Find("bg/btnN").gameObject,function( ... )
-			GetComponentText(obj).text="2222222"
+
+	AddBtnClick(self.transform:Find("bg/btn1").gameObject,function( ... )
+		print("没写")
 	end)
 	
 end

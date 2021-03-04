@@ -15,7 +15,7 @@ function  LoginScene:Ctor( )
 	if not self.loginView then
 		self.loginView = require("Module.Login.LoginView").New()
 	end
-	self.loginView:Show()
+	-- self.loginView:Show()
 	
 	--如果需要热更  现在的热更是放在cs代码(我把lua打成了ab包 所以在一开始要先检测更新才能进游戏)
 	if isUpdate then

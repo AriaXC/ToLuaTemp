@@ -3,7 +3,7 @@ local LoginView=class(LoginView,View)
 
 function  LoginView:Ctor( )
 	-- body
-	LoginView.super.Ctor(self,"Prefabs/Login/LoginView.prefab",nil)
+	LoginView.super.Ctor(self,"Prefabs/Login/LoginView.prefab",GameConst.Layer.ui)
 
 end
 
@@ -13,24 +13,20 @@ function  LoginView:OnInitialize( ... )
 
 
 	self.titleText= GetComponentText(self.transform:Find("bg/titleText").gameObject)
-	self.titleText.text="场景1"
-	
+	self.titleText.text="场景1 ————- ogin"
+	GetComponentText(self.transform:Find("bg/btn2/Text").gameObject).text = "切换到场景2"
+
 	self:AddClick()
 
 end
 
 function  LoginView:AddClick()
 	-- body
-	AddBtnClick(self.transform:Find("bg/btnY").gameObject,function( ... )
+	AddBtnClick(self.transform:Find("bg/btn2").gameObject,function( ... )
 		MySceneMgr:ShowScene("Module.Login.Login2Scene","Login2","Scene.Login.Login2")
 	end)
-	AddBtnClick(self.transform:Find("bg/btnN").gameObject,function( ... )
-		-- self.titleText.text="11111"
-		local rect = GetComponentRect(self.transform:Find("bg/btnN").gameObject)
-		-- logErrorTable(rect.anchoredPosition)
-	end)
+
 	AddBtnClick(self.transform:Find("bg/btn1").gameObject,function( ... )
-		self.titleText.text="Avatar"
 		self:Hide()
 		if not self.avatarView then
 			self.avatarView = require("Module.AvatarTest.View.AvatarView").New()

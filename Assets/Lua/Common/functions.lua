@@ -7,8 +7,8 @@ local traceback = debug.traceback
 function log(str,trace)
     Util.Log(tostring(str),trace);
 end
-function logTable( str )
-	log(Json2.encode(str))
+function logTable( str ,trace)
+	log(Json2.encode(str),trace)
 end
 
 ---这里还没有记录lua堆栈信息
@@ -81,7 +81,7 @@ function class(className,superClass)
 	function cls.New( ... )
 		-- body
 		local ins=setmetatable({},cls)
-		ins:Ctor()
+		ins:Ctor(...)
 		return ins
 	end
 
@@ -110,8 +110,8 @@ function Instantiate(prefab,parent,callback)
 	
 	if parent then
 		--还需要加入图层
-		go.transform:SetParent(parent,false)
-		-- LuaHelper.SetParent(go.transform,parent)
+		-- go.transform:SetParent(parent,false)
+		LuaHelper.SetParent(go.transform,parent,false)
 	end
 
 	return go
