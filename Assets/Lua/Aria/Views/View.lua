@@ -28,7 +28,7 @@ function View:Ctor(prefab,parent,isAsync)
 
 	self.gameObject=Instantiate(prefab,parent)
 
-	log("ViewName == "..self.gameObject.name)
+	-- log("ViewName == "..self.gameObject.name)
 
 	self:OnInitialize()
 end

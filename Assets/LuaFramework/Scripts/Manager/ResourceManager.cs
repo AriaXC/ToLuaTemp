@@ -86,7 +86,7 @@ namespace LuaFramework
         {
             //加载映射的xml文件
             string xmlPath = FileSearchPath.Instance.GetResPath(AppConst.MoonXml);
-            Debug.Log("Xml=== "+xmlPath);
+            Debug.Log("Xml=== " + xmlPath);
             if (xmlPath == null)
             {
                 Debug.LogError("xml没找到");
@@ -166,16 +166,23 @@ namespace LuaFramework
         /// <param name="func"></param>
         /// <returns></returns>
         public GameObject LoadPrefab(string assetName, LuaFunction func)
-        {
-            assetName = AppConst.ResPath + assetName;
-            string abName = GetAbName(assetName);
-            GameObject go = LoadAsset<GameObject>(abName, assetName);
+        { 
+            GameObject go = LoadAsset<GameObject>(assetName);
             if (func != null)
             {
                 func.Call(go);
             }
             return go;
-            
+
+        }
+        /// <summary>
+        /// 返回AnimatorController
+        /// </summary>
+        /// <returns></returns>
+        public RuntimeAnimatorController LoadAnimatorController(string assetName)
+        {
+            RuntimeAnimatorController go = LoadAsset<RuntimeAnimatorController>(assetName);
+            return go;
         }
         /// <summary>
         /// 一次加载ab包中所有的资源
@@ -190,11 +197,14 @@ namespace LuaFramework
         /// <summary>
         /// 载入素材  同步 cs端调用
         /// </summary>
-        public T LoadAsset<T>(string abName, string assetName) where T : UnityEngine.Object
+        public T LoadAsset<T>(string assetName) where T : UnityEngine.Object
         {
+            assetName = AppConst.ResPath + assetName;
             //editor命名空间无法打包
             if (AppConst.LuaBundleMode)
             {
+                string abName = GetAbName(assetName);
+
                 AssetBundle bundle = LoadAssetBundle(abName);
                 return bundle.LoadAsset<T>(assetName);
             }
@@ -216,9 +226,7 @@ namespace LuaFramework
         /// <param name="fun"></param>
         public void LoadSceneAsync(string assetName, LuaFunction fun)
         {
-            assetName = AppConst.ResPath + assetName;
-            string abName = GetAbName(assetName);
-            LoadAsyncAsset<GameObject>(abName, assetName, fun);
+            LoadAsyncAsset<GameObject>(assetName, fun);
         }
         /// <summary>
         /// 载入ab  异步  cs调用
@@ -226,10 +234,12 @@ namespace LuaFramework
         /// <typeparam name="T"></typeparam>
         /// <param name="assetName"></param>
         /// <param name="fun"></param>
-        public void LoadAsyncAsset<T>(string abName, string assetName, LuaFunction fun) where T : UnityEngine.Object
+        public void LoadAsyncAsset<T>(string assetName, LuaFunction fun) where T : UnityEngine.Object
         {
+            assetName = AppConst.ResPath + assetName;
             if (AppConst.LuaBundleMode)
             {
+                string abName = GetAbName(assetName);
                 LoadAssetBundleAsync(abName, fun);
             }
             else

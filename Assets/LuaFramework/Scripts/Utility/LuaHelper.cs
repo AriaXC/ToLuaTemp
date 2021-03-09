@@ -97,6 +97,8 @@ namespace LuaFramework {
                 delegate (){
                     func.Call(go);
                 });
+
+
         }
     }
 }

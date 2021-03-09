@@ -29,6 +29,8 @@ function  AvatarView:AddAvatar( )
 	self.player.transform.localRotation = Vector3.New(0,-180,0)
 	self.player.transform.localPosition = Vector3.New(0,0,-200)
 
+	self.player:SetAnimator("Polyart/Animations/Aria.controller")
+	self.player:PlayAni("run")
 end
 
 return AvatarView

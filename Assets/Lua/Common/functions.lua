@@ -114,6 +114,8 @@ function Instantiate(prefab,parent,callback)
 		LuaHelper.SetParent(go.transform,parent,false)
 	end
 
+	log("AssetName == "..go.name)
+
 	return go
 end
 --添加按钮点击事件
@@ -133,6 +135,9 @@ function AddBtnClick(go,callback,audio)
 	end)
 end
 
+
+
+
 function  GetComponentText(go)
 	return go:GetComponent(_typeof(UnityEngine.UI.Text))
 end
@@ -145,6 +150,9 @@ function  GetComponentRect(go)
 	return go:GetComponent(_typeof(UnityEngine.RectTransform))
 end
 
+function  GetComponentAnimator(go)
+	return go:GetComponent(_typeof(UnityEngine.Animator))
+end
 
 
 

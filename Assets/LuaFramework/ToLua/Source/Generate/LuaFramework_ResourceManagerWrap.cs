@@ -13,6 +13,7 @@ public class LuaFramework_ResourceManagerWrap
 		L.RegFunction("AddUpdateLuaPath", AddUpdateLuaPath);
 		L.RegFunction("AddUpdateResPath", AddUpdateResPath);
 		L.RegFunction("LoadPrefab", LoadPrefab);
+		L.RegFunction("LoadAnimatorController", LoadAnimatorController);
 		L.RegFunction("LoadABAllAssets", LoadABAllAssets);
 		L.RegFunction("LoadSceneAsync", LoadSceneAsync);
 		L.RegFunction("LoadAssetBundleAsync", LoadAssetBundleAsync);
@@ -120,6 +121,24 @@ public class LuaFramework_ResourceManagerWrap
 			LuaFunction arg1 = ToLua.CheckLuaFunction(L, 3);
 			UnityEngine.GameObject o = obj.LoadPrefab(arg0, arg1);
 			ToLua.PushSealed(L, o);
+			return 1;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int LoadAnimatorController(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 2);
+			LuaFramework.ResourceManager obj = (LuaFramework.ResourceManager)ToLua.CheckObject<LuaFramework.ResourceManager>(L, 1);
+			string arg0 = ToLua.CheckString(L, 2);
+			UnityEngine.RuntimeAnimatorController o = obj.LoadAnimatorController(arg0);
+			ToLua.Push(L, o);
 			return 1;
 		}
 		catch (Exception e)
