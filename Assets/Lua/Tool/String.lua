@@ -17,3 +17,4 @@ function string.replace( args,key,value,keyLength)
 	end
 	return args
 end
+

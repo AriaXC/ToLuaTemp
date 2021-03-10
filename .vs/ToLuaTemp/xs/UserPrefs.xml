@@ -1,11 +1,12 @@
 ﻿<Properties StartupConfiguration="{5EBE5927-85E2-E507-10FC-6F3F3AAB800B}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/Scripts/Utility/LuaHelper.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/ToLua/Misc/LuaLooper.cs">
     <Files>
-      <File FileName="Assets/LuaFramework/Scripts/Utility/LuaHelper.cs" Line="108" Column="53" />
-      <File FileName="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_AnimatorWrap.cs" Line="78" Column="64" />
+      <File FileName="Assets/LuaFramework/Scripts/Utility/LuaHelper.cs" Line="95" Column="55" />
+      <File FileName="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_AnimatorWrap.cs" Line="1133" Column="33" />
       <File FileName="Assets/LuaFramework/Scripts/Manager/ResourceManager.cs" Line="162" Column="22" />
       <File FileName="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_ComponentWrap.cs" Line="98" Column="35" />
-      <File FileName="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_GameObjectWrap.cs" Line="130" Column="1" />
+      <File FileName="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_GameObjectWrap.cs" Line="216" Column="3" />
+      <File FileName="Assets/LuaFramework/ToLua/Misc/LuaLooper.cs" Line="134" Column="24" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -22,14 +23,14 @@
                   <Node name="Manager" expanded="True" />
                   <Node name="Network" expanded="True" />
                   <Node name="ObjectPool" expanded="True" />
-                  <Node name="Utility" expanded="True">
-                    <Node name="LuaHelper.cs" selected="True" />
-                  </Node>
+                  <Node name="Utility" expanded="True" />
                 </Node>
                 <Node name="ToLua" expanded="True">
                   <Node name="Core" expanded="True" />
                   <Node name="Injection" expanded="True" />
-                  <Node name="Misc" expanded="True" />
+                  <Node name="Misc" expanded="True">
+                    <Node name="LuaLooper.cs" selected="True" />
+                  </Node>
                   <Node name="Source" expanded="True">
                     <Node name="Generate" expanded="True" />
                   </Node>

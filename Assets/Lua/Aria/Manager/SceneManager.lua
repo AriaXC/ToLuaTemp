@@ -8,6 +8,8 @@ local  stringFormat = string.format
 local  uiPath = "Prefabs/Core/UICanvas.prefab"
 
 function  SceneManager:Ctor ( )
+
+	log("初始化 SceneManager")
 	--场景管理器 初始化
 	self.currScene = nil
 	self.currSceneId = nil

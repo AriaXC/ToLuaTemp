@@ -136,6 +136,7 @@ function AddBtnClick(go,callback,audio)
 end
 
 
+-----------------------------------------------------------------------------------------------
 
 
 function  GetComponentText(go)
@@ -154,7 +155,14 @@ function  GetComponentAnimator(go)
 	return go:GetComponent(_typeof(UnityEngine.Animator))
 end
 
+------------------------------------------------------------------------------------------------
 
+
+
+function  handler(callback,caller)
+	-- Handler.GetItem()
+
+end
 
 
 
