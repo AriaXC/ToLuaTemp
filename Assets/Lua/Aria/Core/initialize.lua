@@ -1,4 +1,5 @@
 
+local  require = require
 --扩展库也在这里添加
 require "Tool/String"
 require "Tool/Json2"
@@ -6,3 +7,7 @@ require "Tool/Json2"
 View=require("Aria.Views.View")
 Scene = require("Aria.Views.Scene")
 Avatar =require("Aria.Views.Avatar")
+
+
+Handler = require("Aria.Utils.Handler")
+EventStr = require("Aria.Event.Events") 

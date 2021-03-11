@@ -27,13 +27,34 @@ function  LoginView:AddClick()
 	end)
 
 	AddBtnClick(self.transform:Find("bg/btn1").gameObject,function( ... )
-		self:Hide()
+		-- self:Hide()
 		if not self.avatarView then
 			self.avatarView = require("Module.AvatarTest.View.AvatarView").New()
 		end
 		self.avatarView:Show()
 	end)
 
+	eventMgr:AddEventListener(EventStr.Test1,handler(self.EventTest1,self),self)
+
+	AddBtnClick(self.transform:Find("bg/addEventBtn").gameObject,function( ... )
+		self.handlerMy =  eventMgr:AddEventListener(EventStr.Test2,handler(self.EventTest2,self),self)
+	end)
+
+	AddBtnClick(self.transform:Find("bg/delEventBtn").gameObject,function( ... )
+		-- eventMgr:RemoveEventListener(EventStr.Test2,self.handlerMy)
+		eventMgr:RemoveObjAllEventListener(self)
+	end)
+end
+
+function  LoginView:EventTest1( event )
+
+	log("收到了啊")
+	log(event)
+end
+function  LoginView:EventTest2( event )
+
+	log("收到了啊2")
+	log(event)
 end
 
 

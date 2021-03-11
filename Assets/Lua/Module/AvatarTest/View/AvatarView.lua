@@ -5,7 +5,6 @@ local AvatarView = class(AvatarView,View)
 function  AvatarView:Ctor( )
 	-- body
 	AvatarView.super.Ctor(self,"Prefabs/Avatar/AvatarView.prefab",nil)
-
 end
 function AvatarView:OnInitialize( ... )
 	AvatarView.super.OnInitialize(self)
@@ -20,7 +19,18 @@ function  AvatarView:AddClick(  )
 		if not self.player then
 			self:AddAvatar()
 		end
+	end)
 
+	AddBtnClick(self.transform:Find("bg/btnEvent").gameObject,function( ... )
+		eventMgr:DispatchEvent(EventStr.Test1,{my=1,aria=2})
+	end)
+
+	AddBtnClick(self.transform:Find("bg/btnEvent2").gameObject,function( ... )
+		eventMgr:DispatchEvent(EventStr.Test2,{my=222,aria=2})
+	end)
+
+	AddBtnClick(self.transform:Find("model").gameObject,function( ... )
+		self:Hide()
 	end)
 end
 function  AvatarView:AddAvatar( )

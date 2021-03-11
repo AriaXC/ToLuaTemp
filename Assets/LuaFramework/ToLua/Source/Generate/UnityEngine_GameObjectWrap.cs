@@ -134,7 +134,7 @@ public class UnityEngine_GameObjectWrap
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
-			
+
 			if (count == 2)
 			{
 				UnityEngine.GameObject obj = (UnityEngine.GameObject)ToLua.CheckObject(L, 1, typeof(UnityEngine.GameObject));

@@ -2,7 +2,8 @@
 local  Events = {}
 
 --测试用的
-Events.Aria = "Aria"
+Events.Test1 = "Test1"
+Events.Test2 = "Test2"
 
 
 

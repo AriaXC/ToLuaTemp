@@ -131,6 +131,7 @@ function AddBtnClick(go,callback,audio)
 	end
 	return LuaHelper.AddClick(go,function( ... )
 		-- body
+		log("点击的按钮  == "..go.name)
 		callback()
 	end)
 end
@@ -159,9 +160,9 @@ end
 
 
 
-function  handler(callback,caller)
-	-- Handler.GetItem()
-
+function  handler(callback,caller,once)
+	local  once = once or false
+	return Handler.GetItem(callback,caller,once)
 end
 
 
