@@ -1,36 +1,38 @@
 ﻿<Properties StartupConfiguration="{5EBE5927-85E2-E507-10FC-6F3F3AAB800B}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/ToLua/Misc/LuaLooper.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/ToLua/Core/LuaFunction.cs">
     <Files>
-      <File FileName="Assets/LuaFramework/Scripts/Utility/LuaHelper.cs" Line="95" Column="55" />
-      <File FileName="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_AnimatorWrap.cs" Line="1133" Column="33" />
-      <File FileName="Assets/LuaFramework/Scripts/Manager/ResourceManager.cs" Line="162" Column="22" />
-      <File FileName="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_ComponentWrap.cs" Line="98" Column="35" />
-      <File FileName="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_GameObjectWrap.cs" Line="216" Column="3" />
-      <File FileName="Assets/LuaFramework/ToLua/Misc/LuaLooper.cs" Line="134" Column="24" />
+      <File FileName="Assets/LuaFramework/Scripts/Utility/LuaHelper.cs" Line="139" Column="1" />
+      <File FileName="Assets/LuaFramework/ToLua/Misc/LuaLooper.cs" Line="30" Column="13" />
+      <File FileName="Assets/LuaFramework/ToLua/Core/LuaState.cs" Line="2575" Column="13" />
+      <File FileName="Assets/LuaFramework/Scripts/Common/LuaBehaviour.cs" Line="49" Column="24" />
+      <File FileName="Assets/LuaFramework/Scripts/Common/NewMonoBehaviour.cs" Line="15" Column="1" />
+      <File FileName="Assets/LuaFramework/Scripts/Manager/LuaManager.cs" Line="14" Column="38" />
+      <File FileName="Assets/LuaFramework/ToLua/Core/LuaFunction.cs" Line="118" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ToLuaTemp" expanded="True">
             <Node name="Assets" expanded="True">
+              <Node name="Lua" expanded="True">
+                <Node name="3rd" expanded="True" />
+                <Node name="Aria" expanded="True" />
+                <Node name="Module" expanded="True" />
+              </Node>
               <Node name="LuaFramework" expanded="True">
-                <Node name="Editor" expanded="True" />
                 <Node name="Scripts" expanded="True">
-                  <Node name="ConstDefine" expanded="True" />
-                  <Node name="Controller" expanded="True">
-                    <Node name="Command" expanded="True" />
+                  <Node name="Common" expanded="True" />
+                  <Node name="Framework" expanded="True">
+                    <Node name="Core" expanded="True" />
                   </Node>
                   <Node name="Manager" expanded="True" />
-                  <Node name="Network" expanded="True" />
-                  <Node name="ObjectPool" expanded="True" />
                   <Node name="Utility" expanded="True" />
                 </Node>
                 <Node name="ToLua" expanded="True">
-                  <Node name="Core" expanded="True" />
-                  <Node name="Injection" expanded="True" />
-                  <Node name="Misc" expanded="True">
-                    <Node name="LuaLooper.cs" selected="True" />
+                  <Node name="Core" expanded="True">
+                    <Node name="LuaFunction.cs" selected="True" />
                   </Node>
+                  <Node name="Misc" expanded="True" />
                   <Node name="Source" expanded="True">
                     <Node name="Generate" expanded="True" />
                   </Node>

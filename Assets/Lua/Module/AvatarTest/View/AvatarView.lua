@@ -26,7 +26,8 @@ function  AvatarView:AddClick(  )
 	end)
 
 	AddBtnClick(self.transform:Find("bg/btnEvent2").gameObject,function( ... )
-		eventMgr:DispatchEvent(EventStr.Test2,{my=222,aria=2})
+		-- eventMgr:DispatchEvent(EventStr.Test2,{my=222,aria=2})
+		-- eventMgr:AddEventListener(EventStr.Test1,handler(self.EventTest1,self),self)
 	end)
 
 	AddBtnClick(self.transform:Find("model").gameObject,function( ... )
@@ -42,5 +43,14 @@ function  AvatarView:AddAvatar( )
 	self.player:SetAnimator("Polyart/Animations/Aria.controller")
 	self.player:PlayAni("run")
 end
+
+
+function AvatarView:EventTest1(event )
+
+	log("AvatarView")
+	log(event)
+end
+
+
 
 return AvatarView

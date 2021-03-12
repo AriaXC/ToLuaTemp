@@ -1,10 +1,10 @@
 
-View=class("View")
+local View=class("View",BaseBehaviour)
 
 --还没有些异步加载
 function View:Ctor(prefab,parent,isAsync)
 	-- body
-	-- View.super.Ctor(self)
+	View.super.Ctor(self)
 	
 	if prefab == nil then
 		return

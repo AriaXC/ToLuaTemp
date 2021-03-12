@@ -17,7 +17,7 @@ function  LoginView:OnInitialize( ... )
 	GetComponentText(self.transform:Find("bg/btn2/Text").gameObject).text = "切换到场景2"
 
 	self:AddClick()
-
+	self:AddBehaviourScript(self.gameObject)
 end
 
 function  LoginView:AddClick()
@@ -44,6 +44,10 @@ function  LoginView:AddClick()
 		-- eventMgr:RemoveEventListener(EventStr.Test2,self.handlerMy)
 		eventMgr:RemoveObjAllEventListener(self)
 	end)
+end
+
+function LoginView:Update(  )
+
 end
 
 function  LoginView:EventTest1( event )

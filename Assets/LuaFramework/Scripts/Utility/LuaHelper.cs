@@ -100,8 +100,48 @@ namespace LuaFramework {
                 delegate (){
                     func.Call(go);
                 });
+        }
+        public static void DelClick(GameObject go)
+        {
+            if (go == null)
+            {
+                return;
+            }
+            if (go.GetComponent<Button>() == null)
+            {
+                return;
+            }
 
-
+            go.GetComponent<Button>().onClick.RemoveAllListeners();
+        }
+        /// <summary>
+        /// 添加c#脚本  执行update等的回调
+        /// </summary>
+        /// <param name="go"></param>
+        /// <param name="funNameList"></param>
+        /// <param name="funList"></param>
+        public static void AddAriaLuaBehaviour(GameObject go,string[] funNameList,LuaFunction[] funList)
+        {
+            if (go == null)
+            {
+                return;
+            }
+            if (funNameList.Length <= 0 && funList.Length <= 0)
+            {
+                Util.Log("传入的方法长度不对   =="+ funNameList.Length);
+                return;
+            }
+             AriaLuaBehaviour aira = go.GetComponent<AriaLuaBehaviour>();
+            if (aira == null)
+            {
+                aira = go.AddComponent<AriaLuaBehaviour>();
+            }
+            else
+            {
+                Util.Log("已经有了这个脚本了  " + go.name);
+                return;
+            }
+            aira.SetMess(funNameList, funList);
         }
     }
 }

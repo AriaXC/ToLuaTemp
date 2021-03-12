@@ -4,6 +4,7 @@ local  require = require
 require "Tool/String"
 require "Tool/Json2"
 
+BaseBehaviour = require("Aria.Views.BaseBehaviour")
 View=require("Aria.Views.View")
 Scene = require("Aria.Views.Scene")
 Avatar =require("Aria.Views.Avatar")

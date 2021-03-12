@@ -33,7 +33,6 @@ function EventManager:AddEventListener(eventName,listener,target)
 		if target._addEventListeners == nil then
 			target._addEventListeners ={}
 		end
-
 		----
 		--  同一个target 默认只能绑定一个同名的eventName  否则清除target有问题 
 		----
@@ -43,6 +42,9 @@ function EventManager:AddEventListener(eventName,listener,target)
 		end
 		target._addEventListeners[eventName]= handStr
 	end
+
+
+	-----OnDestroy  
 
 	return handStr
 end
@@ -82,7 +84,7 @@ function  EventManager:RemoveObjAllEventListener(target)
 	end
 end
 --派发
-function  EventManager:DispatchEvent( eventName,... )
+function  EventManager:DispatchEvent(eventName,... )
 	if eventName == nil then
 		logError ("eventName 是空的")
 		return 
