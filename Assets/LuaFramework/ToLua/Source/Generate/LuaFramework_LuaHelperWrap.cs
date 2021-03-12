@@ -18,6 +18,7 @@ public class LuaFramework_LuaHelperWrap
 		L.RegFunction("AddClick", AddClick);
 		L.RegFunction("DelClick", DelClick);
 		L.RegFunction("AddAriaLuaBehaviour", AddAriaLuaBehaviour);
+		L.RegFunction("ObjIsNull", ObjIsNull);
 		L.EndStaticLibs();
 	}
 
@@ -198,6 +199,23 @@ public class LuaFramework_LuaHelperWrap
 			LuaInterface.LuaFunction[] arg2 = ToLua.CheckObjectArray<LuaInterface.LuaFunction>(L, 3);
 			LuaFramework.LuaHelper.AddAriaLuaBehaviour(arg0, arg1, arg2);
 			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int ObjIsNull(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 1);
+			UnityEngine.GameObject arg0 = (UnityEngine.GameObject)ToLua.CheckObject(L, 1, typeof(UnityEngine.GameObject));
+			bool o = LuaFramework.LuaHelper.ObjIsNull(arg0);
+			LuaDLL.lua_pushboolean(L, o);
+			return 1;
 		}
 		catch (Exception e)
 		{

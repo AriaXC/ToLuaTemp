@@ -4,7 +4,6 @@ local LoginView=class(LoginView,View)
 function  LoginView:Ctor( )
 	-- body
 	LoginView.super.Ctor(self,"Prefabs/Login/LoginView.prefab",GameConst.Layer.ui)
-
 end
 
 function  LoginView:OnInitialize( ... )
@@ -17,7 +16,7 @@ function  LoginView:OnInitialize( ... )
 	GetComponentText(self.transform:Find("bg/btn2/Text").gameObject).text = "切换到场景2"
 
 	self:AddClick()
-	self:AddBehaviourScript(self.gameObject)
+	-- self:AddBehaviourScript(self.gameObject)
 end
 
 function  LoginView:AddClick()
@@ -28,6 +27,7 @@ function  LoginView:AddClick()
 
 	AddBtnClick(self.transform:Find("bg/btn1").gameObject,function( ... )
 		-- self:Hide()
+		self:Destroy()
 		if not self.avatarView then
 			self.avatarView = require("Module.AvatarTest.View.AvatarView").New()
 		end
@@ -37,7 +37,7 @@ function  LoginView:AddClick()
 	eventMgr:AddEventListener(EventStr.Test1,handler(self.EventTest1,self),self)
 
 	AddBtnClick(self.transform:Find("bg/addEventBtn").gameObject,function( ... )
-		self.handlerMy =  eventMgr:AddEventListener(EventStr.Test2,handler(self.EventTest2,self),self)
+		self.handlerMy = eventMgr:AddEventListener(EventStr.Test2,handler(self.EventTest2,self),self)
 	end)
 
 	AddBtnClick(self.transform:Find("bg/delEventBtn").gameObject,function( ... )
@@ -46,10 +46,11 @@ function  LoginView:AddClick()
 	end)
 end
 
-function LoginView:Update(  )
-
+function  LoginView:Update( ... )
+	-- body
+	logError(self)
+	logError(self.gameObject.name)
 end
-
 function  LoginView:EventTest1( event )
 
 	log("收到了啊")

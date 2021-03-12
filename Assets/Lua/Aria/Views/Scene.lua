@@ -1,4 +1,4 @@
-local Scene=class("Scene",BaseBehaviour)
+local Scene=class("Scene",View)
 
 --暂时还没有
 function Scene:Ctor()

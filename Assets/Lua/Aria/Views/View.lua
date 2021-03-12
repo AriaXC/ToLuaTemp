@@ -4,7 +4,7 @@ local View=class("View",BaseBehaviour)
 --还没有些异步加载
 function View:Ctor(prefab,parent,isAsync)
 	-- body
-	View.super.Ctor(self)
+
 	
 	if prefab == nil then
 		return
@@ -27,15 +27,14 @@ function View:Ctor(prefab,parent,isAsync)
 	end
 
 	self.gameObject=Instantiate(prefab,parent)
-
+	View.super.Ctor(self)
 	-- log("ViewName == "..self.gameObject.name)
-
 	self:OnInitialize()
 end
 function View:OnInitialize( ... )
 	-- body
 	self.transform=self.gameObject.transform
-
+	
 end
 
 function  View:Show( ... )
@@ -43,9 +42,14 @@ function  View:Show( ... )
 	self.gameObject:SetActive(true)
 end
 
-function   View:Hide( ... )
+function  View:Hide( ... )
 	-- body
 	self.gameObject:SetActive(false)
+end
+
+function  View:Destroy( ... )
+	-- body
+	Destroy(self.gameObject)
 end
 
 

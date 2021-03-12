@@ -138,10 +138,20 @@ namespace LuaFramework {
             }
             else
             {
-                Util.Log("已经有了这个脚本了  " + go.name);
-                return;
+                //Util.Log("添加了 已经有了这个脚本了  " + go.name);
             }
             aira.SetMess(funNameList, funList);
+        }
+
+        /// <summary>
+        /// 判断传入对象是不是空
+        /// </summary>
+        /// <param name="go"></param>
+        public static bool ObjIsNull(GameObject go)
+        {
+            if (go == null || go.Equals(null))
+                return true;
+            return false;
         }
     }
 }

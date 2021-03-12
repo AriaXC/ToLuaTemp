@@ -49,7 +49,7 @@ function EventManager:AddEventListener(eventName,listener,target)
 	return handStr
 end
 --移除
-function  EventManager:RemoveEventListener(eventName,key)
+function  EventManager:RemoveEventListener(eventName,key,target)
 	if type(eventName) ~= "string" then
 		logError("eventName 的类型错了  ")
 		return
@@ -65,6 +65,11 @@ function  EventManager:RemoveEventListener(eventName,key)
 			log(string.format("RemoveEventListener ====   eventName==%s",eventName))
 			v:Recycle()
 			self._listeners[eventName][key] = nil
+			if target then
+				target._addEventListeners[eventName] = nil
+			else
+				logError("target  是个空")
+			end
 		end
 	end
 end
@@ -83,6 +88,7 @@ function  EventManager:RemoveObjAllEventListener(target)
 		end
 	end
 end
+
 --派发
 function  EventManager:DispatchEvent(eventName,... )
 	if eventName == nil then

@@ -13,6 +13,7 @@ namespace LuaFramework {
 
         public void SetMess(string[] funNameList,LuaFunction[] funList)
         {
+            luafunDic.Clear();
             for (int i = 0; i < funNameList.Length; ++i)
             {
                 luafunDic.Add(funNameList[i], funList[i]);

@@ -136,6 +136,16 @@ function AddBtnClick(go,callback,audio)
 	end)
 end
 
+function  Destroy( obj,delay)
+	if obj then
+		if delay then
+			GameObject.Destroy(obj,delay)
+		else
+			GameObject.Destroy(obj)
+		end
+	end
+end
+
 
 -----------------------------------------------------------------------------------------------
 
