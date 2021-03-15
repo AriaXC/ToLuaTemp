@@ -166,6 +166,16 @@
     <Compile Include="Assets\LuaFramework\ToLua\Reflection\LuaReflection.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\BaseWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DelegateFactory.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_Core_ABSAnimationComponentWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_DOTweenAnimationWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_DOTweenWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_LoopTypeWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_PathModeWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_PathTypeWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_RotateModeWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_SequenceWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_TweenerWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_TweenWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaBinder.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_AppConstWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_ByteBufferWrap.cs" />
@@ -210,6 +220,7 @@
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_InputWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_KeyCodeWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_LightTypeWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_LightWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_MaterialWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_MeshColliderWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_MeshRendererWrap.cs" />
@@ -485,6 +496,15 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="DemiLib">
+      <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Assets/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenPro">
+      <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Assets/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>/Applications/Unity/Hub/Editor/2018.3.14f1/Unity.app/Contents/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -831,6 +851,12 @@
     <Reference Include="mscorlib">
       <HintPath>/Applications/Unity/Hub/Editor/2018.3.14f1/Unity.app/Contents/NetStandard/compat/2.0.0/shims/netfx/mscorlib.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{0F5A8B6B-4A31-4FAD-71BF-4CEB84CF3087}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

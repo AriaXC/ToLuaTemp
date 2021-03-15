@@ -12,3 +12,11 @@ Avatar =require("Aria.Views.Avatar")
 
 Handler = require("Aria.Utils.Handler")
 EventStr = require("Aria.Event.Events") 
+
+
+
+
+-------------------------------------------------
+
+Input = UnityEngine.Input
+KeyCode =UnityEngine.KeyCode

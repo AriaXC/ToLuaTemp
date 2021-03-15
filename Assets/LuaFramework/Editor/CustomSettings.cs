@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+﻿#define USING_DOTWEENING
+
+using UnityEngine;
 using System;
 using System.Collections.Generic;
 using LuaInterface;
 using LuaFramework;
 using UnityEditor;
 using MoonScrpts;
+using DG.Tweening;
+
 
 using BindType = ToLuaMenu.BindType;
 using UnityEngine.UI;
@@ -45,6 +49,8 @@ public static class CustomSettings
         _DT(typeof(System.Action<int>)),
         _DT(typeof(System.Comparison<int>)),
         _DT(typeof(System.Func<int, int>)),
+        _DT(typeof(DG.Tweening.TweenCallback)),
+
     };
 
     //在这里添加你要导出注册到lua的类型列表
@@ -64,7 +70,10 @@ public static class CustomSettings
                         
         _GT(typeof(LuaInjectionStation)),
         _GT(typeof(InjectType)),
-        _GT(typeof(Debugger)).SetNameSpace(null),          
+        _GT(typeof(Debugger)).SetNameSpace(null),
+
+         //_GT(typeof(DOTween)),
+         _GT(typeof(DOTweenAnimation)),
 
 #if USING_DOTWEENING
         _GT(typeof(DG.Tweening.DOTween)),

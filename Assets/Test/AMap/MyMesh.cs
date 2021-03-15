@@ -17,7 +17,8 @@ public class MyMesh : MonoBehaviour
         hexMesh.name = "HexMash";
         vertList = new List<Vector3>();
         triangles = new List<int>();
-     
+
+      
     }
 
     public void Start()

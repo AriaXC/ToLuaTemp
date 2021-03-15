@@ -12,7 +12,7 @@ function AvatarView:OnInitialize( ... )
 	self.titleText.text="Avatar测试界面"
 
 	self:AddClick()
-	
+	self:AddBehaviourScript(self.gameObject)
 end
 function  AvatarView:AddClick(  )
 	AddBtnClick(self.transform:Find("bg/btn1").gameObject,function( ... )
@@ -30,6 +30,7 @@ function  AvatarView:AddClick(  )
 		-- eventMgr:AddEventListener(EventStr.Test1,handler(self.EventTest1,self),self)
 	end)
 
+
 	AddBtnClick(self.transform:Find("model").gameObject,function( ... )
 		self:Hide()
 	end)
@@ -41,9 +42,16 @@ function  AvatarView:AddAvatar( )
 	self.player.transform.localPosition = Vector3.New(0,0,-200)
 
 	self.player:SetAnimator("Polyart/Animations/Aria.controller")
-	self.player:PlayAni("run")
+	self.player:PlayAni("walk")
 end
+function  AvatarView:Update()
+	if Input.GetKeyDown(KeyCode.W) then
+		self.player:PlayAni("run")
+	elseif Input.GetKeyDown(KeyCode.A) then
+		self.player:PlayAni("walk")	
+	end
 
+end
 
 function AvatarView:EventTest1(event )
 

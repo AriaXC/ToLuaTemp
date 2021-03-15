@@ -17,6 +17,10 @@ function  LoginView:OnInitialize( ... )
 
 	self:AddClick()
 	-- self:AddBehaviourScript(self.gameObject)
+	self.titleText.transform:DOScale(4,2):OnComplete(function( ... )
+		-- body
+		log("Dotween 回调")
+	end)
 end
 
 function  LoginView:AddClick()
@@ -33,6 +37,16 @@ function  LoginView:AddClick()
 		end
 		self.avatarView:Show()
 	end)
+
+
+	AddBtnClick(self.transform:Find("bg/btnCe").gameObject,function( ... )
+		self:Hide()
+		if not self.avatarView then
+			self.avatarView = require("Module.AvatarTest.View.AvatarView").New()
+		end
+		self.avatarView:Show()
+	end)
+
 
 	eventMgr:AddEventListener(EventStr.Test1,handler(self.EventTest1,self),self)
 
