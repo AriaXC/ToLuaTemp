@@ -15,21 +15,11 @@ function AvatarView:OnInitialize( ... )
 	self:AddBehaviourScript(self.gameObject)
 end
 function  AvatarView:AddClick(  )
-	AddBtnClick(self.transform:Find("bg/btn1").gameObject,function( ... )
+	AddBtnClick(self.transform:Find("bg/btnAdd").gameObject,function( ... )
 		if not self.player then
 			self:AddAvatar()
 		end
 	end)
-
-	AddBtnClick(self.transform:Find("bg/btnEvent").gameObject,function( ... )
-		eventMgr:DispatchEvent(EventStr.Test1,{my=1,aria=2})
-	end)
-
-	AddBtnClick(self.transform:Find("bg/btnEvent2").gameObject,function( ... )
-		eventMgr:DispatchEvent(EventStr.Test2,{my=222,aria=2})
-		-- eventMgr:AddEventListener(EventStr.Test1,handler(self.EventTest1,self),self)
-	end)
-
 
 	AddBtnClick(self.transform:Find("model").gameObject,function( ... )
 		self:Hide()
@@ -52,13 +42,6 @@ function  AvatarView:Update()
 	end
 
 end
-
-function AvatarView:EventTest1(event )
-
-	log("AvatarView")
-	log(event)
-end
-
 
 
 return AvatarView

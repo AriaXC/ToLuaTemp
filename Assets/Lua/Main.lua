@@ -11,7 +11,7 @@ end
 --错误信息
 function  _Aira_Error_Fun(msg)
 	-- body
-	logError("LuaError == "..msg)
+	logError("错误回调  LuaError == "..msg)
 end
 
 --第二次加入lua路径  是动更目录 动更的文件无法加入游戏包体

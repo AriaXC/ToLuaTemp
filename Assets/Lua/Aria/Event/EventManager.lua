@@ -19,6 +19,7 @@ function EventManager:AddEventListener(eventName,listener,target)
 		logError("eventName 的类型错了")
 		return
 	end
+
 	eventName = string.lower(eventName)
 	self._handlerIndex = self._handlerIndex +1
 	local  handStr  = string.format("Hand_%s",self._handlerIndex)
@@ -38,6 +39,7 @@ function EventManager:AddEventListener(eventName,listener,target)
 		----
 		if target._addEventListeners[eventName] ~=nil then
 			logError("这个taget上已经有一个同名的事件了 不能加了")
+			self._listeners[eventName][handStr]  =nil
 			return
 		end
 		target._addEventListeners[eventName]= handStr
@@ -84,6 +86,7 @@ function  EventManager:RemoveObjAllEventListener(target)
 				self._listeners[k][v]:Recycle()
 				log(string.format("RemoveObjAllEventListener ===  eventName =%s , handStr = %s",k,v))			
 				self._listeners[k][v] = nil
+				target._addEventListeners=nil
 			end
 		end
 	end
@@ -104,14 +107,19 @@ function  EventManager:DispatchEvent(eventName,... )
 
 	for k,v in pairs(self._listeners[eventName]) do
 		if v then
-			xpcall(v:Execute(args),_Aira_Error_Fun)
+			-- xpcall(v:Execute(args),_Aira_Error_Fun)
+			xpcall(function ()
+				v:Execute(args)
+			end,_Aira_Error_Fun)
 		else
-			logError("事件的回调没有啊   "..eventName)
+			log("事件的回调没有啊   "..eventName)
 		end
 	end
 
 end
-
+function  EventManager:AM( ... )
+	-- body
+end
 
 
 return EventManager
