@@ -34,7 +34,7 @@ function  LoginView:AddClick()
 
 
 	AddBtnClick(self.transform:Find("bg/btnCe").gameObject,function( ... )
-		self:Hide()
+		-- self:Hide()
 		if not self.testView then
 			self.testView = require("Module.Test.TestView").New()
 		end

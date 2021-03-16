@@ -152,6 +152,7 @@ namespace LuaFramework {
             if (go == null || go.Equals(null))
                 return true;
             return false;
+            
         }
     }
 }

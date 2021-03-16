@@ -15,10 +15,11 @@ function  TestView:OnInitialize( ... )
 
 	self:AddClick()
 	-- self:AddBehaviourScript(self.gameObject)
-	self.titleText.transform:DOScale(1.3,2):OnComplete(function( ... )
-		-- body
-		log("Dotween 回调")
-	end)
+
+	-- self.titleText.transform:DOScale(1.3,2):OnComplete(function( ... )
+	-- 	-- body
+	-- 	log("Dotween 回调")
+	-- end)
 end
 function  TestView:AddClick( ... )
 
@@ -41,9 +42,18 @@ end
 
 	
 function  TestView:Update( ... )
-	-- body
-	logError(self)
-	logError(self.gameObject.name)
+	if Input.GetMouseButtonUp(0) then
+		local  ray  = Camera.main:ScreenPointToRay(Input.mousePosition)
+		local  hitList = Physics.RaycastAll(ray,100)
+		--2d 的没成功
+		-- local  hitList = Physics2D.RaycastAll(Input.mousePosition,Vector2.up)
+		-- logError(hitList.Length)
+		if hitList.Length >0 then
+			for i=0,hitList.Length-1 do
+				logError(hitList[i].collider.gameObject.name)
+			end
+		end
+	end		
 end
 function  TestView:EventTest1( event )
 

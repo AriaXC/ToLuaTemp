@@ -19,7 +19,7 @@ public static class CustomSettings
     public static string FrameworkPath = AppConst.FrameworkRoot;
     public static string saveDir = FrameworkPath + "/ToLua/Source/Generate/";
     public static string luaDir = AppConst.AssetsRoot + "Lua/";
-    public static string toluaBaseType = FrameworkPath + "/ToLua/BaseType/";
+public static string toluaBaseType = FrameworkPath + "/ToLua/BaseType/";
 	public static string baseLuaDir = FrameworkPath + "/ToLua/Lua";
 	public static string injectionFilesPath = Application.dataPath + "/ToLua/Injection/";
 
@@ -33,6 +33,7 @@ public static class CustomSettings
         typeof(UnityEngine.SleepTimeout),
         typeof(UnityEngine.Input),
         typeof(UnityEngine.Resources),
+        typeof(UnityEngine.Physics2D),
         typeof(UnityEngine.Physics),
         typeof(UnityEngine.RenderSettings),
         typeof(UnityEngine.QualitySettings),
@@ -112,6 +113,7 @@ public static class CustomSettings
         _GT(typeof(TrackedReference)),
         _GT(typeof(Application)),
         _GT(typeof(Physics)),
+        _GT(typeof(Physics2D)),
         _GT(typeof(Collider)),
         _GT(typeof(Time)),
         _GT(typeof(Texture)),

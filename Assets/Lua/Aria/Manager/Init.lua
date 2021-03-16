@@ -7,3 +7,4 @@ MySceneMgr = require("Aria.Manager.SceneManager").New()
 eventMgr = require("Aria.Event.EventManager").New()
 
 
+

@@ -1,9 +1,12 @@
 ﻿<Properties StartupConfiguration="{5EBE5927-85E2-E507-10FC-6F3F3AAB800B}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/Editor/CustomSettings.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Assets/LuaFramework/Editor/CustomSettings.cs" Line="52" Column="48" />
+      <File FileName="Assets/LuaFramework/Editor/CustomSettings.cs" Line="27" Column="42" />
       <File FileName="Assets/LuaFramework/ToLua/Editor/ToLuaMenu.cs" Line="198" Column="25" />
-      <File FileName="Assets/LuaFramework/Scripts/Utility/LuaHelper.cs" Line="1" Column="1" />
+      <File FileName="Assets/LuaFramework/Scripts/Utility/LuaHelper.cs" Line="155" Column="13" />
+      <File FileName="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_CameraWrap.cs" Line="26" Column="44" />
+      <File FileName="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_PhysicsWrap.cs" Line="1" Column="1" />
+      <File FileName="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_Physics2DWrap.cs" Line="736" Column="54" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -11,16 +14,16 @@
           <Node name="ToLuaTemp" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="LuaFramework" expanded="True">
-                <Node name="Editor" expanded="True">
-                  <Node name="CustomSettings.cs" selected="True" />
-                </Node>
+                <Node name="Editor" expanded="True" />
                 <Node name="Scripts" expanded="True">
                   <Node name="Utility" expanded="True" />
                 </Node>
                 <Node name="ToLua" expanded="True">
                   <Node name="Editor" expanded="True" />
                   <Node name="Source" expanded="True">
-                    <Node name="Generate" expanded="True" />
+                    <Node name="Generate" expanded="True">
+                      <Node name="UnityEngine_Physics2DWrap.cs" selected="True" />
+                    </Node>
                   </Node>
                 </Node>
               </Node>
@@ -29,6 +32,11 @@
               </Node>
             </Node>
           </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="ToLuaTemp" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
