@@ -20,7 +20,9 @@ end
 function  LoginView:AddClick()
 	-- body
 	AddBtnClick(self.transform:Find("bg/btnScene2").gameObject,function( ... )
-		MySceneMgr:ShowScene("Module.Login.Login2Scene","Login2","Scene.Login.Login2")
+		-- MySceneMgr:ShowScene("Module.Login.Login2Scene","Login2","Scene.Login.Login2")
+		
+		MySceneMgr:LoadSubScene("Module.Login.Login2Scene","Login2","Scene.Login.Login2")
 	end)
 
 	AddBtnClick(self.transform:Find("bg/btnAvatar").gameObject,function( ... )

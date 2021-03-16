@@ -51,10 +51,29 @@ function  SceneManager:ShowScene(sceneClass,scene,sceneUnity)
 		end)
 	end
 end
+--加载子场景
+function  SceneManager:LoadSubScene(sceneClass,scene,sceneUnity)
+	sceneUnity = string.replace(sceneUnity,"%p.","/",1)
 
+	sceneUnity = sceneUnity..".unity"
+	--别的管理器引用 清空
+
+	self.isChangeScene =true
+	if sceneClass then
+		self.currLoadingSceneName = scene
+		log("resMgr:LoadSceneAsync:Start  "..scene)
+		--场景切换进度条 和资源卸载
+		-- 可以先跳转到一个中间场景去做  未
+
+		resMgr:LoadSceneAsync(sceneUnity,function (value)
+			
+		end)
+	end
+
+end
 -- 场景的加载条 可以在这个地方做 value
 function  SceneManager:LoadScene(scene,sceneClass)
-	resMgr:ClearAll()
+	-- resMgr:ClearAll()
 
 	sceneMgr:LoadSceneAsync(scene,function(value)
 		if value then
