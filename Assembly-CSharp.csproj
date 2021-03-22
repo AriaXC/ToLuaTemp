@@ -166,16 +166,27 @@
     <Compile Include="Assets\LuaFramework\ToLua\Reflection\LuaReflection.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\BaseWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DelegateFactory.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_AutoPlayWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_AxisConstraintWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_Core_ABSAnimationComponentWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_Core_ABSSequentiableWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_DOTweenAnimationWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_DOTweenWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_DOVirtualWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_EaseFactoryWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_EaseWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_LogBehaviourWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_LoopTypeWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_PathModeWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_PathTypeWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_RotateModeWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_ScrambleModeWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_SequenceWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_TweenerWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_TweenParamsWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_TweenTypeWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_TweenWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\DG_Tweening_UpdateTypeWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaBinder.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_AppConstWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaFramework_ByteBufferWrap.cs" />
@@ -203,6 +214,7 @@
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_ApplicationWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_AssetBundleWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_AsyncOperationWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_Audio_AudioMixerWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_AudioBehaviourWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_AudioClipWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_AudioSourceWrap.cs" />
@@ -211,6 +223,7 @@
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_BoxColliderWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_CameraClearFlagsWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_CameraWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_CanvasGroupWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_CapsuleColliderWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_CharacterControllerWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_ColliderWrap.cs" />
@@ -221,6 +234,7 @@
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_KeyCodeWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_LightTypeWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_LightWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_LineRendererWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_MaterialWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_MeshColliderWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_MeshRendererWrap.cs" />
@@ -235,6 +249,7 @@
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_RenderSettingsWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_RenderTextureWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_ResourcesWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_Rigidbody2DWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_RigidbodyWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_ScreenWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_ShaderWrap.cs" />
@@ -242,13 +257,23 @@
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_SleepTimeoutWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_SpaceWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_SphereColliderWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_SpriteRendererWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_Texture2DWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_TextureWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_TimeWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_TrackedReferenceWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_TrailRendererWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_TransformWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_UI_BaseMeshEffectWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_UI_GraphicWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_UI_ImageWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_UI_LayoutElementWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_UI_MaskableGraphicWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_UI_OutlineWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_UI_ScrollRectWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_UI_SelectableWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_UI_ShadowWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_UI_SliderWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_UI_TextWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_WrapModeWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_WWWWrap.cs" />
@@ -489,6 +514,15 @@
     <Reference Include="Debugger">
       <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Assets/Plugins/Debugger.dll</HintPath>
     </Reference>
+    <Reference Include="DOTweenPro">
+      <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Assets/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
+    </Reference>
+    <Reference Include="DemiLib">
+      <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Assets/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
@@ -497,15 +531,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="DemiLib">
-      <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Assets/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween">
-      <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTweenPro">
-      <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Assets/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>/Applications/Unity/Hub/Editor/2018.3.14f1/Unity.app/Contents/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

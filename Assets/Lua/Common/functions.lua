@@ -2,6 +2,7 @@
 --这样写 可以转换为局部变量 是存放在栈上的  可以提高速度  我的理解是
 local _typeof=typeof 
 local traceback = debug.traceback
+local  _isNull  = tolua.isnull
 
 --输出日志--
 function log(str,trace)
@@ -54,6 +55,13 @@ function findPanel(str)
 		return nil;
 	end
 	return obj:GetComponent("BaseLua");
+end
+
+function  isNull(obj)
+	if obj == nil then
+		return true
+	end
+	return _isNull(obj)
 end
 --------------------------------------------------------------------------------
 

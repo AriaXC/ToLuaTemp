@@ -11,10 +11,8 @@ Avatar =require("Aria.Views.Avatar")
 
 
 Handler = require("Aria.Utils.Handler")
-EventStr = require("Aria.Event.Events") 
-
-
-
+EventStr = require("Aria.Event.Events")
+Utils = require("Aria.Utils.Utils") 
 
 -------------------------------------------------
 
@@ -23,3 +21,23 @@ Physics = UnityEngine.Physics
 Physics2D = UnityEngine.Physics2D
 Input = UnityEngine.Input
 KeyCode =UnityEngine.KeyCode
+
+
+
+------------------------------------------------
+
+DOTween = DG.Tweening.DOTween
+DOTween_Enum ={
+	AutoPlay = DG.Tweening.AutoPlay,
+	AxisConstraint = DG.Tweening.AxisConstraint,
+	Color2 = DG.Tweening.Color2,
+	Ease = DG.Tweening.Ease,
+	LogBehaviour = DG.Tweening.LogBehaviour,
+	LoopType = DG.Tweening.LoopType,
+	PathMode = DG.Tweening.PathMode,
+	PathType = DG.Tweening.PathType,
+	RotateMode = DG.Tweening.RotateMode,
+	ScrambleMode = DG.Tweening.ScrambleMode,
+	TweenType = DG.Tweening.TweenType,
+	UpdateType = DG.Tweening.UpdateType,
+}

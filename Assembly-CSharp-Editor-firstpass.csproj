@@ -325,6 +325,24 @@
     <Reference Include="Debugger">
       <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Assets/Plugins/Debugger.dll</HintPath>
     </Reference>
+    <Reference Include="DOTweenPro">
+      <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Assets/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenProEditor">
+      <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Assets/Plugins/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="DemiLib">
+      <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Assets/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DemiEditor">
+      <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Assets/Plugins/Demigiant/DemiLib/Core/Editor/DemiEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenEditor">
+      <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Assets/Plugins/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
@@ -339,24 +357,6 @@
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
       <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTweenEditor">
-      <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Assets/Plugins/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTweenProEditor">
-      <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Assets/Plugins/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="DemiLib">
-      <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Assets/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween">
-      <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
-    </Reference>
-    <Reference Include="DemiEditor">
-      <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Assets/Plugins/Demigiant/DemiLib/Core/Editor/DemiEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTweenPro">
-      <HintPath>/Users/admin/Documents/U2/ToLuaTemp/Assets/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>/Applications/Unity/Hub/Editor/2018.3.14f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

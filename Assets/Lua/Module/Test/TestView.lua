@@ -13,6 +13,7 @@ function  TestView:OnInitialize( ... )
 	self.titleText= GetComponentText(self.transform:Find("bg/titleText").gameObject)
 	self.titleText.text="测试View"
 
+	self.numTest = 1111
 	self:AddClick()
 	-- self:AddBehaviourScript(self.gameObject)
 
@@ -38,10 +39,25 @@ function  TestView:AddClick( ... )
 	AddBtnClick(self.transform:Find("model").gameObject,function( ... )
 		self:Hide()
 	end)
+	AddBtnClick(self.transform:Find("bg/btnNumChange").gameObject,function ( ... )
+
+		local  objText = GetComponentText(self.transform:Find("bg/btnNumChange/num").gameObject)
+		Utils.NumUpDown(objText,self.numTest,self.numTest+1234,nil,function()
+			log("数字变化完了")
+			self.numTest = self.numTest+1234
+		end)
+	end)
+	AddBtnClick(self.transform:Find("bg/btnDo").gameObject,function( ... )
+		Utils.DOTweenFloat(1,4,1,function(value )
+			log(value)
+		end,function( ... )
+			log("输出结束")
+		end)
+	end)
 end
 
 	
-function  TestView:Update( ... )
+function  TestView:Update(  )
 	if Input.GetMouseButtonUp(0) then
 		local  ray  = Camera.main:ScreenPointToRay(Input.mousePosition)
 		local  hitList = Physics.RaycastAll(ray,100)

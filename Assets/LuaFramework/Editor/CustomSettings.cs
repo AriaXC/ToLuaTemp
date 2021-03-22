@@ -13,6 +13,7 @@ using DG.Tweening;
 using BindType = ToLuaMenu.BindType;
 using UnityEngine.UI;
 using System.Reflection;
+using UnityEngine.Audio;
 
 public static class CustomSettings
 {
@@ -74,26 +75,59 @@ public static string toluaBaseType = FrameworkPath + "/ToLua/BaseType/";
         _GT(typeof(Debugger)).SetNameSpace(null),
 
          //_GT(typeof(DOTween)),
-         _GT(typeof(DOTweenAnimation)),
 
 #if USING_DOTWEENING
-        _GT(typeof(DG.Tweening.DOTween)),
+
         _GT(typeof(DG.Tweening.Tween)).SetBaseType(typeof(System.Object)).AddExtendType(typeof(DG.Tweening.TweenExtensions)),
         _GT(typeof(DG.Tweening.Sequence)).AddExtendType(typeof(DG.Tweening.TweenSettingsExtensions)),
         _GT(typeof(DG.Tweening.Tweener)).AddExtendType(typeof(DG.Tweening.TweenSettingsExtensions)),
-        _GT(typeof(DG.Tweening.LoopType)),
-        _GT(typeof(DG.Tweening.PathMode)),
-        _GT(typeof(DG.Tweening.PathType)),
-        _GT(typeof(DG.Tweening.RotateMode)),
+
+
         _GT(typeof(Component)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
         _GT(typeof(Transform)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
         _GT(typeof(Light)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
         _GT(typeof(Material)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
-        _GT(typeof(Rigidbody)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
         _GT(typeof(Camera)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
-        _GT(typeof(AudioSource)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
-        //_GT(typeof(LineRenderer)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
-        //_GT(typeof(TrailRenderer)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),    
+        _GT(typeof(LineRenderer)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
+        _GT(typeof(TrailRenderer)).AddExtendType(typeof(DG.Tweening.ShortcutExtensions)),
+
+
+        _GT(typeof(CanvasGroup)).AddExtendType(typeof(DOTweenModuleUI)),
+        _GT(typeof(Graphic)).AddExtendType(typeof(DOTweenModuleUI)),
+        _GT(typeof(Image)).AddExtendType(typeof(DOTweenModuleUI)),
+        _GT(typeof(Text)).AddExtendType(typeof(DOTweenModuleUI)),
+        _GT(typeof(LayoutElement)).AddExtendType(typeof(DOTweenModuleUI)),
+        _GT(typeof(Outline)).AddExtendType(typeof(DOTweenModuleUI)),
+        _GT(typeof(RectTransform)).AddExtendType(typeof(DOTweenModuleUI)),
+        _GT(typeof(ScrollRect)).AddExtendType(typeof(DOTweenModuleUI)),
+        _GT(typeof(Slider)).AddExtendType(typeof(DOTweenModuleUI)),
+
+
+        _GT(typeof(AudioSource)).AddExtendType(typeof(DOTweenModuleAudio)),
+        _GT(typeof(AudioMixer)).AddExtendType(typeof(DOTweenModuleAudio)),
+        _GT(typeof(Rigidbody)).AddExtendType(typeof(DOTweenModulePhysics)),
+        _GT(typeof(Rigidbody2D)).AddExtendType(typeof(DOTweenModulePhysics2D)),
+        _GT(typeof(SpriteRenderer)).AddExtendType(typeof(DOTweenModuleSprite)),
+
+        _GT(typeof(DG.Tweening.DOTween)),
+        _GT(typeof(DOTweenAnimation)),
+        _GT(typeof(DOVirtual)),
+        _GT(typeof(EaseFactory)),
+        _GT(typeof(TweenParams)),
+        _GT(typeof(DG.Tweening.Core.ABSSequentiable)),
+
+
+        _GT(typeof(Ease)),
+        _GT(typeof(LoopType)),
+        _GT(typeof(PathMode)),
+        _GT(typeof(PathType)),
+        _GT(typeof(AutoPlay)),
+        _GT(typeof(TweenType)),
+        _GT(typeof(UpdateType)),
+        _GT(typeof(RotateMode)),
+        _GT(typeof(LogBehaviour)),
+        _GT(typeof(ScrambleMode)),
+        _GT(typeof(AxisConstraint)),
 #else
                                          
         _GT(typeof(Component)),
@@ -168,8 +202,8 @@ public static string toluaBaseType = FrameworkPath + "/ToLua/BaseType/";
         _GT(typeof(LuaProfiler)),
           
         //for LuaFramework
-        _GT(typeof(RectTransform)),
-        _GT(typeof(Text)),
+        //_GT(typeof(RectTransform)),
+        //_GT(typeof(Text)),
 
         _GT(typeof(Util)),
         _GT(typeof(AppConst)),

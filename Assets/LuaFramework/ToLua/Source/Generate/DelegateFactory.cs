@@ -24,7 +24,9 @@ public class DelegateFactory
 		dict.Add(typeof(System.Comparison<int>), factory.System_Comparison_int);
 		dict.Add(typeof(System.Func<int,int>), factory.System_Func_int_int);
 		dict.Add(typeof(DG.Tweening.TweenCallback), factory.DG_Tweening_TweenCallback);
-		dict.Add(typeof(System.Action<DG.Tweening.DOTweenAnimation>), factory.System_Action_DG_Tweening_DOTweenAnimation);
+		dict.Add(typeof(DG.Tweening.TweenCallback<int>), factory.DG_Tweening_TweenCallback_int);
+		dict.Add(typeof(UnityEngine.Camera.CameraCallback), factory.UnityEngine_Camera_CameraCallback);
+		dict.Add(typeof(UnityEngine.RectTransform.ReapplyDrivenProperties), factory.UnityEngine_RectTransform_ReapplyDrivenProperties);
 		dict.Add(typeof(System.Func<UnityEngine.LogType,object,bool>), factory.System_Func_UnityEngine_LogType_object_bool);
 		dict.Add(typeof(DG.Tweening.Core.DOGetter<float>), factory.DG_Tweening_Core_DOGetter_float);
 		dict.Add(typeof(DG.Tweening.Core.DOSetter<float>), factory.DG_Tweening_Core_DOSetter_float);
@@ -54,8 +56,9 @@ public class DelegateFactory
 		dict.Add(typeof(DG.Tweening.Core.DOSetter<UnityEngine.Rect>), factory.DG_Tweening_Core_DOSetter_UnityEngine_Rect);
 		dict.Add(typeof(DG.Tweening.Core.DOGetter<UnityEngine.RectOffset>), factory.DG_Tweening_Core_DOGetter_UnityEngine_RectOffset);
 		dict.Add(typeof(DG.Tweening.Core.DOSetter<UnityEngine.RectOffset>), factory.DG_Tweening_Core_DOSetter_UnityEngine_RectOffset);
-		dict.Add(typeof(DG.Tweening.TweenCallback<int>), factory.DG_Tweening_TweenCallback_int);
-		dict.Add(typeof(UnityEngine.Camera.CameraCallback), factory.UnityEngine_Camera_CameraCallback);
+		dict.Add(typeof(System.Action<DG.Tweening.DOTweenAnimation>), factory.System_Action_DG_Tweening_DOTweenAnimation);
+		dict.Add(typeof(DG.Tweening.TweenCallback<float>), factory.DG_Tweening_TweenCallback_float);
+		dict.Add(typeof(DG.Tweening.EaseFunction), factory.DG_Tweening_EaseFunction);
 		dict.Add(typeof(UnityEngine.Application.AdvertisingIdentifierCallback), factory.UnityEngine_Application_AdvertisingIdentifierCallback);
 		dict.Add(typeof(UnityEngine.Application.LowMemoryCallback), factory.UnityEngine_Application_LowMemoryCallback);
 		dict.Add(typeof(UnityEngine.Application.LogCallback), factory.UnityEngine_Application_LogCallback);
@@ -64,7 +67,6 @@ public class DelegateFactory
 		dict.Add(typeof(UnityEngine.AudioClip.PCMReaderCallback), factory.UnityEngine_AudioClip_PCMReaderCallback);
 		dict.Add(typeof(UnityEngine.AudioClip.PCMSetPositionCallback), factory.UnityEngine_AudioClip_PCMSetPositionCallback);
 		dict.Add(typeof(System.Action<UnityEngine.AsyncOperation>), factory.System_Action_UnityEngine_AsyncOperation);
-		dict.Add(typeof(UnityEngine.RectTransform.ReapplyDrivenProperties), factory.UnityEngine_RectTransform_ReapplyDrivenProperties);
 		dict.Add(typeof(System.Action<NotiData>), factory.System_Action_NotiData);
 
 		DelegateTraits<System.Action>.Init(factory.System_Action);
@@ -74,7 +76,9 @@ public class DelegateFactory
 		DelegateTraits<System.Comparison<int>>.Init(factory.System_Comparison_int);
 		DelegateTraits<System.Func<int,int>>.Init(factory.System_Func_int_int);
 		DelegateTraits<DG.Tweening.TweenCallback>.Init(factory.DG_Tweening_TweenCallback);
-		DelegateTraits<System.Action<DG.Tweening.DOTweenAnimation>>.Init(factory.System_Action_DG_Tweening_DOTweenAnimation);
+		DelegateTraits<DG.Tweening.TweenCallback<int>>.Init(factory.DG_Tweening_TweenCallback_int);
+		DelegateTraits<UnityEngine.Camera.CameraCallback>.Init(factory.UnityEngine_Camera_CameraCallback);
+		DelegateTraits<UnityEngine.RectTransform.ReapplyDrivenProperties>.Init(factory.UnityEngine_RectTransform_ReapplyDrivenProperties);
 		DelegateTraits<System.Func<UnityEngine.LogType,object,bool>>.Init(factory.System_Func_UnityEngine_LogType_object_bool);
 		DelegateTraits<DG.Tweening.Core.DOGetter<float>>.Init(factory.DG_Tweening_Core_DOGetter_float);
 		DelegateTraits<DG.Tweening.Core.DOSetter<float>>.Init(factory.DG_Tweening_Core_DOSetter_float);
@@ -104,8 +108,9 @@ public class DelegateFactory
 		DelegateTraits<DG.Tweening.Core.DOSetter<UnityEngine.Rect>>.Init(factory.DG_Tweening_Core_DOSetter_UnityEngine_Rect);
 		DelegateTraits<DG.Tweening.Core.DOGetter<UnityEngine.RectOffset>>.Init(factory.DG_Tweening_Core_DOGetter_UnityEngine_RectOffset);
 		DelegateTraits<DG.Tweening.Core.DOSetter<UnityEngine.RectOffset>>.Init(factory.DG_Tweening_Core_DOSetter_UnityEngine_RectOffset);
-		DelegateTraits<DG.Tweening.TweenCallback<int>>.Init(factory.DG_Tweening_TweenCallback_int);
-		DelegateTraits<UnityEngine.Camera.CameraCallback>.Init(factory.UnityEngine_Camera_CameraCallback);
+		DelegateTraits<System.Action<DG.Tweening.DOTweenAnimation>>.Init(factory.System_Action_DG_Tweening_DOTweenAnimation);
+		DelegateTraits<DG.Tweening.TweenCallback<float>>.Init(factory.DG_Tweening_TweenCallback_float);
+		DelegateTraits<DG.Tweening.EaseFunction>.Init(factory.DG_Tweening_EaseFunction);
 		DelegateTraits<UnityEngine.Application.AdvertisingIdentifierCallback>.Init(factory.UnityEngine_Application_AdvertisingIdentifierCallback);
 		DelegateTraits<UnityEngine.Application.LowMemoryCallback>.Init(factory.UnityEngine_Application_LowMemoryCallback);
 		DelegateTraits<UnityEngine.Application.LogCallback>.Init(factory.UnityEngine_Application_LogCallback);
@@ -114,7 +119,6 @@ public class DelegateFactory
 		DelegateTraits<UnityEngine.AudioClip.PCMReaderCallback>.Init(factory.UnityEngine_AudioClip_PCMReaderCallback);
 		DelegateTraits<UnityEngine.AudioClip.PCMSetPositionCallback>.Init(factory.UnityEngine_AudioClip_PCMSetPositionCallback);
 		DelegateTraits<System.Action<UnityEngine.AsyncOperation>>.Init(factory.System_Action_UnityEngine_AsyncOperation);
-		DelegateTraits<UnityEngine.RectTransform.ReapplyDrivenProperties>.Init(factory.UnityEngine_RectTransform_ReapplyDrivenProperties);
 		DelegateTraits<System.Action<NotiData>>.Init(factory.System_Action_NotiData);
 
 		TypeTraits<System.Action>.Init(factory.Check_System_Action);
@@ -124,7 +128,9 @@ public class DelegateFactory
 		TypeTraits<System.Comparison<int>>.Init(factory.Check_System_Comparison_int);
 		TypeTraits<System.Func<int,int>>.Init(factory.Check_System_Func_int_int);
 		TypeTraits<DG.Tweening.TweenCallback>.Init(factory.Check_DG_Tweening_TweenCallback);
-		TypeTraits<System.Action<DG.Tweening.DOTweenAnimation>>.Init(factory.Check_System_Action_DG_Tweening_DOTweenAnimation);
+		TypeTraits<DG.Tweening.TweenCallback<int>>.Init(factory.Check_DG_Tweening_TweenCallback_int);
+		TypeTraits<UnityEngine.Camera.CameraCallback>.Init(factory.Check_UnityEngine_Camera_CameraCallback);
+		TypeTraits<UnityEngine.RectTransform.ReapplyDrivenProperties>.Init(factory.Check_UnityEngine_RectTransform_ReapplyDrivenProperties);
 		TypeTraits<System.Func<UnityEngine.LogType,object,bool>>.Init(factory.Check_System_Func_UnityEngine_LogType_object_bool);
 		TypeTraits<DG.Tweening.Core.DOGetter<float>>.Init(factory.Check_DG_Tweening_Core_DOGetter_float);
 		TypeTraits<DG.Tweening.Core.DOSetter<float>>.Init(factory.Check_DG_Tweening_Core_DOSetter_float);
@@ -154,8 +160,9 @@ public class DelegateFactory
 		TypeTraits<DG.Tweening.Core.DOSetter<UnityEngine.Rect>>.Init(factory.Check_DG_Tweening_Core_DOSetter_UnityEngine_Rect);
 		TypeTraits<DG.Tweening.Core.DOGetter<UnityEngine.RectOffset>>.Init(factory.Check_DG_Tweening_Core_DOGetter_UnityEngine_RectOffset);
 		TypeTraits<DG.Tweening.Core.DOSetter<UnityEngine.RectOffset>>.Init(factory.Check_DG_Tweening_Core_DOSetter_UnityEngine_RectOffset);
-		TypeTraits<DG.Tweening.TweenCallback<int>>.Init(factory.Check_DG_Tweening_TweenCallback_int);
-		TypeTraits<UnityEngine.Camera.CameraCallback>.Init(factory.Check_UnityEngine_Camera_CameraCallback);
+		TypeTraits<System.Action<DG.Tweening.DOTweenAnimation>>.Init(factory.Check_System_Action_DG_Tweening_DOTweenAnimation);
+		TypeTraits<DG.Tweening.TweenCallback<float>>.Init(factory.Check_DG_Tweening_TweenCallback_float);
+		TypeTraits<DG.Tweening.EaseFunction>.Init(factory.Check_DG_Tweening_EaseFunction);
 		TypeTraits<UnityEngine.Application.AdvertisingIdentifierCallback>.Init(factory.Check_UnityEngine_Application_AdvertisingIdentifierCallback);
 		TypeTraits<UnityEngine.Application.LowMemoryCallback>.Init(factory.Check_UnityEngine_Application_LowMemoryCallback);
 		TypeTraits<UnityEngine.Application.LogCallback>.Init(factory.Check_UnityEngine_Application_LogCallback);
@@ -164,7 +171,6 @@ public class DelegateFactory
 		TypeTraits<UnityEngine.AudioClip.PCMReaderCallback>.Init(factory.Check_UnityEngine_AudioClip_PCMReaderCallback);
 		TypeTraits<UnityEngine.AudioClip.PCMSetPositionCallback>.Init(factory.Check_UnityEngine_AudioClip_PCMSetPositionCallback);
 		TypeTraits<System.Action<UnityEngine.AsyncOperation>>.Init(factory.Check_System_Action_UnityEngine_AsyncOperation);
-		TypeTraits<UnityEngine.RectTransform.ReapplyDrivenProperties>.Init(factory.Check_UnityEngine_RectTransform_ReapplyDrivenProperties);
 		TypeTraits<System.Action<NotiData>>.Init(factory.Check_System_Action_NotiData);
 
 		StackTraits<System.Action>.Push = factory.Push_System_Action;
@@ -174,7 +180,9 @@ public class DelegateFactory
 		StackTraits<System.Comparison<int>>.Push = factory.Push_System_Comparison_int;
 		StackTraits<System.Func<int,int>>.Push = factory.Push_System_Func_int_int;
 		StackTraits<DG.Tweening.TweenCallback>.Push = factory.Push_DG_Tweening_TweenCallback;
-		StackTraits<System.Action<DG.Tweening.DOTweenAnimation>>.Push = factory.Push_System_Action_DG_Tweening_DOTweenAnimation;
+		StackTraits<DG.Tweening.TweenCallback<int>>.Push = factory.Push_DG_Tweening_TweenCallback_int;
+		StackTraits<UnityEngine.Camera.CameraCallback>.Push = factory.Push_UnityEngine_Camera_CameraCallback;
+		StackTraits<UnityEngine.RectTransform.ReapplyDrivenProperties>.Push = factory.Push_UnityEngine_RectTransform_ReapplyDrivenProperties;
 		StackTraits<System.Func<UnityEngine.LogType,object,bool>>.Push = factory.Push_System_Func_UnityEngine_LogType_object_bool;
 		StackTraits<DG.Tweening.Core.DOGetter<float>>.Push = factory.Push_DG_Tweening_Core_DOGetter_float;
 		StackTraits<DG.Tweening.Core.DOSetter<float>>.Push = factory.Push_DG_Tweening_Core_DOSetter_float;
@@ -204,8 +212,9 @@ public class DelegateFactory
 		StackTraits<DG.Tweening.Core.DOSetter<UnityEngine.Rect>>.Push = factory.Push_DG_Tweening_Core_DOSetter_UnityEngine_Rect;
 		StackTraits<DG.Tweening.Core.DOGetter<UnityEngine.RectOffset>>.Push = factory.Push_DG_Tweening_Core_DOGetter_UnityEngine_RectOffset;
 		StackTraits<DG.Tweening.Core.DOSetter<UnityEngine.RectOffset>>.Push = factory.Push_DG_Tweening_Core_DOSetter_UnityEngine_RectOffset;
-		StackTraits<DG.Tweening.TweenCallback<int>>.Push = factory.Push_DG_Tweening_TweenCallback_int;
-		StackTraits<UnityEngine.Camera.CameraCallback>.Push = factory.Push_UnityEngine_Camera_CameraCallback;
+		StackTraits<System.Action<DG.Tweening.DOTweenAnimation>>.Push = factory.Push_System_Action_DG_Tweening_DOTweenAnimation;
+		StackTraits<DG.Tweening.TweenCallback<float>>.Push = factory.Push_DG_Tweening_TweenCallback_float;
+		StackTraits<DG.Tweening.EaseFunction>.Push = factory.Push_DG_Tweening_EaseFunction;
 		StackTraits<UnityEngine.Application.AdvertisingIdentifierCallback>.Push = factory.Push_UnityEngine_Application_AdvertisingIdentifierCallback;
 		StackTraits<UnityEngine.Application.LowMemoryCallback>.Push = factory.Push_UnityEngine_Application_LowMemoryCallback;
 		StackTraits<UnityEngine.Application.LogCallback>.Push = factory.Push_UnityEngine_Application_LogCallback;
@@ -214,7 +223,6 @@ public class DelegateFactory
 		StackTraits<UnityEngine.AudioClip.PCMReaderCallback>.Push = factory.Push_UnityEngine_AudioClip_PCMReaderCallback;
 		StackTraits<UnityEngine.AudioClip.PCMSetPositionCallback>.Push = factory.Push_UnityEngine_AudioClip_PCMSetPositionCallback;
 		StackTraits<System.Action<UnityEngine.AsyncOperation>>.Push = factory.Push_System_Action_UnityEngine_AsyncOperation;
-		StackTraits<UnityEngine.RectTransform.ReapplyDrivenProperties>.Push = factory.Push_UnityEngine_RectTransform_ReapplyDrivenProperties;
 		StackTraits<System.Action<NotiData>>.Push = factory.Push_System_Action_NotiData;
 	}
     
@@ -728,12 +736,12 @@ public class DelegateFactory
 		ToLua.Push(L, o);
 	}
 
-	class System_Action_DG_Tweening_DOTweenAnimation_Event : LuaDelegate
+	class DG_Tweening_TweenCallback_int_Event : LuaDelegate
 	{
-		public System_Action_DG_Tweening_DOTweenAnimation_Event(LuaFunction func) : base(func) { }
-		public System_Action_DG_Tweening_DOTweenAnimation_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+		public DG_Tweening_TweenCallback_int_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_TweenCallback_int_Event(LuaFunction func, LuaTable self) : base(func, self) { }
 
-		public void Call(DG.Tweening.DOTweenAnimation param0)
+		public void Call(int param0)
 		{
 			func.BeginPCall();
 			func.Push(param0);
@@ -741,7 +749,7 @@ public class DelegateFactory
 			func.EndPCall();
 		}
 
-		public void CallWithSelf(DG.Tweening.DOTweenAnimation param0)
+		public void CallWithSelf(int param0)
 		{
 			func.BeginPCall();
 			func.Push(self);
@@ -751,36 +759,150 @@ public class DelegateFactory
 		}
 	}
 
-	public System.Action<DG.Tweening.DOTweenAnimation> System_Action_DG_Tweening_DOTweenAnimation(LuaFunction func, LuaTable self, bool flag)
+	public DG.Tweening.TweenCallback<int> DG_Tweening_TweenCallback_int(LuaFunction func, LuaTable self, bool flag)
 	{
 		if (func == null)
 		{
-			System.Action<DG.Tweening.DOTweenAnimation> fn = delegate(DG.Tweening.DOTweenAnimation param0) { };
+			DG.Tweening.TweenCallback<int> fn = delegate(int param0) { };
 			return fn;
 		}
 
 		if(!flag)
 		{
-			System_Action_DG_Tweening_DOTweenAnimation_Event target = new System_Action_DG_Tweening_DOTweenAnimation_Event(func);
-			System.Action<DG.Tweening.DOTweenAnimation> d = target.Call;
+			DG_Tweening_TweenCallback_int_Event target = new DG_Tweening_TweenCallback_int_Event(func);
+			DG.Tweening.TweenCallback<int> d = target.Call;
 			target.method = d.Method;
 			return d;
 		}
 		else
 		{
-			System_Action_DG_Tweening_DOTweenAnimation_Event target = new System_Action_DG_Tweening_DOTweenAnimation_Event(func, self);
-			System.Action<DG.Tweening.DOTweenAnimation> d = target.CallWithSelf;
+			DG_Tweening_TweenCallback_int_Event target = new DG_Tweening_TweenCallback_int_Event(func, self);
+			DG.Tweening.TweenCallback<int> d = target.CallWithSelf;
 			target.method = d.Method;
 			return d;
 		}
 	}
 
-	bool Check_System_Action_DG_Tweening_DOTweenAnimation(IntPtr L, int pos)
+	bool Check_DG_Tweening_TweenCallback_int(IntPtr L, int pos)
 	{
-		return TypeChecker.CheckDelegateType(typeof(System.Action<DG.Tweening.DOTweenAnimation>), L, pos);
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.TweenCallback<int>), L, pos);
 	}
 
-	void Push_System_Action_DG_Tweening_DOTweenAnimation(IntPtr L, System.Action<DG.Tweening.DOTweenAnimation> o)
+	void Push_DG_Tweening_TweenCallback_int(IntPtr L, DG.Tweening.TweenCallback<int> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class UnityEngine_Camera_CameraCallback_Event : LuaDelegate
+	{
+		public UnityEngine_Camera_CameraCallback_Event(LuaFunction func) : base(func) { }
+		public UnityEngine_Camera_CameraCallback_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(UnityEngine.Camera param0)
+		{
+			func.BeginPCall();
+			func.PushSealed(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(UnityEngine.Camera param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushSealed(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public UnityEngine.Camera.CameraCallback UnityEngine_Camera_CameraCallback(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			UnityEngine.Camera.CameraCallback fn = delegate(UnityEngine.Camera param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			UnityEngine_Camera_CameraCallback_Event target = new UnityEngine_Camera_CameraCallback_Event(func);
+			UnityEngine.Camera.CameraCallback d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			UnityEngine_Camera_CameraCallback_Event target = new UnityEngine_Camera_CameraCallback_Event(func, self);
+			UnityEngine.Camera.CameraCallback d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_UnityEngine_Camera_CameraCallback(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(UnityEngine.Camera.CameraCallback), L, pos);
+	}
+
+	void Push_UnityEngine_Camera_CameraCallback(IntPtr L, UnityEngine.Camera.CameraCallback o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class UnityEngine_RectTransform_ReapplyDrivenProperties_Event : LuaDelegate
+	{
+		public UnityEngine_RectTransform_ReapplyDrivenProperties_Event(LuaFunction func) : base(func) { }
+		public UnityEngine_RectTransform_ReapplyDrivenProperties_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(UnityEngine.RectTransform param0)
+		{
+			func.BeginPCall();
+			func.PushSealed(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(UnityEngine.RectTransform param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushSealed(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public UnityEngine.RectTransform.ReapplyDrivenProperties UnityEngine_RectTransform_ReapplyDrivenProperties(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			UnityEngine.RectTransform.ReapplyDrivenProperties fn = delegate(UnityEngine.RectTransform param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			UnityEngine_RectTransform_ReapplyDrivenProperties_Event target = new UnityEngine_RectTransform_ReapplyDrivenProperties_Event(func);
+			UnityEngine.RectTransform.ReapplyDrivenProperties d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			UnityEngine_RectTransform_ReapplyDrivenProperties_Event target = new UnityEngine_RectTransform_ReapplyDrivenProperties_Event(func, self);
+			UnityEngine.RectTransform.ReapplyDrivenProperties d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_UnityEngine_RectTransform_ReapplyDrivenProperties(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(UnityEngine.RectTransform.ReapplyDrivenProperties), L, pos);
+	}
+
+	void Push_UnityEngine_RectTransform_ReapplyDrivenProperties(IntPtr L, UnityEngine.RectTransform.ReapplyDrivenProperties o)
 	{
 		ToLua.Push(L, o);
 	}
@@ -2472,12 +2594,12 @@ public class DelegateFactory
 		ToLua.Push(L, o);
 	}
 
-	class DG_Tweening_TweenCallback_int_Event : LuaDelegate
+	class System_Action_DG_Tweening_DOTweenAnimation_Event : LuaDelegate
 	{
-		public DG_Tweening_TweenCallback_int_Event(LuaFunction func) : base(func) { }
-		public DG_Tweening_TweenCallback_int_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+		public System_Action_DG_Tweening_DOTweenAnimation_Event(LuaFunction func) : base(func) { }
+		public System_Action_DG_Tweening_DOTweenAnimation_Event(LuaFunction func, LuaTable self) : base(func, self) { }
 
-		public void Call(int param0)
+		public void Call(DG.Tweening.DOTweenAnimation param0)
 		{
 			func.BeginPCall();
 			func.Push(param0);
@@ -2485,7 +2607,7 @@ public class DelegateFactory
 			func.EndPCall();
 		}
 
-		public void CallWithSelf(int param0)
+		public void CallWithSelf(DG.Tweening.DOTweenAnimation param0)
 		{
 			func.BeginPCall();
 			func.Push(self);
@@ -2495,93 +2617,160 @@ public class DelegateFactory
 		}
 	}
 
-	public DG.Tweening.TweenCallback<int> DG_Tweening_TweenCallback_int(LuaFunction func, LuaTable self, bool flag)
+	public System.Action<DG.Tweening.DOTweenAnimation> System_Action_DG_Tweening_DOTweenAnimation(LuaFunction func, LuaTable self, bool flag)
 	{
 		if (func == null)
 		{
-			DG.Tweening.TweenCallback<int> fn = delegate(int param0) { };
+			System.Action<DG.Tweening.DOTweenAnimation> fn = delegate(DG.Tweening.DOTweenAnimation param0) { };
 			return fn;
 		}
 
 		if(!flag)
 		{
-			DG_Tweening_TweenCallback_int_Event target = new DG_Tweening_TweenCallback_int_Event(func);
-			DG.Tweening.TweenCallback<int> d = target.Call;
+			System_Action_DG_Tweening_DOTweenAnimation_Event target = new System_Action_DG_Tweening_DOTweenAnimation_Event(func);
+			System.Action<DG.Tweening.DOTweenAnimation> d = target.Call;
 			target.method = d.Method;
 			return d;
 		}
 		else
 		{
-			DG_Tweening_TweenCallback_int_Event target = new DG_Tweening_TweenCallback_int_Event(func, self);
-			DG.Tweening.TweenCallback<int> d = target.CallWithSelf;
+			System_Action_DG_Tweening_DOTweenAnimation_Event target = new System_Action_DG_Tweening_DOTweenAnimation_Event(func, self);
+			System.Action<DG.Tweening.DOTweenAnimation> d = target.CallWithSelf;
 			target.method = d.Method;
 			return d;
 		}
 	}
 
-	bool Check_DG_Tweening_TweenCallback_int(IntPtr L, int pos)
+	bool Check_System_Action_DG_Tweening_DOTweenAnimation(IntPtr L, int pos)
 	{
-		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.TweenCallback<int>), L, pos);
+		return TypeChecker.CheckDelegateType(typeof(System.Action<DG.Tweening.DOTweenAnimation>), L, pos);
 	}
 
-	void Push_DG_Tweening_TweenCallback_int(IntPtr L, DG.Tweening.TweenCallback<int> o)
+	void Push_System_Action_DG_Tweening_DOTweenAnimation(IntPtr L, System.Action<DG.Tweening.DOTweenAnimation> o)
 	{
 		ToLua.Push(L, o);
 	}
 
-	class UnityEngine_Camera_CameraCallback_Event : LuaDelegate
+	class DG_Tweening_TweenCallback_float_Event : LuaDelegate
 	{
-		public UnityEngine_Camera_CameraCallback_Event(LuaFunction func) : base(func) { }
-		public UnityEngine_Camera_CameraCallback_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+		public DG_Tweening_TweenCallback_float_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_TweenCallback_float_Event(LuaFunction func, LuaTable self) : base(func, self) { }
 
-		public void Call(UnityEngine.Camera param0)
+		public void Call(float param0)
 		{
 			func.BeginPCall();
-			func.PushSealed(param0);
+			func.Push(param0);
 			func.PCall();
 			func.EndPCall();
 		}
 
-		public void CallWithSelf(UnityEngine.Camera param0)
+		public void CallWithSelf(float param0)
 		{
 			func.BeginPCall();
 			func.Push(self);
-			func.PushSealed(param0);
+			func.Push(param0);
 			func.PCall();
 			func.EndPCall();
 		}
 	}
 
-	public UnityEngine.Camera.CameraCallback UnityEngine_Camera_CameraCallback(LuaFunction func, LuaTable self, bool flag)
+	public DG.Tweening.TweenCallback<float> DG_Tweening_TweenCallback_float(LuaFunction func, LuaTable self, bool flag)
 	{
 		if (func == null)
 		{
-			UnityEngine.Camera.CameraCallback fn = delegate(UnityEngine.Camera param0) { };
+			DG.Tweening.TweenCallback<float> fn = delegate(float param0) { };
 			return fn;
 		}
 
 		if(!flag)
 		{
-			UnityEngine_Camera_CameraCallback_Event target = new UnityEngine_Camera_CameraCallback_Event(func);
-			UnityEngine.Camera.CameraCallback d = target.Call;
+			DG_Tweening_TweenCallback_float_Event target = new DG_Tweening_TweenCallback_float_Event(func);
+			DG.Tweening.TweenCallback<float> d = target.Call;
 			target.method = d.Method;
 			return d;
 		}
 		else
 		{
-			UnityEngine_Camera_CameraCallback_Event target = new UnityEngine_Camera_CameraCallback_Event(func, self);
-			UnityEngine.Camera.CameraCallback d = target.CallWithSelf;
+			DG_Tweening_TweenCallback_float_Event target = new DG_Tweening_TweenCallback_float_Event(func, self);
+			DG.Tweening.TweenCallback<float> d = target.CallWithSelf;
 			target.method = d.Method;
 			return d;
 		}
 	}
 
-	bool Check_UnityEngine_Camera_CameraCallback(IntPtr L, int pos)
+	bool Check_DG_Tweening_TweenCallback_float(IntPtr L, int pos)
 	{
-		return TypeChecker.CheckDelegateType(typeof(UnityEngine.Camera.CameraCallback), L, pos);
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.TweenCallback<float>), L, pos);
 	}
 
-	void Push_UnityEngine_Camera_CameraCallback(IntPtr L, UnityEngine.Camera.CameraCallback o)
+	void Push_DG_Tweening_TweenCallback_float(IntPtr L, DG.Tweening.TweenCallback<float> o)
+	{
+		ToLua.Push(L, o);
+	}
+
+	class DG_Tweening_EaseFunction_Event : LuaDelegate
+	{
+		public DG_Tweening_EaseFunction_Event(LuaFunction func) : base(func) { }
+		public DG_Tweening_EaseFunction_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public float Call(float param0, float param1, float param2, float param3)
+		{
+			func.BeginPCall();
+			func.Push(param0);
+			func.Push(param1);
+			func.Push(param2);
+			func.Push(param3);
+			func.PCall();
+			float ret = (float)func.CheckNumber();
+			func.EndPCall();
+			return ret;
+		}
+
+		public float CallWithSelf(float param0, float param1, float param2, float param3)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.Push(param0);
+			func.Push(param1);
+			func.Push(param2);
+			func.Push(param3);
+			func.PCall();
+			float ret = (float)func.CheckNumber();
+			func.EndPCall();
+			return ret;
+		}
+	}
+
+	public DG.Tweening.EaseFunction DG_Tweening_EaseFunction(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			DG.Tweening.EaseFunction fn = delegate(float param0, float param1, float param2, float param3) { return 0; };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			DG_Tweening_EaseFunction_Event target = new DG_Tweening_EaseFunction_Event(func);
+			DG.Tweening.EaseFunction d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			DG_Tweening_EaseFunction_Event target = new DG_Tweening_EaseFunction_Event(func, self);
+			DG.Tweening.EaseFunction d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	bool Check_DG_Tweening_EaseFunction(IntPtr L, int pos)
+	{
+		return TypeChecker.CheckDelegateType(typeof(DG.Tweening.EaseFunction), L, pos);
+	}
+
+	void Push_DG_Tweening_EaseFunction(IntPtr L, DG.Tweening.EaseFunction o)
 	{
 		ToLua.Push(L, o);
 	}
@@ -3044,63 +3233,6 @@ public class DelegateFactory
 	}
 
 	void Push_System_Action_UnityEngine_AsyncOperation(IntPtr L, System.Action<UnityEngine.AsyncOperation> o)
-	{
-		ToLua.Push(L, o);
-	}
-
-	class UnityEngine_RectTransform_ReapplyDrivenProperties_Event : LuaDelegate
-	{
-		public UnityEngine_RectTransform_ReapplyDrivenProperties_Event(LuaFunction func) : base(func) { }
-		public UnityEngine_RectTransform_ReapplyDrivenProperties_Event(LuaFunction func, LuaTable self) : base(func, self) { }
-
-		public void Call(UnityEngine.RectTransform param0)
-		{
-			func.BeginPCall();
-			func.PushSealed(param0);
-			func.PCall();
-			func.EndPCall();
-		}
-
-		public void CallWithSelf(UnityEngine.RectTransform param0)
-		{
-			func.BeginPCall();
-			func.Push(self);
-			func.PushSealed(param0);
-			func.PCall();
-			func.EndPCall();
-		}
-	}
-
-	public UnityEngine.RectTransform.ReapplyDrivenProperties UnityEngine_RectTransform_ReapplyDrivenProperties(LuaFunction func, LuaTable self, bool flag)
-	{
-		if (func == null)
-		{
-			UnityEngine.RectTransform.ReapplyDrivenProperties fn = delegate(UnityEngine.RectTransform param0) { };
-			return fn;
-		}
-
-		if(!flag)
-		{
-			UnityEngine_RectTransform_ReapplyDrivenProperties_Event target = new UnityEngine_RectTransform_ReapplyDrivenProperties_Event(func);
-			UnityEngine.RectTransform.ReapplyDrivenProperties d = target.Call;
-			target.method = d.Method;
-			return d;
-		}
-		else
-		{
-			UnityEngine_RectTransform_ReapplyDrivenProperties_Event target = new UnityEngine_RectTransform_ReapplyDrivenProperties_Event(func, self);
-			UnityEngine.RectTransform.ReapplyDrivenProperties d = target.CallWithSelf;
-			target.method = d.Method;
-			return d;
-		}
-	}
-
-	bool Check_UnityEngine_RectTransform_ReapplyDrivenProperties(IntPtr L, int pos)
-	{
-		return TypeChecker.CheckDelegateType(typeof(UnityEngine.RectTransform.ReapplyDrivenProperties), L, pos);
-	}
-
-	void Push_UnityEngine_RectTransform_ReapplyDrivenProperties(IntPtr L, UnityEngine.RectTransform.ReapplyDrivenProperties o)
 	{
 		ToLua.Push(L, o);
 	}

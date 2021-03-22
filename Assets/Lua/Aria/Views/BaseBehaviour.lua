@@ -13,7 +13,7 @@ local funName = {
 function  BaseBehaviour:Ctor()
 	-- body
 	if self.gameObject then
-		if not LuaHelper.ObjIsNull(self.gameObject) then
+		if not isNull(self.gameObject) then
 			self:AddBehaviourScript(self.gameObject,{"OnDestroy"})
 		end
 	end

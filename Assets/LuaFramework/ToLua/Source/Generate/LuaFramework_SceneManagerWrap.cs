@@ -10,6 +10,7 @@ public class LuaFramework_SceneManagerWrap
 		L.RegFunction("ShowScene", ShowScene);
 		L.RegFunction("LoadScene", LoadScene);
 		L.RegFunction("LoadSceneAsync", LoadSceneAsync);
+		L.RegFunction("LoadSubSceneAsync", LoadSubSceneAsync);
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.EndClass();
@@ -59,6 +60,22 @@ public class LuaFramework_SceneManagerWrap
 			string arg0 = ToLua.CheckString(L, 2);
 			LuaFunction arg1 = ToLua.CheckLuaFunction(L, 3);
 			obj.LoadSceneAsync(arg0, arg1);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int LoadSubSceneAsync(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 1);
+			LuaFramework.SceneManager obj = (LuaFramework.SceneManager)ToLua.CheckObject<LuaFramework.SceneManager>(L, 1);
+			obj.LoadSubSceneAsync();
 			return 0;
 		}
 		catch (Exception e)

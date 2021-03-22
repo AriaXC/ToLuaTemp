@@ -6,7 +6,7 @@ public class UnityEngine_Physics2DWrap
 {
 	public static void Register(LuaState L)
 	{
-		L.BeginClass(typeof(UnityEngine.Physics2D), typeof(System.Object));
+		L.BeginStaticLibs("Physics2D");
 		L.RegFunction("Simulate", Simulate);
 		L.RegFunction("SyncTransforms", SyncTransforms);
 		L.RegFunction("IgnoreCollision", IgnoreCollision);
@@ -53,8 +53,6 @@ public class UnityEngine_Physics2DWrap
 		L.RegFunction("OverlapCapsuleNonAlloc", OverlapCapsuleNonAlloc);
 		L.RegFunction("OverlapCollider", OverlapCollider);
 		L.RegFunction("GetContacts", GetContacts);
-		L.RegFunction("New", _CreateUnityEngine_Physics2D);
-		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegConstant("IgnoreRaycastLayer", 4);
 		L.RegConstant("DefaultRaycastLayers", -5);
 		L.RegConstant("AllLayers", -1);
@@ -89,31 +87,7 @@ public class UnityEngine_Physics2DWrap
 		L.RegVar("colliderAsleepColor", get_colliderAsleepColor, set_colliderAsleepColor);
 		L.RegVar("colliderContactColor", get_colliderContactColor, set_colliderContactColor);
 		L.RegVar("colliderAABBColor", get_colliderAABBColor, set_colliderAABBColor);
-		L.EndClass();
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int _CreateUnityEngine_Physics2D(IntPtr L)
-	{
-		try
-		{
-			int count = LuaDLL.lua_gettop(L);
-
-			if (count == 0)
-			{
-				UnityEngine.Physics2D obj = new UnityEngine.Physics2D();
-				ToLua.PushObject(L, obj);
-				return 1;
-			}
-			else
-			{
-				return LuaDLL.luaL_throw(L, "invalid arguments to ctor method: UnityEngine.Physics2D.New");
-			}
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
+		L.EndStaticLibs();
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]

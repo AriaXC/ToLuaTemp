@@ -1,12 +1,9 @@
 ﻿<Properties StartupConfiguration="{5EBE5927-85E2-E507-10FC-6F3F3AAB800B}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/Scripts/Utility/Util.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/ToLua/Source/Generate/LuaBinder.cs">
     <Files>
-      <File FileName="Assets/LuaFramework/Editor/CustomSettings.cs" Line="38" Column="44" />
-      <File FileName="Assets/LuaFramework/ToLua/Editor/ToLuaMenu.cs" Line="199" Column="10" />
-      <File FileName="Assets/LuaFramework/Scripts/Utility/LuaHelper.cs" Line="24" Column="10" />
-      <File FileName="Assets/LuaFramework/Scripts/Manager/SceneManager.cs" Line="46" Column="1" />
-      <File FileName="Assets/LuaFramework/Scripts/Manager/ResourceManager.cs" Line="111" Column="41" />
-      <File FileName="Assets/LuaFramework/Scripts/Utility/Util.cs" Line="21" Column="42" />
+      <File FileName="Assets/LuaFramework/ToLua/Source/Generate/DG_Tweening_DOTweenWrap.cs" Line="395" Column="65" />
+      <File FileName="Assets/LuaFramework/ToLua/Source/Generate/DelegateFactory.cs" Line="975" Column="27" />
+      <File FileName="Assets/LuaFramework/ToLua/Source/Generate/LuaBinder.cs" Line="49" Column="18" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,14 +14,15 @@
                 <Node name="Editor" expanded="True" />
                 <Node name="Scripts" expanded="True">
                   <Node name="Manager" expanded="True" />
-                  <Node name="Utility" expanded="True">
-                    <Node name="Util.cs" selected="True" />
-                  </Node>
+                  <Node name="Utility" expanded="True" />
                 </Node>
                 <Node name="ToLua" expanded="True">
+                  <Node name="Core" expanded="True" />
                   <Node name="Editor" expanded="True" />
                   <Node name="Source" expanded="True">
-                    <Node name="Generate" expanded="True" />
+                    <Node name="Generate" expanded="True">
+                      <Node name="LuaBinder.cs" selected="True" />
+                    </Node>
                   </Node>
                 </Node>
               </Node>
@@ -35,16 +33,11 @@
           </Node>
         </State>
       </Pad>
-      <Pad Id="MonoDevelop.UnitTesting.TestPad">
-        <State name="__root__">
-          <Node name="ToLuaTemp" expanded="True" selected="True" />
-        </State>
-      </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="95279a05-d334-4a64-bdad-bce20dccd6ef" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="97514090-0db0-40cc-ba7f-909184e1405a" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
