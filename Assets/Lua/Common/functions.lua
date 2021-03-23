@@ -184,7 +184,12 @@ function  handler(callback,caller,once)
 end
 
 
+--计时器
+function  DelayCall( delay,callback,caller,... )
 
+	eventMgr:AddEventListener(EventStr.UPDATE,handler(self.UpdateCall,self))
+	-- body
+end
 
 
 

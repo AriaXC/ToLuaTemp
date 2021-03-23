@@ -843,7 +843,6 @@ namespace LuaInterface
             if (pos > 0)
             {
                 string tableName = fullPath.Substring(0, pos);
-
                 if (PushLuaTable(tableName, checkMap))
                 {
                     string funcName = fullPath.Substring(pos + 1);
@@ -914,7 +913,7 @@ namespace LuaInterface
 
                 funcMap.Remove(name);
             }
-
+   
             if (PushLuaFunction(name, false))
             {
                 int reference = ToLuaRef();
@@ -938,7 +937,7 @@ namespace LuaInterface
                     funcRefMap.Remove(reference);
                     delegateMap.Remove(reference);
                 }
-                
+               
                 LuaFunction fun = new LuaFunction(reference, this);
                 fun.name = name;
                 funcMap.Add(name, new WeakReference(fun));

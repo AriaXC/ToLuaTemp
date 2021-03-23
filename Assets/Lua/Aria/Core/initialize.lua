@@ -13,6 +13,13 @@ Avatar =require("Aria.Views.Avatar")
 Handler = require("Aria.Utils.Handler")
 EventStr = require("Aria.Event.Events")
 Utils = require("Aria.Utils.Utils") 
+-------------------------------------------------
+
+UpdateEvent = require("Aria.Event.UpdateEvent")
+
+
+
+
 
 -------------------------------------------------
 
@@ -41,3 +48,5 @@ DOTween_Enum ={
 	TweenType = DG.Tweening.TweenType,
 	UpdateType = DG.Tweening.UpdateType,
 }
+
+--------------------------------------------------

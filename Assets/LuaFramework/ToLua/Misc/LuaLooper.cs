@@ -59,14 +59,6 @@ public class LuaLooper : MonoBehaviour
             throw e;
         }        
 	}
-    /// <summary>
-    /// 给lua发事件
-    /// </summary>
-    /// <param name="eventName"></param>
-    private void DispatchLuaEvent(string eventName)
-    {
-
-    }
 
     LuaBeatEvent GetEvent(string name)
     {

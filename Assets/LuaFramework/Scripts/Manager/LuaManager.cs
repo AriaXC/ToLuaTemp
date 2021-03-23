@@ -8,6 +8,7 @@ namespace LuaFramework {
         private LuaState lua;
         private LuaLoader loader;
         private LuaLooper loop = null;
+        private MyLuaLooper myLoop = null;
 
         // Use this for initialization
         void Awake() {
@@ -32,6 +33,9 @@ namespace LuaFramework {
         void StartLooper() {
             loop = gameObject.AddComponent<LuaLooper>();
             loop.luaState = lua;
+
+            myLoop = gameObject.AddComponent<MyLuaLooper>();
+            myLoop.luaState = lua;
         }
 
         //cjson 比较特殊，只new了一个table，没有注册库，这里注册一下
@@ -111,6 +115,8 @@ namespace LuaFramework {
         public void Close() {
             loop.Destroy();
             loop = null;
+            myLoop.Destroy();
+            myLoop = null;
 
             lua.Dispose();
             lua = null;

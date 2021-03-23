@@ -54,10 +54,23 @@ function  TestView:AddClick( ... )
 			log("输出结束")
 		end)
 	end)
+	AddBtnClick(self.transform:Find("bg/btnUpdate").gameObject,function( ... )
+		eventMgr:AddEventListener(EventStr.FIXED_UPDATE,handler(self.MyFixedUpdate,self))
+		eventMgr:AddEventListener(EventStr.UPDATE,handler(self.MyUpdate,self))
+		eventMgr:AddEventListener(EventStr.LATE_UPDATE,handler(self.MyLateUpdate,self))
+	end)
 end
 
-	
-function  TestView:Update(  )
+function TestView:MyUpdate()
+	log("MyUpdate  "..self.gameObject.name)
+end
+function TestView:MyFixedUpdate()
+	log("MyFixedUpdate  "..self.gameObject.name)
+end
+function TestView:MyLateUpdate()
+	log("MyLateUpdate   "..self.gameObject.name)
+end
+function  TestView:Update()
 	if Input.GetMouseButtonUp(0) then
 		local  ray  = Camera.main:ScreenPointToRay(Input.mousePosition)
 		local  hitList = Physics.RaycastAll(ray,100)

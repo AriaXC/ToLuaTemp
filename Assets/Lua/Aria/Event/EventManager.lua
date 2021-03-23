@@ -19,7 +19,7 @@ function EventManager:AddEventListener(eventName,listener,target)
 		logError("eventName 的类型错了")
 		return
 	end
-
+	target = target or EventStr
 	eventName = string.lower(eventName)
 	self._handlerIndex = self._handlerIndex +1
 	local  handStr  = string.format("Hand_%s",self._handlerIndex)
@@ -60,6 +60,7 @@ function  EventManager:RemoveEventListener(eventName,key,target)
 		logError("key 的类型错了  ")
 		return
 	end
+	target = target or EventStr
 	eventName = string.lower(eventName)
 
 	for k,v in pairs(self._listeners[eventName]) do
@@ -76,6 +77,7 @@ function  EventManager:RemoveEventListener(eventName,key,target)
 	end
 end
 function  EventManager:RemoveObjAllEventListener(target)
+	target = target or EventStr
 	if target == nil then
 		logError("这个已经是空了")
 		return
@@ -101,7 +103,7 @@ function  EventManager:DispatchEvent(eventName,... )
 	local  args = ...
 	local  eventName  = string.lower(eventName)
 	if self._listeners[eventName] == nil then
-		log("事件没有被监听啊   "..eventName)
+		-- log("事件没有被监听啊   "..eventName)
 		return
 	end
 

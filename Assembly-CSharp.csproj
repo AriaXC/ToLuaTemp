@@ -159,6 +159,7 @@
     <Compile Include="Assets\LuaFramework\ToLua\Misc\LuaLooper.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Misc\LuaProfiler.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Misc\LuaResLoader.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Misc\MyLuaLooper.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Reflection\LuaConstructor.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Reflection\LuaField.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Reflection\LuaMethod.cs" />
