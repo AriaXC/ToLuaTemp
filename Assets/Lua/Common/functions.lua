@@ -185,11 +185,13 @@ end
 
 
 --计时器
+--时间 帧数
 function  DelayCall( delay,callback,caller,... )
 
 	eventMgr:AddEventListener(EventStr.UPDATE,handler(self.UpdateCall,self))
 	-- body
 end
+
 
 
 

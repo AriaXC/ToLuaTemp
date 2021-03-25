@@ -1,12 +1,13 @@
 ﻿<Properties StartupConfiguration="{5EBE5927-85E2-E507-10FC-6F3F3AAB800B}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/ToLua/Core/LuaState.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/Scripts/Manager/ResourceManager.cs">
     <Files>
       <File FileName="Assets/LuaFramework/ToLua/Misc/LuaLooper.cs" Line="12" Column="48" />
       <File FileName="Assets/LuaFramework/Scripts/Manager/LuaManager.cs" Line="52" Column="18" />
-      <File FileName="Assets/LuaFramework/Scripts/Controller/Command/StartUpCommand.cs" Line="5" Column="14" />
-      <File FileName="Assets/LuaFramework/ToLua/Misc/MyLuaLooper.cs" Line="20" Column="42" />
-      <File FileName="Assets/LuaFramework/ToLua/Core/LuaState.cs" Line="808" Column="33" />
+      <File FileName="Assets/LuaFramework/Scripts/Controller/Command/StartUpCommand.cs" Line="8" Column="46" />
+      <File FileName="Assets/LuaFramework/ToLua/Misc/MyLuaLooper.cs" Line="20" Column="6" />
+      <File FileName="Assets/LuaFramework/ToLua/Core/LuaState.cs" Line="897" Column="39" />
       <File FileName="Assets/LuaFramework/Scripts/Common/LuaLoader.cs" Line="50" Column="40" />
+      <File FileName="Assets/LuaFramework/Scripts/Manager/ResourceManager.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -21,13 +22,13 @@
                     <Node name="Command" expanded="True" />
                   </Node>
                   <Node name="Framework" expanded="True" />
-                  <Node name="Manager" expanded="True" />
+                  <Node name="Manager" expanded="True">
+                    <Node name="ResourceManager.cs" selected="True" />
+                  </Node>
                   <Node name="Utility" expanded="True" />
                 </Node>
                 <Node name="ToLua" expanded="True">
-                  <Node name="Core" expanded="True">
-                    <Node name="LuaState.cs" selected="True" />
-                  </Node>
+                  <Node name="Core" expanded="True" />
                   <Node name="Editor" expanded="True" />
                   <Node name="Misc" expanded="True" />
                   <Node name="Source" expanded="True">

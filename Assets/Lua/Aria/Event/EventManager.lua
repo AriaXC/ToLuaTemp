@@ -37,7 +37,7 @@ function EventManager:AddEventListener(eventName,listener,target)
 		----
 		--  同一个target 默认只能绑定一个同名的eventName  否则清除target有问题 
 		----
-		if target._addEventListeners[eventName] ~=nil then
+		if target._addEventListeners[eventName] ~=nil and target ~= EventStr then
 			logError("这个taget上已经有一个同名的事件了 不能加了")
 			self._listeners[eventName][handStr]  =nil
 			return
@@ -68,7 +68,7 @@ function  EventManager:RemoveEventListener(eventName,key,target)
 			log(string.format("RemoveEventListener ====   eventName==%s",eventName))
 			v:Recycle()
 			self._listeners[eventName][key] = nil
-			if target then
+			if target and target ~= EventStr  then
 				target._addEventListeners[eventName] = nil
 			else
 				logError("target  是个空")

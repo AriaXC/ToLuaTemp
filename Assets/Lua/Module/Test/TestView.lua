@@ -21,6 +21,7 @@ function  TestView:OnInitialize( ... )
 	-- 	-- body
 	-- 	log("Dotween 回调")
 	-- end)
+	self:InsertTest()
 end
 function  TestView:AddClick( ... )
 
@@ -55,10 +56,23 @@ function  TestView:AddClick( ... )
 		end)
 	end)
 	AddBtnClick(self.transform:Find("bg/btnUpdate").gameObject,function( ... )
-		eventMgr:AddEventListener(EventStr.FIXED_UPDATE,handler(self.MyFixedUpdate,self))
+		-- eventMgr:AddEventListener(EventStr.FIXED_UPDATE,handler(self.MyFixedUpdate,self))
 		eventMgr:AddEventListener(EventStr.UPDATE,handler(self.MyUpdate,self))
-		eventMgr:AddEventListener(EventStr.LATE_UPDATE,handler(self.MyLateUpdate,self))
+		-- eventMgr:AddEventListener(EventStr.LATE_UPDATE,handler(self.MyLateUpdate,self))
 	end)
+
+end
+
+function  TestView:InsertTest()
+	local  arr = {}
+
+	for i=1,10 do
+		table.insert(arr,i)
+	end
+	table.insert(arr,"SS")
+
+	logTable(arr)
+	log(arr[1])
 end
 
 function TestView:MyUpdate()
