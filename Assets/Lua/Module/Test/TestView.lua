@@ -21,7 +21,7 @@ function  TestView:OnInitialize( ... )
 	-- 	-- body
 	-- 	log("Dotween 回调")
 	-- end)
-	self:InsertTest()
+	-- self:InsertTest()
 end
 function  TestView:AddClick( ... )
 

@@ -43,6 +43,14 @@ function  LoginView:AddClick()
 		self.testView:Show()
 	end)
 
+	AddBtnClick(self.transform:Find("bg/btnCe_lua").gameObject,function( ... )
+		-- self:Hide()
+		if not self.testLuaView then
+			self.testLuaView = require("Module.Test.TestLua").New()
+		end
+		self.testLuaView:Show()
+	end)
+
 end
 
 

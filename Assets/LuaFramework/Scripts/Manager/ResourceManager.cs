@@ -35,11 +35,6 @@ namespace LuaFramework
         //资源依赖 assetName,bundleName
         private Dictionary<string, string> assetInfo = new Dictionary<string, string>();
 
-        void Awake()
-        {
-
-        }
-
         /// <summary>
         /// 初始化加载器
         /// </summary>

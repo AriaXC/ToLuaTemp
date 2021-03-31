@@ -13,6 +13,10 @@ Avatar =require("Aria.Views.Avatar")
 Handler = require("Aria.Utils.Handler")
 EventStr = require("Aria.Event.Events")
 Utils = require("Aria.Utils.Utils") 
+Timer = require("Aria.Utils.Timer")
+TimeUtil = require("Aria.Utils.TimeUtil")
+Countdown = require("Aria.Utils.Countdown")
+
 -------------------------------------------------
 
 UpdateEvent = require("Aria.Event.UpdateEvent")

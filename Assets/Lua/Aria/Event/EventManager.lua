@@ -13,6 +13,7 @@ function EventManager:Ctor()
 	self._objHandler = {}
 end
 
+---------需要继续的优化
 --添加事件
 function EventManager:AddEventListener(eventName,listener,target)
 	if type(eventName) ~= "string" then
@@ -44,7 +45,6 @@ function EventManager:AddEventListener(eventName,listener,target)
 		end
 		target._addEventListeners[eventName]= handStr
 	end
-
 
 	-----OnDestroy  
 
@@ -118,9 +118,6 @@ function  EventManager:DispatchEvent(eventName,... )
 		end
 	end
 
-end
-function  EventManager:AM( ... )
-	-- body
 end
 
 

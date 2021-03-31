@@ -184,15 +184,36 @@ function  handler(callback,caller,once)
 end
 
 
+local function UpdateCall()
+	-- body
+end
+
+local  _dc_List = {}
+local  _dc_AddList = {}
+local  _dc_RemoveList = {}
+
 --计时器
 --时间 帧数
 function  DelayCall( delay,callback,caller,... )
 
-	eventMgr:AddEventListener(EventStr.UPDATE,handler(self.UpdateCall,self))
-	-- body
+	if #_dc_List == 0 then
+		eventMgr:AddEventListener(EventStr.UPDATE,handler(UpdateCall))
+	end 
+
+	local  hand = handler(callback,caller,true)
+	hand.args = {...}
+	hand.delayedTime = delay
+	hand.delayStartTime =  TimeUtil.time
+
+	_dc_AddList[#_dc_AddList] = hand
+	return hand
 end
 
-
+--取消回调
+function  CancelDelayCall(hand)
+	-- body
+	
+end
 
 
 
