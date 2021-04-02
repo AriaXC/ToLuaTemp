@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class otherM : MonoBehaviour
+public class OO : MonoBehaviour
 {
 
-    public GameObject go;
     void Start()
     {
-        //GameObject obj = GameObject.Instantiate(go);
+        OOT o = new OOT();
     }
 
 }

@@ -286,7 +286,8 @@
     <Compile Include="Assets\Test\AMap\MyMesh.cs" />
     <Compile Include="Assets\Test\list\ChangeV.cs" />
     <Compile Include="Assets\Test\list\UIList.cs" />
-    <Compile Include="Assets\Test\other\otherM.cs" />
+    <Compile Include="Assets\Test\other\OO.cs" />
+    <Compile Include="Assets\Test\other\other.cs" />
     <Compile Include="Assets\Test\text\ColorText.cs" />
     <None Include="Assets\StreamingAssets\AssetBundleXml.xml" />
     <None Include="Assets\link.xml" />
