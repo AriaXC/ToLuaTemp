@@ -1,9 +1,7 @@
 ﻿<Properties StartupConfiguration="{5EBE5927-85E2-E507-10FC-6F3F3AAB800B}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Test/other/OO.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/Scripts/Manager/LuaManager.cs">
     <Files>
-      <File FileName="Assets/LuaFramework/ToLua/Misc/LuaLooper.cs" Line="12" Column="48" />
-      <File FileName="Assets/LuaFramework/Scripts/Manager/LuaManager.cs" />
-      <File FileName="Assets/LuaFramework/Scripts/Controller/Command/StartUpCommand.cs" />
+      <File FileName="Assets/LuaFramework/Scripts/Manager/LuaManager.cs" Line="10" Column="39" />
       <File FileName="Assets/LuaFramework/ToLua/Misc/MyLuaLooper.cs" />
       <File FileName="Assets/LuaFramework/ToLua/Core/LuaState.cs" />
       <File FileName="Assets/LuaFramework/Scripts/Common/LuaLoader.cs" />
@@ -13,8 +11,6 @@
       <File FileName="Assets/LuaFramework/ToLua/Misc/LuaClient.cs" />
       <File FileName="Assets/LuaFramework/ToLua/Core/LuaFileUtils.cs" />
       <File FileName="Assets/LuaFramework/Scripts/Controller/Command/SocketCommand.cs" />
-      <File FileName="Assets/Test/other/OO.cs" Line="12" Column="1" />
-      <File FileName="Assets/Test/other/other.cs" Line="12" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -23,16 +19,16 @@
             <Node name="Assets" expanded="True">
               <Node name="LuaFramework" expanded="True">
                 <Node name="Scripts" expanded="True">
-                  <Node name="Manager" expanded="True" />
+                  <Node name="Manager" expanded="True">
+                    <Node name="LuaManager.cs" selected="True" />
+                  </Node>
                 </Node>
                 <Node name="ToLua" expanded="True">
                   <Node name="Misc" expanded="True" />
                 </Node>
               </Node>
               <Node name="Test" expanded="True">
-                <Node name="other" expanded="True">
-                  <Node name="OO.cs" selected="True" />
-                </Node>
+                <Node name="other" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -42,7 +38,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="2f77d895-fb44-4808-9fb3-9faceac096ed" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="eac48aec-68d1-4552-863c-0cc3b3ff5e40" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -2,7 +2,10 @@
 --这样写 可以转换为局部变量 是存放在栈上的  可以提高速度  我的理解是
 local _typeof=typeof 
 local traceback = debug.traceback
-local  _isNull  = tolua.isnull
+local _isNull  = tolua.isnull
+local _insert  = table.insert
+local _remove = table.remove
+local _sort = table.sort
 
 --输出日志--
 function log(str,trace)
@@ -184,13 +187,28 @@ function  handler(callback,caller,once)
 end
 
 
-local function UpdateCall()
-	-- body
-end
-
 local  _dc_List = {}
 local  _dc_AddList = {}
 local  _dc_RemoveList = {}
+
+local function UpdateCall()
+	local  num =  #_dc_List
+
+	--要加入的 列表
+	for i=#_dc_AddList,1，-1 do
+		num= num+1
+		_dc_List[num] = _dc_AddList[i]
+		_remove(_dc_AddList,i)
+	end
+
+	if num == 0 then
+		log("么有计时器")
+		eventMgr:RemoveEventListener(EventStr.UPDATE,handler(UpdateCall))
+	end
+
+	--根据时间判断 是否可以了
+
+end
 
 --计时器
 --时间 帧数
