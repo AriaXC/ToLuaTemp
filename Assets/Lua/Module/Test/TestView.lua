@@ -26,12 +26,12 @@ end
 function  TestView:AddClick( ... )
 
 	AddBtnClick(self.transform:Find("bg/btnAddEvent").gameObject,function( ... )
-		self.handlerMy = eventMgr:AddEventListener(EventStr.Test1,handler(self.EventTest1,self),self)
+		self.handlerMy = eventMgr:AddEventListener(EventStr.Test1,self.EventTest1,self,self)
 	end)
 
 	AddBtnClick(self.transform:Find("bg/btnDelEvent").gameObject,function( ... )
-		-- eventMgr:RemoveEventListener(EventStr.Test2,self.handlerMy,self)
-		eventMgr:RemoveObjAllEventListener(self)
+		eventMgr:RemoveEventListener(EventStr.Test1,self.EventTest1,self)
+		-- eventMgr:RemoveObjAllEventListener(self)
 	end)
 	AddBtnClick(self.transform:Find("bg/btnSendEvent").gameObject,function( ... )
 		eventMgr:DispatchEvent(EventStr.Test1,{my=1,aria=2})
@@ -61,6 +61,12 @@ function  TestView:AddClick( ... )
 		-- eventMgr:AddEventListener(EventStr.LATE_UPDATE,handler(self.MyLateUpdate,self))
 	end)
 
+	AddBtnClick(self.transform:Find("bg/btnDelayCall").gameObject,function( ... )
+		logError("注册了一个2秒的定时器")
+		DelayCall(2,function( ... )
+			log("我是延时2秒后触发的")
+		end)
+	end)
 end
 
 function  TestView:InsertTest()

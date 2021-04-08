@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using LuaInterface;
+using MoonScrpts;
 
 public class MyLuaLooper : MonoBehaviour
 {
@@ -30,25 +31,27 @@ public class MyLuaLooper : MonoBehaviour
         m_dispatchEvent.Push(eventName);
 
         //传入的是  当前程序运行的时间  暂时没有
-        m_dispatchEvent.Push(Time.deltaTime);
+        m_dispatchEvent.Push(TimeUtil.timeSec);
         m_dispatchEvent.PCall();
         m_dispatchEvent.EndPCall();
     }
 
     private void FixedUpdate()
     {
+        TimeUtil.Update();
         DispatchLuaEvent(FIXED_UPDATE);
     }
 
     private void Update()
     {
         // 设备方向 尺寸等发现变化 应该这里通知  未
-
+        TimeUtil.Update();
         DispatchLuaEvent(UPDATE);
     }
 
     private void LateUpdate()
     {
+        TimeUtil.Update();
         DispatchLuaEvent(LATE_UPDATE);
     }
 

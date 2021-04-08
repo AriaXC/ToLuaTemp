@@ -193,44 +193,70 @@ local  _dc_RemoveList = {}
 
 local function UpdateCall()
 	local  num =  #_dc_List
-
 	--要加入的 列表
-	for i=#_dc_AddList,1，-1 do
+	for i=#_dc_AddList,1,-1 do
 		num= num+1
 		_dc_List[num] = _dc_AddList[i]
 		_remove(_dc_AddList,i)
 	end
 
 	if num == 0 then
-		log("么有计时器")
-		eventMgr:RemoveEventListener(EventStr.UPDATE,handler(UpdateCall))
+		log("么有计时器了")
+		eventMgr:RemoveEventListener(EventStr.UPDATE,UpdateCall)
+		return 
 	end
 
 	--根据时间判断 是否可以了
+	if num > 0 then
+		_sort(_dc_List,function (a,b)
+			if a.delayedTime == nil or b.delayedTime == nil then
+				return false
+			end
+			return a.delayedTime>b.delayedTime
+		end)
+	end
+
+	local  time = TimeUtil.time 
+	for  i=num,1,-1 do
+		local  handler  = _dc_List[i]
+		if _dc_RemoveList[handler] then
+			_dc_RemoveList[handler] = nil
+			_remove(_dc_List,i)
+			handler:Recycle()
+		else
+			if time - handler.delayStartTime >= handler.delayedTime then
+				xpcall(function ()
+					handler:Execute(handler.args)
+				end,_Aira_Error_Fun)
+
+				handler.delayedTime = nil
+				_remove(_dc_List,i)
+			end
+		end
+	end
 
 end
 
 --计时器
 --时间 帧数
 function  DelayCall( delay,callback,caller,... )
-
-	if #_dc_List == 0 then
-		eventMgr:AddEventListener(EventStr.UPDATE,handler(UpdateCall))
-	end 
-
 	local  hand = handler(callback,caller,true)
 	hand.args = {...}
 	hand.delayedTime = delay
 	hand.delayStartTime =  TimeUtil.time
+	_dc_AddList[#_dc_AddList+1] = hand
 
-	_dc_AddList[#_dc_AddList] = hand
+	if #_dc_List == 0 then
+		eventMgr:AddEventListener(EventStr.UPDATE,UpdateCall)
+	end 
 	return hand
 end
 
 --取消回调
 function  CancelDelayCall(hand)
-	-- body
 	
+	
+	--标记清除
 end
 
 

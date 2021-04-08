@@ -1,16 +1,11 @@
 ﻿<Properties StartupConfiguration="{5EBE5927-85E2-E507-10FC-6F3F3AAB800B}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/Scripts/Manager/LuaManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/Scripts/Controller/Command/StartUpCommand.cs">
     <Files>
-      <File FileName="Assets/LuaFramework/Scripts/Manager/LuaManager.cs" Line="10" Column="39" />
-      <File FileName="Assets/LuaFramework/ToLua/Misc/MyLuaLooper.cs" />
-      <File FileName="Assets/LuaFramework/ToLua/Core/LuaState.cs" />
-      <File FileName="Assets/LuaFramework/Scripts/Common/LuaLoader.cs" />
-      <File FileName="Assets/LuaFramework/Scripts/Manager/ResourceManager.cs" />
-      <File FileName="Assets/LuaFramework/Scripts/Utility/Util.cs" />
-      <File FileName="Assets/LuaFramework/ToLua/Misc/LuaResLoader.cs" />
-      <File FileName="Assets/LuaFramework/ToLua/Misc/LuaClient.cs" />
-      <File FileName="Assets/LuaFramework/ToLua/Core/LuaFileUtils.cs" />
-      <File FileName="Assets/LuaFramework/Scripts/Controller/Command/SocketCommand.cs" />
+      <File FileName="Assets/LuaFramework/MoonScripts/Util/TimeUtil.cs" Line="17" Column="38" />
+      <File FileName="Assets/LuaFramework/ToLua/Misc/MyLuaLooper.cs" Line="15" Column="54" />
+      <File FileName="Assets/LuaFramework/Scripts/Main.cs" Line="11" Column="37" />
+      <File FileName="Assets/LuaFramework/Scripts/Framework/AppFacade.cs" Line="27" Column="55" />
+      <File FileName="Assets/LuaFramework/Scripts/Controller/Command/StartUpCommand.cs" Line="19" Column="42" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -18,10 +13,17 @@
           <Node name="ToLuaTemp" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="LuaFramework" expanded="True">
+                <Node name="MoonScripts" expanded="True">
+                  <Node name="Util" expanded="True" />
+                </Node>
                 <Node name="Scripts" expanded="True">
-                  <Node name="Manager" expanded="True">
-                    <Node name="LuaManager.cs" selected="True" />
+                  <Node name="Controller" expanded="True">
+                    <Node name="Command" expanded="True">
+                      <Node name="StartUpCommand.cs" selected="True" />
+                    </Node>
                   </Node>
+                  <Node name="Framework" expanded="True" />
+                  <Node name="Manager" expanded="True" />
                 </Node>
                 <Node name="ToLua" expanded="True">
                   <Node name="Misc" expanded="True" />
@@ -38,7 +40,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="eac48aec-68d1-4552-863c-0cc3b3ff5e40" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="a9b1e4a5-0c46-449e-8fa6-6ab137a2d12d" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

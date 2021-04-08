@@ -14,6 +14,10 @@ public class StartUpCommand : ControllerCommand {
         //-----------------关联命令-----------------------  暂时注释
         //AppFacade.Instance.RegisterCommand(NotiConst.DISPATCH_MESSAGE, typeof(SocketCommand));
 
+
+        //------------------时间----------------------------
+        MoonScrpts.TimeUtil.Initialize();
+
         //-----------------初始化管理器-----------------------
         AppFacade.Instance.AddManager<LuaManager>(ManagerName.Lua);
         //AppFacade.Instance.AddManager<PanelManager>(ManagerName.Panel);

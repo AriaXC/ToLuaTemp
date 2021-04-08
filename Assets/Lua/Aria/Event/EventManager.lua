@@ -9,70 +9,64 @@ function EventManager:Ctor()
 	--index
 	self._handlerIndex = 0
 
+
 	--obj 上绑定的事件
 	self._objHandler = {}
 end
 
 ---------需要继续的优化
 --添加事件
-function EventManager:AddEventListener(eventName,listener,target)
+function EventManager:AddEventListener(eventName,callback,caller,target)
 	if type(eventName) ~= "string" then
 		logError("eventName 的类型错了")
 		return
 	end
 	target = target or EventStr
 	eventName = string.lower(eventName)
-	self._handlerIndex = self._handlerIndex +1
-	local  handStr  = string.format("Hand_%s",self._handlerIndex)
-		
+
 	if self._listeners[eventName] == nil then
 		self._listeners[eventName] = {}
 	end
 
-	self._listeners[eventName][handStr] = listener
+	local info 
+	for k,v in pairs(self._listeners[eventName]) do
+		info = v
+		if info.callback == callback and info.caller ==caller then
+			log("已经注册了  = "..eventName)
+			return
+		end
 
+	end
+	self._handlerIndex = self._handlerIndex +1
+	local  handStr  = string.format("Hand_%s",self._handlerIndex)
+
+	info = {eventName = eventName,callback = callback ,caller =caller}
+	self._listeners[eventName][handStr] = info
+
+	--可以到时候一下子全清
 	if target then
 		if target._addEventListeners == nil then
 			target._addEventListeners ={}
 		end
-		----
-		--  同一个target 默认只能绑定一个同名的eventName  否则清除target有问题 
-		----
-		if target._addEventListeners[eventName] ~=nil and target ~= EventStr then
-			logError("这个taget上已经有一个同名的事件了 不能加了")
-			self._listeners[eventName][handStr]  =nil
-			return
-		end
-		target._addEventListeners[eventName]= handStr
+		target._addEventListeners[eventName] = handStr
 	end
 
 	-----OnDestroy  
-
 	return handStr
 end
 --移除
-function  EventManager:RemoveEventListener(eventName,key,target)
+function  EventManager:RemoveEventListener(eventName,callback,caller)
 	if type(eventName) ~= "string" then
 		logError("eventName 的类型错了  ")
 		return
 	end
-	if type(key) ~= "string" then
-		logError("key 的类型错了  ")
-		return
-	end
-	target = target or EventStr
+
 	eventName = string.lower(eventName)
 
 	for k,v in pairs(self._listeners[eventName]) do
-		if key == k then
+		if v.callback == callback and v.caller == caller then
 			log(string.format("RemoveEventListener ====   eventName==%s",eventName))
-			v:Recycle()
-			self._listeners[eventName][key] = nil
-			if target and target ~= EventStr  then
-				target._addEventListeners[eventName] = nil
-			else
-				logError("target  是个空")
-			end
+			self._listeners[eventName][k] = nil
 		end
 	end
 end
@@ -85,7 +79,6 @@ function  EventManager:RemoveObjAllEventListener(target)
 	if target._addEventListeners then
 		for k,v in pairs(target._addEventListeners) do
 			if self._listeners[k] then
-				self._listeners[k][v]:Recycle()
 				log(string.format("RemoveObjAllEventListener ===  eventName =%s , handStr = %s",k,v))			
 				self._listeners[k][v] = nil
 				target._addEventListeners=nil
@@ -109,9 +102,12 @@ function  EventManager:DispatchEvent(eventName,... )
 
 	for k,v in pairs(self._listeners[eventName]) do
 		if v then
-			-- xpcall(v:Execute(args),_Aira_Error_Fun)
 			xpcall(function ()
-				v:Execute(args)
+				if v.caller == nil then
+					v.callback(args)
+				else
+					v.callback(v.caller,args)
+				end
 			end,_Aira_Error_Fun)
 		else
 			log("事件的回调没有啊   "..eventName)

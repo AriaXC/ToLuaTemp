@@ -32,8 +32,7 @@ Physics = UnityEngine.Physics
 Physics2D = UnityEngine.Physics2D
 Input = UnityEngine.Input
 KeyCode =UnityEngine.KeyCode
-
-
+Time = UnityEngine.Time
 
 ------------------------------------------------
 
