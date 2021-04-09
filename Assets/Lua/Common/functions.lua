@@ -254,9 +254,17 @@ end
 
 --取消回调
 function  CancelDelayCall(hand)
-	
-	
+	if hand == nil or hand.delayedTime == nil then
+		return
+	end
+
+	hand.delayedTime = nil
+	hand.delayStartTime = nil
+	----TODO
+
 	--标记清除
+	_dc_RemoveList[hand] = true
+
 end
 
 

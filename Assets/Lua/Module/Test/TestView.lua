@@ -62,10 +62,14 @@ function  TestView:AddClick( ... )
 	end)
 
 	AddBtnClick(self.transform:Find("bg/btnDelayCall").gameObject,function( ... )
-		logError("注册了一个2秒的定时器")
-		DelayCall(2,function( ... )
+		log("注册了一个2秒的定时器")
+		self.del =  DelayCall(2,function( ... )
 			log("我是延时2秒后触发的")
 		end)
+	end)
+	AddBtnClick(self.transform:Find("bg/btnCancel").gameObject,function( ... )
+		CancelDelayCall(self.del)
+		log("清除计时器")
 	end)
 end
 
