@@ -225,12 +225,11 @@ local function UpdateCall()
 			handler:Recycle()
 		else
 			if time - handler.delayStartTime >= handler.delayedTime then
+				handler.delayedTime = nil
+				_remove(_dc_List,i)
 				xpcall(function ()
 					handler:Execute(handler.args)
 				end,_Aira_Error_Fun)
-
-				handler.delayedTime = nil
-				_remove(_dc_List,i)
 			end
 		end
 	end

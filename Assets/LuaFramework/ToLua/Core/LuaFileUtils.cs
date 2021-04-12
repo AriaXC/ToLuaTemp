@@ -82,7 +82,7 @@ namespace LuaInterface
         //格式: 路径/?.lua
         public bool AddSearchPath(string path, bool front = false)
         {
-            //Debug.LogError("path =" + path);
+            Debug.LogError("path =" + path);
 
             int index = searchPaths.IndexOf(path);
 
@@ -184,6 +184,7 @@ namespace LuaInterface
 
         public virtual string FindFileError(string fileName)
         {
+            Debug.LogError("不应该走到这里了");
             if (Path.IsPathRooted(fileName))
             {
                 return fileName;
@@ -200,7 +201,7 @@ namespace LuaInterface
 
                 for (int i = 0; i < searchPaths.Count; i++)
                 {
-                    sb.Append("\n\tno file '").Append(searchPaths[i]).Append('\'');
+                    sb.Append("\n\tno Other file '").Append(searchPaths[i]).Append('\'');
                 }
 
                 sb = sb.Replace("?", fileName);

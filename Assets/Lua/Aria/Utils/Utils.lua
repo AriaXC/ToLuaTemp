@@ -37,6 +37,12 @@ function  Utils.DOTweenFloat(startValue,endValue,duration,setFun,callback,ease )
 
 end
 
+--为文本插入图片
+function  SimpleTextPic(text,str)
+	-- body
+end
+
+
 --数字跳动   anim(是否停止已经存在的这个跳动，重新开始) 
 function  Utils.NumUpDown(objText,oldScore,newScore,setFun,callback,speed,anim)
 	speed = speed or 3

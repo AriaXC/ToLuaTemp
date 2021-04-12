@@ -198,7 +198,7 @@ namespace LuaInterface
                 AddSearchPath(LuaConst.toluaDir);
                 AddSearchPath(LuaConst.luaDir);
 #endif
-                if (LuaFileUtils.Instance.GetType() == typeof(LuaFileUtils))
+                if (FileSearchPath.Instance.GetType() == typeof(FileSearchPath))
                 {
                     AddSearchPath(LuaConst.luaResDir);
                 }
@@ -617,7 +617,7 @@ namespace LuaInterface
 
             if (buffer == null)
             {
-                string error = string.Format("cannot open {0}: No such file or directory", fileName);
+                string error = string.Format("cannot open {0}: No Moon such file or directory", fileName);
                 //error += LuaFileUtils.Instance.FindFileError(fileName);
                 error += FileSearchPath.Instance.FindFileError(fileName);
                 throw new LuaException(error);
@@ -698,6 +698,7 @@ namespace LuaInterface
                 {
                     string path = paths[i].Replace('\\', '/');
                     //LuaFileUtils.Instance.AddSearchPath(path);
+                    FileSearchPath.Instance.AddLuaSearchPath(path);
                 }
             }
 
@@ -732,7 +733,8 @@ namespace LuaInterface
             }
 
             fullPath = ToPackagePath(fullPath);
-            LuaFileUtils.Instance.AddSearchPath(fullPath);        
+            FileSearchPath.Instance.AddLuaSearchPath(fullPath);
+            //LuaFileUtils.Instance.AddSearchPath(fullPath);        
         }
 
         public void RemoveSeachPath(string fullPath)
@@ -743,7 +745,8 @@ namespace LuaInterface
             }
 
             fullPath = ToPackagePath(fullPath);
-            LuaFileUtils.Instance.RemoveSearchPath(fullPath);
+            FileSearchPath.Instance.AddLuaSearchPath(fullPath);
+            //LuaFileUtils.Instance.RemoveSearchPath(fullPath);
         }        
 
         public int BeginPCall(int reference)
@@ -2028,7 +2031,7 @@ namespace LuaInterface
 #endif
 
             FileSearchPath.Instance.Dispose();
-            LuaFileUtils.Instance.Dispose();
+            //LuaFileUtils.Instance.Dispose();
             System.GC.SuppressFinalize(this);            
         }
 

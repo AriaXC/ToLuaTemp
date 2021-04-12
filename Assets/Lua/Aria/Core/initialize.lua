@@ -1,5 +1,6 @@
 
 local  require = require
+
 --扩展库也在这里添加
 require "Tool/String"
 require "Tool/Json2"
@@ -32,6 +33,7 @@ Physics2D = UnityEngine.Physics2D
 Input = UnityEngine.Input
 KeyCode =UnityEngine.KeyCode
 Time = UnityEngine.Time
+Application = UnityEngine.Application
 
 ------------------------------------------------
 
@@ -52,3 +54,12 @@ DOTween_Enum ={
 }
 
 --------------------------------------------------
+
+if Application.isEditor then
+	require("Aria.Utils.requireEx")
+end
+
+
+
+
+

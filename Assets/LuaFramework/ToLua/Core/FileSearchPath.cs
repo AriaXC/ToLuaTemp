@@ -29,7 +29,9 @@ namespace LuaInterface
                 instance = value;
             }
         }
-        //
+        //beZip = false 在search path 中查找读取lua文件。否则从外部设置过来bundel文件中读取lua文件
+        public bool beZip = false;
+
         protected static FileSearchPath instance = null;
 
         //文件的搜索路径 先后顺序
@@ -68,6 +70,11 @@ namespace LuaInterface
         /// </summary>
         public void AddLuaSearchPath(string path, bool isFirst = false)
         {
+            //传入的 路径有？.lua
+            if (path.Contains("?"))
+            {
+                path = path.Replace("/?.lua", "");
+            }
             Debug.Log("AddLuaSearchPath  == " + path);
             int index = luaSearchPath.IndexOf(path);
             if (index > 0)
@@ -93,18 +100,21 @@ namespace LuaInterface
             luaCaChe.TryGetValue(fileName, out cache);
             if (cache != null)
                 return cache;
+            
             if (!fileName.EndsWith(".lua"))
                 fileName = fileName + ".lua";
+            string error = "";
             for (int i = 0; i < luaSearchPath.Count; i++)
             {
                 string path = Path.Combine(luaSearchPath[i], fileName);
+                error += path + "\n";
                 if (IsFileExist(path))
                 {
                     luaCaChe.Add(fileName, path);
                     return path;
                 }
             }
-            Debug.LogError(fileName + "   ,Lua文件没有找到");
+            Debug.LogError(fileName + "   ,Lua文件没有找到  \n" );
             return null;
         }
         /// <summary>
@@ -182,10 +192,11 @@ namespace LuaInterface
             resCaChe.TryGetValue(fileName, out cache);
             if (cache != null)
                 return cache;
-
+            string error = "";
             for (int i = 0; i < resSearchPath.Count ; i++)
             {
                 string path = Path.Combine(resSearchPath[i], fileName);
+                error += path + "\n";
                 //Debug.LogError(fileName+"    ????   "+path);
                 if (IsFileExist(path))
                 {
@@ -193,7 +204,7 @@ namespace LuaInterface
                     return path;
                 }
             }
-            Debug.LogError(fileName + "   ,Res文件没有找到");
+            Debug.LogError(fileName + "   ,Res文件没有找到  \n"+ error);
             return null;
         }
         /// <summary>
