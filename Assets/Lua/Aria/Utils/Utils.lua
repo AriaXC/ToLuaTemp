@@ -40,6 +40,8 @@ end
 --为文本插入图片
 function  SimpleTextPic(text,str)
 	-- body
+
+
 end
 
 

@@ -16,7 +16,7 @@ function  Login2View:OnInitialize( ... )
 	GetComponentText(self.transform:Find("bg/btnScene2/Text").gameObject).text = "回到场景1"
 
 	AddBtnClick(self.transform:Find("bg/btnScene2").gameObject,function( ... )
-		  MySceneMgr:ShowScene("Module.Login.LoginScene","Login","Scene.Login.Login")
+		  MySceneMgr:ShowScene("Module.Scene.Login.LoginScene","Login","Scene.Login.Login")
 	end)
 
 end

@@ -25,6 +25,12 @@ function  TestLua:AddClick( ... )
 		self:SubSet(arr,1)
 	end)
 
+	AddBtnClick(self.transform:Find("model").gameObject,function( ... )
+		self:Hide()
+	end)
+	AddBtnClick(self.transform:Find("bg/btnXiao").gameObject,function( )
+		MySceneMgr:ShowScene("Module.Scene.Xiao.XiaoScene","Xiao","Scene.Xiao.XiaoScene")
+	end)
 end
 
 function  TestLua:PrintArr(arr,n )

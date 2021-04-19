@@ -23,6 +23,7 @@
 13.检测文件大小写的 cs脚本
 14.scrollview 优化的lua交互
 15.protect 阴影部分
+16.spine
 
 1.socket相关的
 2.服务器怎么整

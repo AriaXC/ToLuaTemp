@@ -1,18 +1,16 @@
 ﻿<Properties StartupConfiguration="{5EBE5927-85E2-E507-10FC-6F3F3AAB800B}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/ToLua/Core/ToLua.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/ToLua/Injection/Editor/ToluaInjectionBlackListPanel.cs">
     <Files>
-      <File FileName="Assets/LuaFramework/ToLua/Core/FileSearchPath.cs" Line="76" Column="57" />
+      <File FileName="Assets/LuaFramework/ToLua/Core/FileSearchPath.cs" Line="99" Column="24" />
       <File FileName="Assets/LuaFramework/ToLua/Core/LuaState.cs" Line="607" Column="1" />
       <File FileName="Assets/LuaFramework/ToLua/Core/LuaFunction.cs" Line="96" Column="50" />
       <File FileName="Assets/LuaFramework/Scripts/Manager/GameManager.cs" Line="298" Column="28" />
-      <File FileName="Assets/LuaFramework/ToLua/Core/LuaFileUtils.cs" Line="181" Column="46" />
-      <File FileName="Assets/LuaFramework/Scripts/Common/LuaLoader.cs" Line="52" Column="48" />
-      <File FileName="Assets/LuaFramework/ToLua/Core/LuaException.cs" Line="84" Column="35" />
+      <File FileName="Assets/LuaFramework/ToLua/Core/LuaFileUtils.cs" Line="116" Column="26" />
       <File FileName="Assets/LuaFramework/Scripts/ConstDefine/AppConst.cs" Line="30" Column="11" />
-      <File FileName="Assets/LuaFramework/ToLua/Misc/LuaClient.cs" Line="47" Column="23" />
-      <File FileName="Assets/LuaFramework/ToLua/Misc/LuaResLoader.cs" Line="31" Column="26" />
-      <File FileName="Assets/LuaFramework/Scripts/Manager/LuaManager.cs" Line="16" Column="27" />
-      <File FileName="Assets/LuaFramework/ToLua/Core/ToLua.cs" Line="221" Column="18" />
+      <File FileName="Assets/LuaFramework/Scripts/Manager/SceneManager.cs" Line="8" Column="2" />
+      <File FileName="Assets/LuaFramework/Scripts/Manager/ResourceManager.cs" Line="68" Column="10" />
+      <File FileName="Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUtils.cs" Line="47" Column="26" />
+      <File FileName="Assets/LuaFramework/ToLua/Injection/Editor/ToluaInjectionBlackListPanel.cs" Line="12" Column="44" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -26,10 +24,20 @@
                   <Node name="Manager" expanded="True" />
                 </Node>
                 <Node name="ToLua" expanded="True">
-                  <Node name="Core" expanded="True">
-                    <Node name="ToLua.cs" selected="True" />
+                  <Node name="Core" expanded="True" />
+                  <Node name="Injection" expanded="True">
+                    <Node name="Editor" expanded="True">
+                      <Node name="ToluaInjectionBlackListPanel.cs" selected="True" />
+                    </Node>
                   </Node>
                   <Node name="Source" expanded="True" />
+                </Node>
+              </Node>
+              <Node name="Plugins" expanded="True">
+                <Node name="Demigiant" expanded="True">
+                  <Node name="DOTween" expanded="True">
+                    <Node name="Modules" expanded="True" />
+                  </Node>
                 </Node>
               </Node>
               <Node name="Test" expanded="True">

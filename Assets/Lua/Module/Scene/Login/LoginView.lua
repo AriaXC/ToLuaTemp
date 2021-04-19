@@ -22,12 +22,12 @@ function  LoginView:AddClick()
 	AddBtnClick(self.transform:Find("bg/btnScene2").gameObject,function( ... )
 		-- MySceneMgr:ShowScene("Module.Login.Login2Scene","Login2","Scene.Login.Login2")
 		
-		MySceneMgr:LoadSubScene("Module.Login.Login2Scene","Login2","Scene.Login.Login2")
+		MySceneMgr:ShowScene("Module.Scene.Login.Login2Scene","Login2","Scene.Login.Login2")
 	end)
 
 	AddBtnClick(self.transform:Find("bg/btnAvatar").gameObject,function( ... )
 		-- self:Hide()
-		self:Destroy()
+		-- self:Destroy()
 		if not self.avatarView then
 			self.avatarView = require("Module.AvatarTest.View.AvatarView").New()
 		end

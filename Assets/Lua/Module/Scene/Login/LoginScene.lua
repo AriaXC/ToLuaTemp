@@ -13,7 +13,7 @@ function  LoginScene:Ctor( )
 	print("现在是登录场景了")
 
 	if not self.loginView then
-		self.loginView = require("Module.Login.LoginView").New()
+		self.loginView = require("Module.Scene.Login.LoginView").New()
 	end
 	-- self.loginView:Show()
 	

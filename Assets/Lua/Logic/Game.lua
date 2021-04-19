@@ -19,7 +19,7 @@ function Game:StartUp( ... )
     --初始化资源依赖等
     resMgr:InitRes()
 
-    MySceneMgr:ShowScene("Module.Login.LoginScene","Login","Scene.Login.Login")
+    MySceneMgr:ShowScene("Module.Scene.Login.LoginScene","Login","Scene.Login.Login")
 
     -- require("Module.Login.LoginView").New()
 end
