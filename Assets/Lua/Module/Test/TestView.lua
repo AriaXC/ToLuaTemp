@@ -71,6 +71,13 @@ function  TestView:AddClick( ... )
 		CancelDelayCall(self.del)
 		log("清除计时器")
 	end)
+	AddBtnClick(self.transform:Find("bg/btnAddImage").gameObject,function( ... )
+		log("文字加图片")
+		Utils.SimpleTextPic(self.titleText,"Textures/A/a1.png",2)
+	end)
+
+
+
 end
 
 function  TestView:InsertTest()

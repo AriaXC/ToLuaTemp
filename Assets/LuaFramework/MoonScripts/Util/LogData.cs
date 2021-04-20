@@ -31,6 +31,8 @@ namespace MoonScrpts
             log.msg = str;
             log.trace = trace;
             log.time = DateTime.Now.ToString();
+
+            // 这里去写入文本日志中
             return log;
         }
 
