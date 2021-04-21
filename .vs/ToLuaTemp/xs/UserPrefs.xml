@@ -1,9 +1,11 @@
 ﻿<Properties StartupConfiguration="{5EBE5927-85E2-E507-10FC-6F3F3AAB800B}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/Scripts/Manager/ResourceManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/Scripts/Main.cs">
     <Files>
       <File FileName="Assets/LuaFramework/Scripts/Utility/Util.cs" Line="1" Column="1" />
-      <File FileName="Assets/LuaFramework/MoonScripts/Util/LogData.cs" Line="35" Column="26" />
-      <File FileName="Assets/LuaFramework/Scripts/Manager/ResourceManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/LuaFramework/MoonScripts/Util/LogData.cs" Line="32" Column="31" />
+      <File FileName="Assets/LuaFramework/Scripts/Manager/ResourceManager.cs" />
+      <File FileName="Assets/LuaFramework/MoonScripts/Util/LogFileWriter.cs" Line="10" Column="1" />
+      <File FileName="Assets/LuaFramework/Scripts/Main.cs" Line="11" Column="22" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,10 +19,9 @@
                 </Node>
                 <Node name="Scripts" expanded="True">
                   <Node name="Common" expanded="True" />
-                  <Node name="Manager" expanded="True">
-                    <Node name="ResourceManager.cs" selected="True" />
-                  </Node>
+                  <Node name="Manager" expanded="True" />
                   <Node name="Utility" expanded="True" />
+                  <Node name="Main.cs" selected="True" />
                 </Node>
                 <Node name="ToLua" expanded="True">
                   <Node name="Core" expanded="True" />
@@ -48,7 +49,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="8a8838e9-6c45-49a6-a03a-0b98475e8754" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="cb0f93fd-4293-45ba-acc5-4d57be1fa1bf" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
