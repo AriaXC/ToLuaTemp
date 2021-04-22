@@ -1,116 +1,121 @@
 [2021/04/22]
  
-[Log][4/22/2021 3:18:12 PM] AddLuaSearchPath  == .
+[Log][4/22/2021 3:44:06 PM] AddLuaSearchPath  == .
  
-[Log][4/22/2021 3:18:12 PM] AddLuaSearchPath  == /usr/local/share/lua/5.1
+[Log][4/22/2021 3:44:06 PM] AddLuaSearchPath  == /usr/local/share/lua/5.1
  
-[Log][4/22/2021 3:18:12 PM] AddLuaSearchPath  == /usr/local/share/lua/5.1/?/init.lua
+[Log][4/22/2021 3:44:06 PM] AddLuaSearchPath  == /usr/local/share/lua/5.1/?/init.lua
  
-[Log][4/22/2021 3:18:12 PM] AddLuaSearchPath  == /usr/local/lib/lua/5.1
+[Log][4/22/2021 3:44:06 PM] AddLuaSearchPath  == /usr/local/lib/lua/5.1
  
-[Log][4/22/2021 3:18:12 PM] AddLuaSearchPath  == /usr/local/lib/lua/5.1/?/init.lua
+[Log][4/22/2021 3:44:06 PM] AddLuaSearchPath  == /usr/local/lib/lua/5.1/?/init.lua
  
-[Log][4/22/2021 3:18:12 PM] AddLuaSearchPath  == /Users/admin/Documents/U2/ToLuaTemp/Assets/LuaFramework/ToLua/Lua
+[Log][4/22/2021 3:44:06 PM] AddLuaSearchPath  == /Users/admin/Documents/U2/ToLuaTemp/Assets/LuaFramework/ToLua/Lua
  
-[Log][4/22/2021 3:18:12 PM] AddLuaSearchPath  == /Users/admin/Documents/U2/ToLuaTemp/Assets/Lua
+[Log][4/22/2021 3:44:06 PM] AddLuaSearchPath  == /Users/admin/Documents/U2/ToLuaTemp/Assets/Lua
  
-[Log][4/22/2021 3:18:12 PM] AddLuaSearchPath  == /Users/admin/Library/Application Support/Aria/ToLuaTemp/iOS/Lua
+[Log][4/22/2021 3:44:06 PM] AddLuaSearchPath  == /Users/admin/Library/Application Support/Aria/ToLuaTemp/iOS/Lua
  
-[Log][4/22/2021 3:18:12 PM] 15:18:12.866-1: Init lua state cost: 0.1417751
+[Log][4/22/2021 3:44:06 PM] 15:44:06.108-1: Init lua state cost: 0.17612
  
-[Log][4/22/2021 3:18:13 PM] 15:18:13.410-1: Register lua type cost time: 0.533524
+[Log][4/22/2021 3:44:06 PM] 15:44:06.759-1: Register lua type cost time: 0.6352749
  
-[Log][4/22/2021 3:18:13 PM] AddLuaSearchPath  == /Users/admin/Documents/U2/ToLuaTemp/Assets/StreamingAssets
+[Log][4/22/2021 3:44:06 PM] AddLuaSearchPath  == /Users/admin/Documents/U2/ToLuaTemp/Assets/StreamingAssets
  
-[Log][4/22/2021 3:18:13 PM] AddResSearchPath  == /Users/admin/Documents/U2/ToLuaTemp/Assets/StreamingAssets
+[Log][4/22/2021 3:44:06 PM] AddResSearchPath  == /Users/admin/Documents/U2/ToLuaTemp/Assets/StreamingAssets
  
-[Log][4/22/2021 3:18:13 PM] AddLuaSearchPath  == Assets/Lua/
+[Log][4/22/2021 3:44:06 PM] AddLuaSearchPath  == Assets/Lua/
  
-[Log][4/22/2021 3:18:13 PM] AddLuaSearchPath  == /Users/admin/Documents/U2/ToLuaTemp/Assets/LuaFramework/ToLua/Lua
+[Log][4/22/2021 3:44:06 PM] AddLuaSearchPath  == /Users/admin/Documents/U2/ToLuaTemp/Assets/LuaFramework/ToLua/Lua
  
-[Log][4/22/2021 3:18:13 PM] GameManager Initialize OK!!!
+[Log][4/22/2021 3:44:06 PM] GameManager Initialize OK!!!
  
-[Log][4/22/2021 3:18:13 PM] 15:18:13.441-1: LuaState start
+[Log][4/22/2021 3:44:06 PM] 15:44:06.798-1: LuaState start
  
-[Log][4/22/2021 3:18:13 PM] Lua开始了
+[Log][4/22/2021 3:44:06 PM] Lua开始了
  
-[Log][4/22/2021 3:18:13 PM] [Log][4/22/2021 3:18:13 PM] Lua开始了
+[Log][4/22/2021 3:44:06 PM] [Log][4/22/2021 3:44:06 PM] Lua开始了
  
-[Log][4/22/2021 3:18:13 PM] 初始化 SceneManager
+[Log][4/22/2021 3:44:06 PM] 初始化 SceneManager
  
-[Log][4/22/2021 3:18:13 PM] [Log][4/22/2021 3:18:13 PM] 初始化 SceneManager
+[Log][4/22/2021 3:44:06 PM] [Log][4/22/2021 3:44:06 PM] 初始化 SceneManager
  
-[Log][4/22/2021 3:18:13 PM] 初始化 EventManager
+[Log][4/22/2021 3:44:06 PM] 初始化 EventManager
  
-[Log][4/22/2021 3:18:13 PM] [Log][4/22/2021 3:18:13 PM] 初始化 EventManager
+[Log][4/22/2021 3:44:06 PM] [Log][4/22/2021 3:44:06 PM] 初始化 EventManager
  
-[Log][4/22/2021 3:18:13 PM] resMgr:LoadSceneAsync:Start  Login
+[Log][4/22/2021 3:44:06 PM] resMgr:LoadSceneAsync:Start  Login
  
-[Log][4/22/2021 3:18:13 PM] [Log][4/22/2021 3:18:13 PM] resMgr:LoadSceneAsync:Start  Login
+[Log][4/22/2021 3:44:06 PM] [Log][4/22/2021 3:44:06 PM] resMgr:LoadSceneAsync:Start  Login
  
-[Log][4/22/2021 3:18:13 PM] sceneMgr:LoadSceneAsync:Start  Login
+[Log][4/22/2021 3:44:06 PM] sceneMgr:LoadSceneAsync:Start  Login
  
-[Log][4/22/2021 3:18:13 PM] [Log][4/22/2021 3:18:13 PM] sceneMgr:LoadSceneAsync:Start  Login
+[Log][4/22/2021 3:44:06 PM] [Log][4/22/2021 3:44:06 PM] sceneMgr:LoadSceneAsync:Start  Login
  
-[Log][4/22/2021 3:18:13 PM] 场景异步加载的进度条值   0
+[Log][4/22/2021 3:44:06 PM] 场景异步加载的进度条值   0
  
-[Log][4/22/2021 3:18:13 PM] [Log][4/22/2021 3:18:13 PM] 场景异步加载的进度条值   0
+[Log][4/22/2021 3:44:06 PM] [Log][4/22/2021 3:44:06 PM] 场景异步加载的进度条值   0
  
-[Log][4/22/2021 3:18:13 PM] 场景异步加载的进度条值   1
+[Log][4/22/2021 3:44:07 PM] 场景异步加载的进度条值   1
  
-[Log][4/22/2021 3:18:13 PM] [Log][4/22/2021 3:18:13 PM] 场景异步加载的进度条值   1
+[Log][4/22/2021 3:44:07 PM] [Log][4/22/2021 3:44:07 PM] 场景异步加载的进度条值   1
  
-[Log][4/22/2021 3:18:13 PM] sceneMgr:LoadSceneAsync:End  Login
+[Log][4/22/2021 3:44:07 PM] sceneMgr:LoadSceneAsync:End  Login
  
-[Log][4/22/2021 3:18:13 PM] [Log][4/22/2021 3:18:13 PM] sceneMgr:LoadSceneAsync:End  Login
+[Log][4/22/2021 3:44:07 PM] [Log][4/22/2021 3:44:07 PM] sceneMgr:LoadSceneAsync:End  Login
  
-[Log][4/22/2021 3:18:13 PM] AssetName == UICanvas(Clone)
+[Log][4/22/2021 3:44:07 PM] AssetName == UICanvas(Clone)
  
-[Log][4/22/2021 3:18:13 PM] [Log][4/22/2021 3:18:13 PM] AssetName == UICanvas(Clone)
+[Log][4/22/2021 3:44:07 PM] [Log][4/22/2021 3:44:07 PM] AssetName == UICanvas(Clone)
  
-[Log][4/22/2021 3:18:13 PM] 15:18:13.990-3: [Module/Scene/Login/LoginScene.lua:13]:现在是登录场景了
+[Log][4/22/2021 3:44:07 PM] 15:44:07.656-3: [Module/Scene/Login/LoginScene.lua:13]:现在是登录场景了
  
-[Log][4/22/2021 3:18:14 PM] AssetName == LoginView(Clone)
+[Log][4/22/2021 3:44:07 PM] AssetName == LoginView(Clone)
  
-[Log][4/22/2021 3:18:14 PM] [Log][4/22/2021 3:18:14 PM] AssetName == LoginView(Clone)
+[Log][4/22/2021 3:44:07 PM] [Log][4/22/2021 3:44:07 PM] AssetName == LoginView(Clone)
  
-[Log][4/22/2021 3:18:15 PM] 点击的按钮  == btnCe
+[Log][4/22/2021 3:44:09 PM] 点击的按钮  == btnGame
  
-[Log][4/22/2021 3:18:15 PM] [Log][4/22/2021 3:18:15 PM] 点击的按钮  == btnCe
+[Log][4/22/2021 3:44:09 PM] [Log][4/22/2021 3:44:09 PM] 点击的按钮  == btnGame
  
-[Log][4/22/2021 3:18:15 PM] AssetName == TestView(Clone)
+[Log][4/22/2021 3:44:09 PM] AssetName == MyGameView(Clone)
  
-[Log][4/22/2021 3:18:15 PM] [Log][4/22/2021 3:18:15 PM] AssetName == TestView(Clone)
+[Log][4/22/2021 3:44:09 PM] [Log][4/22/2021 3:44:09 PM] AssetName == MyGameView(Clone)
  
-[Log][4/22/2021 3:18:15 PM] 点击的按钮  == model
+[Log][4/22/2021 3:44:10 PM] 点击的按钮  == btnFootBall
  
-[Log][4/22/2021 3:18:15 PM] [Log][4/22/2021 3:18:15 PM] 点击的按钮  == model
+[Log][4/22/2021 3:44:10 PM] [Log][4/22/2021 3:44:10 PM] 点击的按钮  == btnFootBall
  
-[Log][4/22/2021 3:18:16 PM] 点击的按钮  == btnCe_lua
+[Log][4/22/2021 3:44:10 PM] resMgr:LoadSceneAsync:Start  FootBall
  
-[Log][4/22/2021 3:18:16 PM] [Log][4/22/2021 3:18:16 PM] 点击的按钮  == btnCe_lua
+[Log][4/22/2021 3:44:10 PM] [Log][4/22/2021 3:44:10 PM] resMgr:LoadSceneAsync:Start  FootBall
  
-[Log][4/22/2021 3:18:16 PM] AssetName == TestView_Lua(Clone)
+[Log][4/22/2021 3:44:10 PM] sceneMgr:LoadSceneAsync:Start  FootBall
  
-[Log][4/22/2021 3:18:16 PM] [Log][4/22/2021 3:18:16 PM] AssetName == TestView_Lua(Clone)
+[Log][4/22/2021 3:44:10 PM] [Log][4/22/2021 3:44:10 PM] sceneMgr:LoadSceneAsync:Start  FootBall
  
-[Exception][4/22/2021 3:18:16 PM] LuaException: Module/Test/TestLua:22: attempt to index a nil value
-stack traceback:
-	Module/Test/TestLua:22: in function 'AddClick'
-	Module/Test/TestLua:17: in function 'OnInitialize'
-	Aria/Views/View:32: in function 'Ctor'
-	Module/Test/TestLua:5: in function 'Ctor'
-	Common/functions:95: in function 'New'
-	Module/Scene/Login/LoginView:49: in function 'callback'
-	Common/functions:146: in function <Common/functions:143>LuaInterface.LuaState:PCall(Int32, Int32) (at Assets/LuaFramework/ToLua/Core/LuaState.cs:762)
-LuaInterface.LuaFunction:PCall() (at Assets/LuaFramework/ToLua/Core/LuaFunction.cs:96)
-LuaInterface.LuaFunction:Call(GameObject) (at Assets/LuaFramework/ToLua/Core/LuaFunction.cs:128)
-LuaFramework.<>c__DisplayClass8_0:<AddClick>b__0() (at Assets/LuaFramework/Scripts/Utility/LuaHelper.cs:101)
-UnityEngine.EventSystems.EventSystem:Update()
-
+[Log][4/22/2021 3:44:10 PM] 场景异步加载的进度条值   0
  
-[Log][4/22/2021 3:18:18 PM] ~ResourceManager was destroy!
+[Log][4/22/2021 3:44:10 PM] [Log][4/22/2021 3:44:10 PM] 场景异步加载的进度条值   0
  
-[Log][4/22/2021 3:18:18 PM] 15:18:18.579-0: LuaState destroy
+[Log][4/22/2021 3:44:10 PM] 场景异步加载的进度条值   1
  
-[Log][4/22/2021 3:18:18 PM] ~GameManager was destroyed
+[Log][4/22/2021 3:44:10 PM] [Log][4/22/2021 3:44:10 PM] 场景异步加载的进度条值   1
+ 
+[Log][4/22/2021 3:44:10 PM] sceneMgr:LoadSceneAsync:End  FootBall
+ 
+[Log][4/22/2021 3:44:10 PM] [Log][4/22/2021 3:44:10 PM] sceneMgr:LoadSceneAsync:End  FootBall
+ 
+[Log][4/22/2021 3:44:10 PM] AssetName == UICanvas(Clone)
+ 
+[Log][4/22/2021 3:44:10 PM] [Log][4/22/2021 3:44:10 PM] AssetName == UICanvas(Clone)
+ 
+[Log][4/22/2021 3:44:10 PM] AssetName == FootView(Clone)
+ 
+[Log][4/22/2021 3:44:10 PM] [Log][4/22/2021 3:44:10 PM] AssetName == FootView(Clone)
+ 
+[Log][4/22/2021 3:44:17 PM] ~ResourceManager was destroy!
+ 
+[Log][4/22/2021 3:44:17 PM] 15:44:17.131-0: LuaState destroy
+ 
+[Log][4/22/2021 3:44:17 PM] ~GameManager was destroyed
