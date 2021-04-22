@@ -128,7 +128,7 @@ namespace LuaFramework {
             }
             if (funNameList.Length <= 0 && funList.Length <= 0)
             {
-                Util.Log("传入的方法长度不对   =="+ funNameList.Length);
+                Debug.Log("传入的方法长度不对   =="+ funNameList.Length);
                 return;
             }
              AriaLuaBehaviour aira = go.GetComponent<AriaLuaBehaviour>();
@@ -138,7 +138,7 @@ namespace LuaFramework {
             }
             else
             {
-                //Util.Log("添加了 已经有了这个脚本了  " + go.name);
+                //Debug.Log("添加了 已经有了这个脚本了  " + go.name);
             }
             aira.SetMess(funNameList, funList);
         }

@@ -22,9 +22,6 @@ public class LuaFramework_UtilWrap
 		L.RegFunction("GetRelativePath", GetRelativePath);
 		L.RegFunction("GetFileText", GetFileText);
 		L.RegFunction("AppContentPath", AppContentPath);
-		L.RegFunction("Log", Log);
-		L.RegFunction("LogWarning", LogWarning);
-		L.RegFunction("LogError", LogError);
 		L.RegFunction("CheckRuntimeFile", CheckRuntimeFile);
 		L.RegFunction("CallMethod", CallMethod);
 		L.RegFunction("CheckEnvironment", CheckEnvironment);
@@ -337,99 +334,6 @@ public class LuaFramework_UtilWrap
 			string o = LuaFramework.Util.AppContentPath();
 			LuaDLL.lua_pushstring(L, o);
 			return 1;
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int Log(IntPtr L)
-	{
-		try
-		{
-			int count = LuaDLL.lua_gettop(L);
-
-			if (count == 1)
-			{
-				string arg0 = ToLua.CheckString(L, 1);
-				LuaFramework.Util.Log(arg0);
-				return 0;
-			}
-			else if (count == 2)
-			{
-				string arg0 = ToLua.CheckString(L, 1);
-				string arg1 = ToLua.CheckString(L, 2);
-				LuaFramework.Util.Log(arg0, arg1);
-				return 0;
-			}
-			else
-			{
-				return LuaDLL.luaL_throw(L, "invalid arguments to method: LuaFramework.Util.Log");
-			}
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int LogWarning(IntPtr L)
-	{
-		try
-		{
-			int count = LuaDLL.lua_gettop(L);
-
-			if (count == 1)
-			{
-				string arg0 = ToLua.CheckString(L, 1);
-				LuaFramework.Util.LogWarning(arg0);
-				return 0;
-			}
-			else if (count == 2)
-			{
-				string arg0 = ToLua.CheckString(L, 1);
-				string arg1 = ToLua.CheckString(L, 2);
-				LuaFramework.Util.LogWarning(arg0, arg1);
-				return 0;
-			}
-			else
-			{
-				return LuaDLL.luaL_throw(L, "invalid arguments to method: LuaFramework.Util.LogWarning");
-			}
-		}
-		catch (Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int LogError(IntPtr L)
-	{
-		try
-		{
-			int count = LuaDLL.lua_gettop(L);
-
-			if (count == 1)
-			{
-				string arg0 = ToLua.CheckString(L, 1);
-				LuaFramework.Util.LogError(arg0);
-				return 0;
-			}
-			else if (count == 2)
-			{
-				string arg0 = ToLua.CheckString(L, 1);
-				string arg1 = ToLua.CheckString(L, 2);
-				LuaFramework.Util.LogError(arg0, arg1);
-				return 0;
-			}
-			else
-			{
-				return LuaDLL.luaL_throw(L, "invalid arguments to method: LuaFramework.Util.LogError");
-			}
 		}
 		catch (Exception e)
 		{

@@ -221,6 +221,7 @@ public static string toluaBaseType = FrameworkPath + "/ToLua/BaseType/";
         _GT(typeof(SceneManager)),
 
 
+        _GT(typeof(MoonScrpts.Logger)),
     };
 
     public static List<Type> dynamicList = new List<Type>()

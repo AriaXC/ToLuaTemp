@@ -1,11 +1,10 @@
 ﻿<Properties StartupConfiguration="{5EBE5927-85E2-E507-10FC-6F3F3AAB800B}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/Scripts/Main.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/MoonScripts/Util/LogData.cs">
     <Files>
-      <File FileName="Assets/LuaFramework/Scripts/Utility/Util.cs" Line="1" Column="1" />
-      <File FileName="Assets/LuaFramework/MoonScripts/Util/LogData.cs" Line="32" Column="31" />
-      <File FileName="Assets/LuaFramework/Scripts/Manager/ResourceManager.cs" />
-      <File FileName="Assets/LuaFramework/MoonScripts/Util/LogFileWriter.cs" Line="10" Column="1" />
-      <File FileName="Assets/LuaFramework/Scripts/Main.cs" Line="11" Column="22" />
+      <File FileName="Assets/LuaFramework/Editor/CustomSettings.cs" Line="70" Column="41" />
+      <File FileName="Assets/LuaFramework/MoonScripts/Util/LogFileWriter.cs" Line="87" Column="46" />
+      <File FileName="Assets/LuaFramework/MoonScripts/Util/LogData.cs" Line="19" Column="11" />
+      <File FileName="Assets/LuaFramework/MoonScripts/Util/Logger.cs" Line="35" Column="14" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,21 +13,31 @@
             <Node name="Assets" expanded="True">
               <Node name="Lua" expanded="True" />
               <Node name="LuaFramework" expanded="True">
+                <Node name="Editor" expanded="True" />
                 <Node name="MoonScripts" expanded="True">
-                  <Node name="Util" expanded="True" />
+                  <Node name="Util" expanded="True">
+                    <Node name="LogData.cs" selected="True" />
+                  </Node>
                 </Node>
                 <Node name="Scripts" expanded="True">
                   <Node name="Common" expanded="True" />
+                  <Node name="Controller" expanded="True">
+                    <Node name="Command" expanded="True" />
+                  </Node>
+                  <Node name="Framework" expanded="True" />
                   <Node name="Manager" expanded="True" />
                   <Node name="Utility" expanded="True" />
-                  <Node name="Main.cs" selected="True" />
+                  <Node name="View" expanded="True" />
                 </Node>
                 <Node name="ToLua" expanded="True">
                   <Node name="Core" expanded="True" />
                   <Node name="Injection" expanded="True">
                     <Node name="Editor" expanded="True" />
                   </Node>
-                  <Node name="Source" expanded="True" />
+                  <Node name="Misc" expanded="True" />
+                  <Node name="Source" expanded="True">
+                    <Node name="Generate" expanded="True" />
+                  </Node>
                 </Node>
               </Node>
               <Node name="Plugins" expanded="True">

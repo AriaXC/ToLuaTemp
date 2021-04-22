@@ -9,7 +9,7 @@ local _sort = table.sort
 
 --输出日志--
 function log(str,trace)
-    Util.Log(tostring(str),trace);
+    MoonScrpts.Logger.Log(tostring(str),trace);
 end
 function logTable( str ,trace)
 	log(Json2.encode(str),trace)
@@ -18,7 +18,7 @@ end
 ---这里还没有记录lua堆栈信息
 --错误日志
 function logError(str) 
-	Util.LogError(tostring(str),traceback("",2));
+	MoonScrpts.Logger.LogError(tostring(str),traceback("",2));
 end
 function logErrorTable(str)
 	logError(Json2.encode(str))
@@ -26,7 +26,7 @@ end
 
 --警告日志--
 function logWarn(str) 
-	Util.LogWarning(tostring(str),debug.traceback("",2));
+	MoonScrpts.Logger.LogWarning(tostring(str),debug.traceback("",2));
 end
 
 --查找对象--

@@ -47,7 +47,7 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Unity/VSTU</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.8.4.0</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.9.4.0</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>iOS:9</UnityBuildTarget>
     <UnityVersion>2018.3.14f1</UnityVersion>
@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Assets\LuaFramework\MoonScripts\Util\LogData.cs" />
     <Compile Include="Assets\LuaFramework\MoonScripts\Util\LogFileWriter.cs" />
+    <Compile Include="Assets\LuaFramework\MoonScripts\Util\Logger.cs" />
     <Compile Include="Assets\LuaFramework\MoonScripts\Util\TimeUtil.cs" />
     <Compile Include="Assets\LuaFramework\Scripts\Common\AriaLuaBehaviour.cs" />
     <Compile Include="Assets\LuaFramework\Scripts\Common\LuaBehaviour.cs" />
@@ -209,6 +210,7 @@
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaInterface_LuaInjectionStationWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\LuaProfilerWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\ManagerWrap.cs" />
+    <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\MoonScrpts_LoggerWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_AnimationBlendModeWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_AnimationClipWrap.cs" />
     <Compile Include="Assets\LuaFramework\ToLua\Source\Generate\UnityEngine_AnimationStateWrap.cs" />

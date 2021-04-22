@@ -177,6 +177,9 @@ public static class LuaBinder
 		LuaFramework_ResourceManagerWrap.Register(L);
 		LuaFramework_SceneManagerWrap.Register(L);
 		L.EndModule();
+		L.BeginModule("MoonScrpts");
+		MoonScrpts_LoggerWrap.Register(L);
+		L.EndModule();
 		L.BeginModule("System");
 		L.RegFunction("Action", System_Action);
 		L.RegFunction("Predicate_int", System_Predicate_int);

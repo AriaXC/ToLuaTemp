@@ -18,6 +18,9 @@ public class StartUpCommand : ControllerCommand {
         //------------------时间----------------------------
         MoonScrpts.TimeUtil.Initialize();
 
+        //-----------------Log----------------------------
+        MoonScrpts.Logger.Initialize();
+
         //-----------------初始化管理器-----------------------
         AppFacade.Instance.AddManager<LuaManager>(ManagerName.Lua);
         //AppFacade.Instance.AddManager<PanelManager>(ManagerName.Panel);

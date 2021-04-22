@@ -24,6 +24,7 @@
 14.scrollview 优化的lua交互
 15.protect 阴影部分
 16.spine
+17.新手引导
 
 1.socket相关的
 2.服务器怎么整
