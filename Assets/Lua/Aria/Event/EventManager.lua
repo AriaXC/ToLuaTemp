@@ -51,6 +51,13 @@ function EventManager:AddEventListener(eventName,callback,caller,target)
 		target._addEventListeners[eventName] = handStr
 	end
 
+	if target.gameObject then
+		--碰撞器 触发器等的添加
+		if eventName == "OnCollisionEnter"  then
+		end
+
+	end
+
 	-----OnDestroy  
 	return handStr
 end

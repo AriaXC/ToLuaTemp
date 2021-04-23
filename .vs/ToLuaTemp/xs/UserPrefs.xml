@@ -1,10 +1,11 @@
 ﻿<Properties StartupConfiguration="{5EBE5927-85E2-E507-10FC-6F3F3AAB800B}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_RigidbodyWrap.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_CameraWrap.cs">
     <Files>
-      <File FileName="Assets/LuaFramework/Editor/CustomSettings.cs" Line="70" Column="41" />
-      <File FileName="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_TransformWrap.cs" Line="81" Column="61" />
-      <File FileName="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_GameObjectWrap.cs" Line="18" Column="27" />
-      <File FileName="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_RigidbodyWrap.cs" Line="21" Column="26" />
+      <File FileName="Assets/LuaFramework/Editor/CustomSettings.cs" Line="243" Column="31" />
+      <File FileName="Assets/LuaFramework/ToLua/Misc/MyLuaLooper.cs" Line="71" Column="10" />
+      <File FileName="Assets/LuaFramework/MoonScripts/Util/TimeUtil.cs" Line="1" Column="1" />
+      <File FileName="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_RigidbodyWrap.cs" Line="100" Column="25" />
+      <File FileName="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_CameraWrap.cs" Line="37" Column="43" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -28,6 +29,7 @@
                   <Node name="View" expanded="True" />
                 </Node>
                 <Node name="ToLua" expanded="True">
+                  <Node name="BaseType" expanded="True" />
                   <Node name="Core" expanded="True" />
                   <Node name="Injection" expanded="True">
                     <Node name="Editor" expanded="True" />
@@ -35,7 +37,7 @@
                   <Node name="Misc" expanded="True" />
                   <Node name="Source" expanded="True">
                     <Node name="Generate" expanded="True">
-                      <Node name="UnityEngine_RigidbodyWrap.cs" selected="True" />
+                      <Node name="UnityEngine_CameraWrap.cs" selected="True" />
                     </Node>
                   </Node>
                 </Node>

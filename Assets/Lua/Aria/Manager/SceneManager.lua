@@ -84,6 +84,8 @@ function  SceneManager:LoadScene(scene,sceneClass)
 				log("sceneMgr:LoadSceneAsync:End  "..scene)
 				
 				self:AddCanvas()
+
+				MainCamera = UnityEngine.Camera.main
 				require(sceneClass).New()
 			end
 		else

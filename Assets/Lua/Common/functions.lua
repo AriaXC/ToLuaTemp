@@ -177,6 +177,10 @@ function  GetComponentAnimator(go)
 	return go:GetComponent(_typeof(UnityEngine.Animator))
 end
 
+function  GetComponentRigidbody(go)
+	return go:GetComponent(_typeof(UnityEngine.Rigidbody))
+end
+
 ------------------------------------------------------------------------------------------------
 
 

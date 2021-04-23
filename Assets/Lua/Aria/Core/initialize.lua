@@ -27,7 +27,7 @@ UpdateEvent = require("Aria.Event.UpdateEvent")
 
 -------------------------------------------------
 
-Camera = UnityEngine.Camera
+MainCamera = UnityEngine.Camera.main
 Physics = UnityEngine.Physics
 Physics2D = UnityEngine.Physics2D
 Input = UnityEngine.Input

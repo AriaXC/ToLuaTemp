@@ -43,6 +43,11 @@ function  Utils.SimpleTextPic(text,path,index)
 
 end
 
+-- 没有开方
+function  Utils.Distance(va,vb)
+	return (va.x - vb.x)^2 + (va.y - vb.y)^2 + (va.z - vb.z)^2
+end
+
 --数字跳动   anim(是否停止已经存在的这个跳动，重新开始) 
 function  Utils.NumUpDown(objText,oldScore,newScore,setFun,callback,speed,anim)
 	speed = speed or 3
