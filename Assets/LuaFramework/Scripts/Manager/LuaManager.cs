@@ -28,6 +28,7 @@ namespace LuaFramework {
             this.lua.Start();    //启动LUAVM
             this.StartAriaMain();
             this.StartLooper();
+
         }
 
         void StartLooper() {
@@ -37,7 +38,10 @@ namespace LuaFramework {
             myLoop = gameObject.AddComponent<MyLuaLooper>();
             myLoop.luaState = lua;
         }
-
+        public LuaState GetLuaState()
+        {
+            return lua;
+        }
         //cjson 比较特殊，只new了一个table，没有注册库，这里注册一下
         protected void OpenCJson() {
             lua.LuaGetField(LuaIndexes.LUA_REGISTRYINDEX, "_LOADED");

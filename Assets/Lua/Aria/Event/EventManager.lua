@@ -120,9 +120,39 @@ function  EventManager:DispatchEvent(eventName,... )
 			log("事件的回调没有啊   "..eventName)
 		end
 	end
-
 end
 
+---??????  这里应该改一下子  但是我不知道怎么改 好
+--特殊指定的派发
+function  EventManager:DispatchEventSpecial(eventName,caller,... )
+	if eventName == nil then
+		logError ("eventName 是空的")
+		return 
+	end
+	local  args = ...
+	local  eventName  = string.lower(eventName)
+	if self._listeners[eventName] == nil then
+		-- log("事件没有被监听啊   "..eventName)
+		return
+	end
+	for k,v in pairs(self._listeners[eventName]) do
+		if v then
+			if caller == v.caller then
+				xpcall(function ()
+				if v.caller == nil then
+					v.callback(args)
+				else
+					v.callback(v.caller,args)
+				end
+				end,_Aira_Error_Fun)
+			else
+				logError("Drag的 指定派发成功了 不是报错")
+			end
+		else
+			log("事件的回调没有啊   "..eventName)
+		end
+	end
+end
 
 return EventManager
 

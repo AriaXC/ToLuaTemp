@@ -206,7 +206,7 @@ local function UpdateCall()
 
 	if num == 0 then
 		log("么有计时器了")
-		eventMgr:RemoveEventListener(EventStr.UPDATE,UpdateCall)
+		eventMgr:RemoveEventListener(UpdateEvent.UPDATE,UpdateCall)
 		return 
 	end
 
@@ -250,7 +250,7 @@ function  DelayCall( delay,callback,caller,... )
 	_dc_AddList[#_dc_AddList+1] = hand
 
 	if #_dc_List == 0 then
-		eventMgr:AddEventListener(EventStr.UPDATE,UpdateCall)
+		eventMgr:AddEventListener(UpdateEvent.UPDATE,UpdateCall)
 	end 
 	return hand
 end

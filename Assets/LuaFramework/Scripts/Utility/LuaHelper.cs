@@ -144,6 +144,27 @@ namespace LuaFramework {
         }
 
         /// <summary>
+        /// 添加拖拽脚本
+        /// </summary>
+        public static void AddDragDropEvent()
+        {
+
+        }
+        /// <summary>
+        /// 添加触发器脚本
+        /// </summary>
+        public static void AddTriggerEvent()
+        {
+            
+        }
+        /// <summary>
+        /// 添加触发器脚本
+        /// </summary>
+        public static void AddCollisionEvent()
+        {
+
+        }
+        /// <summary>
         /// 判断传入对象是不是空
         /// </summary>
         /// <param name="go"></param>

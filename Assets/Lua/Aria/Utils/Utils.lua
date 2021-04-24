@@ -48,6 +48,14 @@ function  Utils.Distance(va,vb)
 	return (va.x - vb.x)^2 + (va.y - vb.y)^2 + (va.z - vb.z)^2
 end
 
+-- 屏幕坐标 转换为世界坐标
+function  Utils.ScreenToWorldPos(camera,clickPos,tagPos)
+	local pos1 = camera:ScreenToViewportPoint(clickPos)   --将屏幕坐标转换为视口坐标
+	local pos2 = camera:WorldToViewportPoint(tagPos)  -- 将三维物体的世界坐标转换为视口坐标
+	local pos3 = camera:ViewportToWorldPoint(Vector3.New(pos1.x,pos1.y,pos2.z))  --将合成的视口坐标转换为世界坐标
+	return pos3
+end
+
 --数字跳动   anim(是否停止已经存在的这个跳动，重新开始) 
 function  Utils.NumUpDown(objText,oldScore,newScore,setFun,callback,speed,anim)
 	speed = speed or 3

@@ -64,6 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\LuaFramework\MoonScripts\Event\DragDropEventDispatcher.cs" />
     <Compile Include="Assets\LuaFramework\MoonScripts\Util\LogData.cs" />
     <Compile Include="Assets\LuaFramework\MoonScripts\Util\LogFileWriter.cs" />
     <Compile Include="Assets\LuaFramework\MoonScripts\Util\Logger.cs" />

@@ -1,11 +1,11 @@
 ﻿<Properties StartupConfiguration="{5EBE5927-85E2-E507-10FC-6F3F3AAB800B}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_CameraWrap.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/Scripts/Utility/Util.cs">
     <Files>
-      <File FileName="Assets/LuaFramework/Editor/CustomSettings.cs" Line="243" Column="31" />
-      <File FileName="Assets/LuaFramework/ToLua/Misc/MyLuaLooper.cs" Line="71" Column="10" />
-      <File FileName="Assets/LuaFramework/MoonScripts/Util/TimeUtil.cs" Line="1" Column="1" />
-      <File FileName="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_RigidbodyWrap.cs" Line="100" Column="25" />
-      <File FileName="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_CameraWrap.cs" Line="37" Column="43" />
+      <File FileName="Assets/LuaFramework/MoonScripts/Event/DragDropEventDispatcher.cs" Line="28" Column="53" />
+      <File FileName="Assets/LuaFramework/Scripts/Utility/LuaHelper.cs" Line="1" Column="1" />
+      <File FileName="Assets/LuaFramework/ToLua/Misc/MyLuaLooper.cs" Line="9" Column="1" />
+      <File FileName="Assets/LuaFramework/Scripts/Manager/LuaManager.cs" Line="6" Column="23" />
+      <File FileName="Assets/LuaFramework/Scripts/Utility/Util.cs" Line="185" Column="12" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,6 +16,7 @@
               <Node name="LuaFramework" expanded="True">
                 <Node name="Editor" expanded="True" />
                 <Node name="MoonScripts" expanded="True">
+                  <Node name="Event" expanded="True" />
                   <Node name="Util" expanded="True" />
                 </Node>
                 <Node name="Scripts" expanded="True">
@@ -25,7 +26,9 @@
                   </Node>
                   <Node name="Framework" expanded="True" />
                   <Node name="Manager" expanded="True" />
-                  <Node name="Utility" expanded="True" />
+                  <Node name="Utility" expanded="True">
+                    <Node name="Util.cs" selected="True" />
+                  </Node>
                   <Node name="View" expanded="True" />
                 </Node>
                 <Node name="ToLua" expanded="True">
@@ -36,9 +39,7 @@
                   </Node>
                   <Node name="Misc" expanded="True" />
                   <Node name="Source" expanded="True">
-                    <Node name="Generate" expanded="True">
-                      <Node name="UnityEngine_CameraWrap.cs" selected="True" />
-                    </Node>
+                    <Node name="Generate" expanded="True" />
                   </Node>
                 </Node>
               </Node>
@@ -62,7 +63,9 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="cb0f93fd-4293-45ba-acc5-4d57be1fa1bf" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/admin/Documents/U2/ToLuaTemp/Assets/LuaFramework/MoonScripts/Event/DragDropEventDispatcher.cs" relfile="Assets/LuaFramework/MoonScripts/Event/DragDropEventDispatcher.cs" line="33" column="17" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

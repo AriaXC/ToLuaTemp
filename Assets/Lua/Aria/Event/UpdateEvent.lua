@@ -2,6 +2,15 @@ local  UpdateEvent = {}
 
 local  floor = math.floor
 
+
+--物理帧 更新 固定时间
+UpdateEvent.FIXED_UPDATE = "Events_FixedUpdate"
+--帧更新
+UpdateEvent.UPDATE = "Events_Update"
+--渲染帧更新之前
+UpdateEvent.LATE_UPDATE = "Events_LateUpdate"
+
+
 function  UpdateEvent.DispatchEvent(type,time)
 	
 	TimeUtil.time = time
