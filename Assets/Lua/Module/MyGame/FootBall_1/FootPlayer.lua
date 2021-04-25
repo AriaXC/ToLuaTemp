@@ -34,7 +34,7 @@ function  FootPlayer:Update()
 			
 	-- 	self.playerTra = worldPos
 	-- 	log("playerTra########==  "..tostring(self.playerTra ))
-	-- end	
+	 end
 end
 
 

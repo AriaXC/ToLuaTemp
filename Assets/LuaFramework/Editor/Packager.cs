@@ -239,7 +239,7 @@ public class Packager {
         foreach (string oneFile in files)
         {
 #if UNITY_STANDALONE_WIN || UNITY_EDITOR_WIN
-            filePath = filePath.Replace ("\\", "/");
+            buildScenePath = buildScenePath.Replace ("\\", "/");
 #endif
             //Debug.Log("EndsWith ==  " + Path.GetExtension(oneFile));
             if (oneFile.EndsWith(".meta")
