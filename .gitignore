@@ -9,3 +9,5 @@ Assets/AriaUpdate
 obj
 Logs
 Assets/Lua/.idea
+*.csproj
+*.sln
