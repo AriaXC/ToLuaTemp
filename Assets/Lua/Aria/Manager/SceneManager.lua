@@ -22,6 +22,7 @@ function  SceneManager:Ctor ( )
 
 	self._currCanvas = nil
 	self._layer ={}
+	self._uiCanvas = nil
 end
 
 function  SceneManager:ShowScene(sceneClass,scene,sceneUnity)
@@ -108,7 +109,8 @@ function SceneManager:AddCanvas( )
 	obj.name = "UICanvas"
 
 	self._currCanvas =obj
-	self._layer [GameConst.Layer.canvas] = obj
+	self._layer[GameConst.Layer.canvas] = obj
+	self._uiCanvas = GetComponentCanvas(obj)
 	self._layer[GameConst.Layer.ui] = obj.transform:Find("ui").transform
 	self._layer[GameConst.Layer.window] = obj.transform:Find("window").transform
 

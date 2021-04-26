@@ -75,7 +75,13 @@ function  TestView:AddClick( ... )
 		log("文字加图片")
 		Utils.SimpleTextPic(self.titleText,"Textures/A/a1.png",2)
 	end)
+	AddBtnClick(self.transform:Find("bg/btnDrag").gameObject,function( )	
 
+		if not self.dragView then
+			self.dragView = require("Module.Test.DragTest").New()
+		end
+		self.dragView:Show()
+	end)
 
 
 end

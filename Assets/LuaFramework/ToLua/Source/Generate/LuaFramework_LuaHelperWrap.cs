@@ -18,6 +18,9 @@ public class LuaFramework_LuaHelperWrap
 		L.RegFunction("AddClick", AddClick);
 		L.RegFunction("DelClick", DelClick);
 		L.RegFunction("AddAriaLuaBehaviour", AddAriaLuaBehaviour);
+		L.RegFunction("AddDragDropEvent", AddDragDropEvent);
+		L.RegFunction("AddTriggerEvent", AddTriggerEvent);
+		L.RegFunction("AddCollisionEvent", AddCollisionEvent);
 		L.RegFunction("ObjIsNull", ObjIsNull);
 		L.EndStaticLibs();
 	}
@@ -198,6 +201,53 @@ public class LuaFramework_LuaHelperWrap
 			string[] arg1 = ToLua.CheckStringArray(L, 2);
 			LuaInterface.LuaFunction[] arg2 = ToLua.CheckObjectArray<LuaInterface.LuaFunction>(L, 3);
 			LuaFramework.LuaHelper.AddAriaLuaBehaviour(arg0, arg1, arg2);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int AddDragDropEvent(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 2);
+			UnityEngine.GameObject arg0 = (UnityEngine.GameObject)ToLua.CheckObject(L, 1, typeof(UnityEngine.GameObject));
+			LuaTable arg1 = ToLua.CheckLuaTable(L, 2);
+			LuaFramework.LuaHelper.AddDragDropEvent(arg0, arg1);
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int AddTriggerEvent(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 0);
+			LuaFramework.LuaHelper.AddTriggerEvent();
+			return 0;
+		}
+		catch (Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int AddCollisionEvent(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 0);
+			LuaFramework.LuaHelper.AddCollisionEvent();
 			return 0;
 		}
 		catch (Exception e)

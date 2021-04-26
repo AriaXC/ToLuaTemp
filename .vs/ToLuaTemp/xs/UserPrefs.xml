@@ -1,45 +1,31 @@
 ﻿<Properties StartupConfiguration="{5EBE5927-85E2-E507-10FC-6F3F3AAB800B}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/Scripts/Utility/Util.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_RectTransformWrap.cs">
     <Files>
-      <File FileName="Assets/LuaFramework/MoonScripts/Event/DragDropEventDispatcher.cs" Line="28" Column="53" />
-      <File FileName="Assets/LuaFramework/Scripts/Utility/LuaHelper.cs" Line="1" Column="1" />
-      <File FileName="Assets/LuaFramework/ToLua/Misc/MyLuaLooper.cs" Line="9" Column="1" />
-      <File FileName="Assets/LuaFramework/Scripts/Manager/LuaManager.cs" Line="6" Column="23" />
-      <File FileName="Assets/LuaFramework/Scripts/Utility/Util.cs" Line="185" Column="12" />
+      <File FileName="Assets/LuaFramework/Scripts/Utility/LuaHelper.cs" Line="140" Column="17" />
+      <File FileName="Assets/LuaFramework/ToLua/Misc/MyLuaLooper.cs" Line="27" Column="6" />
+      <File FileName="Assets/LuaFramework/MoonScripts/Event/DragDropEventDispatcher.cs" Line="37" Column="40" />
+      <File FileName="Assets/LuaFramework/Editor/CustomSettings.cs" Line="32" Column="41" />
+      <File FileName="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_RectTransformWrap.cs" Line="38" Column="29" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ToLuaTemp" expanded="True">
             <Node name="Assets" expanded="True">
-              <Node name="Lua" expanded="True" />
               <Node name="LuaFramework" expanded="True">
                 <Node name="Editor" expanded="True" />
                 <Node name="MoonScripts" expanded="True">
                   <Node name="Event" expanded="True" />
-                  <Node name="Util" expanded="True" />
                 </Node>
                 <Node name="Scripts" expanded="True">
-                  <Node name="Common" expanded="True" />
-                  <Node name="Controller" expanded="True">
-                    <Node name="Command" expanded="True" />
-                  </Node>
-                  <Node name="Framework" expanded="True" />
-                  <Node name="Manager" expanded="True" />
-                  <Node name="Utility" expanded="True">
-                    <Node name="Util.cs" selected="True" />
-                  </Node>
-                  <Node name="View" expanded="True" />
+                  <Node name="Utility" expanded="True" />
                 </Node>
                 <Node name="ToLua" expanded="True">
-                  <Node name="BaseType" expanded="True" />
-                  <Node name="Core" expanded="True" />
-                  <Node name="Injection" expanded="True">
-                    <Node name="Editor" expanded="True" />
-                  </Node>
                   <Node name="Misc" expanded="True" />
                   <Node name="Source" expanded="True">
-                    <Node name="Generate" expanded="True" />
+                    <Node name="Generate" expanded="True">
+                      <Node name="UnityEngine_RectTransformWrap.cs" selected="True" />
+                    </Node>
                   </Node>
                 </Node>
               </Node>
@@ -50,9 +36,6 @@
                   </Node>
                 </Node>
               </Node>
-              <Node name="Test" expanded="True">
-                <Node name="other" expanded="True" />
-              </Node>
             </Node>
           </Node>
         </State>
@@ -61,11 +44,9 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="cb0f93fd-4293-45ba-acc5-4d57be1fa1bf" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="25aa3b40-5322-44b8-b04f-847f4a5c7c3d" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/admin/Documents/U2/ToLuaTemp/Assets/LuaFramework/MoonScripts/Event/DragDropEventDispatcher.cs" relfile="Assets/LuaFramework/MoonScripts/Event/DragDropEventDispatcher.cs" line="33" column="17" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

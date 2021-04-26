@@ -180,6 +180,9 @@ end
 function  GetComponentRigidbody(go)
 	return go:GetComponent(_typeof(UnityEngine.Rigidbody))
 end
+function  GetComponentCanvas(go)
+	return go:GetComponent(_typeof(UnityEngine.Canvas))
+end
 
 ------------------------------------------------------------------------------------------------
 

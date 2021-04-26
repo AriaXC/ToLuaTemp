@@ -8,6 +8,7 @@ using LuaFramework;
 using UnityEditor;
 using MoonScrpts;
 using DG.Tweening;
+using UnityEngine.EventSystems;
 
 
 using BindType = ToLuaMenu.BindType;
@@ -40,6 +41,7 @@ public static string toluaBaseType = FrameworkPath + "/ToLua/BaseType/";
         typeof(UnityEngine.QualitySettings),
         typeof(UnityEngine.GL),
         typeof(UnityEngine.Graphics),
+        typeof(UnityEngine.RectTransformUtility),
     };
 
     //附加导出委托类型(在导出委托时, customTypeList 中牵扯的委托类型都会导出， 无需写在这里)
@@ -146,6 +148,7 @@ public static string toluaBaseType = FrameworkPath + "/ToLua/BaseType/";
         _GT(typeof(GameObject)),
         _GT(typeof(TrackedReference)),
         _GT(typeof(Application)),
+        _GT(typeof(RectTransformUtility)),
         _GT(typeof(Physics)),
         _GT(typeof(Physics2D)),
         _GT(typeof(Collider)),
@@ -204,6 +207,8 @@ public static string toluaBaseType = FrameworkPath + "/ToLua/BaseType/";
         //for LuaFramework
         //_GT(typeof(RectTransform)),
         //_GT(typeof(Text)),
+        _GT(typeof(Rect)),
+        _GT(typeof(Canvas)),
 
         _GT(typeof(Util)),
         _GT(typeof(AppConst)),
@@ -222,6 +227,9 @@ public static string toluaBaseType = FrameworkPath + "/ToLua/BaseType/";
 
 
         _GT(typeof(MoonScrpts.Logger)),
+
+
+        _GT(typeof(PointerEventData)),
     };
 
     public static List<Type> dynamicList = new List<Type>()

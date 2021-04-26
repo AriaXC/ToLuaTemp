@@ -21,13 +21,14 @@ function EventManager:AddEventListener(eventName,callback,caller,target)
 		logError("eventName 的类型错了")
 		return
 	end
-	target = target or EventStr
+	caller = caller or EventStr
 	eventName = string.lower(eventName)
 
 	if self._listeners[eventName] == nil then
 		self._listeners[eventName] = {}
 	end
 
+	---  info  应该考虑是不是做成缓存池
 	local info 
 	for k,v in pairs(self._listeners[eventName]) do
 		info = v
@@ -44,16 +45,19 @@ function EventManager:AddEventListener(eventName,callback,caller,target)
 	self._listeners[eventName][handStr] = info
 
 	--可以到时候一下子全清
-	if target then
-		if target._addEventListeners == nil then
-			target._addEventListeners ={}
+	if caller then
+		if caller._addEventListeners == nil then
+			caller._addEventListeners ={}
 		end
-		target._addEventListeners[eventName] = handStr
+		caller._addEventListeners[eventName] = handStr
 	end
 
-	if target.gameObject then
-		--碰撞器 触发器等的添加
-		if eventName == "OnCollisionEnter"  then
+	if target then
+		if eventName == DragEvent.BEGIN_DRAG or eventName == DragEvent.DRAG 
+		  or eventName == DragEvent.END_DRAG  or DragEvent.INITIALIZE_POTENTIAL_DRAG
+		  or eventName == DragEvent.DROP then
+		  	--
+		  	LuaHelper.AddDragDropEvent(target.gameObject,caller)
 		end
 
 	end
@@ -77,18 +81,18 @@ function  EventManager:RemoveEventListener(eventName,callback,caller)
 		end
 	end
 end
-function  EventManager:RemoveObjAllEventListener(target)
-	target = target or EventStr
-	if target == nil then
+function  EventManager:RemoveObjAllEventListener(caller)
+	caller = caller or EventStr
+	if caller == nil then
 		logError("这个已经是空了")
 		return
 	end
-	if target._addEventListeners then
-		for k,v in pairs(target._addEventListeners) do
+	if caller._addEventListeners then
+		for k,v in pairs(caller._addEventListeners) do
 			if self._listeners[k] then
 				log(string.format("RemoveObjAllEventListener ===  eventName =%s , handStr = %s",k,v))			
 				self._listeners[k][v] = nil
-				target._addEventListeners=nil
+				caller._addEventListeners=nil
 			end
 		end
 	end
@@ -109,13 +113,13 @@ function  EventManager:DispatchEvent(eventName,... )
 
 	for k,v in pairs(self._listeners[eventName]) do
 		if v then
-			xpcall(function ()
+			-- xpcall(function ()
 				if v.caller == nil then
 					v.callback(args)
 				else
 					v.callback(v.caller,args)
 				end
-			end,_Aira_Error_Fun)
+			-- end,_Aira_Error_Fun)
 		else
 			log("事件的回调没有啊   "..eventName)
 		end
@@ -138,13 +142,13 @@ function  EventManager:DispatchEventSpecial(eventName,caller,... )
 	for k,v in pairs(self._listeners[eventName]) do
 		if v then
 			if caller == v.caller then
-				xpcall(function ()
+				-- xpcall(function ()
 				if v.caller == nil then
 					v.callback(args)
 				else
 					v.callback(v.caller,args)
 				end
-				end,_Aira_Error_Fun)
+				-- end,_Aira_Error_Fun)
 			else
 				logError("Drag的 指定派发成功了 不是报错")
 			end

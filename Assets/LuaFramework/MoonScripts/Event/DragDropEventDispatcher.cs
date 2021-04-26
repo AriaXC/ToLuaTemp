@@ -27,7 +27,7 @@ namespace MoonScrpts
                 return;
 
             if (s_dispatchEvent == null)
-                s_dispatchEvent = luaMgr.GetLuaState().GetFunction("DragDropEvent.DispatchEvent");
+                s_dispatchEvent = luaMgr.GetLuaState().GetFunction("DragEvent.DispatchEvent");
 
             s_dispatchEvent.BeginPCall();
             s_dispatchEvent.Push(ed);

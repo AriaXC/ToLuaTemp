@@ -22,7 +22,7 @@ PrefabPool = require("Aria.Utils.PrefabPool")
 -------------------------------------------------
 
 UpdateEvent = require("Aria.Event.UpdateEvent")
--- DragEvent 
+DragEvent = require("Aria.Event.DragEvent")
 
 
 -------------------------------------------------
@@ -34,7 +34,7 @@ Input = UnityEngine.Input
 KeyCode =UnityEngine.KeyCode
 Time = UnityEngine.Time
 Application = UnityEngine.Application
-
+RectTransformUtility = UnityEngine.RectTransformUtility
 
 ------------------------------------------------
 

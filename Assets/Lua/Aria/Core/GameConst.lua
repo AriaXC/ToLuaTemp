@@ -7,4 +7,5 @@ GameConst.Layer.canvas = "UICanvas"
 GameConst.Layer.ui = "ui"
 GameConst.Layer.window = "window"
 
+
 return GameConst

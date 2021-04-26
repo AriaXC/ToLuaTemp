@@ -4,6 +4,7 @@ using System.Reflection;
 using LuaInterface;
 using UnityEngine.UI;
 using System;
+using MoonScrpts;
 
 namespace LuaFramework {
     public static class LuaHelper {
@@ -146,9 +147,12 @@ namespace LuaFramework {
         /// <summary>
         /// 添加拖拽脚本
         /// </summary>
-        public static void AddDragDropEvent()
+        public static void AddDragDropEvent(GameObject go,LuaTable ed)
         {
-
+            DragDropEventDispatcher dispatcher = go.GetComponent<DragDropEventDispatcher>();
+            if (dispatcher == null)
+                dispatcher = go.AddComponent<DragDropEventDispatcher>();
+            dispatcher.ed = ed;
         }
         /// <summary>
         /// 添加触发器脚本
