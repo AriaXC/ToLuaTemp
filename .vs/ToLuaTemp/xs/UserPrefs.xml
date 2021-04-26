@@ -1,11 +1,12 @@
 ﻿<Properties StartupConfiguration="{5EBE5927-85E2-E507-10FC-6F3F3AAB800B}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_RectTransformWrap.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_CanvasWrap.cs">
     <Files>
-      <File FileName="Assets/LuaFramework/Scripts/Utility/LuaHelper.cs" Line="140" Column="17" />
+      <File FileName="Assets/LuaFramework/Scripts/Utility/LuaHelper.cs" Line="159" Column="23" />
       <File FileName="Assets/LuaFramework/ToLua/Misc/MyLuaLooper.cs" Line="27" Column="6" />
-      <File FileName="Assets/LuaFramework/MoonScripts/Event/DragDropEventDispatcher.cs" Line="37" Column="40" />
+      <File FileName="Assets/LuaFramework/MoonScripts/Event/DragDropEventDispatcher.cs" Line="44" Column="54" />
       <File FileName="Assets/LuaFramework/Editor/CustomSettings.cs" Line="32" Column="41" />
-      <File FileName="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_RectTransformWrap.cs" Line="38" Column="29" />
+      <File FileName="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_RectTransformWrap.cs" Line="33" Column="38" />
+      <File FileName="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_CanvasWrap.cs" Line="33" Column="24" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -24,7 +25,7 @@
                   <Node name="Misc" expanded="True" />
                   <Node name="Source" expanded="True">
                     <Node name="Generate" expanded="True">
-                      <Node name="UnityEngine_RectTransformWrap.cs" selected="True" />
+                      <Node name="UnityEngine_CanvasWrap.cs" selected="True" />
                     </Node>
                   </Node>
                 </Node>
