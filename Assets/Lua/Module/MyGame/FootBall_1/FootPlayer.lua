@@ -17,6 +17,7 @@ end
 function  FootPlayer:AddClick()
 	eventMgr:AddEventListener(UpdateEvent.UPDATE,self.Update,self)
 
+	eventMgr:AddEventListener(CollisionEvent.ENTER,self.CollisionEnter,self,self.player)
 end
 
 function  FootPlayer:Update()
@@ -36,8 +37,12 @@ function  FootPlayer:Update()
 	-- 	log("playerTra########==  "..tostring(self.playerTra ))
 	 end
 end
-
-
+function  FootPlayer:CollisionEnter( eventData )
+	if eventData.gameObject.name == "gate_1" or eventData.gameObject.name == "gate_2" then
+		logError("进球了")
+		
+	end
+end
 function  FootPlayer:Rest( )
 		
 end

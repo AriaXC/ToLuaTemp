@@ -35,7 +35,6 @@ end
 function  DragTest:DragHand(eventData)
 	
 	--屏幕坐标 转换为uiCanvas坐标  
-
 	-- logError(" ==  "..tostring(RectTransformUtility))
 	local  suce,pos = RectTransformUtility.ScreenPointToLocalPointInRectangle(
 		GetComponentRect(self.moveRect.transform.parent.gameObject),eventData.position,
