@@ -82,7 +82,9 @@ function  TestView:AddClick( ... )
 		end
 		self.dragView:Show()
 	end)
-
+	AddBtnClick(self.transform:Find("bg/btnTrigger").gameObject,function( ... )
+		MySceneMgr:ShowScene("Module.Test.TriggerScene","TriggerScene","Scene.Test.TriggerScene")
+	end)
 
 end
 

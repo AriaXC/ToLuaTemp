@@ -24,7 +24,6 @@ function  DragTest:AddClick()
 	AddBtnClick(self.transform:Find("bg/btnDragDel").gameObject,function( )
 		eventMgr:RemoveObjAllEventListener(self)		
 	end)
-
 end
 
 function  DragTest:StartDrag(eventData)

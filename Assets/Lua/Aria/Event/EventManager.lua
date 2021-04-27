@@ -22,7 +22,6 @@ function EventManager:AddEventListener(eventName,callback,caller,target)
 		return
 	end
 	caller = caller or EventStr
-	eventName = string.lower(eventName)
 
 	if self._listeners[eventName] == nil then
 		self._listeners[eventName] = {}
@@ -54,10 +53,14 @@ function EventManager:AddEventListener(eventName,callback,caller,target)
 
 	if target then
 		if eventName == DragEvent.BEGIN_DRAG or eventName == DragEvent.DRAG 
-		  or eventName == DragEvent.END_DRAG  or DragEvent.INITIALIZE_POTENTIAL_DRAG
+		  or eventName == DragEvent.END_DRAG  or eventName == DragEvent.INITIALIZE_POTENTIAL_DRAG
 		  or eventName == DragEvent.DROP then
 		  	--
 		  	LuaHelper.AddDragDropEvent(target.gameObject,caller)
+		elseif eventName == TriggerEvent.ENTER or eventName == TriggerEvent.STAY
+		  or eventName == TriggerEvent.EXIT  then
+		  	
+		  	LuaHelper.AddTriggerEvent(target.gameObject,caller)
 		end
 
 	end
@@ -71,8 +74,6 @@ function  EventManager:RemoveEventListener(eventName,callback,caller)
 		logError("eventName 的类型错了  ")
 		return
 	end
-
-	eventName = string.lower(eventName)
 
 	for k,v in pairs(self._listeners[eventName]) do
 		if v.callback == callback and v.caller == caller then
@@ -105,7 +106,6 @@ function  EventManager:DispatchEvent(eventName,... )
 		return 
 	end
 	local  args = ...
-	local  eventName  = string.lower(eventName)
 	if self._listeners[eventName] == nil then
 		-- log("事件没有被监听啊   "..eventName)
 		return
@@ -134,7 +134,6 @@ function  EventManager:DispatchEventSpecial(eventName,caller,... )
 		return 
 	end
 	local  args = ...
-	local  eventName  = string.lower(eventName)
 	if self._listeners[eventName] == nil then
 		-- log("事件没有被监听啊   "..eventName)
 		return

@@ -23,4 +23,31 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Res/Scene/MyGame/FootBall.unity
     guid: 97aaa48cbd0624e0793ffbed93817727
+  - enabled: 1
+    path: Assets/Plugins/Demigiant/DOTweenPro Examples/DOTweenAnimation_Advanced.unity
+    guid: a5f7a56d339da84449899ecf95fbe33d
+  - enabled: 1
+    path: Assets/Plugins/Demigiant/DOTweenPro Examples/DOTweenAnimation_Basics.unity
+    guid: 6a2ad353325ffe64983c28d69a8738f5
+  - enabled: 1
+    path: Assets/Plugins/Demigiant/DOTweenPro Examples/DOTweenPath.unity
+    guid: a351b59ca54a0bc4083c35844da13a61
+  - enabled: 1
+    path: Assets/Test/list/list.unity
+    guid: 5cf536ce5f6d045b791aff5b34a4f664
+  - enabled: 1
+    path: Assets/Test/AMap/map.unity
+    guid: ea4f2d2ed60dd42bf842e4395cb02d71
+  - enabled: 1
+    path: Assets/Test/other/other.unity
+    guid: cfca7f6fac7e249469cfc783f20838c2
+  - enabled: 1
+    path: Assets/Test/text/textMesh.unity
+    guid: 1c1e8ed36c7a24e979f3084bd9fdf009
+  - enabled: 1
+    path: Assets/Test/Scene/TogetherScene.unity
+    guid: 1d2d5326d1b82674881beadbe3e8d0ec
+  - enabled: 1
+    path: Assets/Res/Scene/Test/TriggerScene.unity
+    guid: f0577b36a8e05455c8718e89231e14ec
   m_configObjects: {}

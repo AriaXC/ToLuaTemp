@@ -6,7 +6,7 @@ public class UnityEngine_RectTransformUtilityWrap
 {
 	public static void Register(LuaState L)
 	{
-		L.BeginClass(typeof(UnityEngine.RectTransformUtility), typeof(System.Object));
+		L.BeginStaticLibs("RectTransformUtility");
 		L.RegFunction("RectangleContainsScreenPoint", RectangleContainsScreenPoint);
 		L.RegFunction("ScreenPointToWorldPointInRectangle", ScreenPointToWorldPointInRectangle);
 		L.RegFunction("ScreenPointToLocalPointInRectangle", ScreenPointToLocalPointInRectangle);
@@ -17,8 +17,7 @@ public class UnityEngine_RectTransformUtilityWrap
 		L.RegFunction("FlipLayoutAxes", FlipLayoutAxes);
 		L.RegFunction("PixelAdjustPoint", PixelAdjustPoint);
 		L.RegFunction("PixelAdjustRect", PixelAdjustRect);
-		L.RegFunction("__tostring", ToLua.op_ToString);
-		L.EndClass();
+		L.EndStaticLibs();
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]

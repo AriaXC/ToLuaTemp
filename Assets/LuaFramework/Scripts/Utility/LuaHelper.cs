@@ -157,9 +157,13 @@ namespace LuaFramework {
         /// <summary>
         /// 添加触发器脚本
         /// </summary>
-        public static void AddTriggerEvent()
+        public static void AddTriggerEvent(GameObject go,LuaTable ed)
         {
-            
+            Debug.LogError("???");
+            TriggerEventDispatcher dispatcher = go.GetComponent<TriggerEventDispatcher>();
+            if (dispatcher == null)
+                dispatcher = go.AddComponent<TriggerEventDispatcher>();
+            dispatcher.ed = ed;
         }
         /// <summary>
         /// 添加触发器脚本
