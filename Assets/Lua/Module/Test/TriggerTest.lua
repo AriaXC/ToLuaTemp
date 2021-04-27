@@ -23,10 +23,12 @@ function  TriggerTestView:AddClick( ... )
 	end)
 
 	AddBtnClick(self.transform:Find("bg/btnTriggerDel").gameObject,function( ... )
-				
+		eventMgr:RemoveObjAllEventListener(self)
 	end)	
 	AddBtnClick(self.transform:Find("bg/btnCollision").gameObject,function( ... )
-		eventMgr:RemoveObjAllEventListener(self)	
+		eventMgr:AddEventListener(CollisionEvent.ENTER,self.CollisionEnter,self,self.move)
+		eventMgr:AddEventListener(CollisionEvent.STAY,self.CollisionStay,self,self.move)
+		eventMgr:AddEventListener(CollisionEvent.EXIT,self.CollisionExit,self,self.move)
 	end)
 
 	AddBtnClick(self.transform:Find("bg/btnCollisionDel").gameObject,function( ... )
@@ -49,7 +51,7 @@ end
 function TriggerTestView:TriggerStay( eventData )
 	-- body
 	
-	logError("TriggerStay ==  "..eventData.gameObject.name)
+	-- logError("TriggerStay ==  "..eventData.gameObject.name)
 end
 function TriggerTestView:TriggerExit( eventData )
 	-- body
@@ -57,16 +59,13 @@ function TriggerTestView:TriggerExit( eventData )
 end
 
 function TriggerTestView:CollisionEnter( eventData )
-	-- body
-
+	logError("CollisionEnter ==  "..eventData.gameObject.name.."    "..eventData.collider.gameObject.name)
 end
 function TriggerTestView:CollisionStay( eventData )
-	-- body
-	
+	-- logError("CollisionEnter ==  "..eventData.gameObject.name)	
 end
 function TriggerTestView:CollisionExit( eventData )
-	-- body
-	
+	logError("CollisionEnter ==  "..eventData.gameObject.name)
 end
 return TriggerTestView
 

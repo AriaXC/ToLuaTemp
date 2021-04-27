@@ -2,12 +2,12 @@
 --相关触发器事件的派发
 local  TriggerEvent = {}
 
---开始拖动
-TriggerEvent.ENTER = "Events_ENTER"
---拖动中
-TriggerEvent.STAY = "Events_STAY"
---拖动结束
-TriggerEvent.EXIT = "Events_EXIT"
+--触发器进入
+TriggerEvent.ENTER = "Events_Trigger_ENTER"
+--
+TriggerEvent.STAY = "Events_Trigger_STAY"
+--触发器出去
+TriggerEvent.EXIT = "Events_Trigger_EXIT"
 
 
 function  TriggerEvent.DispatchEvent(ed,type,eventData)

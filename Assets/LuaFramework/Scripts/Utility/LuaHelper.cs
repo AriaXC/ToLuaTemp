@@ -159,7 +159,6 @@ namespace LuaFramework {
         /// </summary>
         public static void AddTriggerEvent(GameObject go,LuaTable ed)
         {
-            Debug.LogError("???");
             TriggerEventDispatcher dispatcher = go.GetComponent<TriggerEventDispatcher>();
             if (dispatcher == null)
                 dispatcher = go.AddComponent<TriggerEventDispatcher>();
@@ -168,9 +167,12 @@ namespace LuaFramework {
         /// <summary>
         /// 添加触发器脚本
         /// </summary>
-        public static void AddCollisionEvent()
+        public static void AddCollisionEvent(GameObject go, LuaTable ed)
         {
-
+            CollisionEventDispatcher dispatcher = go.GetComponent<CollisionEventDispatcher>();
+            if (dispatcher == null)
+                dispatcher = go.AddComponent<CollisionEventDispatcher>();
+            dispatcher.ed = ed;
         }
         /// <summary>
         /// 判断传入对象是不是空

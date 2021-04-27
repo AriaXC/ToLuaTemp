@@ -248,8 +248,10 @@ public class LuaFramework_LuaHelperWrap
 	{
 		try
 		{
-			ToLua.CheckArgsCount(L, 0);
-			LuaFramework.LuaHelper.AddCollisionEvent();
+			ToLua.CheckArgsCount(L, 2);
+			UnityEngine.GameObject arg0 = (UnityEngine.GameObject)ToLua.CheckObject(L, 1, typeof(UnityEngine.GameObject));
+			LuaTable arg1 = ToLua.CheckLuaTable(L, 2);
+			LuaFramework.LuaHelper.AddCollisionEvent(arg0, arg1);
 			return 0;
 		}
 		catch (Exception e)

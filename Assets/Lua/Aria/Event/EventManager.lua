@@ -61,6 +61,10 @@ function EventManager:AddEventListener(eventName,callback,caller,target)
 		  or eventName == TriggerEvent.EXIT  then
 		  	
 		  	LuaHelper.AddTriggerEvent(target.gameObject,caller)
+		elseif eventName == CollisionEvent.ENTER or eventName == CollisionEvent.STAY
+		  or eventName == CollisionEvent.EXIT  then
+		  	
+		  	LuaHelper.AddCollisionEvent(target.gameObject,caller)
 		end
 
 	end

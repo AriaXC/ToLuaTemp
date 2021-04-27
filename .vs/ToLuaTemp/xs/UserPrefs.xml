@@ -1,13 +1,11 @@
 ﻿<Properties StartupConfiguration="{5EBE5927-85E2-E507-10FC-6F3F3AAB800B}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/MoonScripts/Event/my.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/LuaFramework/MoonScripts/Event/TriggerEventDispatcher.cs">
     <Files>
-      <File FileName="Assets/LuaFramework/Scripts/Utility/LuaHelper.cs" Line="160" Column="43" />
+      <File FileName="Assets/LuaFramework/Scripts/Utility/LuaHelper.cs" Line="162" Column="35" />
       <File FileName="Assets/LuaFramework/ToLua/Misc/MyLuaLooper.cs" Line="27" Column="6" />
-      <File FileName="Assets/LuaFramework/MoonScripts/Event/DragDropEventDispatcher.cs" Line="65" Column="10" />
-      <File FileName="Assets/LuaFramework/Editor/CustomSettings.cs" Line="148" Column="33" />
-      <File FileName="Assets/LuaFramework/ToLua/Core/LuaState.cs" Line="417" Column="20" />
-      <File FileName="Assets/LuaFramework/MoonScripts/Event/TriggerEventDispatcher.cs" Line="19" Column="6" />
-      <File FileName="Assets/LuaFramework/MoonScripts/Event/my.cs" Line="20" Column="9" />
+      <File FileName="Assets/LuaFramework/Editor/CustomSettings.cs" Line="155" Column="32" />
+      <File FileName="Assets/LuaFramework/MoonScripts/Event/TriggerEventDispatcher.cs" Line="9" Column="61" />
+      <File FileName="Assets/LuaFramework/MoonScripts/Event/CollisionEventDispatcher.cs" Line="45" Column="9" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -18,7 +16,7 @@
                 <Node name="Editor" expanded="True" />
                 <Node name="MoonScripts" expanded="True">
                   <Node name="Event" expanded="True">
-                    <Node name="my.cs" selected="True" />
+                    <Node name="TriggerEventDispatcher.cs" selected="True" />
                   </Node>
                 </Node>
                 <Node name="Scripts" expanded="True">

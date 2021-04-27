@@ -6,9 +6,9 @@ using LuaInterface;
 
 public class TriggerEventDispatcher : MonoBehaviour
 {
-    private const string EVENT_ENTER = "Events_ENTER";
-    private const string EVENT_STAY = "Events_STAY";
-    private const string EVENT_EXIT = "Events_EXIT";
+    private const string EVENT_ENTER = "Events_Trigger_ENTER";
+    private const string EVENT_STAY = "Events_Trigger_STAY";
+    private const string EVENT_EXIT = "Events_Trigger_EXIT";
     
     private static LuaFunction s_dispatchEvent;
 
@@ -34,7 +34,6 @@ public class TriggerEventDispatcher : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.LogError("===");
         DispatchEvent(ed, EVENT_ENTER, other);
     }
     private void OnTriggerStay(Collider other)

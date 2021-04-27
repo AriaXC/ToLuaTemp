@@ -152,6 +152,7 @@ public static string toluaBaseType = FrameworkPath + "/ToLua/BaseType/";
         _GT(typeof(Physics)),
         _GT(typeof(Physics2D)),
         _GT(typeof(Collider)),
+        _GT(typeof(Collision)),
         _GT(typeof(Time)),
         _GT(typeof(Texture)),
         _GT(typeof(Texture2D)),

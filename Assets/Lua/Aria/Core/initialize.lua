@@ -24,6 +24,7 @@ PrefabPool = require("Aria.Utils.PrefabPool")
 UpdateEvent = require("Aria.Event.UpdateEvent")
 DragEvent = require("Aria.Event.DragEvent")
 TriggerEvent = require("Aria.Event.TriggerEvent")
+CollisionEvent = require("Aria.Event.CollisionEvent")
 
 -------------------------------------------------
 
