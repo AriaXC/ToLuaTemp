@@ -51,6 +51,12 @@ function  LoginView:AddClick()
 		self.testLuaView:Show()
 	end)
 	
+	AddBtnClick(self.transform:Find("bg/btnCe_Model").gameObject,function( ... )
+		if not self.testModel then
+			self.testModel = require("Module.Test.TestModelView").New()
+		end
+		self.testModel:Show()
+	end)
 	AddBtnClick(self.transform:Find("bg/btnGame").gameObject,function( ... )
 		if not self.testBtnGame then
 			self.testBtnGame = require("Module.MyGame.MyGameView").New()

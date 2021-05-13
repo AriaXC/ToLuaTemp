@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Res/Scene/Login/Login2.unity
     guid: 832aeab8844ca42f59b3133f3d08fb6d
   - enabled: 1
-    path: Assets/Res/Scene/Xiao/xiao.unity
+    path: Assets/Res/Scene/MyGame/xiao.unity
     guid: ca347c1a7200f40689d8f56415d54913
   - enabled: 1
     path: Assets/Res/Scene/MyGame/FootBall.unity

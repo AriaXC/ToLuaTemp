@@ -28,9 +28,6 @@ function  TestLua:AddClick( ... )
 	AddBtnClick(self.transform:Find("model").gameObject,function( ... )
 		self:Hide()
 	end)
-	AddBtnClick(self.transform:Find("bg/btnXiao").gameObject,function( )
-		MySceneMgr:ShowScene("Module.Scene.Xiao.XiaoScene","Xiao","Scene.Xiao.XiaoScene")
-	end)
 end
 
 function  TestLua:PrintArr(arr,n )
@@ -63,7 +60,6 @@ function TestLua:FArray(arr,n)
 		end
 	end
 end
-
 
 
 return TestLua

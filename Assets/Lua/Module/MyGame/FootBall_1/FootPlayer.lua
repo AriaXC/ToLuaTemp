@@ -31,7 +31,7 @@ function  FootPlayer:Update()
 	-- 	log("==  "..tostring(worldPos))
 
 	-- 	-- log(distance)
-		self.playerRig:AddForce(forward*self.force*distance)
+	self.playerRig:AddForce(forward*self.force*distance)
 			
 	-- 	self.playerTra = worldPos
 	-- 	log("playerTra########==  "..tostring(self.playerTra ))

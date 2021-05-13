@@ -2,7 +2,7 @@
 
 function  FootBallView:Ctor( )
 	-- body
-	FootBallView.super.Ctor(self,"Prefabs/MyGame/FootBall/FootView.prefab",GameConst.Layer.ui)
+	FootBallView.super.Ctor(self,"Prefabs/MyGame/FootBall/FootView.prefab",GameConst.Layer.window)
 end
 
 function  FootBallView:OnInitialize( ... )

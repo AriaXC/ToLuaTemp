@@ -2,7 +2,7 @@ local XiaoView=class(XiaoView,View)
 
 function  XiaoView:Ctor( )
 	-- body
-	XiaoView.super.Ctor(self,"Prefabs/Xiao/XiaoView.prefab",GameConst.Layer.ui)
+	XiaoView.super.Ctor(self,"Prefabs/MyGame/Xiao/XiaoView.prefab",GameConst.Layer.window)
 
 end
 
