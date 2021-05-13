@@ -23,15 +23,15 @@ end
 function  FootPlayer:Update()
 	if Input.GetMouseButtonUp(1) then
 	-- 	-- local  worldPos = MainCamera:ViewportToWorldPoint(Input.mousePosition)
-	-- 	local  worldPos  = Utils.ScreenToWorldPos(MainCamera,Input.mousePosition,self.playerTra) 
-	-- 	local forward = worldPos- self.playerTra
-	-- 	local  distance = Utils.Distance(worldPos,self.playerTra)
-		
+		local  worldPos  = Utils.ScreenToWorldPos(MainCamera,Input.mousePosition,self.playerTra) 
+		local forward = worldPos- self.playerTra
+		local  distance = Utils.Distance(worldPos,self.playerTra)
+
 	-- 	log("playerTra==  "..tostring(self.playerTra ))
 	-- 	log("==  "..tostring(worldPos))
 
 	-- 	-- log(distance)
-	-- 	-- self.playerRig:AddForce(forward*self.force*distance)
+		self.playerRig:AddForce(forward*self.force*distance)
 			
 	-- 	self.playerTra = worldPos
 	-- 	log("playerTra########==  "..tostring(self.playerTra ))
@@ -40,7 +40,7 @@ end
 function  FootPlayer:CollisionEnter( eventData )
 	if eventData.gameObject.name == "gate_1" or eventData.gameObject.name == "gate_2" then
 		logError("进球了")
-		
+
 	end
 end
 function  FootPlayer:Rest( )

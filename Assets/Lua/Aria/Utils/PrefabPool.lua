@@ -15,6 +15,7 @@ function  PrefabPool.Clean(type)
 	if type then
 		--创建 缓存池的父节点
 	else
+			
 	end
 end
 

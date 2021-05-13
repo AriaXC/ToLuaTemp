@@ -86,6 +86,10 @@ function  TestView:AddClick( ... )
 		MySceneMgr:ShowScene("Module.Test.TriggerScene","TriggerScene","Scene.Test.TriggerScene")
 	end)
 
+	AddBtnClick(self.transform:Find("bg/btnSocket").gameObject,function( ... )
+
+		
+	end)
 end
 
 function  TestView:InsertTest()
