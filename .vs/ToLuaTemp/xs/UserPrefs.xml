@@ -4,11 +4,8 @@
       <File FileName="Assets/LuaFramework/Scripts/Utility/LuaHelper.cs" Line="170" Column="45" />
       <File FileName="Assets/LuaFramework/ToLua/Misc/MyLuaLooper.cs" />
       <File FileName="Assets/LuaFramework/Editor/CustomSettings.cs" Line="152" Column="30" />
-      <File FileName="Assets/LuaFramework/MoonScripts/Event/TriggerEventDispatcher.cs" />
-      <File FileName="Assets/LuaFramework/MoonScripts/Event/CollisionEventDispatcher.cs" />
-      <File FileName="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_MeshRendererWrap.cs" Line="33" Column="18" />
       <File FileName="Assets/LuaFramework/ToLua/Source/Generate/UnityEngine_MeshColliderWrap.cs" Line="22" Column="6" />
-      <File FileName="Assets/LuaFramework/MoonScripts/Commpent/UIScroll.cs" Line="8" Column="1" />
+      <File FileName="Assets/LuaFramework/MoonScripts/Commpent/UIScroll.cs" Line="133" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
